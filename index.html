@@ -84,6 +84,24 @@
 .mm-check{color:#4ade80;font-size:10px;margin-left:auto;flex-shrink:0}
 .mm-ltext{line-height:1.35}
 </style>
+<style>
+#gpopup{position:fixed;inset:0;z-index:60;background:rgba(4,5,8,.94);backdrop-filter:blur(6px);display:flex;flex-direction:column}
+#gpopup.hidden{display:none!important}
+#gpopup-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #262a33;background:#0b0e13}
+#gpopup-svg-wrap{flex:1;position:relative;overflow:hidden;cursor:grab;touch-action:none}
+#gpopup-svg-wrap:active{cursor:grabbing}
+.gp-btn{font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid #262a33;background:#141821;color:#b9bdc7;cursor:pointer}
+.gp-btn:hover{color:#ff5a39;border-color:#ff5a39}
+.gp-rt{fill:#f3efe5;font-size:12.5px;font-weight:700}
+.gp-bt{fill:#d6d9e0;font-size:11.5px;font-weight:600}
+.gp-lt{fill:#b9bdc7;font-size:11px}
+.gp-done .gp-lt{fill:#7fd6a0}
+.gp-cnt{fill:#8b909b;font-size:9.5px;font-family:ui-monospace,monospace}
+.gp-link{fill:none;stroke:#2a2f3a;stroke-width:1.2}
+.gp-link-cur{stroke:#ff5a39}
+.gp-leaf{cursor:pointer}
+.gp-leaf:hover rect{stroke:#f3efe5}
+</style>
 </head>
 <body class="min-h-full flex flex-col selection:bg-[#ff5a39] selection:text-[#07080a]">
 
@@ -566,14 +584,14 @@
       <div id="guided-detail" class="hidden">
         <div class="flex items-center justify-between mb-3">
           <button onclick="guidedBackToOverview()" class="text-xs text-neutral-400 hover:text-[#f3efe5] transition">← Alle Lernpfade</button>
-          <span class="text-[11px] font-mono px-2 py-1 rounded bg-[#1c2027] border border-[#262a33] text-neutral-200" id="guided-step-counter"></span>
+          <div class="flex items-center gap-2"><button onclick="openGuidedPopup()" title="Mindmap als Popup öffnen" class="text-[11px] px-2.5 py-1 rounded bg-[#1c2027] border border-[#262a33] text-neutral-300 hover:text-[#ff5a39] hover:border-[#ff5a39] transition">🗺 Popup</button><span class="text-[11px] font-mono px-2 py-1 rounded bg-[#1c2027] border border-[#262a33] text-neutral-200" id="guided-step-counter"></span></div>
         </div>
         <h2 class="text-xl font-bold mb-4" id="guided-path-title"></h2>
         <div class="w-full h-1.5 bg-[#1c2027] rounded-full mb-6 overflow-hidden"><div id="guided-progress-bar" class="h-full bg-[#ff5a39] rounded-full transition-all duration-300" style="width:0%"></div></div>
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 items-start">
           <aside class="lg:col-span-2 lg:sticky lg:top-4">
             <div class="p-4 bg-[#10131a] border border-[#262a33] rounded-lg">
-              <div class="text-[11px] font-bold uppercase text-[#ff5a39] mb-3">🗺 Mindmap — live mit Fortschritt</div>
+              <div class="flex items-center gap-2 mb-3"><span class="text-[11px] font-bold uppercase text-[#ff5a39]">🗺 Mindmap — live mit Fortschritt</span><button onclick="openGuidedPopup()" class="ml-auto text-[10px] px-2 py-1 rounded border border-[#262a33] text-neutral-300 hover:text-[#ff5a39] hover:border-[#ff5a39] transition">⛶ Große Ansicht</button></div>
               <div id="guided-mindmap" class="max-h-[68vh] overflow-y-auto pr-1"></div>
               <div class="text-[10px] text-neutral-500 mt-2 pt-2 border-t border-[#262a33]">● orange = aktueller Punkt · ● grün = gemeistert · ● grau = offen · Punkte anklickbar</div>
             </div>
@@ -587,7 +605,21 @@
 
 </main>
 
-  <!-- CONFIRM SUBMISSION MODAL -->
+  <div id="gpopup" class="hidden" role="dialog" aria-label="Mindmap Popup">
+  <div id="gpopup-bar">
+    <span style="font-size:11px;font-weight:700;text-transform:uppercase;color:#ff5a39">🗺 Mindmap</span>
+    <span id="gpopup-title" style="font-size:12px;color:#d6d9e0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+    <div style="margin-left:auto;display:flex;gap:6px">
+      <button class="gp-btn" onclick="gpZoom(1)">＋</button>
+      <button class="gp-btn" onclick="gpZoom(-1)">－</button>
+      <button class="gp-btn" onclick="gpFit()">Fit</button>
+      <button class="gp-btn" onclick="closeGuidedPopup()" style="color:#f87171;border-color:rgba(248,113,113,.4)">✕</button>
+    </div>
+  </div>
+  <div id="gpopup-svg-wrap"><svg id="gpopup-svg" width="100%" height="100%"></svg></div>
+  <div style="padding:7px 14px;border-top:1px solid #262a33;background:#0b0e13;font-size:10px;color:#8b909b">● <span style="color:#ff5a39">orange = aktuell</span> · ● <span style="color:#4ade80">grün = gemeistert</span> · ● grau = offen · Knoten anklicken = hinspringen · ziehen = verschieben · Scrollen = zoomen · ESC = schließen</div>
+</div>
+<!-- CONFIRM SUBMISSION MODAL -->
   <div id="modal-submit-confirm" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-[#151920] border border-[#262a33] rounded-lg max-w-md w-full p-6 shadow-xl space-y-4">
       <div class="flex items-center gap-3">
@@ -24418,6 +24450,73 @@ function guidedBackToOverview() {
   renderGuidedOverview();
 }
 
+let GP={k:0.9,x:0,y:0};
+function gpApply(){const g=document.getElementById('gpopup-g');if(g)g.setAttribute('transform','translate('+GP.x+','+GP.y+') scale('+GP.k+')');}
+function gpZoom(d){GP.k=Math.min(2.5,Math.max(0.3,GP.k*(d>0?1.15:0.87)));gpApply();}
+function gpFit(){const g=document.getElementById('gpopup-g');const w=document.getElementById('gpopup-svg-wrap');if(!g||!w)return;try{const b=g.getBBox();const vw=w.clientWidth,vh=w.clientHeight;if(!b.width||!b.height)return;GP.k=Math.min(0.95,Math.min(vw/(b.width+80),vh/(b.height+80)));GP.x=vw/2-(b.x+b.width/2)*GP.k;GP.y=vh/2-(b.y+b.height/2)*GP.k;gpApply();}catch(e){}}
+function openGuidedPopup(){const m=document.getElementById('gpopup');if(!m)return;m.classList.remove('hidden');document.getElementById('gpopup-title').textContent=String(GUIDED_PATHS[GUIDED_STATE.pathIdx].title).replace(/^Mindmap \d+:\s*/,'');renderGuidedPopup();}
+function closeGuidedPopup(){const m=document.getElementById('gpopup');if(m)m.classList.add('hidden');}
+function gpLeaf(i){guidedGoTo(i);closeGuidedPopup();}
+function gpEsc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function renderGuidedPopup(){
+ const svg=document.getElementById('gpopup-svg');if(!svg)return;
+ const p=GUIDED_PATHS[GUIDED_STATE.pathIdx];
+ const arr=(guidedProgress()['p'+GUIDED_STATE.pathIdx])||[];
+ const cur=GUIDED_STATE.stepIdx;const curAst=guidedAstOf(p.units[cur]);
+ const asts={};p.units.forEach(function(u,i){const a=guidedAstOf(u);(asts[a]=asts[a]||[]).push(i);});
+ const keys=Object.keys(asts).map(Number).sort(function(a,b){return a-b;});
+ function wrap(t,max){const w=String(t).split(/\s+/);const L=[];let ln='';w.forEach(function(x){const c=ln?ln.length+1+x.length:x.length;if(c<=max){ln=ln?ln+' '+x:x;}else{if(ln)L.push(ln);ln=x;}});if(ln)L.push(ln);return L.slice(0,3);}
+ const GAPL=12,GAPB=34;
+ const blocks=keys.map(function(a){
+   const leaves=asts[a].map(function(i){const u=p.units[i];const sub=u.t.indexOf('\u2014')>=0?u.t.split('\u2014')[1].trim():u.t;const lines=wrap(sub,26);return {i:i,lines:lines,h:Math.max(30,18+lines.length*14),done:!!arr[i],cur:i===cur};});
+   const h=leaves.reduce(function(s2,l){return s2+l.h;},0)+Math.max(0,leaves.length-1)*GAPL;
+   const nm=p.units[asts[a][0]].t.split('\u2014')[0].replace(/^Ast \d+ \u00B7\s*/,'').trim();
+   return {a:a,lines:wrap(nm,24),leaves:leaves,h:h,doneN:leaves.filter(function(l){return l.done;}).length,cur:a===curAst,total:leaves.length};
+ });
+ const right=[],left=[];blocks.forEach(function(b,i){(i%2?left:right).push(b);});
+ function stack(list){const tot=list.reduce(function(s2,b){return s2+b.h;},0)+Math.max(0,list.length-1)*GAPB;let y=-tot/2;const out=list.map(function(b){const o=Object.assign({},b,{cy:y+b.h/2,top:y});y+=b.h+GAPB;return o;});return out;}
+ const R=stack(right),LG=stack(left);
+ const rootT=String(p.title).replace(/^Mindmap \d+:\s*/,'');const rootLines=wrap(rootT,22);
+ const rootW=200,rootH=32+rootLines.length*15;
+ const BW=225,LW=215,BX=310,LX=270;
+ let out='';
+ let rt='';rootLines.forEach(function(l,i){rt+='<tspan dy="'+(i===0?(-(rootLines.length-1)*7.5):15)+'">'+gpEsc(l)+'</tspan>';});
+ out+='<g><rect x="'+(-rootW/2)+'" y="'+(-rootH/2)+'" width="'+rootW+'" height="'+rootH+'" rx="10" fill="#1c2027" stroke="#ff5a39" stroke-width="1.4"/><text class="gp-rt" text-anchor="middle">'+rt+'</text></g>';
+ function drawSide(list,dir){
+  list.forEach(function(b){
+   const bx=dir*(BX+BW/2),by=b.cy;
+   const sx0=dir*(rootW/2),ex=dir*BX,mx=(sx0+ex)/2;
+   out+='<path class="gp-link'+(b.cur?' gp-link-cur':'')+'" d="M '+sx0+' 0 C '+mx+' 0, '+mx+' '+by+', '+ex+' '+by+'"/>';
+   let bt='';b.lines.forEach(function(l,i){bt+='<tspan dy="'+(i===0?(-(b.lines.length-1)*7):14)+'">'+gpEsc(l)+'</tspan>';});
+   out+='<g><rect x="'+(dir===1?BX:-(BX+BW))+'" y="'+(by-24)+'" width="'+BW+'" height="48" rx="8" fill="#141821" stroke="'+(b.cur?'#ff5a39':'#2a2f3a')+'" stroke-width="'+(b.cur?1.6:1)+'"/><text class="gp-bt" text-anchor="middle" x="'+bx+'" y="'+by+'">'+bt+'</text><text class="gp-cnt" text-anchor="end" x="'+(dir===1?BX+BW-8:-(BX+8))+'" y="'+(by-10)+'">'+b.doneN+'/'+b.total+'</text></g>';
+   let ly=b.top;
+   b.leaves.forEach(function(lf){
+    const lcy=ly+lf.h/2;ly+=lf.h+GAPL;
+    const bsx=dir*(BX+BW),lex=dir*(BX+LX),lmx=(bsx+lex)/2;
+    out+='<path class="gp-link'+(lf.cur?' gp-link-cur':'')+'" d="M '+bsx+' '+by+' C '+lmx+' '+by+', '+lmx+' '+lcy+', '+lex+' '+lcy+'"/>';
+    let lt='';lf.lines.forEach(function(l,i){lt+='<tspan dy="'+(i===0?(-(lf.lines.length-1)*7):14)+'">'+gpEsc(l)+'</tspan>';});
+    const rectX=dir===1?(BX+LX):-(BX+LX+LW);
+    const dotX=dir===1?(BX+LX+13):-(BX+LX+13);
+    const txtX=dir===1?(BX+LX+26):-(BX+LX+26);
+    out+='<g class="gp-leaf'+(lf.cur?' gp-cur':'')+(lf.done?' gp-done':'')+'" onclick="gpLeaf('+lf.i+')"><rect x="'+rectX+'" y="'+(lcy-lf.h/2)+'" width="'+LW+'" height="'+lf.h+'" rx="7" fill="'+(lf.cur?'rgba(255,90,57,.10)':'#10131a')+'" stroke="'+(lf.cur?'#ff5a39':(lf.done?'rgba(74,222,128,.55)':'#262a33'))+'" stroke-width="'+(lf.cur?1.6:1)+'"/><circle cx="'+dotX+'" cy="'+lcy+'" r="4.5" fill="'+(lf.cur?'#ff5a39':(lf.done?'#4ade80':'#3a4050'))+'"/><text class="gp-lt" text-anchor="'+(dir===1?'start':'end')+'" x="'+txtX+'" y="'+lcy+'">'+lt+'</text></g>';
+   });
+  });
+ }
+ drawSide(R,1);drawSide(LG,-1);
+ svg.innerHTML='<g id="gpopup-g">'+out+'</g>';
+ gpFit();
+}
+(function(){
+ const w=document.getElementById('gpopup-svg-wrap');if(!w)return;
+ let drag=false,sx=0,sy=0,ox=0,oy=0;
+ w.addEventListener('pointerdown',function(e){if(e.target.closest&&e.target.closest('[onclick]'))return;drag=true;sx=e.clientX;sy=e.clientY;ox=GP.x;oy=GP.y;try{w.setPointerCapture(e.pointerId);}catch(err){}});
+ w.addEventListener('pointermove',function(e){if(!drag)return;GP.x=ox+(e.clientX-sx);GP.y=oy+(e.clientY-sy);gpApply();});
+ w.addEventListener('pointerup',function(){drag=false;});
+ w.addEventListener('pointercancel',function(){drag=false;});
+ w.addEventListener('wheel',function(e){e.preventDefault();gpZoom(e.deltaY<0?1:-1);},{passive:false});
+ window.addEventListener('resize',function(){const m=document.getElementById('gpopup');if(m&&!m.classList.contains('hidden'))gpFit();});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGuidedPopup();});
+})();
 function guidedAstOf(unit) {
   const m = String(unit.t || '').match(/^Ast (\d+)/);
   return m ? parseInt(m[1], 10) : 0;
