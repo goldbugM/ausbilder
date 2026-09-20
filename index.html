@@ -354,6 +354,7 @@
             <select id="practice-hf-select" onchange="onPracticeFilterChange()" class="w-full text-xs p-2 rounded border border-[var(--c-border)] bg-[var(--c-sunken)] focus:bg-[var(--c-card)] focus:outline-none focus:border-[var(--c-border)]">
               <option value="all">Alle Handlungsfelder (1-4)</option>
               <option value="pc">Prüfungs-Check Feldhaus (240)</option>
+              <option value="pc1">Prüfungs-Check: Original-Satz 1 (80)</option>
               <option value="1">HF 1: Planen & Voraussetzungen</option>
               <option value="2">HF 2: Einstellen & Vertrag</option>
               <option value="3">HF 3: Durchführen & Didaktik</option>
@@ -519,10 +520,19 @@
               <button onclick="resetExamState()" class="w-full mt-2 py-1.5 px-3 bg-[var(--c-card)] border border-[var(--c-border)] hover:bg-[var(--c-card)] text-[var(--c-muted)] text-xs font-semibold rounded transition">
                 Prüfung neu starten
               </button>
-              <button onclick="generateNewExamSet()" title="Generiert einen neuen 80-Aufgaben Prüfungssatz zufällig aus dem 655-Fragen-Pool nach DIHK-Gewichtung (12 HF1, 28 HF2, 28 HF3, 12 HF4)" class="w-full mt-2 py-2 px-3 bg-[var(--c-inset)] hover:bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink)] text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
-                <span>🎲</span>
-                <span>Neuen Prüfungssatz (80 Fragen) würfeln</span>
-              </button>
+              <div class="space-y-1.5">
+                <label class="block text-[10px] font-bold uppercase tracking-wider text-[var(--c-muted)] font-mono">Prüfungssatz-Quelle</label>
+                <select id="exam-source-select" class="w-full text-xs p-2 rounded border border-[var(--c-border)] bg-[var(--c-sunken)] focus:bg-[var(--c-card)] focus:outline-none">
+                  <option value="basis">Standard: DIHK-Satz (415 Fragen, 12/28/28/12 gewichtet)</option>
+                  <option value="all">Alle 655 Fragen (DIHK + Prüfungs-Check, 40/40-Mix)</option>
+                  <option value="pc240">Prüfungs-Check Feldhaus (240, 80 zufällig)</option>
+                  <option value="pc1">Original-Satz 1 (80, exakt wie in der PDF)</option>
+                </select>
+                <button onclick="generateNewExamSetFromSelect()" title="Generiert einen neuen 80-Aufgaben Prüfungssatz aus der gewählten Quelle" class="w-full mt-1 py-2 px-3 bg-[var(--c-inset)] hover:bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink)] text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
+                  <span>🎲</span>
+                  <span>Neuen Prüfungssatz würfeln</span>
+                </button>
+              </div>
               <button onclick="resetToDefaultExamSet()" class="w-full mt-1.5 py-1 px-2 text-[11px] text-[var(--c-muted)] hover:text-[var(--c-ink)] underline transition text-center">
                 Standard-Prüfungssatz 1 laden
               </button>
@@ -22187,7 +22197,6 @@ const AEVO_QUESTIONS = [
   ],
   "explanation": "A) Das Ersetzen der Berufsbildung in sonstigen Berufsbildungseinrichtungen außerhalb der schulischen und betrieblichen Berufsbildung wird gemäß § 2 BBiG als außerbetriebliche Berufsbildung bezeichnet.\nB) Gemäß § 11 BBiG müssen Maßnahmen, die außerhalb der Ausbildungsstätte durchgeführt werden, in der Vertragsabfassung festgehalten werden.\nC) Gemäß § 27 BBiG dürfen Auszubildende nur in Ausbildungsstätten ausgebildet werden, die die gesetzlichen Eignungsvoraussetzungen erfüllen.\nD) Maßnahmen der überbetrieblichen Ausbildung dürfen auch längere Ausbildungsabschnitte als eine Woche umfassen.\nE) Überbetriebliche Ausbildung findet in der Regel in modularer Lehrgangsform in Berufsbildungseinrichtungen statt und ergänzt die betriebliche Ausbildung."
 }
-
 ];
   </script>
 
@@ -22738,6 +22747,7 @@ function getFilteredPracticeQuestions() {
   return AEVO_QUESTIONS.filter(q => {
     // HF filter
     if (hf === 'pc') { if (q.id < 416) return false; }
+    else if (hf === 'pc1') { if (q.id < 416 || q.id > 495) return false; }
     else if (hf !== 'all' && String(q.hf) !== hf) return false;
     
     // Category filter
@@ -23163,7 +23173,22 @@ function getExamQuestions() {
   return AEVO_QUESTIONS.slice(0, 80);
 }
 
-function generateNewExamSet() {
+function sampleRandom(arr, count) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, count);
+}
+
+function generateNewExamSetFromSelect() {
+  var sel = document.getElementById('exam-source-select');
+  generateNewExamSet(sel ? sel.value : 'basis');
+}
+
+function generateNewExamSet(source) {
+  source = source || 'basis';
   const isStarted = STATE.timerActive || (STATE.answers && Object.keys(STATE.answers).length > 0);
   if (isStarted) {
     if (!confirm('Möchten Sie einen neuen 80-Aufgaben Prüfungssatz generieren? Ihre bisherigen Antworten und die Prüfungszeit werden zurückgesetzt.')) {
@@ -23171,27 +23196,33 @@ function generateNewExamSet() {
     }
   }
 
-  // DIHK Authentic Distribution: 12 HF1, 28 HF2, 28 HF3, 12 HF4 = 80 questions
-  const hf1 = AEVO_QUESTIONS.filter(q => q.hf === 1);
-  const hf2 = AEVO_QUESTIONS.filter(q => q.hf === 2);
-  const hf3 = AEVO_QUESTIONS.filter(q => q.hf === 3);
-  const hf4 = AEVO_QUESTIONS.filter(q => q.hf === 4);
+  // Quellen (ID-basiert): basis = DIHK-gewichtet aus Nicht-PC | all = 40/40 Mix | pc240 = Feldhaus 240 | pc1 = Original-Satz 1
+  const pcAll = AEVO_QUESTIONS.filter(q => q.id >= 416);              // 240 Pruefungs-Check
+  const pcS1 = AEVO_QUESTIONS.filter(q => q.id >= 416 && q.id <= 495); // Original-Satz 1 (80)
+  const basis = q => q.id < 416;                                       // 415 DIHK- & Lernmodul-Fragen
+  let selected;
 
-  function sampleRandom(arr, count) {
-    const copy = [...arr];
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    return copy.slice(0, count);
+  if (source === 'pc1') {
+    selected = [...pcS1];
+  } else if (source === 'pc240') {
+    selected = sampleRandom(pcAll, 80);
+  } else if (source === 'all') {
+    selected = [
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 1), 6),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 2), 14),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 3), 14),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 4), 6),
+      ...sampleRandom(pcAll, 40)
+    ];
+  } else {
+    // DIHK Authentic Distribution: 12 HF1, 28 HF2, 28 HF3, 12 HF4 = 80 questions
+    selected = [
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 1), 12),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 2), 28),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 3), 28),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 4), 12)
+    ];
   }
-
-  const selected = [
-    ...sampleRandom(hf1, 12),
-    ...sampleRandom(hf2, 28),
-    ...sampleRandom(hf3, 28),
-    ...sampleRandom(hf4, 12)
-  ];
 
   STATE.examQuestionIds = selected.map(q => q.id);
   STATE.currentQuestionIndex = 0;
