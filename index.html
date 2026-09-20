@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#f6f8fb">
+  <meta name="theme-color" content="var(--c-bg)">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -26,26 +26,47 @@
             sans: ['Inter Tight', 'system-ui', '-apple-system', 'sans-serif'],
           },
           colors: {
-            accent: '#ec4a1d',
-            neutral: {400:'#5a6678',500:'#5f6b7d',600:'#7c8899',700:'#8e99a8',800:'#a5aebc',900:'#c0c7d2'},
-            bone: '#f6f8fb',
-            boneDark: '#eef1f6',
+            accent: 'var(--c-accent)',
+            neutral: {400:'var(--c-muted)',500:'var(--c-faint)',600:'#7c8899',700:'#8e99a8',800:'#a5aebc',900:'#c0c7d2'},
+            bone: 'var(--c-bg)',
+            boneDark: 'var(--c-inset)',
             cardBg: '#ffffff',
-            cardAlt: '#f0f3f8',
-            ink: '#17202e',
-            borderClr: '#dde2ea',
-            accentPass: '#16a34a',
-            accentFail: '#dc2626',
+            cardAlt: 'var(--c-sunken)',
+            ink: 'var(--c-ink)',
+            borderClr: 'var(--c-border)',
+            accentPass: 'var(--c-pass)',
+            accentFail: 'var(--c-fail)',
           }
         }
       }
     }
   </script>
   <style>
+    /* ===== THEME TOKENS (light default / dark via [data-theme]) ===== */
+    :root {
+      --c-bg:#f6f8fb; --c-inset:#eef1f6; --c-sunken:#f0f3f8; --c-card:#ffffff; --c-elevated:#e8ecf2; --c-hover:#e4e9f1;
+      --c-ink:#17202e; --c-ink-soft:#2c3648; --c-ink-mid:#3b4656; --c-ink-dim:#4a5568;
+      --c-muted:#5a6678; --c-muted2:#5a6577; --c-faint:#5f6b7d;
+      --c-border:#dde2ea; --c-border-strong:#d5dbe4; --c-border-hover:#b8c1cd; --c-svg-idle:#c3ccd7;
+      --c-accent:#ec4a1d; --c-accent-hover:#d13d12; --c-accent-rgb:236,74,29; --c-on-accent:#ffffff;
+      --c-pass:#16a34a; --c-pass-soft:#22c55e; --c-pass-rgb:22,163,74;
+      --c-fail:#dc2626; --c-fail-rgb:220,38,38;
+      --c-shadow-rgb:15,23,42; --c-overlay:rgba(15,23,42,.45);
+    }
+    [data-theme="dark"] {
+      --c-bg:#07080a; --c-inset:#10131a; --c-sunken:#0e1015; --c-card:#151920; --c-elevated:#1c2027; --c-hover:#171b22;
+      --c-ink:#f3efe5; --c-ink-soft:#e5e7eb; --c-ink-mid:#d4d8de; --c-ink-dim:#b9bdc7;
+      --c-muted:#9aa0ab; --c-muted2:#8b909b; --c-faint:#8b929e;
+      --c-border:#262a33; --c-border-strong:#2a2f3a; --c-border-hover:#5b616c; --c-svg-idle:#3a4050;
+      --c-accent:#ff5a39; --c-accent-hover:#ff7250; --c-accent-rgb:255,90,57; --c-on-accent:#07080a;
+      --c-pass:#4ade80; --c-pass-soft:#7fd6a0; --c-pass-rgb:74,222,128;
+      --c-fail:#f87171; --c-fail-rgb:248,113,113;
+      --c-shadow-rgb:0,0,0; --c-overlay:rgba(4,5,8,.92);
+    }
     body {
       font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
-      background-color: #f6f8fb;
-      color: #17202e;
+      background-color: var(--c-bg);
+      color: var(--c-ink);
       -webkit-font-smoothing: antialiased;
     }
     /* Custom scrollbar */
@@ -54,22 +75,22 @@
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #f6f8fb;
+      background: var(--c-bg);
     }
     ::-webkit-scrollbar-thumb {
-      background: #e8ecf2;
+      background: var(--c-elevated);
       border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #b8c1cd;
+      background: var(--c-border-hover);
     }
     .grid-tile-selected {
-      background-color: #17202e !important;
-      color: #ffffff !important;
-      border-color: #17202e !important;
+      background-color: var(--c-ink) !important;
+      color: var(--c-on-accent) !important;
+      border-color: var(--c-ink) !important;
     }
     .grid-tile-current {
-      outline: 2px solid #17202e;
+      outline: 2px solid var(--c-ink);
       outline-offset: 2px;
     }
 
@@ -83,107 +104,124 @@
     #mobile-tabbar { padding-bottom: env(safe-area-inset-bottom, 0px); }
   </style>
 <style>
-.mm-root{font-weight:700;font-size:12px;color:#17202e;padding:7px 9px;background:#e8ecf2;border:1px solid #d5dbe4;border-radius:6px;margin-bottom:8px;line-height:1.3}
-.mm-branch{margin-left:9px;padding-left:12px;border-left:1px solid #d5dbe4}
-.mm-branch-head{display:flex;align-items:center;gap:6px;padding:5px 5px;font-size:11px;font-weight:700;color:#4a5568;cursor:pointer;border-radius:4px;user-select:none}
-.mm-branch-head:hover{background:#e4e9f1;color:#17202e}
-.mm-cur-branch{color:#ec4a1d}
+.mm-root{font-weight:700;font-size:12px;color:var(--c-ink);padding:7px 9px;background:var(--c-elevated);border:1px solid var(--c-border-strong);border-radius:6px;margin-bottom:8px;line-height:1.3}
+.mm-branch{margin-left:9px;padding-left:12px;border-left:1px solid var(--c-border-strong)}
+.mm-branch-head{display:flex;align-items:center;gap:6px;padding:5px 5px;font-size:11px;font-weight:700;color:var(--c-ink-dim);cursor:pointer;border-radius:4px;user-select:none}
+.mm-branch-head:hover{background:var(--c-hover);color:var(--c-ink)}
+.mm-cur-branch{color:var(--c-accent)}
 .mm-caret{width:11px;flex-shrink:0}
-.mm-count{margin-left:auto;font-family:ui-monospace,monospace;font-size:10px;color:#5a6577;flex-shrink:0}
-.mm-leaf{position:relative;display:flex;align-items:center;gap:7px;padding:5px 6px;margin-left:7px;font-size:11px;color:#4a5568;cursor:pointer;border-radius:4px;border:1px solid transparent}
-.mm-leaf::before{content:'';position:absolute;left:-9px;top:50%;width:9px;height:1px;background:#d5dbe4}
-.mm-leaf:hover{background:#e4e9f1;color:#17202e}
-.mm-dot{width:8px;height:8px;border-radius:50%;background:#c3ccd7;flex-shrink:0}
-.mm-done .mm-dot{background:#16a34a}
-.mm-current .mm-dot{background:#ec4a1d;box-shadow:0 0 0 3px rgba(236,74,29,.2)}
-.mm-done .mm-ltext{color:#22c55e}
-.mm-current{background:rgba(236,74,29,.08);color:#17202e;border-color:rgba(236,74,29,.25)}
-.mm-check{color:#16a34a;font-size:10px;margin-left:auto;flex-shrink:0}
+.mm-count{margin-left:auto;font-family:ui-monospace,monospace;font-size:10px;color:var(--c-muted2);flex-shrink:0}
+.mm-leaf{position:relative;display:flex;align-items:center;gap:7px;padding:5px 6px;margin-left:7px;font-size:11px;color:var(--c-ink-dim);cursor:pointer;border-radius:4px;border:1px solid transparent}
+.mm-leaf::before{content:'';position:absolute;left:-9px;top:50%;width:9px;height:1px;background:var(--c-border-strong)}
+.mm-leaf:hover{background:var(--c-hover);color:var(--c-ink)}
+.mm-dot{width:8px;height:8px;border-radius:50%;background:var(--c-svg-idle);flex-shrink:0}
+.mm-done .mm-dot{background:var(--c-pass)}
+.mm-current .mm-dot{background:var(--c-accent);box-shadow:0 0 0 3px rgba(var(--c-accent-rgb),.2)}
+.mm-done .mm-ltext{color:var(--c-pass-soft)}
+.mm-current{background:rgba(var(--c-accent-rgb),.08);color:var(--c-ink);border-color:rgba(var(--c-accent-rgb),.25)}
+.mm-check{color:var(--c-pass);font-size:10px;margin-left:auto;flex-shrink:0}
 .mm-ltext{line-height:1.35}
 </style>
 <style>
-#gpopup{position:fixed;inset:0;z-index:60;background:rgba(15,23,42,.45);backdrop-filter:blur(6px);display:flex;flex-direction:column}
+#gpopup{position:fixed;inset:0;z-index:60;background:var(--c-overlay);backdrop-filter:blur(6px);display:flex;flex-direction:column}
 #gpopup.hidden{display:none!important}
-#gpopup-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #dde2ea;background:#eef1f6}
+#gpopup-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--c-border);background:var(--c-inset)}
 #gpopup-svg-wrap{flex:1;position:relative;overflow:hidden;cursor:grab;touch-action:none}
 #gpopup-svg-wrap:active{cursor:grabbing}
-.gp-btn{font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid #dde2ea;background:#eef1f6;color:#4a5568;cursor:pointer}
-.gp-btn:hover{color:#ec4a1d;border-color:#ec4a1d}
-.gp-rt{fill:#17202e;font-size:12.5px;font-weight:700}
-.gp-bt{fill:#3b4656;font-size:11.5px;font-weight:600}
-.gp-lt{fill:#4a5568;font-size:11px}
-.gp-done .gp-lt{fill:#22c55e}
-.gp-cnt{fill:#5a6577;font-size:9.5px;font-family:ui-monospace,monospace}
-.gp-link{fill:none;stroke:#d5dbe4;stroke-width:1.2}
-.gp-link-cur{stroke:#ec4a1d}
+.gp-btn{font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid var(--c-border);background:var(--c-inset);color:var(--c-ink-dim);cursor:pointer}
+.gp-btn:hover{color:var(--c-accent);border-color:var(--c-accent)}
+.gp-rt{fill:var(--c-ink);font-size:12.5px;font-weight:700}
+.gp-bt{fill:var(--c-ink-mid);font-size:11.5px;font-weight:600}
+.gp-lt{fill:var(--c-ink-dim);font-size:11px}
+.gp-done .gp-lt{fill:var(--c-pass-soft)}
+.gp-cnt{fill:var(--c-muted2);font-size:9.5px;font-family:ui-monospace,monospace}
+.gp-link{fill:none;stroke:var(--c-border-strong);stroke-width:1.2}
+.gp-link-cur{stroke:var(--c-accent)}
 .gp-leaf{cursor:pointer}
-.gp-leaf:hover rect{stroke:#17202e}
+.gp-leaf:hover rect{stroke:var(--c-ink)}
 </style>
+<script>
+  (function () {
+    try {
+      var t = new URLSearchParams(location.search).get('theme');
+      if (t !== 'dark' && t !== 'light') {
+        t = localStorage.getItem('aevo-theme');
+      }
+      if (t !== 'dark' && t !== 'light') {
+        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+  </script>
 </head>
-<body class="min-h-full flex flex-col selection:bg-[#ec4a1d] selection:text-[#ffffff]">
+<body class="min-h-full flex flex-col selection:bg-[var(--c-accent)] selection:text-[var(--c-on-accent)]">
 
   <!-- STICKY HEADER -->
-  <header id="main-header" class="sticky top-0 z-40 bg-[#ffffff] border-b border-[#dde2ea] transition-shadow duration-200">
+  <header id="main-header" class="sticky top-0 z-40 bg-[var(--c-card)] border-b border-[var(--c-border)] transition-shadow duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 gap-4">
         <!-- Logo & Title -->
         <div class="flex items-center gap-3">
-          <div class="w-8 h-8 bg-[#17202e] text-[#ffffff] font-extrabold flex items-center justify-center rounded-sm text-sm tracking-tighter shadow-sm">
+          <div class="w-8 h-8 bg-[var(--c-ink)] text-[var(--c-on-accent)] font-extrabold flex items-center justify-center rounded-sm text-sm tracking-tighter shadow-sm">
             AEVO
           </div>
           <div>
             <div class="font-bold text-sm tracking-tight flex items-center gap-2">
               <span>Ausbildereignung</span>
-              <span class="hidden sm:inline-block text-[10px] uppercase font-mono px-1.5 py-0.5 bg-[#f0f3f8] border border-[#dde2ea] text-neutral-400 rounded">DIHK / BBiG</span>
+              <span class="hidden sm:inline-block text-[10px] uppercase font-mono px-1.5 py-0.5 bg-[var(--c-sunken)] border border-[var(--c-border)] text-[var(--c-muted)] rounded">DIHK / BBiG</span>
             </div>
-            <p class="text-xs text-neutral-400 hidden sm:block">Lernkompendium, Fragentrainer & 80-Aufgaben-Simulation</p>
+            <p class="text-xs text-[var(--c-muted)] hidden sm:block">Lernkompendium, Fragentrainer & 80-Aufgaben-Simulation</p>
           </div>
         </div>
 
         <!-- Mode Switcher Navigation -->
-        <nav class="hidden md:flex items-center bg-[#eef1f6] p-1 rounded-md border border-[#dde2ea] shadow-inner gap-0.5">
-          <button id="nav-btn-learn" onclick="switchMode('learn')" class="px-3 py-1.5 text-xs font-semibold rounded transition-all bg-[#ffffff] text-[#17202e] shadow-sm flex items-center gap-1.5">
+        <nav class="hidden md:flex items-center bg-[var(--c-inset)] p-1 rounded-md border border-[var(--c-border)] shadow-inner gap-0.5">
+          <button id="nav-btn-learn" onclick="switchMode('learn')" class="px-3 py-1.5 text-xs font-semibold rounded transition-all bg-[var(--c-card)] text-[var(--c-ink)] shadow-sm flex items-center gap-1.5">
             <span>📖</span>
             <span class="hidden sm:inline">Lernbereich</span>
             <span class="sm:hidden">Lernen</span>
           </button>
-          <button id="nav-btn-practice" onclick="switchMode('practice')" class="px-3 py-1.5 text-xs font-semibold rounded transition-all text-neutral-400 hover:text-[#17202e] flex items-center gap-1.5">
+          <button id="nav-btn-practice" onclick="switchMode('practice')" class="px-3 py-1.5 text-xs font-semibold rounded transition-all text-[var(--c-muted)] hover:text-[var(--c-ink)] flex items-center gap-1.5">
             <span>🎯</span>
             <span class="hidden sm:inline">Freies Üben</span>
             <span class="sm:hidden">Üben</span>
           </button>
-          <button id="nav-btn-exam" onclick="switchMode('exam')" class="px-3 py-1.5 text-xs font-semibold rounded transition-all text-neutral-400 hover:text-[#17202e] flex items-center gap-1.5">
+          <button id="nav-btn-exam" onclick="switchMode('exam')" class="px-3 py-1.5 text-xs font-semibold rounded transition-all text-[var(--c-muted)] hover:text-[var(--c-ink)] flex items-center gap-1.5">
             <span>📝</span>
             <span class="hidden sm:inline">Prüfungssimulator</span>
             <span class="sm:hidden">Prüfung</span>
           </button>
-          <button id="nav-btn-guided" onclick="switchMode('guided')" class="px-3 py-1.5 text-xs font-semibold rounded transition-all text-neutral-400 hover:text-[#17202e] flex items-center gap-1.5">
+          <button id="nav-btn-guided" onclick="switchMode('guided')" class="px-3 py-1.5 text-xs font-semibold rounded transition-all text-[var(--c-muted)] hover:text-[var(--c-ink)] flex items-center gap-1.5">
             <span>🧠</span> Geführtes Lernen
           </button>
         </nav>
 
         <!-- Live Controls (Exam Context & Stats) -->
         <div class="flex items-center gap-2 sm:gap-3">
-          <!-- Timer container -->
-          <div id="exam-timer-box" class="flex items-center gap-2 bg-[#f0f3f8] border border-[#dde2ea] px-2.5 py-1 rounded opacity-40 transition">
-            <span class="text-xs font-mono font-bold text-[#2c3648]" id="timer-display">180:00</span>
-            <button id="timer-toggle-btn" onclick="toggleTimer()" title="Timer pausieren/fortsetzen" class="text-xs px-1.5 py-0.5 rounded bg-[#ffffff] border border-[#dde2ea] hover:bg-[#ffffff] transition">
+          <!-- Theme Toggle -->
+        <button id="theme-toggle-btn" onclick="toggleTheme()" title="Hell/Dunkel umschalten" aria-label="Theme umschalten" class="w-9 h-9 flex items-center justify-center rounded-md border border-[var(--c-border)] bg-[var(--c-sunken)] hover:bg-[var(--c-hover)] transition shrink-0 text-base select-none">🌙</button>
+
+        <!-- Timer container -->
+          <div id="exam-timer-box" class="flex items-center gap-2 bg-[var(--c-sunken)] border border-[var(--c-border)] px-2.5 py-1 rounded opacity-40 transition">
+            <span class="text-xs font-mono font-bold text-[var(--c-ink-soft)]" id="timer-display">180:00</span>
+            <button id="timer-toggle-btn" onclick="toggleTimer()" title="Timer pausieren/fortsetzen" class="text-xs px-1.5 py-0.5 rounded bg-[var(--c-card)] border border-[var(--c-border)] hover:bg-[var(--c-card)] transition">
               ⏸
             </button>
           </div>
 
           <!-- Progress summary chips -->
           <div id="exam-stats-chips" class="hidden md:flex items-center gap-2 text-xs font-mono">
-            <span class="px-2 py-1 bg-[#ffffff] border border-[#dde2ea] rounded text-neutral-400" title="Beantwortet">
+            <span class="px-2 py-1 bg-[var(--c-card)] border border-[var(--c-border)] rounded text-[var(--c-muted)]" title="Beantwortet">
               ✓ <span id="chip-answered">0</span>/80
             </span>
-            <span class="px-2 py-1 bg-[#ffffff] border border-[#dde2ea] rounded text-neutral-400" title="Markiert">
+            <span class="px-2 py-1 bg-[var(--c-card)] border border-[var(--c-border)] rounded text-[var(--c-muted)]" title="Markiert">
               ⚑ <span id="chip-flagged">0</span>
             </span>
           </div>
 
           <!-- Submit Button -->
-          <button id="header-submit-btn" onclick="confirmSubmitExam()" class="hidden text-xs font-bold px-3 py-1.5 bg-[#ec4a1d] hover:bg-[#d13d12] text-[#ffffff] rounded transition shadow-sm">
+          <button id="header-submit-btn" onclick="confirmSubmitExam()" class="hidden text-xs font-bold px-3 py-1.5 bg-[var(--c-accent)] hover:bg-[var(--c-accent-hover)] text-[var(--c-on-accent)] rounded transition shadow-sm">
             Abgeben
           </button>
         </div>
@@ -191,8 +229,8 @@
     </div>
 
     <!-- 2px Progress Bar directly under header -->
-    <div class="w-full bg-[#dde2ea] h-[2px] overflow-hidden">
-      <div id="exam-prog" class="bg-[#ec4a1d] h-[2px] w-0 transition-all duration-300"></div>
+    <div class="w-full bg-[var(--c-border)] h-[2px] overflow-hidden">
+      <div id="exam-prog" class="bg-[var(--c-accent)] h-[2px] w-0 transition-all duration-300"></div>
     </div>
   </header>
 
@@ -204,51 +242,51 @@
     <!-- ========================================== -->
     <section id="view-learn" class="space-y-6">
       <!-- Hero / Header Box -->
-      <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg p-6 shadow-sm space-y-4">
+      <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg p-6 shadow-sm space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div class="flex items-center gap-2 mb-1">
-              <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[#ec4a1d] text-[#ffffff]">Kompendium</span>
-              <span id="learn-topics-count" class="text-xs text-neutral-400 font-mono">36 Themengebiete</span>
+              <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">Kompendium</span>
+              <span id="learn-topics-count" class="text-xs text-[var(--c-muted)] font-mono">36 Themengebiete</span>
             </div>
-            <h1 class="text-2xl font-bold tracking-tight text-[#17202e]">Lern- & Nachschlagewerk zur AEVO</h1>
-            <p class="text-xs text-neutral-400 mt-1 max-w-3xl leading-relaxed">
+            <h1 class="text-2xl font-bold tracking-tight text-[var(--c-ink)]">Lern- & Nachschlagewerk zur AEVO</h1>
+            <p class="text-xs text-[var(--c-muted)] mt-1 max-w-3xl leading-relaxed">
               Vollständige fachliche und rechtliche Grundlagen für alle 4 Handlungsfelder nach Rahmenplan und AEVO-Verordnung, inklusive Gesetzesauszügen (§§ BBiG, JArbSchG, BetrVG, ArbGG), didaktischen Schemata und interaktiven 1-Klick-Wissenschecks.
             </p>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="expandAllTopics()" class="px-3 py-1.5 text-xs font-semibold rounded bg-[#eef1f6] hover:bg-[#eef1f6] border border-[#dde2ea] transition">
+            <button onclick="expandAllTopics()" class="px-3 py-1.5 text-xs font-semibold rounded bg-[var(--c-inset)] hover:bg-[var(--c-inset)] border border-[var(--c-border)] transition">
               Alle ausklappen
             </button>
-            <button onclick="collapseAllTopics()" class="px-3 py-1.5 text-xs font-semibold rounded bg-[#ffffff] hover:bg-[#ffffff] border border-[#dde2ea] transition">
+            <button onclick="collapseAllTopics()" class="px-3 py-1.5 text-xs font-semibold rounded bg-[var(--c-card)] hover:bg-[var(--c-card)] border border-[var(--c-border)] transition">
               Alle einklappen
             </button>
           </div>
         </div>
 
         <!-- Filter & Search Toolbar -->
-        <div class="pt-4 border-t border-[#dde2ea] flex flex-wrap items-center justify-between gap-3">
+        <div class="pt-4 border-t border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
           <!-- Handlungsfeld Pills -->
           <div class="flex items-center flex-wrap gap-1.5">
-            <button onclick="setLearnHfFilter('all')" data-hf="all" class="learn-hf-btn px-3 py-1.5 text-xs font-bold rounded bg-[#ec4a1d] text-[#ffffff] transition">
+            <button onclick="setLearnHfFilter('all')" data-hf="all" class="learn-hf-btn px-3 py-1.5 text-xs font-bold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] transition">
               Alle (579)
             </button>
-            <button onclick="setLearnHfFilter('1')" data-hf="1" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] transition">
+            <button onclick="setLearnHfFilter('1')" data-hf="1" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition">
               HF 1: Planen (67)
             </button>
-            <button onclick="setLearnHfFilter('2')" data-hf="2" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] transition">
+            <button onclick="setLearnHfFilter('2')" data-hf="2" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition">
               HF 2: Einstellen (73)
             </button>
-            <button onclick="setLearnHfFilter('3')" data-hf="3" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] transition">
+            <button onclick="setLearnHfFilter('3')" data-hf="3" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition">
               HF 3: Durchführen (100)
             </button>
-            <button onclick="setLearnHfFilter('4')" data-hf="4" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] transition">
+            <button onclick="setLearnHfFilter('4')" data-hf="4" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition">
               HF 4: Abschließen (40)
             </button>
-            <button onclick="setLearnHfFilter('5')" data-hf="5" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] transition">
+            <button onclick="setLearnHfFilter('5')" data-hf="5" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition">
               Praktische Prüfung (59)
             </button>
-            <button onclick="setLearnHfFilter('6')" data-hf="6" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] transition">
+            <button onclick="setLearnHfFilter('6')" data-hf="6" class="learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition">
               Prüfungs-Check (240)
             </button>
           </div>
@@ -260,7 +298,7 @@
               type="text" 
               oninput="onLearnSearchInput(this.value)"
               placeholder="Thema, Paragraf (§) oder Begriff suchen..." 
-              class="w-full px-3 py-1.5 text-xs rounded border border-[#dde2ea] bg-[#f0f3f8] focus:bg-[#ffffff] focus:outline-none focus:border-[#dde2ea] transition"
+              class="w-full px-3 py-1.5 text-xs rounded border border-[var(--c-border)] bg-[var(--c-sunken)] focus:bg-[var(--c-card)] focus:outline-none focus:border-[var(--c-border)] transition"
             >
           </div>
         </div>
@@ -278,42 +316,42 @@
     <!-- ========================================== -->
     <section id="view-practice" class="hidden space-y-6">
       <!-- Practice Header Toolbar & Stats -->
-      <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg p-5 shadow-sm space-y-4">
+      <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg p-5 shadow-sm space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div class="flex items-center gap-2 mb-1">
-              <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[#ec4a1d] text-[#ffffff]">Fragentrainer</span>
-              <span class="text-xs text-neutral-400 font-mono">655 DIHK-Aufgaben mit Sofort-Feedback</span>
+              <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">Fragentrainer</span>
+              <span class="text-xs text-[var(--c-muted)] font-mono">655 DIHK-Aufgaben mit Sofort-Feedback</span>
             </div>
-            <h2 class="text-xl font-bold tracking-tight text-[#17202e]">Freies Üben & Vertiefen</h2>
-            <p class="text-xs text-neutral-400 mt-0.5">Üben Sie alle prüfungsrelevanten Aufgaben ohne Zeitdruck mit sofortiger Auswertung und ausführlichen Rechtsbegründungen.</p>
+            <h2 class="text-xl font-bold tracking-tight text-[var(--c-ink)]">Freies Üben & Vertiefen</h2>
+            <p class="text-xs text-[var(--c-muted)] mt-0.5">Üben Sie alle prüfungsrelevanten Aufgaben ohne Zeitdruck mit sofortiger Auswertung und ausführlichen Rechtsbegründungen.</p>
           </div>
 
           <!-- Quick Stats Pill Container -->
           <div class="flex items-center gap-2 font-mono text-xs">
-            <div class="bg-[#f0f3f8] border border-[#dde2ea] px-3 py-1.5 rounded">
-              <span class="text-neutral-400">Bearbeitet:</span>
-              <strong id="stat-practice-answered" class="text-[#17202e] ml-1">0 / 655</strong>
+            <div class="bg-[var(--c-sunken)] border border-[var(--c-border)] px-3 py-1.5 rounded">
+              <span class="text-[var(--c-muted)]">Bearbeitet:</span>
+              <strong id="stat-practice-answered" class="text-[var(--c-ink)] ml-1">0 / 655</strong>
             </div>
-            <div class="bg-[#f0f3f8] border border-[#dde2ea] px-3 py-1.5 rounded">
-              <span class="text-neutral-400">Quote:</span>
+            <div class="bg-[var(--c-sunken)] border border-[var(--c-border)] px-3 py-1.5 rounded">
+              <span class="text-[var(--c-muted)]">Quote:</span>
               <strong id="stat-practice-accuracy" class="text-emerald-700 ml-1">0%</strong>
             </div>
-            <div class="bg-[#f0f3f8] border border-[#dde2ea] px-3 py-1.5 rounded hidden sm:block">
-              <span id="stat-practice-correct" class="text-[#2c3648] font-bold">0 richtig</span>
+            <div class="bg-[var(--c-sunken)] border border-[var(--c-border)] px-3 py-1.5 rounded hidden sm:block">
+              <span id="stat-practice-correct" class="text-[var(--c-ink-soft)] font-bold">0 richtig</span>
             </div>
-            <button onclick="resetPracticeProgress()" title="Trainer-Fortschritt zurücksetzen" class="px-2.5 py-1.5 bg-[#ffffff] hover:bg-[#ffffff] border border-[#dde2ea] rounded text-neutral-400 transition">
+            <button onclick="resetPracticeProgress()" title="Trainer-Fortschritt zurücksetzen" class="px-2.5 py-1.5 bg-[var(--c-card)] hover:bg-[var(--c-card)] border border-[var(--c-border)] rounded text-[var(--c-muted)] transition">
               ↺
             </button>
           </div>
         </div>
 
         <!-- Filter Controls -->
-        <div class="pt-3 border-t border-[#dde2ea] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="pt-3 border-t border-[var(--c-border)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <!-- HF Select -->
           <div>
-            <label class="block text-[10px] font-bold uppercase font-mono text-neutral-400 mb-1">Handlungsfeld</label>
-            <select id="practice-hf-select" onchange="onPracticeFilterChange()" class="w-full text-xs p-2 rounded border border-[#dde2ea] bg-[#f0f3f8] focus:bg-[#ffffff] focus:outline-none focus:border-[#dde2ea]">
+            <label class="block text-[10px] font-bold uppercase font-mono text-[var(--c-muted)] mb-1">Handlungsfeld</label>
+            <select id="practice-hf-select" onchange="onPracticeFilterChange()" class="w-full text-xs p-2 rounded border border-[var(--c-border)] bg-[var(--c-sunken)] focus:bg-[var(--c-card)] focus:outline-none focus:border-[var(--c-border)]">
               <option value="all">Alle Handlungsfelder (1-4)</option>
               <option value="pc">Prüfungs-Check Feldhaus (240)</option>
               <option value="1">HF 1: Planen & Voraussetzungen</option>
@@ -325,8 +363,8 @@
 
           <!-- Category Select -->
           <div>
-            <label class="block text-[10px] font-bold uppercase font-mono text-neutral-400 mb-1">Fachgebiet / Kategorie</label>
-            <select id="practice-cat-select" onchange="onPracticeFilterChange()" class="w-full text-xs p-2 rounded border border-[#dde2ea] bg-[#f0f3f8] focus:bg-[#ffffff] focus:outline-none focus:border-[#dde2ea]">
+            <label class="block text-[10px] font-bold uppercase font-mono text-[var(--c-muted)] mb-1">Fachgebiet / Kategorie</label>
+            <select id="practice-cat-select" onchange="onPracticeFilterChange()" class="w-full text-xs p-2 rounded border border-[var(--c-border)] bg-[var(--c-sunken)] focus:bg-[var(--c-card)] focus:outline-none focus:border-[var(--c-border)]">
               <option value="all">Alle Kategorien</option>
               <option value="Recht">Recht & Gesetze</option>
               <option value="Planung">Planung & Organisation</option>
@@ -337,8 +375,8 @@
 
           <!-- Status Select -->
           <div>
-            <label class="block text-[10px] font-bold uppercase font-mono text-neutral-400 mb-1">Bearbeitungsstatus</label>
-            <select id="practice-stat-select" onchange="onPracticeFilterChange()" class="w-full text-xs p-2 rounded border border-[#dde2ea] bg-[#f0f3f8] focus:bg-[#ffffff] focus:outline-none focus:border-[#dde2ea]">
+            <label class="block text-[10px] font-bold uppercase font-mono text-[var(--c-muted)] mb-1">Bearbeitungsstatus</label>
+            <select id="practice-stat-select" onchange="onPracticeFilterChange()" class="w-full text-xs p-2 rounded border border-[var(--c-border)] bg-[var(--c-sunken)] focus:bg-[var(--c-card)] focus:outline-none focus:border-[var(--c-border)]">
               <option value="all">Alle Aufgaben (655)</option>
               <option value="unanswered">Nur unbeantwortete</option>
               <option value="wrong">Nur falsch gelöste</option>
@@ -349,13 +387,13 @@
 
           <!-- Search Input -->
           <div>
-            <label class="block text-[10px] font-bold uppercase font-mono text-neutral-400 mb-1">Volltextsuche</label>
+            <label class="block text-[10px] font-bold uppercase font-mono text-[var(--c-muted)] mb-1">Volltextsuche</label>
             <input 
               id="practice-search-input" 
               type="text" 
               oninput="onPracticeFilterChange()" 
               placeholder="Begriff oder Sachverhalt..." 
-              class="w-full text-xs p-2 rounded border border-[#dde2ea] bg-[#f0f3f8] focus:bg-[#ffffff] focus:outline-none focus:border-[#dde2ea]"
+              class="w-full text-xs p-2 rounded border border-[var(--c-border)] bg-[var(--c-sunken)] focus:bg-[var(--c-card)] focus:outline-none focus:border-[var(--c-border)]"
             >
           </div>
         </div>
@@ -367,14 +405,14 @@
       </div>
 
       <!-- Question Palette / Matrix (1 - 655) -->
-      <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg p-5 shadow-sm space-y-3">
+      <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg p-5 shadow-sm space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-400 font-mono">Fragen-Navigator</h3>
-          <div class="flex items-center gap-3 text-[11px] text-neutral-400 font-mono">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] font-mono">Fragen-Navigator</h3>
+          <div class="flex items-center gap-3 text-[11px] text-[var(--c-muted)] font-mono">
             <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-emerald-600 inline-block"></span> Richtig</span>
             <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-rose-600 inline-block"></span> Falsch</span>
-            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-[#e8ecf2] inline-block"></span> Beantwortet</span>
-            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-[#ffffff] border border-[#dde2ea] inline-block"></span> Offen</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-[var(--c-elevated)] inline-block"></span> Beantwortet</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-[var(--c-card)] border border-[var(--c-border)] inline-block"></span> Offen</span>
             <span class="flex items-center gap-1"><span class="text-amber-500 font-bold">⚑</span> Gemerkt</span>
           </div>
         </div>
@@ -394,22 +432,22 @@
         
         <!-- LEFT: Active Exam Question Card (8 cols) -->
         <div class="lg:col-span-8 space-y-6">
-          <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg shadow-sm overflow-hidden">
+          <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm overflow-hidden">
             <!-- Card Header -->
-            <div class="px-6 py-4 bg-[#f0f3f8] border-b border-[#dde2ea] flex items-center justify-between flex-wrap gap-2">
+            <div class="px-6 py-4 bg-[var(--c-sunken)] border-b border-[var(--c-border)] flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
-                <span id="exam-q-number" class="px-2.5 py-1 text-xs font-bold uppercase tracking-wider rounded bg-[#ec4a1d] text-[#ffffff]">
+                <span id="exam-q-number" class="px-2.5 py-1 text-xs font-bold uppercase tracking-wider rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">
                   Aufgabe 1 von 80
                 </span>
-                <span id="exam-q-hf" class="px-2.5 py-1 text-xs font-semibold rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400">
+                <span id="exam-q-hf" class="px-2.5 py-1 text-xs font-semibold rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]">
                   HF 1
                 </span>
-                <span id="exam-q-category" class="text-xs font-mono text-neutral-400 px-2">
+                <span id="exam-q-category" class="text-xs font-mono text-[var(--c-muted)] px-2">
                   Planung
                 </span>
               </div>
               <div>
-                <button id="exam-flag-btn" onclick="toggleExamFlagCurrent()" class="px-3 py-1.5 rounded text-xs font-semibold border border-[#dde2ea] bg-[#ffffff] text-neutral-400 hover:bg-[#ffffff] transition flex items-center gap-1">
+                <button id="exam-flag-btn" onclick="toggleExamFlagCurrent()" class="px-3 py-1.5 rounded text-xs font-semibold border border-[var(--c-border)] bg-[var(--c-card)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition flex items-center gap-1">
                   <span>⚐</span>
                   <span>Für Prüfung merken</span>
                 </button>
@@ -419,9 +457,9 @@
             <!-- Card Body -->
             <div class="p-6 space-y-6">
               <!-- Situation Box -->
-              <div class="p-4 rounded-md bg-[#eef1f6] border border-[#dde2ea] space-y-1">
-                <div class="text-[10px] font-bold uppercase font-mono tracking-wider text-neutral-400">Ausgangssituation</div>
-                <p id="exam-situation-text" class="text-sm font-normal text-[#17202e] leading-relaxed">
+              <div class="p-4 rounded-md bg-[var(--c-inset)] border border-[var(--c-border)] space-y-1">
+                <div class="text-[10px] font-bold uppercase font-mono tracking-wider text-[var(--c-muted)]">Ausgangssituation</div>
+                <p id="exam-situation-text" class="text-sm font-normal text-[var(--c-ink)] leading-relaxed">
                   Lade Fallbeschreibung...
                 </p>
               </div>
@@ -429,14 +467,14 @@
               <!-- Question & Target Badge -->
               <div class="space-y-2">
                 <div class="flex items-center justify-between gap-2 flex-wrap">
-                  <h2 id="exam-question-text" class="text-base font-bold text-[#17202e] tracking-tight">
+                  <h2 id="exam-question-text" class="text-base font-bold text-[var(--c-ink)] tracking-tight">
                     Lade Fragestellung...
                   </h2>
-                  <span id="exam-target-count-badge" class="text-xs font-bold font-mono px-2.5 py-1 rounded bg-[#e8ecf2] text-[#17202e] border border-[#dde2ea]">
+                  <span id="exam-target-count-badge" class="text-xs font-bold font-mono px-2.5 py-1 rounded bg-[var(--c-elevated)] text-[var(--c-ink)] border border-[var(--c-border)]">
                     Wählen Sie 1 Antwort
                   </span>
                 </div>
-                <p class="text-xs text-neutral-400">
+                <p class="text-xs text-[var(--c-muted)]">
                   Beachten Sie: Bei gebundenen Kammeraufgaben gilt das <strong>Alles-oder-Nichts-Prinzip</strong> (1 Punkt nur bei absolut vollständiger und korrekter Auswahl).
                 </p>
               </div>
@@ -447,14 +485,14 @@
               </div>
 
               <!-- Card Footer Navigation -->
-              <div class="pt-4 border-t border-[#dde2ea] flex items-center justify-between">
-                <button id="exam-prev-btn" onclick="navigateQuestion(-1)" class="px-4 py-2 rounded text-xs font-semibold bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] disabled:opacity-40 transition">
+              <div class="pt-4 border-t border-[var(--c-border)] flex items-center justify-between">
+                <button id="exam-prev-btn" onclick="navigateQuestion(-1)" class="px-4 py-2 rounded text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] disabled:opacity-40 transition">
                   ← Vorherige
                 </button>
-                <div class="text-xs text-neutral-400 font-mono">
+                <div class="text-xs text-[var(--c-muted)] font-mono">
                   Tastatur: Pfeiltasten [←] / [→]
                 </div>
-                <button id="exam-next-btn" onclick="navigateQuestion(1)" class="px-4 py-2 rounded text-xs font-bold bg-[#ec4a1d] text-[#ffffff] hover:bg-black disabled:opacity-40 transition shadow-sm">
+                <button id="exam-next-btn" onclick="navigateQuestion(1)" class="px-4 py-2 rounded text-xs font-bold bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:bg-black disabled:opacity-40 transition shadow-sm">
                   Nächste →
                 </button>
               </div>
@@ -465,39 +503,39 @@
         <!-- RIGHT: Exam Navigator Palette & Actions (4 cols) -->
         <div class="lg:col-span-4 space-y-6">
           <!-- Timer & Overview Card -->
-          <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg p-5 shadow-sm space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-400 font-mono">Prüfungsbedingungen</h3>
-            <ul class="text-xs text-neutral-400 space-y-1.5 leading-relaxed">
+          <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg p-5 shadow-sm space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] font-mono">Prüfungsbedingungen</h3>
+            <ul class="text-xs text-[var(--c-muted)] space-y-1.5 leading-relaxed">
               <li>• <strong>80 gebundene Aufgaben</strong> (Single- und Multiple-Select)</li>
               <li>• <strong>180 Minuten Prüfungszeit</strong> (Original-DIHK-Vorgabe)</li>
               <li>• <strong>Alles-oder-Nichts:</strong> Keine Teilpunkte</li>
               <li>• <strong>Bestehensgrenze:</strong> Mindestens 50 Punkte (50 %)</li>
             </ul>
 
-            <div class="pt-3 border-t border-[#dde2ea]">
-              <button onclick="confirmSubmitExam()" class="w-full py-2.5 px-4 bg-[#ec4a1d] hover:bg-[#d13d12] text-[#ffffff] text-xs font-bold rounded shadow transition">
+            <div class="pt-3 border-t border-[var(--c-border)]">
+              <button onclick="confirmSubmitExam()" class="w-full py-2.5 px-4 bg-[var(--c-accent)] hover:bg-[var(--c-accent-hover)] text-[var(--c-on-accent)] text-xs font-bold rounded shadow transition">
                 Prüfung verbindlich abgeben
               </button>
-              <button onclick="resetExamState()" class="w-full mt-2 py-1.5 px-3 bg-[#ffffff] border border-[#dde2ea] hover:bg-[#ffffff] text-neutral-400 text-xs font-semibold rounded transition">
+              <button onclick="resetExamState()" class="w-full mt-2 py-1.5 px-3 bg-[var(--c-card)] border border-[var(--c-border)] hover:bg-[var(--c-card)] text-[var(--c-muted)] text-xs font-semibold rounded transition">
                 Prüfung neu starten
               </button>
-              <button onclick="generateNewExamSet()" title="Generiert einen neuen 80-Aufgaben Prüfungssatz zufällig aus dem 655-Fragen-Pool nach DIHK-Gewichtung (12 HF1, 28 HF2, 28 HF3, 12 HF4)" class="w-full mt-2 py-2 px-3 bg-[#eef1f6] hover:bg-[#e8ecf2] border border-[#dde2ea] text-[#17202e] text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
+              <button onclick="generateNewExamSet()" title="Generiert einen neuen 80-Aufgaben Prüfungssatz zufällig aus dem 655-Fragen-Pool nach DIHK-Gewichtung (12 HF1, 28 HF2, 28 HF3, 12 HF4)" class="w-full mt-2 py-2 px-3 bg-[var(--c-inset)] hover:bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink)] text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
                 <span>🎲</span>
                 <span>Neuen Prüfungssatz (80 Fragen) würfeln</span>
               </button>
-              <button onclick="resetToDefaultExamSet()" class="w-full mt-1.5 py-1 px-2 text-[11px] text-neutral-400 hover:text-[#17202e] underline transition text-center">
+              <button onclick="resetToDefaultExamSet()" class="w-full mt-1.5 py-1 px-2 text-[11px] text-[var(--c-muted)] hover:text-[var(--c-ink)] underline transition text-center">
                 Standard-Prüfungssatz 1 laden
               </button>
             </div>
           </div>
 
           <!-- Question Grid (1 - 80) -->
-          <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg p-5 shadow-sm space-y-3">
+          <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg p-5 shadow-sm space-y-3">
             <div class="flex items-center justify-between">
-              <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-400 font-mono">Aufgaben-Matrix (80)</h3>
-              <div class="flex items-center gap-2 text-[10px] text-neutral-400 font-mono">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] font-mono">Aufgaben-Matrix (80)</h3>
+              <div class="flex items-center gap-2 text-[10px] text-[var(--c-muted)] font-mono">
                 <span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-black inline-block"></span> Gelöst</span>
-                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-[#ffffff] border border-[#b8c1cd] inline-block"></span> Offen</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-[var(--c-card)] border border-[var(--c-border-hover)] inline-block"></span> Offen</span>
                 <span class="flex items-center gap-1"><span class="text-rose-500 font-bold">⚑</span> Merken</span>
               </div>
             </div>
@@ -523,42 +561,42 @@
 
       <!-- Key Metrics Scoreboard -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-[#ffffff] border border-[#dde2ea] p-5 rounded-lg text-center space-y-1">
-          <span class="text-xs uppercase font-mono text-neutral-400">Gesamtpunktzahl</span>
-          <div id="results-total-score" class="text-3xl font-extrabold text-[#17202e]">0 / 80</div>
-          <span class="text-[11px] text-neutral-400 font-mono">Alles-oder-Nichts-Prinzip</span>
+        <div class="bg-[var(--c-card)] border border-[var(--c-border)] p-5 rounded-lg text-center space-y-1">
+          <span class="text-xs uppercase font-mono text-[var(--c-muted)]">Gesamtpunktzahl</span>
+          <div id="results-total-score" class="text-3xl font-extrabold text-[var(--c-ink)]">0 / 80</div>
+          <span class="text-[11px] text-[var(--c-muted)] font-mono">Alles-oder-Nichts-Prinzip</span>
         </div>
-        <div class="bg-[#ffffff] border border-[#dde2ea] p-5 rounded-lg text-center space-y-1">
-          <span class="text-xs uppercase font-mono text-neutral-400">Erreichte Prozent</span>
-          <div id="results-percentage" class="text-3xl font-extrabold text-[#17202e]">0%</div>
-          <span class="text-[11px] text-neutral-400 font-mono">Bestehensgrenze: 50%</span>
+        <div class="bg-[var(--c-card)] border border-[var(--c-border)] p-5 rounded-lg text-center space-y-1">
+          <span class="text-xs uppercase font-mono text-[var(--c-muted)]">Erreichte Prozent</span>
+          <div id="results-percentage" class="text-3xl font-extrabold text-[var(--c-ink)]">0%</div>
+          <span class="text-[11px] text-[var(--c-muted)] font-mono">Bestehensgrenze: 50%</span>
         </div>
-        <div class="bg-[#ffffff] border border-[#dde2ea] p-5 rounded-lg text-center space-y-1">
-          <span class="text-xs uppercase font-mono text-neutral-400">DIHK-Gesamtnote</span>
-          <div id="results-grade" class="text-3xl font-extrabold text-[#17202e]">Note -</div>
-          <span class="text-[11px] text-neutral-400 font-mono">Offizieller Notenschlüssel</span>
+        <div class="bg-[var(--c-card)] border border-[var(--c-border)] p-5 rounded-lg text-center space-y-1">
+          <span class="text-xs uppercase font-mono text-[var(--c-muted)]">DIHK-Gesamtnote</span>
+          <div id="results-grade" class="text-3xl font-extrabold text-[var(--c-ink)]">Note -</div>
+          <span class="text-[11px] text-[var(--c-muted)] font-mono">Offizieller Notenschlüssel</span>
         </div>
       </div>
 
       <!-- Handlungsfeld Breakdown -->
-      <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg p-6 space-y-4 shadow-sm">
-        <h3 class="text-sm font-bold uppercase tracking-wider text-neutral-400 font-mono">Ergebnisse nach Handlungsfeldern</h3>
+      <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg p-6 space-y-4 shadow-sm">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-[var(--c-muted)] font-mono">Ergebnisse nach Handlungsfeldern</h3>
         <div id="results-hf-breakdown" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <!-- Rendered via JS -->
         </div>
       </div>
 
       <!-- Action Banner: Repeat Exam or Train Weaknesses -->
-      <div class="bg-[#eef1f6] border border-[#dde2ea] rounded-lg p-5 flex flex-wrap items-center justify-between gap-4">
+      <div class="bg-[var(--c-inset)] border border-[var(--c-border)] rounded-lg p-5 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h4 class="text-sm font-bold text-[#17202e]">Möchten Sie Ihre Wissenslücken gezielt schließen?</h4>
-          <p class="text-xs text-neutral-400 mt-0.5">Wechseln Sie in das freie Üben oder wiederholen Sie die gesamte Kammerprüfung.</p>
+          <h4 class="text-sm font-bold text-[var(--c-ink)]">Möchten Sie Ihre Wissenslücken gezielt schließen?</h4>
+          <p class="text-xs text-[var(--c-muted)] mt-0.5">Wechseln Sie in das freie Üben oder wiederholen Sie die gesamte Kammerprüfung.</p>
         </div>
         <div class="flex items-center gap-3">
-          <button onclick="switchMode('practice')" class="px-4 py-2 bg-[#ec4a1d] text-[#ffffff] text-xs font-bold rounded shadow-sm hover:bg-[#e8ecf2] transition">
+          <button onclick="switchMode('practice')" class="px-4 py-2 bg-[var(--c-accent)] text-[var(--c-on-accent)] text-xs font-bold rounded shadow-sm hover:bg-[var(--c-elevated)] transition">
             🎯 Alle 655 Fragen im Trainer üben
           </button>
-          <button onclick="resetExamState()" class="px-4 py-2 bg-[#ffffff] border border-[#dde2ea] text-[#2c3648] text-xs font-semibold rounded hover:bg-[#ffffff] transition">
+          <button onclick="resetExamState()" class="px-4 py-2 bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-ink-soft)] text-xs font-semibold rounded hover:bg-[var(--c-card)] transition">
             📝 Prüfung wiederholen
           </button>
         </div>
@@ -568,14 +606,14 @@
       <div class="space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h2 class="text-xl font-bold tracking-tight text-[#17202e]">Aufgaben-Korrektur & juristische Begründungen</h2>
-            <p class="text-xs text-neutral-400">Vergleichen Sie Ihre ausgewählten Antworten mit den verbindlichen DIHK-Musterlösungen.</p>
+            <h2 class="text-xl font-bold tracking-tight text-[var(--c-ink)]">Aufgaben-Korrektur & juristische Begründungen</h2>
+            <p class="text-xs text-[var(--c-muted)]">Vergleichen Sie Ihre ausgewählten Antworten mit den verbindlichen DIHK-Musterlösungen.</p>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-neutral-400 font-mono">Filter:</span>
-            <button onclick="setReviewFilter('all')" id="rf-all" class="px-3 py-1 text-xs font-semibold rounded bg-[#ec4a1d] text-[#ffffff]">Alle (80)</button>
-            <button onclick="setReviewFilter('wrong')" id="rf-wrong" class="px-3 py-1 text-xs font-semibold rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff]">Nur falsche</button>
-            <button onclick="setReviewFilter('flagged')" id="rf-flagged" class="px-3 py-1 text-xs font-semibold rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff]">Nur gemerkte</button>
+            <span class="text-xs text-[var(--c-muted)] font-mono">Filter:</span>
+            <button onclick="setReviewFilter('all')" id="rf-all" class="px-3 py-1 text-xs font-semibold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">Alle (80)</button>
+            <button onclick="setReviewFilter('wrong')" id="rf-wrong" class="px-3 py-1 text-xs font-semibold rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]">Nur falsche</button>
+            <button onclick="setReviewFilter('flagged')" id="rf-flagged" class="px-3 py-1 text-xs font-semibold rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]">Nur gemerkte</button>
           </div>
         </div>
 
@@ -591,26 +629,26 @@
     <section id="view-guided" class="hidden max-w-4xl mx-auto space-y-6">
       <div id="guided-overview">
         <div class="flex items-center gap-3 mb-4">
-          <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[#ec4a1d] text-[#ffffff]">Geführtes KI Lernen</span>
-          <span class="text-neutral-400 text-xs" id="guided-total-progress"></span>
+          <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">Geführtes KI Lernen</span>
+          <span class="text-[var(--c-muted)] text-xs" id="guided-total-progress"></span>
         </div>
         <h2 class="text-2xl font-bold mb-1">Lernpfade durch die Mindmaps</h2>
-        <p class="text-sm text-neutral-400 mb-6">Die KI führt dich Schritt für Schritt durch jede Mindmap: erst den Inhalt verstehen, dann jede Einheit mit echten Übungsaufgaben festigen. Erst nach bestandener Übung geht es weiter.</p>
+        <p class="text-sm text-[var(--c-muted)] mb-6">Die KI führt dich Schritt für Schritt durch jede Mindmap: erst den Inhalt verstehen, dann jede Einheit mit echten Übungsaufgaben festigen. Erst nach bestandener Übung geht es weiter.</p>
         <div id="guided-path-list" class="space-y-4"></div>
       </div>
       <div id="guided-detail" class="hidden">
         <div class="flex items-center justify-between mb-3">
-          <button onclick="guidedBackToOverview()" class="text-xs text-neutral-400 hover:text-[#17202e] transition">← Alle Lernpfade</button>
-          <div class="flex items-center gap-2"><button onclick="openGuidedPopup()" title="Mindmap als Popup öffnen" class="text-[11px] px-2.5 py-1 rounded bg-[#e8ecf2] border border-[#dde2ea] text-[#3b4656] hover:text-[#ec4a1d] hover:border-[#ec4a1d] transition">🗺 Popup</button><span class="text-[11px] font-mono px-2 py-1 rounded bg-[#e8ecf2] border border-[#dde2ea] text-[#2c3648]" id="guided-step-counter"></span></div>
+          <button onclick="guidedBackToOverview()" class="text-xs text-[var(--c-muted)] hover:text-[var(--c-ink)] transition">← Alle Lernpfade</button>
+          <div class="flex items-center gap-2"><button onclick="openGuidedPopup()" title="Mindmap als Popup öffnen" class="text-[11px] px-2.5 py-1 rounded bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink-mid)] hover:text-[var(--c-accent)] hover:border-[var(--c-accent)] transition">🗺 Popup</button><span class="text-[11px] font-mono px-2 py-1 rounded bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink-soft)]" id="guided-step-counter"></span></div>
         </div>
         <h2 class="text-xl font-bold mb-4" id="guided-path-title"></h2>
-        <div class="w-full h-1.5 bg-[#e8ecf2] rounded-full mb-6 overflow-hidden"><div id="guided-progress-bar" class="h-full bg-[#ec4a1d] rounded-full transition-all duration-300" style="width:0%"></div></div>
+        <div class="w-full h-1.5 bg-[var(--c-elevated)] rounded-full mb-6 overflow-hidden"><div id="guided-progress-bar" class="h-full bg-[var(--c-accent)] rounded-full transition-all duration-300" style="width:0%"></div></div>
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 items-start">
           <aside class="lg:col-span-2 lg:sticky lg:top-4">
-            <div class="p-4 bg-[#f0f3f8] border border-[#dde2ea] rounded-lg">
-              <div class="flex items-center gap-2 mb-3"><span class="text-[11px] font-bold uppercase text-[#ec4a1d]">🗺 Mindmap — live mit Fortschritt</span><button onclick="openGuidedPopup()" class="ml-auto text-[10px] px-2 py-1 rounded border border-[#dde2ea] text-[#3b4656] hover:text-[#ec4a1d] hover:border-[#ec4a1d] transition">⛶ Große Ansicht</button></div>
+            <div class="p-4 bg-[var(--c-sunken)] border border-[var(--c-border)] rounded-lg">
+              <div class="flex items-center gap-2 mb-3"><span class="text-[11px] font-bold uppercase text-[var(--c-accent)]">🗺 Mindmap — live mit Fortschritt</span><button onclick="openGuidedPopup()" class="ml-auto text-[10px] px-2 py-1 rounded border border-[var(--c-border)] text-[var(--c-ink-mid)] hover:text-[var(--c-accent)] hover:border-[var(--c-accent)] transition">⛶ Große Ansicht</button></div>
               <div id="guided-mindmap" class="max-h-[68vh] overflow-y-auto pr-1"></div>
-              <div class="text-[10px] text-neutral-500 mt-2 pt-2 border-t border-[#dde2ea]">● orange = aktueller Punkt · ● grün = gemeistert · ● grau = offen · Punkte anklickbar</div>
+              <div class="text-[10px] text-[var(--c-faint)] mt-2 pt-2 border-t border-[var(--c-border)]">● orange = aktueller Punkt · ● grün = gemeistert · ● grau = offen · Punkte anklickbar</div>
             </div>
           </aside>
           <div class="lg:col-span-3 min-w-0">
@@ -622,20 +660,20 @@
 
 
   <!-- MOBILE BOTTOM TAB BAR (app-feel) -->
-  <nav id="mobile-tabbar" class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#dde2ea] shadow-[0_-2px_12px_rgba(15,23,42,0.06)] flex items-stretch justify-around select-none">
-    <button data-tab="learn" onclick="switchMode('learn')" class="tab-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[#5a6678] active:scale-95 transition-transform">
+  <nav id="mobile-tabbar" class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[var(--c-card)] border-t border-[var(--c-border)] shadow-[0_-2px_12px_rgba(var(--c-shadow-rgb),0.06)] flex items-stretch justify-around select-none">
+    <button data-tab="learn" onclick="switchMode('learn')" class="tab-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[var(--c-muted)] active:scale-95 transition-transform">
       <span class="text-xl leading-none">📖</span>
       <span class="text-[10px] font-bold tracking-tight">Lernen</span>
     </button>
-    <button data-tab="practice" onclick="switchMode('practice')" class="tab-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[#5a6678] active:scale-95 transition-transform">
+    <button data-tab="practice" onclick="switchMode('practice')" class="tab-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[var(--c-muted)] active:scale-95 transition-transform">
       <span class="text-xl leading-none">🎯</span>
       <span class="text-[10px] font-bold tracking-tight">Üben</span>
     </button>
-    <button data-tab="exam" onclick="switchMode('exam')" class="tab-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[#5a6678] active:scale-95 transition-transform">
+    <button data-tab="exam" onclick="switchMode('exam')" class="tab-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[var(--c-muted)] active:scale-95 transition-transform">
       <span class="text-xl leading-none">📝</span>
       <span class="text-[10px] font-bold tracking-tight">Prüfung</span>
     </button>
-    <button data-tab="guided" onclick="switchMode('guided')" class="tab-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[#5a6678] active:scale-95 transition-transform">
+    <button data-tab="guided" onclick="switchMode('guided')" class="tab-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[var(--c-muted)] active:scale-95 transition-transform">
       <span class="text-xl leading-none">🧠</span>
       <span class="text-[10px] font-bold tracking-tight">Geführt</span>
     </button>
@@ -645,33 +683,33 @@
 
   <div id="gpopup" class="hidden" role="dialog" aria-label="Mindmap Popup">
   <div id="gpopup-bar">
-    <span style="font-size:11px;font-weight:700;text-transform:uppercase;color:#ec4a1d">🗺 Mindmap</span>
-    <span id="gpopup-title" style="font-size:12px;color:#3b4656;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+    <span style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--c-accent)">🗺 Mindmap</span>
+    <span id="gpopup-title" style="font-size:12px;color:var(--c-ink-mid);overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
     <div style="margin-left:auto;display:flex;gap:6px">
       <button class="gp-btn" onclick="gpZoom(1)">＋</button>
       <button class="gp-btn" onclick="gpZoom(-1)">－</button>
       <button class="gp-btn" onclick="gpFit()">Fit</button>
-      <button class="gp-btn" onclick="closeGuidedPopup()" style="color:#dc2626;border-color:rgba(220,38,38,.35)">✕</button>
+      <button class="gp-btn" onclick="closeGuidedPopup()" style="color:var(--c-fail);border-color:rgba(var(--c-fail-rgb),.35)">✕</button>
     </div>
   </div>
   <div id="gpopup-svg-wrap"><svg id="gpopup-svg" width="100%" height="100%"></svg></div>
-  <div style="padding:7px 14px;border-top:1px solid #dde2ea;background:#eef1f6;font-size:10px;color:#5a6577">● <span style="color:#ec4a1d">orange = aktuell</span> · ● <span style="color:#16a34a">grün = gemeistert</span> · ● grau = offen · Knoten anklicken = hinspringen · ziehen = verschieben · Scrollen = zoomen · ESC = schließen</div>
+  <div style="padding:7px 14px;border-top:1px solid var(--c-border);background:var(--c-inset);font-size:10px;color:var(--c-muted2)">● <span style="color:var(--c-accent)">orange = aktuell</span> · ● <span style="color:var(--c-pass)">grün = gemeistert</span> · ● grau = offen · Knoten anklicken = hinspringen · ziehen = verschieben · Scrollen = zoomen · ESC = schließen</div>
 </div>
 <!-- CONFIRM SUBMISSION MODAL -->
   <div id="modal-submit-confirm" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg max-w-md w-full p-6 shadow-xl space-y-4">
+    <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg max-w-md w-full p-6 shadow-xl space-y-4">
       <div class="flex items-center gap-3">
         <span class="text-2xl">⚠️</span>
-        <h3 class="text-lg font-bold text-[#17202e]">Prüfung jetzt abgeben?</h3>
+        <h3 class="text-lg font-bold text-[var(--c-ink)]">Prüfung jetzt abgeben?</h3>
       </div>
-      <p id="modal-submit-warning" class="text-sm text-neutral-400 leading-relaxed">
+      <p id="modal-submit-warning" class="text-sm text-[var(--c-muted)] leading-relaxed">
         Sie haben noch unbeantwortete Fragen. Nach der Abgabe wird Ihre Prüfung verbindlich nach dem Alles-oder-Nichts-Prinzip ausgewertet.
       </p>
-      <div class="flex items-center justify-end gap-3 pt-3 border-t border-[#dde2ea]">
-        <button onclick="closeModal('modal-submit-confirm')" class="px-4 py-2 border border-[#dde2ea] rounded text-xs font-semibold text-neutral-400 hover:bg-[#ffffff] transition">
+      <div class="flex items-center justify-end gap-3 pt-3 border-t border-[var(--c-border)]">
+        <button onclick="closeModal('modal-submit-confirm')" class="px-4 py-2 border border-[var(--c-border)] rounded text-xs font-semibold text-[var(--c-muted)] hover:bg-[var(--c-card)] transition">
           Weiter bearbeiten
         </button>
-        <button onclick="submitExamFinal()" class="px-4 py-2 bg-[#ec4a1d] hover:bg-[#d13d12] text-[#ffffff] rounded text-xs font-bold transition">
+        <button onclick="submitExamFinal()" class="px-4 py-2 bg-[var(--c-accent)] hover:bg-[var(--c-accent-hover)] text-[var(--c-on-accent)] rounded text-xs font-bold transition">
           Unwiderruflich abgeben
         </button>
       </div>
@@ -22292,12 +22330,28 @@ function loadStorage() {
 
 // ==========================================
 
+// Theme (light/dark) toggle
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  try { localStorage.setItem('aevo-theme', t); } catch (e) {}
+  var m = document.querySelector('meta[name="theme-color"]');
+  if (m) m.setAttribute('content', t === 'dark' ? '#07080a' : '#f6f8fb');
+  var b = document.getElementById('theme-toggle-btn');
+  if (b) b.textContent = t === 'dark' ? '☀️' : '🌙';
+}
+function toggleTheme() {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+document.addEventListener('DOMContentLoaded', function () {
+  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+});
+
 // Mobile bottom tab sync
 function syncMobileTabs(mode) {
   document.querySelectorAll('#mobile-tabbar .tab-btn').forEach(function(b) {
     var active = b.getAttribute('data-tab') === mode;
-    b.classList.toggle('text-[#ec4a1d]', active);
-    b.classList.toggle('text-[#5a6678]', !active);
+    b.classList.toggle('text-[var(--c-accent)]', active);
+    b.classList.toggle('text-[var(--c-muted)]', !active);
   });
 }
 // ==========================================
@@ -22325,8 +22379,8 @@ function switchMode(newMode, save = true) {
   viewResults.classList.add('hidden');
   viewGuided.classList.add('hidden');
 
-  const baseBtnCls = 'px-3 py-1.5 text-xs font-semibold rounded transition-all text-neutral-400 hover:text-[#17202e]';
-  const activeBtnCls = 'px-3 py-1.5 text-xs font-semibold rounded transition-all bg-[#ffffff] text-[#17202e] shadow-sm';
+  const baseBtnCls = 'px-3 py-1.5 text-xs font-semibold rounded transition-all text-[var(--c-muted)] hover:text-[var(--c-ink)]';
+  const activeBtnCls = 'px-3 py-1.5 text-xs font-semibold rounded transition-all bg-[var(--c-card)] text-[var(--c-ink)] shadow-sm';
 
   btnLearn.className = baseBtnCls;
   btnPractice.className = baseBtnCls;
@@ -22407,63 +22461,63 @@ function renderLearningArea() {
     totalTopicsCount += filteredTopics.length;
 
     html += `
-      <section class="bg-[#ffffff] border border-[#dde2ea] rounded-lg shadow-sm overflow-hidden mb-6">
+      <section class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm overflow-hidden mb-6">
         <!-- Module Header -->
-        <div class="px-6 py-5 bg-[#f0f3f8] border-b border-[#dde2ea] flex flex-wrap items-center justify-between gap-3">
+        <div class="px-6 py-5 bg-[var(--c-sunken)] border-b border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
           <div>
             <div class="flex items-center gap-2 mb-1">
-              <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[#ec4a1d] text-[#ffffff] tracking-wider">
+              <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] tracking-wider">
                 ${module.hf === 5 ? 'Praxisprüfung' : (module.hf === 6 ? 'Prüfungs-Check' : 'Handlungsfeld ' + module.hf)}
               </span>
-              <span class="text-xs text-neutral-400 font-mono">${filteredTopics.length} Themengebiete</span>
+              <span class="text-xs text-[var(--c-muted)] font-mono">${filteredTopics.length} Themengebiete</span>
             </div>
-            <h2 class="text-lg font-bold text-[#17202e]">${escapeHtml(module.title)}</h2>
-            <p class="text-xs text-neutral-400 mt-0.5">${escapeHtml(module.subtitle)}</p>
+            <h2 class="text-lg font-bold text-[var(--c-ink)]">${escapeHtml(module.title)}</h2>
+            <p class="text-xs text-[var(--c-muted)] mt-0.5">${escapeHtml(module.subtitle)}</p>
           </div>
-          <button onclick="jumpToPracticeFromHf(${module.hf})" class="px-3 py-1.5 text-xs font-semibold bg-[#ffffff] border border-[#dde2ea] hover:border-[#dde2ea] rounded transition text-[#2c3648] shadow-sm flex items-center gap-1.5">
+          <button onclick="jumpToPracticeFromHf(${module.hf})" class="px-3 py-1.5 text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] hover:border-[var(--c-border)] rounded transition text-[var(--c-ink-soft)] shadow-sm flex items-center gap-1.5">
             <span>🎯</span>
             <span>Fragen zu HF ${module.hf === 5 ? 'Praxis' : (module.hf === 6 ? 'Prüfungs-Check' : module.hf)} üben</span>
           </button>
         </div>
 
         <!-- Topics Accordion List -->
-        <div class="divide-y divide-[#dde2ea]">
+        <div class="divide-y divide-[var(--c-border)]">
     `;
 
     filteredTopics.forEach(topic => {
       const isExpanded = STATE.learnExpandedTopics.has(topic.id) || query.length > 0;
       html += `
-        <article class="p-5 transition hover:bg-[#ffffff]">
+        <article class="p-5 transition hover:bg-[var(--c-card)]">
           <div class="flex items-start justify-between gap-4 cursor-pointer" onclick="toggleTopicExpansion('${topic.id}')">
             <div class="space-y-1.5 flex-1">
               <div class="flex items-center gap-2 flex-wrap">
-                <span class="text-xs font-mono font-bold text-neutral-400 bg-[#eef1f6] px-2 py-0.5 rounded border border-[#dde2ea]">
+                <span class="text-xs font-mono font-bold text-[var(--c-muted)] bg-[var(--c-inset)] px-2 py-0.5 rounded border border-[var(--c-border)]">
                   ${escapeHtml(topic.paragraphs)}
                 </span>
               </div>
-              <h3 class="text-base font-bold text-[#17202e] tracking-tight flex items-center gap-2">
+              <h3 class="text-base font-bold text-[var(--c-ink)] tracking-tight flex items-center gap-2">
                 <span>${escapeHtml(topic.title)}</span>
-                <span class="text-xs font-normal text-neutral-400 font-mono">${isExpanded ? '▲' : '▼'}</span>
+                <span class="text-xs font-normal text-[var(--c-muted)] font-mono">${isExpanded ? '▲' : '▼'}</span>
               </h3>
             </div>
-            <button class="text-xs font-semibold text-neutral-400 hover:text-[#17202e] px-2 py-1 bg-[#eef1f6] rounded border border-[#dde2ea]">
+            <button class="text-xs font-semibold text-[var(--c-muted)] hover:text-[var(--c-ink)] px-2 py-1 bg-[var(--c-inset)] rounded border border-[var(--c-border)]">
               ${isExpanded ? 'Einklappen' : 'Details & Quiz'}
             </button>
           </div>
 
           <!-- Expanded Body -->
-          <div id="topic-body-${topic.id}" class="${isExpanded ? 'block' : 'hidden'} mt-4 space-y-4 pt-3 border-t border-[#f6f8fb]">
-            <p class="text-sm text-[#2c3648] leading-relaxed font-normal bg-[#f0f3f8] p-3.5 rounded border border-[#dde2ea]">
+          <div id="topic-body-${topic.id}" class="${isExpanded ? 'block' : 'hidden'} mt-4 space-y-4 pt-3 border-t border-[var(--c-bg)]">
+            <p class="text-sm text-[var(--c-ink-soft)] leading-relaxed font-normal bg-[var(--c-sunken)] p-3.5 rounded border border-[var(--c-border)]">
               ${escapeHtml(topic.summary)}
             </p>
 
             <!-- Key Points Bullet List -->
             <div>
-              <h4 class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2 font-mono">Wesentliche Fachinhalte & Rechtsgrundsätze</h4>
-              <ul class="space-y-2 text-xs text-[#2c3648]">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] mb-2 font-mono">Wesentliche Fachinhalte & Rechtsgrundsätze</h4>
+              <ul class="space-y-2 text-xs text-[var(--c-ink-soft)]">
                 ${topic.keyPoints.map(kp => `
                   <li class="flex items-start gap-2.5">
-                    <span class="text-neutral-400 font-bold mt-0.5">•</span>
+                    <span class="text-[var(--c-muted)] font-bold mt-0.5">•</span>
                     <div class="leading-relaxed flex-1">${kp}</div>
                   </li>
                 `).join('')}
@@ -22472,23 +22526,23 @@ function renderLearningArea() {
 
             <!-- Mini Knowledge Check / Quiz -->
             ${topic.quiz ? `
-              <div class="mt-4 p-4 rounded-lg bg-[#eef1f6] border border-[#dde2ea] space-y-3">
+              <div class="mt-4 p-4 rounded-lg bg-[var(--c-inset)] border border-[var(--c-border)] space-y-3">
                 <div class="flex items-center justify-between gap-2">
                   <div class="flex items-center gap-2">
                     <span class="text-sm">💡</span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-neutral-400 font-mono">1-Klick-Wissenscheck</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] font-mono">1-Klick-Wissenscheck</span>
                   </div>
-                  <span class="text-[11px] text-neutral-400">Sofortige Auswertung</span>
+                  <span class="text-[11px] text-[var(--c-muted)]">Sofortige Auswertung</span>
                 </div>
-                <p class="text-xs font-semibold text-[#17202e]">${escapeHtml(topic.quiz.q)}</p>
+                <p class="text-xs font-semibold text-[var(--c-ink)]">${escapeHtml(topic.quiz.q)}</p>
                 ${topic.quiz.correctArr ? `
-                  <p class="text-[11px] font-bold text-neutral-400 font-mono">Mehrfachantwort: Wählen Sie ${topic.quiz.correctArr.length} richtige Antworten (nacheinander anklicken)</p>
+                  <p class="text-[11px] font-bold text-[var(--c-muted)] font-mono">Mehrfachantwort: Wählen Sie ${topic.quiz.correctArr.length} richtige Antworten (nacheinander anklicken)</p>
                 ` : ''}
                 <div class="space-y-1.5" id="quiz-opts-${topic.id}">
                   ${topic.quiz.options.map((opt, idx) => `
-                    <button onclick="${topic.quiz.correctArr ? `checkTopicQuizPc('${topic.id}', ${idx})` : `checkTopicQuiz('${topic.id}', ${idx}, ${topic.quiz.correct})`}" class="w-full text-left p-2.5 rounded text-xs bg-[#ffffff] hover:bg-[#ffffff] border border-[#dde2ea] transition flex items-start gap-2">
-                      <span class="font-mono font-bold text-neutral-400">${String.fromCharCode(65 + idx)})</span>
-                      <span class="text-[#2c3648]">${escapeHtml(opt)}</span>
+                    <button onclick="${topic.quiz.correctArr ? `checkTopicQuizPc('${topic.id}', ${idx})` : `checkTopicQuiz('${topic.id}', ${idx}, ${topic.quiz.correct})`}" class="w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] hover:bg-[var(--c-card)] border border-[var(--c-border)] transition flex items-start gap-2">
+                      <span class="font-mono font-bold text-[var(--c-muted)]">${String.fromCharCode(65 + idx)})</span>
+                      <span class="text-[var(--c-ink-soft)]">${escapeHtml(opt)}</span>
                     </button>
                   `).join('')}
                 </div>
@@ -22508,10 +22562,10 @@ function renderLearningArea() {
 
   if (totalTopicsCount === 0) {
     html = `
-      <div class="p-12 text-center bg-[#ffffff] border border-[#dde2ea] rounded-lg">
-        <p class="text-base font-bold text-[#2c3648]">Keine Themengebiete gefunden</p>
-        <p class="text-xs text-neutral-400 mt-1">Bitte passen Sie Ihren Suchbegriff oder den Filter an.</p>
-        <button onclick="resetLearnFilters()" class="mt-4 px-3 py-1.5 bg-[#ec4a1d] text-[#ffffff] text-xs font-semibold rounded">Filter zurücksetzen</button>
+      <div class="p-12 text-center bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg">
+        <p class="text-base font-bold text-[var(--c-ink-soft)]">Keine Themengebiete gefunden</p>
+        <p class="text-xs text-[var(--c-muted)] mt-1">Bitte passen Sie Ihren Suchbegriff oder den Filter an.</p>
+        <button onclick="resetLearnFilters()" class="mt-4 px-3 py-1.5 bg-[var(--c-accent)] text-[var(--c-on-accent)] text-xs font-semibold rounded">Filter zurücksetzen</button>
       </div>
     `;
   }
@@ -22553,9 +22607,9 @@ function setLearnHfFilter(hf) {
   const buttons = document.querySelectorAll('.learn-hf-btn');
   buttons.forEach(btn => {
     if (btn.dataset.hf === hf) {
-      btn.className = 'learn-hf-btn px-3 py-1.5 text-xs font-bold rounded bg-[#ec4a1d] text-[#ffffff] transition';
+      btn.className = 'learn-hf-btn px-3 py-1.5 text-xs font-bold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] transition';
     } else {
-      btn.className = 'learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] transition';
+      btn.className = 'learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition';
     }
   });
   renderLearningArea();
@@ -22598,7 +22652,7 @@ function checkTopicQuiz(topicId, selectedIdx, correctIdx) {
     } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
       btn.className = 'w-full text-left p-2.5 rounded text-xs bg-rose-50 border border-rose-500 text-rose-900 line-through flex items-start gap-2';
     } else {
-      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[#ffffff] opacity-60 border border-[#dde2ea] flex items-start gap-2';
+      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] opacity-60 border border-[var(--c-border)] flex items-start gap-2';
     }
   });
 
@@ -22630,12 +22684,12 @@ function checkTopicQuizPc(topicId, selectedIdx) {
   if (picked.length < need) {
     btns.forEach((btn, idx) => {
       if (picked.includes(idx)) {
-        btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[#ec4a1d] text-white border border-[#dde2ea] font-semibold flex items-start gap-2';
+        btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-accent)] text-[var(--c-on-accent)] border border-[var(--c-border)] font-semibold flex items-start gap-2';
         btn.disabled = true;
       }
     });
     fb.classList.remove('hidden');
-    fb.className = 'p-2 rounded text-xs bg-[#ffffff] border border-[#dde2ea] text-neutral-400';
+    fb.className = 'p-2 rounded text-xs bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]';
     fb.innerHTML = `<strong>Ausgewählt: ${picked.length} von ${need}</strong> – weitere Antwort(en) anklicken.`;
     return;
   }
@@ -22649,7 +22703,7 @@ function checkTopicQuizPc(topicId, selectedIdx) {
     } else if (picked.includes(idx)) {
       btn.className = 'w-full text-left p-2.5 rounded text-xs bg-rose-50 border border-rose-500 text-rose-900 line-through flex items-start gap-2';
     } else {
-      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[#ffffff] opacity-60 border border-[#dde2ea] flex items-start gap-2';
+      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] opacity-60 border border-[var(--c-border)] flex items-start gap-2';
     }
   });
   fb.classList.remove('hidden');
@@ -22754,11 +22808,11 @@ function renderPracticeQuestion() {
 
   if (filtered.length === 0) {
     container.innerHTML = `
-      <div class="p-12 text-center bg-[#ffffff] border border-[#dde2ea] rounded-lg shadow-sm">
+      <div class="p-12 text-center bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm">
         <span class="text-3xl mb-2 block">🔍</span>
-        <h3 class="text-base font-bold text-[#2c3648]">Keine Fragen im ausgewählten Filter</h3>
-        <p class="text-xs text-neutral-400 mt-1">Keine der ${AEVO_QUESTIONS.length} Fragen entspricht den aktuellen Filtereinstellungen.</p>
-        <button onclick="resetPracticeFilters()" class="mt-4 px-4 py-2 bg-[#ec4a1d] text-[#ffffff] text-xs font-bold rounded shadow-sm hover:bg-[#e8ecf2] transition">
+        <h3 class="text-base font-bold text-[var(--c-ink-soft)]">Keine Fragen im ausgewählten Filter</h3>
+        <p class="text-xs text-[var(--c-muted)] mt-1">Keine der ${AEVO_QUESTIONS.length} Fragen entspricht den aktuellen Filtereinstellungen.</p>
+        <button onclick="resetPracticeFilters()" class="mt-4 px-4 py-2 bg-[var(--c-accent)] text-[var(--c-on-accent)] text-xs font-bold rounded shadow-sm hover:bg-[var(--c-elevated)] transition">
           Filter zurücksetzen (Alle ${AEVO_QUESTIONS.length} Fragen anzeigen)
         </button>
       </div>
@@ -22782,24 +22836,24 @@ function renderPracticeQuestion() {
   const isCorrect = isChecked ? isAnswerFullyCorrect(q, userAns) : false;
 
   let html = `
-    <div class="bg-[#ffffff] border border-[#dde2ea] rounded-lg shadow-sm overflow-hidden">
+    <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm overflow-hidden">
       <!-- Top Action Bar inside Card -->
-      <div class="px-6 py-4 bg-[#f0f3f8] border-b border-[#dde2ea] flex flex-wrap items-center justify-between gap-3">
+      <div class="px-6 py-4 bg-[var(--c-sunken)] border-b border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-2 flex-wrap">
-          <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[#ec4a1d] text-[#ffffff]">
+          <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">
             Frage ${q.id} von ${AEVO_QUESTIONS.length}
           </span>
-          <span class="px-2 py-0.5 text-[11px] font-semibold rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400">
+          <span class="px-2 py-0.5 text-[11px] font-semibold rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]">
             Handlungsfeld ${q.hf}
           </span>
-          <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400">
+          <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]">
             ${escapeHtml(q.category)}
           </span>
         </div>
 
         <div class="flex items-center gap-2">
           <!-- Flag Button -->
-          <button onclick="togglePracticeFlag(${q.id})" class="px-3 py-1 rounded text-xs font-semibold border transition flex items-center gap-1.5 ${isFlagged ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-[#ffffff] border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff]'}">
+          <button onclick="togglePracticeFlag(${q.id})" class="px-3 py-1 rounded text-xs font-semibold border transition flex items-center gap-1.5 ${isFlagged ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-[var(--c-card)] border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]'}">
             <span>${isFlagged ? '⚑ Gemerkt' : '⚐ Frage merken'}</span>
           </button>
         </div>
@@ -22808,20 +22862,20 @@ function renderPracticeQuestion() {
       <!-- Question Content -->
       <div class="p-6 space-y-6">
         <!-- Situation Box -->
-        <div class="p-4 rounded-md bg-[#eef1f6] border border-[#dde2ea] space-y-1">
-          <div class="text-[10px] font-bold uppercase font-mono tracking-wider text-neutral-400">Ausgangssituation</div>
-          <p class="text-sm font-normal text-[#17202e] leading-relaxed">${escapeHtml(q.situation)}</p>
+        <div class="p-4 rounded-md bg-[var(--c-inset)] border border-[var(--c-border)] space-y-1">
+          <div class="text-[10px] font-bold uppercase font-mono tracking-wider text-[var(--c-muted)]">Ausgangssituation</div>
+          <p class="text-sm font-normal text-[var(--c-ink)] leading-relaxed">${escapeHtml(q.situation)}</p>
         </div>
 
         <!-- Question Prompt & Target Count -->
         <div class="space-y-2">
           <div class="flex items-center justify-between gap-2 flex-wrap">
-            <h3 class="text-base font-bold text-[#17202e] tracking-tight">${escapeHtml(q.question)}</h3>
-            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded ${q.targetCount > 1 ? 'bg-[#ec4a1d] text-[#ffffff]' : 'bg-[#e8ecf2] text-[#17202e] border border-[#dde2ea]'}">
+            <h3 class="text-base font-bold text-[var(--c-ink)] tracking-tight">${escapeHtml(q.question)}</h3>
+            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded ${q.targetCount > 1 ? 'bg-[var(--c-accent)] text-[var(--c-on-accent)]' : 'bg-[var(--c-elevated)] text-[var(--c-ink)] border border-[var(--c-border)]'}">
               Wählen Sie ${q.targetCount} Antwort${q.targetCount > 1 ? 'en' : ''}
             </span>
           </div>
-          <p class="text-xs text-neutral-400">
+          <p class="text-xs text-[var(--c-muted)]">
             ${isChecked ? 'Auswertung erfolgt. Siehe Farbkennzeichnung und juristische Begründung unten.' : `Ausgewählt: ${userAns.length} von ${q.targetCount}`}
           </p>
         </div>
@@ -22832,7 +22886,7 @@ function renderPracticeQuestion() {
             const isSelected = userAns.includes(idx);
             const isOptCorrect = q.correctIndices.includes(idx);
 
-            let optCls = 'border-[#dde2ea] bg-[#ffffff] hover:bg-[#f0f3f8] text-[#17202e]';
+            let optCls = 'border-[var(--c-border)] bg-[var(--c-card)] hover:bg-[var(--c-sunken)] text-[var(--c-ink)]';
             let badge = '';
 
             if (isChecked) {
@@ -22849,15 +22903,15 @@ function renderPracticeQuestion() {
                 optCls = 'border-emerald-500 border-dashed bg-emerald-50/50 text-emerald-900';
                 badge = '<span class="text-xs font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded border border-emerald-200">★ Richtige Lösung</span>';
               } else {
-                optCls = 'border-[#dde2ea] bg-[#f0f3f8] opacity-60 text-neutral-400';
+                optCls = 'border-[var(--c-border)] bg-[var(--c-sunken)] opacity-60 text-[var(--c-muted)]';
               }
             } else if (isSelected) {
-              optCls = 'border-[#17202e] bg-[#ec4a1d] text-[#ffffff]';
+              optCls = 'border-[var(--c-ink)] bg-[var(--c-accent)] text-[var(--c-on-accent)]';
             }
 
             return `
               <div onclick="${isChecked ? '' : `togglePracticeOption(${q.id}, ${idx})`}" class="p-4 rounded-md border transition flex items-start gap-3.5 cursor-pointer ${optCls}">
-                <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded ${q.type === 'single' ? 'rounded-full' : 'rounded'} border flex items-center justify-center text-xs font-bold ${isSelected ? (isChecked ? (isOptCorrect ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-rose-600 bg-rose-600 text-white') : 'border-[#b8c1cd] bg-[#ffffff] text-[#17202e]') : 'border-[#b8c1cd] bg-[#ffffff] text-neutral-400'}">
+                <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded ${q.type === 'single' ? 'rounded-full' : 'rounded'} border flex items-center justify-center text-xs font-bold ${isSelected ? (isChecked ? (isOptCorrect ? 'border-emerald-600 bg-emerald-600 text-[var(--c-on-accent)]' : 'border-rose-600 bg-rose-600 text-[var(--c-on-accent)]') : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-ink)]') : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-muted)]'}">
                   ${isSelected ? '✓' : String.fromCharCode(65 + idx)}
                 </div>
                 <div class="flex-1 space-y-1">
@@ -22878,22 +22932,22 @@ function renderPracticeQuestion() {
                 ${isCorrect ? 'Vollständig richtig gelöst! (1 Punkt nach DIHK Alles-oder-Nichts)' : 'Nicht vollständig richtig (0 Punkte nach DIHK Alles-oder-Nichts)'}
               </h4>
             </div>
-            <div class="text-xs leading-relaxed text-[#2c3648] space-y-1 border-t ${isCorrect ? 'border-emerald-200' : 'border-rose-200'} pt-2.5">
-              <div class="font-bold font-mono uppercase tracking-wider text-[11px] text-neutral-400">Juristische & Pädagogische Begründung:</div>
+            <div class="text-xs leading-relaxed text-[var(--c-ink-soft)] space-y-1 border-t ${isCorrect ? 'border-emerald-200' : 'border-rose-200'} pt-2.5">
+              <div class="font-bold font-mono uppercase tracking-wider text-[11px] text-[var(--c-muted)]">Juristische & Pädagogische Begründung:</div>
               <p>${escapeHtml(q.explanation)}</p>
             </div>
           </div>
         ` : ''}
 
         <!-- Card Footer Actions -->
-        <div class="pt-4 border-t border-[#dde2ea] flex flex-wrap items-center justify-between gap-3">
+        <div class="pt-4 border-t border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-2">
             ${!isChecked ? `
-              <button onclick="checkPracticeAnswer(${q.id})" ${userAns.length === 0 ? 'disabled' : ''} class="px-5 py-2 rounded text-xs font-bold bg-[#ec4a1d] text-[#ffffff] hover:bg-black disabled:opacity-40 disabled:cursor-not-allowed shadow-sm transition">
+              <button onclick="checkPracticeAnswer(${q.id})" ${userAns.length === 0 ? 'disabled' : ''} class="px-5 py-2 rounded text-xs font-bold bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:bg-black disabled:opacity-40 disabled:cursor-not-allowed shadow-sm transition">
                 Antwort prüfen
               </button>
             ` : `
-              <button onclick="retryPracticeQuestion(${q.id})" class="px-4 py-2 rounded text-xs font-bold bg-[#ffffff] border border-[#dde2ea] text-[#2c3648] hover:bg-[#ffffff] shadow-sm transition">
+              <button onclick="retryPracticeQuestion(${q.id})" class="px-4 py-2 rounded text-xs font-bold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-ink-soft)] hover:bg-[var(--c-card)] shadow-sm transition">
                 ↺ Erneut versuchen
               </button>
             `}
@@ -22901,16 +22955,16 @@ function renderPracticeQuestion() {
 
           <!-- Question Navigation -->
           <div class="flex items-center gap-2">
-            <button onclick="navigatePractice(-1)" ${STATE.practiceIndex === 0 ? 'disabled' : ''} class="px-3 py-2 rounded text-xs font-semibold bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] disabled:opacity-40 transition">
+            <button onclick="navigatePractice(-1)" ${STATE.practiceIndex === 0 ? 'disabled' : ''} class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] disabled:opacity-40 transition">
               ← Vorherige
             </button>
-            <span class="text-xs font-mono text-neutral-400 px-2">
+            <span class="text-xs font-mono text-[var(--c-muted)] px-2">
               ${STATE.practiceIndex + 1} / ${filtered.length}
             </span>
-            <button onclick="navigatePractice(1)" ${STATE.practiceIndex === filtered.length - 1 ? 'disabled' : ''} class="px-3 py-2 rounded text-xs font-semibold bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff] disabled:opacity-40 transition">
+            <button onclick="navigatePractice(1)" ${STATE.practiceIndex === filtered.length - 1 ? 'disabled' : ''} class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] disabled:opacity-40 transition">
               Nächste →
             </button>
-            <button onclick="jumpToRandomPracticeQuestion()" class="px-3 py-2 rounded text-xs font-semibold bg-[#eef1f6] border border-[#dde2ea] text-[#2c3648] hover:bg-[#e8ecf2] transition" title="Zufällige Frage">
+            <button onclick="jumpToRandomPracticeQuestion()" class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-inset)] border border-[var(--c-border)] text-[var(--c-ink-soft)] hover:bg-[var(--c-elevated)] transition" title="Zufällige Frage">
               🎲 Zufall
             </button>
           </div>
@@ -23006,12 +23060,12 @@ function renderPracticePalette() {
     const userAns = STATE.practiceAnswers[q.id];
     const isFlagged = STATE.practiceFlags.has(q.id);
 
-    let bgCls = 'bg-[#ffffff] text-[#2c3648] border-[#dde2ea]';
+    let bgCls = 'bg-[var(--c-card)] text-[var(--c-ink-soft)] border-[var(--c-border)]';
     if (isChecked && userAns && userAns.length > 0) {
       const isCorrect = isAnswerFullyCorrect(q, userAns);
-      bgCls = isCorrect ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-rose-600 text-white border-rose-700';
+      bgCls = isCorrect ? 'bg-emerald-600 text-[var(--c-on-accent)] border-emerald-700' : 'bg-rose-600 text-[var(--c-on-accent)] border-rose-700';
     } else if (userAns && userAns.length > 0) {
-      bgCls = 'bg-[#e8ecf2] text-white border-black';
+      bgCls = 'bg-[var(--c-elevated)] text-[var(--c-on-accent)] border-black';
     }
 
     const currentRing = isCurrent ? 'ring-2 ring-black ring-offset-2 font-black' : '';
@@ -23198,9 +23252,9 @@ function initExamGrid() {
     let cls = 'relative w-8 h-8 rounded text-xs font-mono font-bold flex items-center justify-center border transition ';
 
     if (isAnswered) {
-      cls += 'bg-[#ec4a1d] text-[#ffffff] border-[#17202e] ';
+      cls += 'bg-[var(--c-accent)] text-[var(--c-on-accent)] border-[var(--c-ink)] ';
     } else {
-      cls += 'bg-[#ffffff] text-[#2c3648] border-[#dde2ea] hover:bg-[#ffffff] ';
+      cls += 'bg-[var(--c-card)] text-[var(--c-ink-soft)] border-[var(--c-border)] hover:bg-[var(--c-card)] ';
     }
 
     if (isCurrent) {
@@ -23239,7 +23293,7 @@ function renderCurrentQuestion() {
 
   const isFlagged = STATE.flagged.has(q.id);
   if (flagBtn) {
-    flagBtn.className = `px-3 py-1.5 rounded text-xs font-semibold border transition flex items-center gap-1.5 ${isFlagged ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-[#ffffff] border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff]'}`;
+    flagBtn.className = `px-3 py-1.5 rounded text-xs font-semibold border transition flex items-center gap-1.5 ${isFlagged ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-[var(--c-card)] border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]'}`;
     flagBtn.innerHTML = `<span>${isFlagged ? '⚑ Markiert' : '⚐ Für Prüfung merken'}</span>`;
   }
 
@@ -23263,11 +23317,11 @@ function renderCurrentQuestion() {
 
     q.options.forEach((opt, idx) => {
       const isSelected = userAnswers.includes(idx);
-      const selCls = isSelected ? 'border-[#17202e] bg-[#ec4a1d] text-[#ffffff]' : 'border-[#dde2ea] bg-[#ffffff] hover:bg-[#f0f3f8] text-[#17202e]';
+      const selCls = isSelected ? 'border-[var(--c-ink)] bg-[var(--c-accent)] text-[var(--c-on-accent)]' : 'border-[var(--c-border)] bg-[var(--c-card)] hover:bg-[var(--c-sunken)] text-[var(--c-ink)]';
 
       optHtml += `
         <div onclick="toggleExamOption(${q.id}, ${idx})" class="p-4 rounded-md border transition flex items-start gap-3.5 cursor-pointer ${selCls}">
-          <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded ${q.type === 'single' ? 'rounded-full' : 'rounded'} border flex items-center justify-center text-xs font-bold ${isSelected ? 'border-[#b8c1cd] bg-[#ffffff] text-[#17202e]' : 'border-[#b8c1cd] bg-[#ffffff] text-neutral-400'}">
+          <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded ${q.type === 'single' ? 'rounded-full' : 'rounded'} border flex items-center justify-center text-xs font-bold ${isSelected ? 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-ink)]' : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-muted)]'}">
             ${isSelected ? '✓' : String.fromCharCode(65 + idx)}
           </div>
           <div class="text-sm leading-relaxed">${escapeHtml(opt)}</div>
@@ -23427,7 +23481,7 @@ function updateTimerDisplay() {
   if (STATE.timeRemaining < 15 * 60) {
     el.className = 'text-xs font-mono font-bold text-rose-600 animate-pulse';
   } else {
-    el.className = 'text-xs font-mono font-bold text-[#2c3648]';
+    el.className = 'text-xs font-mono font-bold text-[var(--c-ink-soft)]';
   }
 }
 
@@ -23611,15 +23665,15 @@ function showResultsView() {
       const isHfPass = pct >= 50;
 
       hfHtml += `
-        <div class="p-4 rounded-md border border-[#dde2ea] bg-[#ffffff] space-y-2">
+        <div class="p-4 rounded-md border border-[var(--c-border)] bg-[var(--c-card)] space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-[#17202e]">${hfTitles[hf]}</span>
+            <span class="text-xs font-bold text-[var(--c-ink)]">${hfTitles[hf]}</span>
             <span class="text-xs font-mono font-bold ${isHfPass ? 'text-emerald-700' : 'text-rose-700'}">${pct}%</span>
           </div>
-          <div class="w-full bg-[#eef1f6] h-2 rounded-full overflow-hidden">
+          <div class="w-full bg-[var(--c-inset)] h-2 rounded-full overflow-hidden">
             <div class="${isHfPass ? 'bg-emerald-600' : 'bg-rose-600'} h-2 rounded-full" style="width: ${pct}%"></div>
           </div>
-          <div class="text-[11px] text-neutral-400 flex justify-between font-mono">
+          <div class="text-[11px] text-[var(--c-muted)] flex justify-between font-mono">
             <span>${data.earned} von ${data.total} Punkten</span>
             <span>${isHfPass ? '✓ Solide' : '⚠ Nachholbedarf'}</span>
           </div>
@@ -23643,9 +23697,9 @@ function setReviewFilter(filter) {
   Object.keys(btns).forEach(key => {
     if (!btns[key]) return;
     if (key === filter) {
-      btns[key].className = 'px-3 py-1 text-xs font-semibold rounded bg-[#ec4a1d] text-[#ffffff]';
+      btns[key].className = 'px-3 py-1 text-xs font-semibold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]';
     } else {
-      btns[key].className = 'px-3 py-1 text-xs font-semibold rounded bg-[#ffffff] border border-[#dde2ea] text-neutral-400 hover:bg-[#ffffff]';
+      btns[key].className = 'px-3 py-1 text-xs font-semibold rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]';
     }
   });
 
@@ -23671,23 +23725,23 @@ function renderReviewList() {
     const userAnswers = item.userAnswers;
 
     html += `
-      <div class="p-6 rounded-lg bg-[#ffffff] border ${isCorrect ? 'border-emerald-300' : 'border-rose-300'} shadow-sm space-y-4">
+      <div class="p-6 rounded-lg bg-[var(--c-card)] border ${isCorrect ? 'border-emerald-300' : 'border-rose-300'} shadow-sm space-y-4">
         <div class="flex items-center justify-between flex-wrap gap-2">
           <div class="flex items-center gap-2">
             <span class="px-2 py-0.5 text-xs font-bold rounded ${isCorrect ? 'bg-emerald-100 text-emerald-900' : 'bg-rose-100 text-rose-900'}">
               ${isCorrect ? '✓ 1 Punkt (Richtig)' : '✗ 0 Punkte (Falsch)'}
             </span>
-            <span class="text-xs font-mono text-neutral-400 font-bold">Aufgabe ${q.id} (HF ${q.hf} - ${q.category})</span>
+            <span class="text-xs font-mono text-[var(--c-muted)] font-bold">Aufgabe ${q.id} (HF ${q.hf} - ${q.category})</span>
           </div>
           ${item.isFlagged ? '<span class="text-xs text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-300 font-mono">⚑ Gemerkt</span>' : ''}
         </div>
 
-        <div class="p-3 bg-[#eef1f6] rounded text-xs text-[#2c3648] leading-relaxed font-normal">
-          <span class="font-bold text-neutral-400 block text-[10px] uppercase font-mono">Fallkonstellation</span>
+        <div class="p-3 bg-[var(--c-inset)] rounded text-xs text-[var(--c-ink-soft)] leading-relaxed font-normal">
+          <span class="font-bold text-[var(--c-muted)] block text-[10px] uppercase font-mono">Fallkonstellation</span>
           ${escapeHtml(q.situation)}
         </div>
 
-        <h3 class="text-sm font-bold text-[#17202e]">${escapeHtml(q.question)}</h3>
+        <h3 class="text-sm font-bold text-[var(--c-ink)]">${escapeHtml(q.question)}</h3>
 
         <!-- Options Review -->
         <div class="space-y-2">
@@ -23695,7 +23749,7 @@ function renderReviewList() {
             const isChosen = userAnswers.includes(oIdx);
             const isShouldBe = q.correctIndices.includes(oIdx);
 
-            let rowCls = 'bg-[#ffffff] border-[#dde2ea] text-neutral-400';
+            let rowCls = 'bg-[var(--c-card)] border-[var(--c-border)] text-[var(--c-muted)]';
             let tag = '';
 
             if (isChosen && isShouldBe) {
@@ -23720,9 +23774,9 @@ function renderReviewList() {
         </div>
 
         <!-- Official DIHK Explanation -->
-        <div class="p-3.5 rounded bg-[#f0f3f8] border border-[#dde2ea] text-xs space-y-1">
-          <div class="font-bold font-mono text-[10px] uppercase tracking-wider text-neutral-400">DIHK-Lösungsbegründung & Rechtsgrundlage</div>
-          <p class="text-[#2c3648] leading-relaxed">${escapeHtml(q.explanation)}</p>
+        <div class="p-3.5 rounded bg-[var(--c-sunken)] border border-[var(--c-border)] text-xs space-y-1">
+          <div class="font-bold font-mono text-[10px] uppercase tracking-wider text-[var(--c-muted)]">DIHK-Lösungsbegründung & Rechtsgrundlage</div>
+          <p class="text-[var(--c-ink-soft)] leading-relaxed">${escapeHtml(q.explanation)}</p>
         </div>
       </div>
     `;
@@ -23730,8 +23784,8 @@ function renderReviewList() {
 
   if (detailed.length === 0) {
     html = `
-      <div class="p-8 text-center bg-[#ffffff] border border-[#dde2ea] rounded-lg">
-        <p class="text-xs text-neutral-400">Keine Aufgaben für diesen Filter vorhanden.</p>
+      <div class="p-8 text-center bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg">
+        <p class="text-xs text-[var(--c-muted)]">Keine Aufgaben für diesen Filter vorhanden.</p>
       </div>
     `;
   }
@@ -24437,27 +24491,27 @@ function renderGuidedQuiz() {
   const box = document.getElementById('guided-quiz-box');
   if (!box) return;
   if (!q) {
-    box.innerHTML = '<div class="p-4 bg-[#f0f3f8] border border-[#dde2ea] rounded-lg text-xs text-neutral-400">F\u00fcr diesen Punkt wurde keine passende \u00dcbungsaufgabe gefunden \u2014 fahre einfach fort.</div>';
+    box.innerHTML = '<div class="p-4 bg-[var(--c-sunken)] border border-[var(--c-border)] rounded-lg text-xs text-[var(--c-muted)]">F\u00fcr diesen Punkt wurde keine passende \u00dcbungsaufgabe gefunden \u2014 fahre einfach fort.</div>';
     unlockGuidedNext();
     return;
   }
   const letters = ['A','B','C','D','E','F'];
   const n = GUIDED_STATE.quizQIdx + 1, total = GUIDED_STATE.quizPool.length;
-  box.innerHTML = `<div class="p-4 bg-[#f0f3f8] border border-[#dde2ea] rounded-lg">
+  box.innerHTML = `<div class="p-4 bg-[var(--c-sunken)] border border-[var(--c-border)] rounded-lg">
     <div class="flex items-center justify-between mb-2">
-      <div class="text-[11px] font-bold uppercase text-[#ec4a1d]">\u00dcbung \u2014 echte Pr\u00fcfungsaufgabe (ID ${q.id}${q.hf ? ', HF ' + q.hf : ''})</div>
-      <div class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#e8ecf2] border border-[#dde2ea] text-[#3b4656]">Aufgabe ${n} / ${total}</div>
+      <div class="text-[11px] font-bold uppercase text-[var(--c-accent)]">\u00dcbung \u2014 echte Pr\u00fcfungsaufgabe (ID ${q.id}${q.hf ? ', HF ' + q.hf : ''})</div>
+      <div class="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink-mid)]">Aufgabe ${n} / ${total}</div>
     </div>
-    <div class="w-full h-0.5 bg-[#e8ecf2] rounded-full mb-3 overflow-hidden"><div class="h-full bg-[#ec4a1d] rounded-full" style="width:${Math.round(100*n/total)}%"></div></div>
-    ${q.situation ? `<div class="text-xs text-neutral-400 mb-2 italic">${q.situation.slice(0, 220)}${q.situation.length > 220 ? '\u2026' : ''}</div>` : ''}
+    <div class="w-full h-0.5 bg-[var(--c-elevated)] rounded-full mb-3 overflow-hidden"><div class="h-full bg-[var(--c-accent)] rounded-full" style="width:${Math.round(100*n/total)}%"></div></div>
+    ${q.situation ? `<div class="text-xs text-[var(--c-muted)] mb-2 italic">${q.situation.slice(0, 220)}${q.situation.length > 220 ? '\u2026' : ''}</div>` : ''}
     <div class="font-semibold text-sm mb-3">${q.question}</div>
-    <div class="text-[11px] text-neutral-400 mb-3">${q.targetCount > 1 ? 'W\u00e4hle ' + q.targetCount + ' Antworten' : 'W\u00e4hle 1 Antwort'} \u2014 erst richtig l\u00f6sen, dann geht es weiter!</div>
+    <div class="text-[11px] text-[var(--c-muted)] mb-3">${q.targetCount > 1 ? 'W\u00e4hle ' + q.targetCount + ' Antworten' : 'W\u00e4hle 1 Antwort'} \u2014 erst richtig l\u00f6sen, dann geht es weiter!</div>
     <div id="guided-quiz-opts" class="space-y-2">${q.options.map((o, oi) => `
-      <button id="gq-${oi}" onclick="guidedToggle(${oi})" class="w-full text-left px-3 py-2 text-sm bg-[#ffffff] border border-[#dde2ea] rounded hover:border-[#b8c1cd] transition flex items-start gap-2">
-        <span class="font-mono text-[11px] px-1.5 py-0.5 rounded bg-[#e8ecf2] border border-[#dde2ea] shrink-0 mt-0.5">${letters[oi]}</span>
+      <button id="gq-${oi}" onclick="guidedToggle(${oi})" class="w-full text-left px-3 py-2 text-sm bg-[var(--c-card)] border border-[var(--c-border)] rounded hover:border-[var(--c-border-hover)] transition flex items-start gap-2">
+        <span class="font-mono text-[11px] px-1.5 py-0.5 rounded bg-[var(--c-elevated)] border border-[var(--c-border)] shrink-0 mt-0.5">${letters[oi]}</span>
         <span>${o}</span>
       </button>`).join('')}</div>
-    <button id="guided-check-btn" onclick="guidedCheck()" class="mt-3 px-4 py-2 text-xs font-bold rounded bg-[#ec4a1d] text-[#ffffff] hover:opacity-90 transition">Antwort pr\u00fcfen</button>
+    <button id="guided-check-btn" onclick="guidedCheck()" class="mt-3 px-4 py-2 text-xs font-bold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:opacity-90 transition">Antwort pr\u00fcfen</button>
     <div id="guided-feedback" class="mt-3 hidden"></div>
   </div>`;
 }
@@ -24473,14 +24527,14 @@ function renderGuidedOverview() {
     total += p.units.length; done += d;
     const pct = Math.round(100 * d / p.units.length);
     const full = d >= p.units.length;
-    html += `<div class="p-4 bg-[#ffffff] border border-[#dde2ea] rounded-lg">
+    html += `<div class="p-4 bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg">
       <div class="flex items-start justify-between gap-3 mb-2">
         <div><div class="font-bold text-sm mb-0.5">${p.title}</div>
-        <div class="text-xs text-neutral-400">${p.desc}</div></div>
-        <span class="text-[11px] font-mono px-2 py-1 rounded ${full ? 'bg-[#16a34a]/20 text-[#16a34a]' : 'bg-[#e8ecf2] text-[#2c3648] border border-[#dde2ea]'} shrink-0">${d}/${p.units.length}</span>
+        <div class="text-xs text-[var(--c-muted)]">${p.desc}</div></div>
+        <span class="text-[11px] font-mono px-2 py-1 rounded ${full ? 'bg-[var(--c-pass)]/20 text-[var(--c-pass)]' : 'bg-[var(--c-elevated)] text-[var(--c-ink-soft)] border border-[var(--c-border)]'} shrink-0">${d}/${p.units.length}</span>
       </div>
-      <div class="w-full h-1 bg-[#e8ecf2] rounded-full mb-3 overflow-hidden"><div class="h-full ${full ? 'bg-[#16a34a]' : 'bg-[#ec4a1d]'} rounded-full" style="width:${pct}%"></div></div>
-      <button onclick="openGuidedPath(${i})" class="w-full px-3 py-2 text-xs font-bold rounded bg-[#ec4a1d] text-[#ffffff] hover:opacity-90 transition">${d === 0 ? 'Lernpfad starten' : (full ? '\u2713 Abgeschlossen \u2014 wiederholen' : 'Fortsetzen')}</button>
+      <div class="w-full h-1 bg-[var(--c-elevated)] rounded-full mb-3 overflow-hidden"><div class="h-full ${full ? 'bg-[var(--c-pass)]' : 'bg-[var(--c-accent)]'} rounded-full" style="width:${pct}%"></div></div>
+      <button onclick="openGuidedPath(${i})" class="w-full px-3 py-2 text-xs font-bold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:opacity-90 transition">${d === 0 ? 'Lernpfad starten' : (full ? '\u2713 Abgeschlossen \u2014 wiederholen' : 'Fortsetzen')}</button>
     </div>`;
   });
   list.innerHTML = html;
@@ -24531,14 +24585,14 @@ function renderGuidedPopup(){
  const BW=225,LW=215,BX=310,LX=270;
  let out='';
  let rt='';rootLines.forEach(function(l,i){rt+='<tspan dy="'+(i===0?(-(rootLines.length-1)*7.5):15)+'">'+gpEsc(l)+'</tspan>';});
- out+='<g><rect x="'+(-rootW/2)+'" y="'+(-rootH/2)+'" width="'+rootW+'" height="'+rootH+'" rx="10" fill="#e8ecf2" stroke="#ec4a1d" stroke-width="1.4"/><text class="gp-rt" text-anchor="middle">'+rt+'</text></g>';
+ out+='<g><rect x="'+(-rootW/2)+'" y="'+(-rootH/2)+'" width="'+rootW+'" height="'+rootH+'" rx="10" fill="var(--c-elevated)" stroke="var(--c-accent)" stroke-width="1.4"/><text class="gp-rt" text-anchor="middle">'+rt+'</text></g>';
  function drawSide(list,dir){
   list.forEach(function(b){
    const bx=dir*(BX+BW/2),by=b.cy;
    const sx0=dir*(rootW/2),ex=dir*BX,mx=(sx0+ex)/2;
    out+='<path class="gp-link'+(b.cur?' gp-link-cur':'')+'" d="M '+sx0+' 0 C '+mx+' 0, '+mx+' '+by+', '+ex+' '+by+'"/>';
    let bt='';b.lines.forEach(function(l,i){bt+='<tspan dy="'+(i===0?(-(b.lines.length-1)*7):14)+'">'+gpEsc(l)+'</tspan>';});
-   out+='<g><rect x="'+(dir===1?BX:-(BX+BW))+'" y="'+(by-24)+'" width="'+BW+'" height="48" rx="8" fill="#eef1f6" stroke="'+(b.cur?'#ec4a1d':'#d5dbe4')+'" stroke-width="'+(b.cur?1.6:1)+'"/><text class="gp-bt" text-anchor="middle" x="'+bx+'" y="'+by+'">'+bt+'</text><text class="gp-cnt" text-anchor="end" x="'+(dir===1?BX+BW-8:-(BX+8))+'" y="'+(by-10)+'">'+b.doneN+'/'+b.total+'</text></g>';
+   out+='<g><rect x="'+(dir===1?BX:-(BX+BW))+'" y="'+(by-24)+'" width="'+BW+'" height="48" rx="8" fill="var(--c-inset)" stroke="'+(b.cur?'var(--c-accent)':'var(--c-border-strong)')+'" stroke-width="'+(b.cur?1.6:1)+'"/><text class="gp-bt" text-anchor="middle" x="'+bx+'" y="'+by+'">'+bt+'</text><text class="gp-cnt" text-anchor="end" x="'+(dir===1?BX+BW-8:-(BX+8))+'" y="'+(by-10)+'">'+b.doneN+'/'+b.total+'</text></g>';
    let ly=b.top;
    b.leaves.forEach(function(lf){
     const lcy=ly+lf.h/2;ly+=lf.h+GAPL;
@@ -24548,7 +24602,7 @@ function renderGuidedPopup(){
     const rectX=dir===1?(BX+LX):-(BX+LX+LW);
     const dotX=dir===1?(BX+LX+13):-(BX+LX+13);
     const txtX=dir===1?(BX+LX+26):-(BX+LX+26);
-    out+='<g class="gp-leaf'+(lf.cur?' gp-cur':'')+(lf.done?' gp-done':'')+'" onclick="gpLeaf('+lf.i+')"><rect x="'+rectX+'" y="'+(lcy-lf.h/2)+'" width="'+LW+'" height="'+lf.h+'" rx="7" fill="'+(lf.cur?'rgba(236,74,29,.10)':'#f0f3f8')+'" stroke="'+(lf.cur?'#ec4a1d':(lf.done?'rgba(22,163,74,.35)':'#dde2ea'))+'" stroke-width="'+(lf.cur?1.6:1)+'"/><circle cx="'+dotX+'" cy="'+lcy+'" r="4.5" fill="'+(lf.cur?'#ec4a1d':(lf.done?'#16a34a':'#c3ccd7'))+'"/><text class="gp-lt" text-anchor="'+(dir===1?'start':'end')+'" x="'+txtX+'" y="'+lcy+'">'+lt+'</text></g>';
+    out+='<g class="gp-leaf'+(lf.cur?' gp-cur':'')+(lf.done?' gp-done':'')+'" onclick="gpLeaf('+lf.i+')"><rect x="'+rectX+'" y="'+(lcy-lf.h/2)+'" width="'+LW+'" height="'+lf.h+'" rx="7" fill="'+(lf.cur?'rgba(var(--c-accent-rgb),.10)':'var(--c-sunken)')+'" stroke="'+(lf.cur?'var(--c-accent)':(lf.done?'rgba(var(--c-pass-rgb),.35)':'var(--c-border)'))+'" stroke-width="'+(lf.cur?1.6:1)+'"/><circle cx="'+dotX+'" cy="'+lcy+'" r="4.5" fill="'+(lf.cur?'var(--c-accent)':(lf.done?'var(--c-pass)':'var(--c-svg-idle)'))+'"/><text class="gp-lt" text-anchor="'+(dir===1?'start':'end')+'" x="'+txtX+'" y="'+lcy+'">'+lt+'</text></g>';
    });
   });
  }
@@ -24633,15 +24687,15 @@ function renderGuidedStep() {
   GUIDED_STATE.quizChecked = false;
 
   document.getElementById('guided-step-container').innerHTML = `
-    <div class="p-5 bg-[#ffffff] border border-[#dde2ea] rounded-lg">
-      <div class="flex items-center gap-2 mb-2"><div class="text-[11px] font-bold uppercase text-[#ec4a1d]">Lerninhalt \u2014 verstehe den Punkt</div>${_isDone ? '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#16a34a]/15 text-[#16a34a] border border-[#16a34a]/40">\u2713 bereits gemeistert</span>' : ''}</div>
+    <div class="p-5 bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg">
+      <div class="flex items-center gap-2 mb-2"><div class="text-[11px] font-bold uppercase text-[var(--c-accent)]">Lerninhalt \u2014 verstehe den Punkt</div>${_isDone ? '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[var(--c-pass)]/15 text-[var(--c-pass)] border border-[var(--c-pass)]/40">\u2713 bereits gemeistert</span>' : ''}</div>
       <h3 class="text-lg font-bold mb-3">${u.t}</h3>
-      <ul class="space-y-2.5 text-sm leading-relaxed">${u.content.map(c => `<li class="flex gap-2"><span class="text-[#ec4a1d] shrink-0">\u25b8</span><span>${c}</span></li>`).join('')}</ul>
+      <ul class="space-y-2.5 text-sm leading-relaxed">${u.content.map(c => `<li class="flex gap-2"><span class="text-[var(--c-accent)] shrink-0">\u25b8</span><span>${c}</span></li>`).join('')}</ul>
     </div>
     <div id="guided-quiz-box"></div>
     <div class="flex items-center justify-between pt-2">
-      <div>${GUIDED_STATE.stepIdx > 0 ? `<button onclick="guidedPrev()" class="px-3 py-1.5 text-xs rounded bg-[#e8ecf2] text-[#2c3648] border border-[#dde2ea] hover:border-[#b8c1cd] transition">\u2190 Zur\u00fcck</button>` : ''}</div>
-      <button id="guided-next-btn" onclick="guidedNext()" class="px-4 py-2 text-xs font-bold rounded bg-[#e8ecf2] text-neutral-400 border border-[#dde2ea] cursor-not-allowed" disabled>N\u00e4chster Punkt \u2192</button>
+      <div>${GUIDED_STATE.stepIdx > 0 ? `<button onclick="guidedPrev()" class="px-3 py-1.5 text-xs rounded bg-[var(--c-elevated)] text-[var(--c-ink-soft)] border border-[var(--c-border)] hover:border-[var(--c-border-hover)] transition">\u2190 Zur\u00fcck</button>` : ''}</div>
+      <button id="guided-next-btn" onclick="guidedNext()" class="px-4 py-2 text-xs font-bold rounded bg-[var(--c-elevated)] text-[var(--c-muted)] border border-[var(--c-border)] cursor-not-allowed" disabled>N\u00e4chster Punkt \u2192</button>
     </div>`;
   renderGuidedQuiz();
   if (!GUIDED_STATE.quizPool.length || _isDone) unlockGuidedNext();
@@ -24654,7 +24708,7 @@ function guidedToggle(oi) {
   GUIDED_STATE.quizSel[oi] = !GUIDED_STATE.quizSel[oi];
   GUIDED_STATE.quizSel.forEach((sel, i) => {
     const b = document.getElementById('gq-' + i); if (!b) return;
-    b.className = sel ? 'w-full text-left px-3 py-2 text-sm bg-[#e8ecf2] border border-[#ec4a1d] rounded transition flex items-start gap-2' : 'w-full text-left px-3 py-2 text-sm bg-[#ffffff] border border-[#dde2ea] rounded hover:border-[#b8c1cd] transition flex items-start gap-2';
+    b.className = sel ? 'w-full text-left px-3 py-2 text-sm bg-[var(--c-elevated)] border border-[var(--c-accent)] rounded transition flex items-start gap-2' : 'w-full text-left px-3 py-2 text-sm bg-[var(--c-card)] border border-[var(--c-border)] rounded hover:border-[var(--c-border-hover)] transition flex items-start gap-2';
   });
 }
 
@@ -24669,14 +24723,14 @@ function guidedCheck() {
   const letters = ['A','B','C','D','E','F'];
   const more = GUIDED_STATE.quizQIdx + 1 < GUIDED_STATE.quizPool.length;
   if (ok) {
-    fb.innerHTML = `<div class="p-3 rounded bg-[#16a34a]/10 border border-[#16a34a]/40 text-sm"><b class="text-[#16a34a]">\u2713 Richtig! </b>${(q.explanation || '').slice(0, 400)}</div>` +
-      (more ? `<button onclick="guidedAdvanceQuiz()" class="mt-2 px-4 py-2 text-xs font-bold rounded bg-[#ec4a1d] text-[#ffffff] hover:opacity-90 transition">N\u00e4chste Aufgabe \u2192 (${GUIDED_STATE.quizQIdx + 2}/${GUIDED_STATE.quizPool.length})</button>`
-            : `<div class="mt-2 text-xs text-neutral-400">Alle ${GUIDED_STATE.quizPool.length} Aufgaben dieses Punktes gemeistert! \u2192 Weiter zum n\u00e4chsten Punkt.</div>`);
+    fb.innerHTML = `<div class="p-3 rounded bg-[var(--c-pass)]/10 border border-[var(--c-pass)]/40 text-sm"><b class="text-[var(--c-pass)]">\u2713 Richtig! </b>${(q.explanation || '').slice(0, 400)}</div>` +
+      (more ? `<button onclick="guidedAdvanceQuiz()" class="mt-2 px-4 py-2 text-xs font-bold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:opacity-90 transition">N\u00e4chste Aufgabe \u2192 (${GUIDED_STATE.quizQIdx + 2}/${GUIDED_STATE.quizPool.length})</button>`
+            : `<div class="mt-2 text-xs text-[var(--c-muted)]">Alle ${GUIDED_STATE.quizPool.length} Aufgaben dieses Punktes gemeistert! \u2192 Weiter zum n\u00e4chsten Punkt.</div>`);
     document.getElementById('guided-check-btn').classList.add('hidden');
     if (!more) unlockGuidedNext();
   } else {
-    fb.innerHTML = `<div class="p-3 rounded bg-[#dc2626]/10 border border-[#dc2626]/40 text-sm"><b class="text-[#dc2626]">\u2717 Noch nicht. </b>Richtig w\u00e4re: <b>${corr.map(i => letters[i]).join(', ')}</b><br><span class="text-xs mt-1 block text-neutral-400">${(q.explanation || '').slice(0, 400)}</span></div>
-    <button onclick="guidedRetry()" class="mt-2 px-3 py-1.5 text-xs rounded bg-[#e8ecf2] text-[#2c3648] border border-[#dde2ea] hover:border-[#b8c1cd] transition">\u21bb Nochmal versuchen</button>`;
+    fb.innerHTML = `<div class="p-3 rounded bg-[var(--c-fail)]/10 border border-[var(--c-fail)]/40 text-sm"><b class="text-[var(--c-fail)]">\u2717 Noch nicht. </b>Richtig w\u00e4re: <b>${corr.map(i => letters[i]).join(', ')}</b><br><span class="text-xs mt-1 block text-[var(--c-muted)]">${(q.explanation || '').slice(0, 400)}</span></div>
+    <button onclick="guidedRetry()" class="mt-2 px-3 py-1.5 text-xs rounded bg-[var(--c-elevated)] text-[var(--c-ink-soft)] border border-[var(--c-border)] hover:border-[var(--c-border-hover)] transition">\u21bb Nochmal versuchen</button>`;
     document.getElementById('guided-check-btn').classList.add('hidden');
   }
 }
@@ -24688,8 +24742,8 @@ function guidedRetry() {
 function unlockGuidedNext() {
   const btn = document.getElementById('guided-next-btn');
   if (!btn) return;
-  btn.disabled = false; btn.classList.remove('cursor-not-allowed', 'text-neutral-400', 'bg-[#e8ecf2]', 'border-[#dde2ea]');
-  btn.classList.add('bg-[#ec4a1d]', 'text-[#ffffff]', 'hover:opacity-90');
+  btn.disabled = false; btn.classList.remove('cursor-not-allowed', 'text-[var(--c-muted)]', 'bg-[var(--c-elevated)]', 'border-[var(--c-border)]');
+  btn.classList.add('bg-[var(--c-accent)]', 'text-[var(--c-on-accent)]', 'hover:opacity-90');
 }
 
 function guidedNext() {
@@ -24703,11 +24757,11 @@ function guidedNext() {
     renderGuidedStep();
   } else {
     const el = document.getElementById('guided-step-container');
-    el.innerHTML = `<div class="p-8 bg-[#ffffff] border border-[#16a34a]/40 rounded-lg text-center">
+    el.innerHTML = `<div class="p-8 bg-[var(--c-card)] border border-[var(--c-pass)]/40 rounded-lg text-center">
       <div class="text-3xl mb-2">\ud83c\udf89</div>
       <h3 class="text-xl font-bold mb-2">Lernpfad abgeschlossen!</h3>
-      <p class="text-sm text-neutral-400 mb-4">Du hast alle ${p.units.length} Punkte von \u201e${p.title}\u201c gemeistert.</p>
-      <button onclick="guidedBackToOverview()" class="px-4 py-2 text-xs font-bold rounded bg-[#ec4a1d] text-[#ffffff] hover:opacity-90 transition">Zur\u00fcck zur \u00dcbersicht</button>
+      <p class="text-sm text-[var(--c-muted)] mb-4">Du hast alle ${p.units.length} Punkte von \u201e${p.title}\u201c gemeistert.</p>
+      <button onclick="guidedBackToOverview()" class="px-4 py-2 text-xs font-bold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:opacity-90 transition">Zur\u00fcck zur \u00dcbersicht</button>
     </div>`;
   }
 }
