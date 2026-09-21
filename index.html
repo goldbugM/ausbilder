@@ -12,10 +12,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <title>AEVO Meister - Ausbildereignungsprüfung (DIHK)</title>
-  <!-- Google Fonts: Inter Tight (void-03) -->
+  <!-- Google Fonts: Archivo + Playfair Display (Aniwall design language) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -23,7 +23,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter Tight', 'system-ui', '-apple-system', 'sans-serif'],
+            sans: ['Archivo', 'system-ui', '-apple-system', 'sans-serif'],
           },
           colors: {
             accent: 'var(--c-accent)',
@@ -44,27 +44,27 @@
   <style>
     /* ===== THEME TOKENS (light default / dark via [data-theme]) ===== */
     :root {
-      --c-bg:#f6f8fb; --c-inset:#eef1f6; --c-sunken:#f0f3f8; --c-card:#ffffff; --c-elevated:#e8ecf2; --c-hover:#e4e9f1;
-      --c-ink:#17202e; --c-ink-soft:#2c3648; --c-ink-mid:#3b4656; --c-ink-dim:#4a5568;
-      --c-muted:#5a6678; --c-muted2:#5a6577; --c-faint:#5f6b7d;
-      --c-border:#dde2ea; --c-border-strong:#d5dbe4; --c-border-hover:#b8c1cd; --c-svg-idle:#c3ccd7;
-      --c-accent:#ec4a1d; --c-accent-hover:#d13d12; --c-accent-rgb:236,74,29; --c-on-accent:#ffffff;
+      --c-bg:#f1f1f3; --c-inset:#e9e9ec; --c-sunken:#ebebee; --c-card:rgba(255,255,255,.78); --c-elevated:#e4e4e8; --c-hover:#dcdce1;
+      --c-ink:#1c1c1f; --c-ink-soft:#2b2b30; --c-ink-mid:#3a3a40; --c-ink-dim:#4a4a51;
+      --c-muted:#4d4d55; --c-muted2:#4a4a52; --c-faint:#50505a;
+      --c-border:#dcdce0; --c-border-strong:#d0d0d6; --c-border-hover:#a9a9b3; --c-svg-idle:#bfbfc7;
+      --c-accent:#5b48ee; --c-accent-hover:#4a37d6; --c-accent-rgb:91,72,238; --c-on-accent:#ffffff;
       --c-pass:#16a34a; --c-pass-soft:#22c55e; --c-pass-rgb:22,163,74;
-      --c-fail:#dc2626; --c-fail-rgb:220,38,38;
-      --c-shadow-rgb:15,23,42; --c-overlay:rgba(15,23,42,.45);
+      --c-fail:#e11d48; --c-fail-rgb:225,29,72;
+      --c-shadow-rgb:28,28,31; --c-overlay:rgba(28,28,31,.45);
     }
     [data-theme="dark"] {
-      --c-bg:#07080a; --c-inset:#10131a; --c-sunken:#0e1015; --c-card:#151920; --c-elevated:#1c2027; --c-hover:#171b22;
-      --c-ink:#f3efe5; --c-ink-soft:#e5e7eb; --c-ink-mid:#d4d8de; --c-ink-dim:#b9bdc7;
-      --c-muted:#9aa0ab; --c-muted2:#8b909b; --c-faint:#8b929e;
-      --c-border:#262a33; --c-border-strong:#2a2f3a; --c-border-hover:#5b616c; --c-svg-idle:#3a4050;
-      --c-accent:#ff5a39; --c-accent-hover:#ff7250; --c-accent-rgb:255,90,57; --c-on-accent:#07080a;
+      --c-bg:#0c0c0e; --c-inset:#141416; --c-sunken:#121214; --c-card:rgba(24,24,27,.82); --c-elevated:#1e1e22; --c-hover:#232328;
+      --c-ink:#f4f4f6; --c-ink-soft:#e7e7ea; --c-ink-mid:#d6d6da; --c-ink-dim:#b9b9bf;
+      --c-muted:#9c9ca4; --c-muted2:#909098; --c-faint:#8d8d95;
+      --c-border:#26262b; --c-border-strong:#2e2e34; --c-border-hover:#55555e; --c-svg-idle:#3a3a44;
+      --c-accent:#8b7bff; --c-accent-hover:#9d8fff; --c-accent-rgb:139,123,255; --c-on-accent:#0c0c0e;
       --c-pass:#4ade80; --c-pass-soft:#7fd6a0; --c-pass-rgb:74,222,128;
-      --c-fail:#f87171; --c-fail-rgb:248,113,113;
-      --c-shadow-rgb:0,0,0; --c-overlay:rgba(4,5,8,.92);
+      --c-fail:#fb7185; --c-fail-rgb:251,113,133;
+      --c-shadow-rgb:0,0,0; --c-overlay:rgba(4,4,6,.92);
     }
     body {
-      font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
+      font-family: 'Archivo', system-ui, -apple-system, sans-serif;
       background-color: var(--c-bg);
       color: var(--c-ink);
       -webkit-font-smoothing: antialiased;
@@ -102,7 +102,90 @@
       main { padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; }
     }
     #mobile-tabbar { padding-bottom: env(safe-area-inset-bottom, 0px); }
-  </style>
+  
+    /* ===== ANIWALL DESIGN LAYER (2026-09-21) ===== */
+    .serif { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 500; }
+    h1, h2, h3 { letter-spacing: -0.02em; }
+
+    /* Ambient sheen background with slow drift */
+    body::before {
+      content: ''; position: fixed; inset: -10%; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(680px 460px at 10% -8%, rgba(91,72,238,.14), transparent 64%),
+        radial-gradient(760px 560px at 102% 2%, rgba(247,143,226,.12), transparent 64%),
+        radial-gradient(900px 660px at 50% 112%, rgba(18,220,237,.11), transparent 64%);
+      animation: awDrift 22s ease-in-out infinite;
+    }
+    [data-theme="dark"] body::before {
+      background:
+        radial-gradient(680px 460px at 10% -8%, rgba(139,123,255,.18), transparent 64%),
+        radial-gradient(760px 560px at 102% 2%, rgba(247,143,226,.13), transparent 64%),
+        radial-gradient(900px 660px at 50% 112%, rgba(18,220,237,.12), transparent 64%);
+    }
+    @keyframes awDrift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(1.5%,1%) scale(1.04); } }
+
+    /* Iridescent signature line under header */
+    #main-header::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+      background: linear-gradient(90deg, #5b48ee, #f78fe2 38%, #12dced 72%, #a48bf2);
+      opacity: .85; pointer-events: none;
+    }
+
+    /* Glass cards: radius + blur + lift */
+    [class*="bg-[var(--c-card)]"] {
+      border-radius: 18px;
+      backdrop-filter: blur(14px) saturate(1.35);
+      -webkit-backdrop-filter: blur(14px) saturate(1.35);
+      box-shadow: 0 10px 30px -14px rgba(var(--c-shadow-rgb), .22);
+      transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
+    }
+    [class*="bg-[var(--c-card)]"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px -18px rgba(var(--c-shadow-rgb), .30);
+    }
+    #main-header:hover, #mobile-tabbar:hover { transform: none !important; }
+
+    /* Pill buttons with purple glow */
+    button[class*="bg-[var(--c-accent)]"] {
+      border-radius: 999px !important;
+      box-shadow: 0 8px 20px -8px rgba(var(--c-accent-rgb), .55);
+      transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, background-color .2s;
+    }
+    button[class*="bg-[var(--c-accent)]"]:not(:disabled):hover {
+      transform: translateY(-1px) scale(1.015);
+      box-shadow: 0 12px 26px -8px rgba(var(--c-accent-rgb), .65);
+    }
+
+    /* Pill nav + tab shapes */
+    header nav[class*="md:flex"] { border-radius: 999px !important; }
+    #mobile-tabbar button { border-radius: 999px; }
+
+    /* Staggered view-entrance reveals (restart on tab switch) */
+    @keyframes awIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    section[id^="view-"] > * { animation: awIn .55s cubic-bezier(.22,1,.36,1) backwards; }
+    section[id^="view-"] > *:nth-child(1) { animation-delay: .04s; }
+    section[id^="view-"] > *:nth-child(2) { animation-delay: .10s; }
+    section[id^="view-"] > *:nth-child(3) { animation-delay: .16s; }
+    section[id^="view-"] > *:nth-child(4) { animation-delay: .22s; }
+    section[id^="view-"] > *:nth-child(5) { animation-delay: .28s; }
+    section[id^="view-"] > *:nth-child(n+6) { animation-delay: .34s; }
+
+    /* Iridescent accents: tab underlines, progress bars, selected tiles */
+    [class*="h-[2px]"][class*="bg-[var(--c-accent)]"] {
+      background: linear-gradient(90deg, #5b48ee, #f78fe2, #12dced) !important;
+    }
+    .grid-tile-selected {
+      background: linear-gradient(135deg, #5b48ee, #a48bf2 55%, #f78fe2) !important;
+      color: #fff !important; border-color: transparent !important;
+    }
+
+    :focus-visible { outline: 2px solid rgba(var(--c-accent-rgb), .7); outline-offset: 2px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before, section[id^="view-"] > * { animation: none !important; }
+      [class*="bg-[var(--c-card)]"], button[class*="bg-[var(--c-accent)]"] { transition: none !important; }
+    }
+</style>
 <style>
 .mm-root{font-weight:700;font-size:12px;color:var(--c-ink);padding:7px 9px;background:var(--c-elevated);border:1px solid var(--c-border-strong);border-radius:6px;margin-bottom:8px;line-height:1.3}
 .mm-branch{margin-left:9px;padding-left:12px;border-left:1px solid var(--c-border-strong)}
@@ -249,7 +332,7 @@
               <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">Kompendium</span>
               <span id="learn-topics-count" class="text-xs text-[var(--c-muted)] font-mono">36 Themengebiete</span>
             </div>
-            <h1 class="text-2xl font-bold tracking-tight text-[var(--c-ink)]">Lern- & Nachschlagewerk zur AEVO</h1>
+            <h1 class="text-2xl font-bold tracking-tight text-[var(--c-ink)]">Lern- &amp; Nachschlagewerk zur <span class="serif">AEVO</span></h1>
             <p class="text-xs text-[var(--c-muted)] mt-1 max-w-3xl leading-relaxed">
               Vollständige fachliche und rechtliche Grundlagen für alle 4 Handlungsfelder nach Rahmenplan und AEVO-Verordnung, inklusive Gesetzesauszügen (§§ BBiG, JArbSchG, BetrVG, ArbGG), didaktischen Schemata und interaktiven 1-Klick-Wissenschecks.
             </p>
@@ -323,7 +406,7 @@
               <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">Fragentrainer</span>
               <span class="text-xs text-[var(--c-muted)] font-mono">655 DIHK-Aufgaben mit Sofort-Feedback</span>
             </div>
-            <h2 class="text-xl font-bold tracking-tight text-[var(--c-ink)]">Freies Üben & Vertiefen</h2>
+            <h2 class="text-xl font-bold tracking-tight text-[var(--c-ink)]">Freies Üben &amp; <span class="serif">Vertiefen</span></h2>
             <p class="text-xs text-[var(--c-muted)] mt-0.5">Üben Sie alle prüfungsrelevanten Aufgaben ohne Zeitdruck mit sofortiger Auswertung und ausführlichen Rechtsbegründungen.</p>
           </div>
 
@@ -646,7 +729,7 @@
           <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">Geführtes KI Lernen</span>
           <span class="text-[var(--c-muted)] text-xs" id="guided-total-progress"></span>
         </div>
-        <h2 class="text-2xl font-bold mb-1">Lernpfade durch die Mindmaps</h2>
+        <h2 class="text-2xl font-bold mb-1">Lernpfade durch die <span class="serif">Mindmaps</span></h2>
         <p class="text-sm text-[var(--c-muted)] mb-6">Die KI führt dich Schritt für Schritt durch jede Mindmap: erst den Inhalt verstehen, dann jede Einheit mit echten Übungsaufgaben festigen. Erst nach bestandener Übung geht es weiter.</p>
         <div id="guided-path-list" class="space-y-4"></div>
       </div>
@@ -27650,7 +27733,7 @@ function applyTheme(t) {
   document.documentElement.setAttribute('data-theme', t);
   try { localStorage.setItem('aevo-theme', t); } catch (e) {}
   var m = document.querySelector('meta[name="theme-color"]');
-  if (m) m.setAttribute('content', t === 'dark' ? '#07080a' : '#f6f8fb');
+  if (m) m.setAttribute('content', t === 'dark' ? '#0c0c0e' : '#f1f1f3');
   var b = document.getElementById('theme-toggle-btn');
   if (b) b.textContent = t === 'dark' ? '☀️' : '🌙';
 }
@@ -30116,6 +30199,25 @@ function guidedPrev() {
   if (GUIDED_STATE.stepIdx > 0) { GUIDED_STATE.stepIdx--; renderGuidedStep(); }
 }
 
+</script>
+
+<script>
+/* Aniwall typewriter for main heading (runs once on load) */
+(function () {
+  var h1 = document.querySelector('#view-learn h1');
+  if (!h1 || !h1.textContent.trim()) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var finalHtml = h1.innerHTML;
+  var text = h1.textContent;
+  h1.textContent = '';
+  var i = 0;
+  (function tick() {
+    i += 1;
+    h1.textContent = text.slice(0, i);
+    if (i < text.length) setTimeout(tick, 26);
+    else h1.innerHTML = finalHtml;
+  })();
+})();
 </script>
 </body>
 </html>
