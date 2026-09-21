@@ -30,3 +30,10 @@ Deploy: Vercel (project: ausbilder) + GitHub goldbugM/ausbilder.
 - IDs 696-775: fotografierte IHK Original-Pruefung (80, KI-verifiziert via Claude Opus + Gemini)
 - Filter/Quellen: 'pc', 'pc1', 'ihk66', 'ihkf' in practice + exam-source Dropdowns
 - OCR-Pipeline: MiniMax Vision braucht max_tokens>=12000 (reasoning frisst Tokens); foto-basierte Exam-Extraktion in /a0/usr/workdir/projects/2026-09-21_pruefung-zip/
+
+## Icon-System (2026-09-21)
+- Alle bunten Emojis ersetzt durch Inline-SVG-Sprite (16 Symbole, Feather-Stil, currentColor): i-book, i-target, i-clipboard, i-compass, i-moon, i-sun, i-shuffle, i-network, i-bulb, i-search, i-check-c, i-alert, i-award, i-x-c, i-pause, i-play.
+- Verwendung: `<svg class="icn" aria-hidden="true"><use href="#i-book"/></svg>` (skaliert via CSS 1em).
+- JS-Icon-Swaps (Theme-Toggle, Timer) nutzen innerHTML statt textContent (SVG-Markup).
+- Typografische Glyphen (→ ← ✓ ✗ ⚑ ⚐ ⚠ ▲ ▼) bewusst erhalten.
+- Neue Icons IMMER als symbol ins Sprite + via use referenzieren, nie als Emoji zurückbauen.
