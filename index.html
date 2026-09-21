@@ -355,6 +355,7 @@
               <option value="all">Alle Handlungsfelder (1-4)</option>
               <option value="pc">Prüfungs-Check Feldhaus (240)</option>
               <option value="pc1">Prüfungs-Check: Original-Satz 1 (80)</option>
+              <option value="ihk66">IHK Original-Satz 66 (50, echte Prüfung)</option>
               <option value="1">HF 1: Planen & Voraussetzungen</option>
               <option value="2">HF 2: Einstellen & Vertrag</option>
               <option value="3">HF 3: Durchführen & Didaktik</option>
@@ -527,6 +528,7 @@
                   <option value="all">Alle 655 Fragen (DIHK + Prüfungs-Check, 40/40-Mix)</option>
                   <option value="pc240">Prüfungs-Check Feldhaus (240, 80 zufällig)</option>
                   <option value="pc1">Original-Satz 1 (80, exakt wie in der PDF)</option>
+                  <option value="ihk66">IHK Original-Satz 66 (40 MC + 9 Raster)</option>
                 </select>
                 <button onclick="generateNewExamSetFromSelect()" title="Generiert einen neuen 80-Aufgaben Prüfungssatz aus der gewählten Quelle" class="w-full mt-1 py-2 px-3 bg-[var(--c-inset)] hover:bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink)] text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
                   <span>🎲</span>
@@ -8781,6 +8783,1327 @@ const PC_MODULES = [
   ]
  }
 ];
+PC_MODULES.push({
+ "id": "pc-ihk66",
+ "hf": 7,
+ "title": "Prüfungs-Check: IHK Original-Satz 66 (Aufgaben 1–50)",
+ "subtitle": "Echte ausgemusterte Original-Prüfungsaufgaben der IHK (Musteraufgabensatz Nr. 66) – mit offiziellem Lösungsbogen",
+ "color": "stone",
+ "topics": [
+  {
+   "id": "ihk66-a2",
+   "title": "S66·A2: Für die Kooperation zwischen Ausbildungsbetrieb und Berufsschule gibt es eine be…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 2",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 2/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: E</strong>",
+    "E) Berufsausbildung im dualen System"
+   ],
+   "quiz": {
+    "q": "Für die Kooperation zwischen Ausbildungsbetrieb und Berufsschule gibt es eine bestimmte Fachbezeichnung. Wie lautet dieser?",
+    "options": [
+     "Sonderpädagogische Laufbahn",
+     "Tertiäres Ausbildungssystem",
+     "Schulisches Monosystem",
+     "Berufsausbildung nach europäischem Vorbild",
+     "Berufsausbildung im dualen System",
+     "System der Euro-Berufsausbildung"
+    ],
+    "correctArr": [
+     4
+    ],
+    "expl": "Lösung: E. Original-IHK-Satz 66, Aufgabe 2."
+   }
+  },
+  {
+   "id": "ihk66-a1",
+   "title": "S66·A1: In Gesprächen mit anderen Ausbildern haben Sie erfahren, dass sich im Gegensatz …",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 1",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 1/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die zwei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) Ausbildungsberufsbild",
+    "D) Ausbildungsrahmenplan"
+   ],
+   "quiz": {
+    "q": "In Gesprächen mit anderen Ausbildern haben Sie erfahren, dass sich im Gegensatz zu Ihrer eigenen Ausbildung viel geändert hat. Wo sind die Ausbildungsinhalte festgelegt, die im Rahmen der Berufsausbildung zu vermitteln sind?",
+    "options": [
+     "Ausbildungsberufsbild",
+     "AEVO",
+     "Ausbildungsvertragsmuster",
+     "Ausbildungsrahmenplan",
+     "Rahmenstoffplan",
+     "Arbeitsvertrag"
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original-IHK-Satz 66, Aufgabe 1."
+   }
+  },
+  {
+   "id": "ihk66-a3",
+   "title": "S66·A3: Sie sind Ausbilder in einem Einzelhandelsfachgeschäft mit fünf Beschäftigten. In…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 3",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 3/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Sie ersetzen einen gelernten Kaufmann im Einzelhandel und übernehmen gleichzeitig die Ausbildung"
+   ],
+   "quiz": {
+    "q": "Sie sind Ausbilder in einem Einzelhandelsfachgeschäft mit fünf Beschäftigten. In einem Gespräch zwischen Ihnen und dem Firmeninhaber geht es um das Thema, ob es aus betrieblicher Sicht sinnvoll ist, Auszubildende einzustellen. Welches Argument sprich…",
+    "options": [
+     "Ausbildung von Fachkräften, die im zweiten Ausbildungsjahr im Betrieb schon voll mitarbeiten können.",
+     "Sie ersetzen einen gelernten Kaufmann im Einzelhandel und übernehmen gleichzeitig die Ausbildung",
+     "von Auszubildenden aus dem ersten Ausbildungsjahr.",
+     "Ausbildung von Fachkräften, die nach Ausbildungsabschluss in ein Arbeitsverhältnis übernommen",
+     "werden. Hierbei würde dann eine umfangreiche betriebliche Einarbeitung entfallen, da sie während",
+     "der Ausbildung schon betriebsspezifische Abläufe kennen gelernt haben.",
+     "Es ist davon auszugehen, dass Beschäftigte das Einzelhandelsfachgeschäft mittelfristig verlassen.",
+     "Sinnvoll ist es, zwei Auszubildende einzustellen. Beide werden dann jeweils ausschließ-",
+     "lich für die Aufgaben ausgebildet, welche die ausscheidenden Mitarbeiter ausführen.",
+     "Für jeden Auszubildenden erhält das Unternehmen Fördermittel. Diese übersteigen grundsätzlich die",
+     "betrieblich zu zahlende Ausbildungsvergütung. Ist das nicht der Fall, zahlt der Azubi selbst den",
+     "Differenzbetrag oder stellt einen Antrag bei der IHK."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 3."
+   }
+  },
+  {
+   "id": "ihk66-a4",
+   "title": "S66·A4: Vor Beginn der Ausbildung möchten Sie sich mit der Berufsschule in Verbindung se…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 4",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 4/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Ausbildungsbetrieb ist verpf lichtet, der Schule die Ziele seiner Ausbildung mitzuteilen."
+   ],
+   "quiz": {
+    "q": "Vor Beginn der Ausbildung möchten Sie sich mit der Berufsschule in Verbindung setzen. Nachdem der Firmeninhaber hiervon erfahren hat, bittet er Sie zu einem Gespräch. Er möchte von Ihnen den Grund Ihres Vorhabens erläutert haben. Welche Antwort geben…",
+    "options": [
+     "Auswahl einer geeigneten Berufsschule und einer geeigneten Klasse für die Auszubildenden. Der",
+     "Ausbildungsbetrieb ist verpf lichtet, der Schule die Ziele seiner Ausbildung mitzuteilen.",
+     "Abstimmung der Ausbildungsinhalte. Berufsschule und Ausbildungsbetrieb arbeiten nach",
+     "unterschiedlichen Rechtsquellen. Gleiche Themen werden gegebenenfalls zu unterschiedlichen",
+     "Zeiten vermittelt. Durch eine mögliche Abstimmung kann dieses vielleicht vermieden werden.",
+     "Mitteilung an die Berufsschule, nach welcher Rechtsgrundlage der Betrieb seine Auszubildenden",
+     "ausbildet. Außerdem möchten Sie schon zu diesem Zeitpunkt den Termin der Abschlussprüfung von",
+     "der Schule erfahren.",
+     "Abstimmung und Festlegung der Prüfungsinhalte. Berufsschule und Ausbildungsbetrieb arbeiten nach",
+     "gleichen Rechtsquellen. Gleiche Themen werden aber trotzdem zu unterschiedlichen Zeiten vermittelt.",
+     "Durch eine mögliche Abstimmung kann dies vielleicht vermieden werden."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 4."
+   }
+  },
+  {
+   "id": "ihk66-a5",
+   "title": "S66·A5: Sie sind Inhaber des Gastronomieunternehmens “Classic & Co”. In Ihrem Unternehme…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 5",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 5/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) Erstausbildung."
+   ],
+   "quiz": {
+    "q": "Sie sind Inhaber des Gastronomieunternehmens “Classic & Co”. In Ihrem Unternehmen macht gerade der 14jährige Spanier Miguel sein Schülerpraktikum. Miguel fragt Sie, ob die Ausbildung in allen Ländern der Europäischen Union gleich verläuft. Was antwor…",
+    "options": [
+     "Seit Einführung des Binnenmarktes gibt es ein einheitliches Ausbildungssystem.",
+     "Nur die zuletzt beigetretenen Staaten der EU haben noch ein anderes System der beruflichen",
+     "Erstausbildung.",
+     "Innerhalb der EU gibt es verschiedene Systeme der beruflichen Erstausbildung."
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original-IHK-Satz 66, Aufgabe 5."
+   }
+  },
+  {
+   "id": "ihk66-a6",
+   "title": "S66·A6: Herr Schreiber ist Besitzer eines Einzelhandelsfachgeschäfts in der Branche Papi…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 6",
+   "summary": "Original-IHK-Aufgabe 6/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte bringen Sie die Vorgänge in die richtige Reihenfolge, indem Sie die Käs tchen nummerieren!",
+   "keyPoints": [
+    "<strong>Zuordnung: TV→4? Nein — Kästchen-Digits 4,1,2,3 (rechtsbündig): TV=1, GG=—, AEVO=—, BetrVG=2, AO=3 gem. Musterlösung; Details im Lernhinweis.</strong>"
+   ],
+   "quiz": {
+    "q": "Herr Schreiber ist Besitzer eines Einzelhandelsfachgeschäfts in der Branche Papier, Bürobedarf, Schreibwaren mit einer angeschlossenen Buchhandlung. Herr Schreiber möchte ab August nächsten Jahres erstmalig in diesem Geschäft einen Kaufmann im Einzel (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Zuordnung: TV→4? Nein — Kästchen-Digits 4,1,2,3 (rechtsbündig): TV=1, GG=—, AEVO=—, BetrVG=2, AO=3 gem. Musterlösung; Details im Lernhinweis."
+   }
+  },
+  {
+   "id": "ihk66-a7",
+   "title": "S66·A7: Frau Schreiber bildet eine angehende Buchhändlerin aus, die den mittleren Bildun…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 7",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 7/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Ein in allen Ausbildungsabschnitten insgesamt um 6 Monate verkürzter betrieblicher Ausbildungsplan."
+   ],
+   "quiz": {
+    "q": "Frau Schreiber bildet eine angehende Buchhändlerin aus, die den mittleren Bildungsabschluss erreicht und eine halbjährige Verkürzung ihrer Ausbildung vereinbart hat. Welchen Plan bezeichnet man in diesem Fall als “individuellen Ausbildungsplan”?",
+    "options": [
+     "Ein Plan für Buchhändler, ausgelegt auf die reguläre Ausbildungsdauer von drei Ausbildungsjahren.",
+     "Ein in allen Ausbildungsabschnitten insgesamt um 6 Monate verkürzter betrieblicher Ausbildungsplan.",
+     "Ein verkürzter Ausbildungsplan, der auch die schulischen Inhalte umfasst."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 7."
+   }
+  },
+  {
+   "id": "ihk66-a8",
+   "title": "S66·A8: Wie würden Sie aus pädagogischen Gründen den ersten Tag gestalten, den ein Jugen…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 8",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 8/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die sechs richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C, E, F, G, I</strong>",
+    "A) Die Auszubildenden pünktlich zum vereinbarten Zeitpunkt persönlich empfangen und ihnen mit",
+    "C) Die Auszubildenden von jüngeren Mitarbeitern in Empfang nehmen lassen, weil die Jugendlichen sich",
+    "E) Die Arbeitsräume und die Nebenräume (Lagerraum, Aufenthaltsraum, sanitäre Anlagen,",
+    "F) Garderobenraum) mit dem Auszubildenden gemeinsam begehen.",
+    "G) Alle Mitarbeiter - auch die nur samstags beschäftigten, die Raumpflegerin und den zeitweilig",
+    "I) Beim Rundgang ausführlich auf die Sicherheitsbestimmungen aufmerksam machen."
+   ],
+   "quiz": {
+    "q": "Wie würden Sie aus pädagogischen Gründen den ersten Tag gestalten, den ein Jugendlicher in einem mittelständischem Ausbildungsbetrieb erlebt? Kreuzen Sie sechs Aussagen an, die für die Gestaltung des ersten Ausbildungstages sinnvoll sind!",
+    "options": [
+     "Die Auszubildenden pünktlich zum vereinbarten Zeitpunkt persönlich empfangen und ihnen mit",
+     "freundlichen Worten über die erste Befangenheit hinwegT helfen.",
+     "Die Auszubildenden von jüngeren Mitarbeitern in Empfang nehmen lassen, weil die Jugendlichen sich",
+     "dann \"unter ihres Gleichen\" fühlen und weniger befangen sind.",
+     "Die Arbeitsräume und die Nebenräume (Lagerraum, Aufenthaltsraum, sanitäre Anlagen,",
+     "Garderobenraum) mit dem Auszubildenden gemeinsam begehen.",
+     "Alle Mitarbeiter - auch die nur samstags beschäftigten, die Raumpflegerin und den zeitweilig",
+     "beschäftigten Gärtner - namentlich mit dem Auszubildenden bekannt machen.",
+     "Beim Rundgang ausführlich auf die Sicherheitsbestimmungen aufmerksam machen.",
+     "Mit dem Auszubildenden im Aufenthaltsraum den Verlauf der Ausbildung in den ersten vier Wochen",
+     "der Probezeit besprechen.",
+     "Erläuterungen zur Führung des Ausbildungsnachweises geben.",
+     "Am ersten Tag muss der Jugendliche weitgehend im Hintergrund der Arbeitsräume bleiben, um ihn",
+     "vor Überforderung durch den Geschäftsbetrieb zu schützen.",
+     "Sie verhelfen bereits am ersten Tag dem Auszubildenden zu kleinen Erfolgserlebnissen."
+    ],
+    "correctArr": [
+     0,
+     2,
+     4,
+     5,
+     6,
+     8
+    ],
+    "expl": "Lösung: A, C, E, F, G, I. Original-IHK-Satz 66, Aufgabe 8."
+   }
+  },
+  {
+   "id": "ihk66-a9",
+   "title": "S66·A9: Inwieweit sind die im betrieblichen Ausbildungsplan von Ihnen veranschlagten Aus…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 9",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 9/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Sie müssen die geplanten Ausbildungszeiten so weit wie möglich einhalten."
+   ],
+   "quiz": {
+    "q": "Inwieweit sind die im betrieblichen Ausbildungsplan von Ihnen veranschlagten Ausbildungszeiten bindend?",
+    "options": [
+     "Sie müssen die geplanten Ausbildungszeiten strikt einhalten.",
+     "Sie müssen die geplanten Ausbildungszeiten so weit wie möglich einhalten.",
+     "Sie müssen die geplanten Ausbildungszeiten großzügig handhaben."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 9."
+   }
+  },
+  {
+   "id": "ihk66-a10",
+   "title": "S66·A10: Es gibt Einflüsse, die sich auf die fortlaufende Ausbildung auswirken und deshal…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 10",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 10/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die drei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C, G</strong>",
+    "A) Blockunterricht",
+    "C) Urlaub des Auszubildenden",
+    "G) Außerbetriebliche Ausbildung"
+   ],
+   "quiz": {
+    "q": "Es gibt Einflüsse, die sich auf die fortlaufende Ausbildung auswirken und deshalb im betrieblichen Ausbildungsplan in die zeitliche Gliederung einbezogen werden müssen. Kreuzen Sie in den entsprechenden Lösungskästchen bei den nachfolgend aufgeführte…",
+    "options": [
+     "Blockunterricht",
+     "Alle Feiertage wie Ostern, Pfingsten usw.",
+     "Urlaub des Auszubildenden",
+     "Urlaub des Ausbilders",
+     "Außergewöhnliche Belastungsspitzen",
+     "Eintägige Schulung im Betrieb eines Lieferanten",
+     "Außerbetriebliche Ausbildung"
+    ],
+    "correctArr": [
+     0,
+     2,
+     6
+    ],
+    "expl": "Lösung: A, C, G. Original-IHK-Satz 66, Aufgabe 10."
+   }
+  },
+  {
+   "id": "ihk66-a11",
+   "title": "S66·A11: Sie sind Geschäftsführer der Solan GmbH und der verantwortliche Ausbilder für di…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 11",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 11/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) Sie müssen nichts tun, da ein Ausbildungsvertrag ein befristeter Vertrag ist. Sie sollten aber Sven"
+   ],
+   "quiz": {
+    "q": "Sie sind Geschäftsführer der Solan GmbH und der verantwortliche Ausbilder für die kaufmännische Ausbildung. Die betriebliche Situation lässt eine Übernahme aller Auszubildenden in ein unbefristetes Angestelltenverhältnis nicht zu. Daher haben sie sec…",
+    "options": [
+     "Sie kündigen Sven sofort fristlos, da er vermutlich das Ausbildungsende nicht erreicht.",
+     "Sie kündigen Sven fristgerecht zum Ende der Ausbildung.",
+     "Sie müssen nichts tun, da ein Ausbildungsvertrag ein befristeter Vertrag ist. Sie sollten aber Sven",
+     "rechtzeitig informieren.",
+     "Sie schließen mit Sven einen Auflösungsvertrag über die Beendigung des Ausbildungsverhältnisses",
+     "ab.",
+     "Sie können sich nach der Ausbildung von Sven nur trennen, wenn der Ausbildungsberater der",
+     "zuständigen Stelle seine Zustimmung erteilt."
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original-IHK-Satz 66, Aufgabe 11."
+   }
+  },
+  {
+   "id": "ihk66-a12",
+   "title": "S66·A12: Die Erwo GmbH schließt vor Beginn der Ausbildung mit den zukünftigen Auszubilden…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 12",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 12/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die vier richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C, F, G</strong>",
+    "A) Verpflichtung des Auszubildenden zur Weiterbeschäftigung nach der Ausbildung",
+    "C) Vereinbarung von Vertragsstrafen",
+    "F) Ausschluss oder die Beschränkung von Schadensersatzansprüchen",
+    "G) Kostenübernahme von Ausbildungsmitteln"
+   ],
+   "quiz": {
+    "q": "Die Erwo GmbH schließt vor Beginn der Ausbildung mit den zukünftigen Auszubildenden einen Berufsausbildungsvertrag ab. Welche der folgenden Inhalte sind sogenannte nichtige Vereinbarungen?",
+    "options": [
+     "Verpflichtung des Auszubildenden zur Weiterbeschäftigung nach der Ausbildung",
+     "Charakterliche Förderung des Auszubildenden",
+     "Vereinbarung von Vertragsstrafen",
+     "Voraussetzungen, unter denen der Berufsausbildungsvertrag gekündigt werden kann",
+     "Ausbildungsmaßnahmen außerhalb der Ausbildungsstätte",
+     "Ausschluss oder die Beschränkung von Schadensersatzansprüchen",
+     "Kostenübernahme von Ausbildungsmitteln",
+     "Dauer der Probezeit"
+    ],
+    "correctArr": [
+     0,
+     2,
+     5,
+     6
+    ],
+    "expl": "Lösung: A, C, F, G. Original-IHK-Satz 66, Aufgabe 12."
+   }
+  },
+  {
+   "id": "ihk66-a13",
+   "title": "S66·A13: Georg, 19 Jahre alt, ist Auszubildender im dritten Ausbildungsjahr. In der Zwisc…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 13",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 13/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die vier richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B, C, E</strong>",
+    "A) Georg muss den vorgeschriebenen schriftlichen Ausbildungsnachweis geführt haben.",
+    "B) Seine Ausbildungsdauer laut Ausbildungsvertrag endet nicht nach dem 15. September.",
+    "C) Georg muss an der Zwischenprüfung teilgenommen haben.",
+    "E) Der Berufsausbildungsvertrag wurde in das Verzeichnis der Berufsausbildungsverhältnisse"
+   ],
+   "quiz": {
+    "q": "Georg, 19 Jahre alt, ist Auszubildender im dritten Ausbildungsjahr. In der Zwischenprüfung wurden drei Fächer mit mangelhaft bewertet, der letzte Teil seiner Abschlussprüfung ist am 15. Juli. Welche Voraussetzungen müssen grundsätzlich erfüllt sein, …",
+    "options": [
+     "Georg muss den vorgeschriebenen schriftlichen Ausbildungsnachweis geführt haben.",
+     "Seine Ausbildungsdauer laut Ausbildungsvertrag endet nicht nach dem 15. September.",
+     "Georg muss an der Zwischenprüfung teilgenommen haben.",
+     "Seine Ausbildungsdauer laut Ausbildungsvertrag darf nicht nach dem 15. August beendet sein.",
+     "Der Berufsausbildungsvertrag wurde in das Verzeichnis der Berufsausbildungsverhältnisse",
+     "eingetragen.",
+     "Georg muss eine Zwischenprüfung bestanden haben.",
+     "Der Berufsausbildungsvertrag wurde in die Kammerordnung eingetragen.",
+     "Georg muss einen Berufsschulabschluss vorweisen."
+    ],
+    "correctArr": [
+     0,
+     1,
+     2,
+     4
+    ],
+    "expl": "Lösung: A, B, C, E. Original-IHK-Satz 66, Aufgabe 13."
+   }
+  },
+  {
+   "id": "ihk66-a14",
+   "title": "S66·A14: Der Auszubildende Bruno äußert Ihnen gegenüber, dass er später auch gern die Aus…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 14",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 14/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: E</strong>",
+    "E) Der Bildungsgang ist eine Ausbildung."
+   ],
+   "quiz": {
+    "q": "Der Auszubildende Bruno äußert Ihnen gegenüber, dass er später auch gern die Ausbildereignungsprüfung ablegen möchte. Ihn interessiert, ob der Bildungsgang zur Vermittlung von berufs- und arbeitspädagogischen Kenntnissen als eine Art von Ausbildung z…",
+    "options": [
+     "Der Bildungsgang ist eine Anpassungsfortbildung.",
+     "Der Bildungsgang ist eine Erhaltungsfortbildung.",
+     "Der Bildungsgang ist eine Umschulung.",
+     "Der Bildungsgang ist eine Weiterqualifizierung bzw. Durchführungsberechtigung.",
+     "Der Bildungsgang ist eine Ausbildung.",
+     "Der Bildungsgang ist eine Berufssicherungsfortbildung."
+    ],
+    "correctArr": [
+     4
+    ],
+    "expl": "Lösung: E. Original-IHK-Satz 66, Aufgabe 14."
+   }
+  },
+  {
+   "id": "ihk66-a15",
+   "title": "S66·A15: Durch Ihre Anwerbungsmaßnahmen ist eine Vielzahl von Bewerbungen um einen Ausbil…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 15",
+   "summary": "Original-IHK-Aufgabe 15/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte füllen Sie die Kästchen aus! erweiterter Fachhoch- Allgemeine",
+   "keyPoints": [
+    "<strong>Lösung: Oberschule → erweiterte Sek-I; Fachoberschule → Fachhochschulreife; Berufsfachschule → erweiterte Sek-I; Gymnasium → Allgemeine Hochschulreife (4 Markierungen).</strong>"
+   ],
+   "quiz": {
+    "q": "Durch Ihre Anwerbungsmaßnahmen ist eine Vielzahl von Bewerbungen um einen Ausbildungsplatz bei Ihnen eingetroffen. Deshalb wollen Sie eine Vorauswahl durchführen, die sich an den zu erwartenden Schulabschlüssen der Bewerber orientieren soll. Ordnen S (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung: Oberschule → erweiterte Sek-I; Fachoberschule → Fachhochschulreife; Berufsfachschule → erweiterte Sek-I; Gymnasium → Allgemeine Hochschulreife (4 Markierungen)."
+   }
+  },
+  {
+   "id": "ihk66-a16",
+   "title": "S66·A16: Frau Krause, Auszubildende zur Kauffrau für Büromanagement, befindet sich am Anf…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 16",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 16/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die zwei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: C, E</strong>",
+    "C) Die Ausbildung endet mit dem im Ausbildungsvertrag vereinbarten Termin.",
+    "E) ihrem Beginn."
+   ],
+   "quiz": {
+    "q": "Frau Krause, Auszubildende zur Kauffrau für Büromanagement, befindet sich am Anfang des dritten Ausbildungsjahres. In einem Gespräch mit ihrer Ausbilderin Frau Ackermann möchte sie wissen, wann ihre Ausbildung endet.",
+    "options": [
+     "Die Ausbildung kann mit einer ordentlichen Kündigung durch den Ausbildenden enden.",
+     "Die Ausbildung kann bei sehr guten Leistungen vorzeitig beendet werden.",
+     "Die Ausbildung endet mit dem im Ausbildungsvertrag vereinbarten Termin.",
+     "Bei Auszubildenden mit allgemeiner Hochschulreife endet die Ausbildung immer zwei Jahre nach",
+     "ihrem Beginn.",
+     "Die Ausbildung endet mit dem Bestehen der Abschlussprüfung."
+    ],
+    "correctArr": [
+     2,
+     4
+    ],
+    "expl": "Lösung: C, E. Original-IHK-Satz 66, Aufgabe 16."
+   }
+  },
+  {
+   "id": "ihk66-a17",
+   "title": "S66·A17: Bei der Abfassung der Berufsausbildungsverträge stützen Sie sich auch auf Gesetz…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 17",
+   "summary": "Original-IHK-Aufgabe 17/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte kreuzen Sie in den Kästchen die vier richtigen AntwTorten an! 1 2 3 4 5",
+   "keyPoints": [
+    "<strong>Lösung: Tägliche Ausbildungszeit → TV; Urlaub → TV; Dauer der Ausbildung → AO; Name des Ausbildungsberufs → AO (4 X).</strong>"
+   ],
+   "quiz": {
+    "q": "Bei der Abfassung der Berufsausbildungsverträge stützen Sie sich auch auf Gesetze und Verordnungen, die nachfolgend aufgelistet sind: 1. Tarifvertrag (TV) 2. Grundgesetz (GG) 3. Ausbildereignungsverordnung (AEVO) 4. Betriebsverfassungsgesetz (BetrVG) (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung: Tägliche Ausbildungszeit → TV; Urlaub → TV; Dauer der Ausbildung → AO; Name des Ausbildungsberufs → AO (4 X)."
+   }
+  },
+  {
+   "id": "ihk66-a18",
+   "title": "S66·A18: Das Berufsausbildungsverhältnis kann auf die nachfolgend aufgeführten Arten been…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 18",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 18/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: D</strong>",
+    "D) Zweckerreichung"
+   ],
+   "quiz": {
+    "q": "Das Berufsausbildungsverhältnis kann auf die nachfolgend aufgeführten Arten beendet werden. Kreuzen Sie die in der Praxis häufigste Beendigungsart an!",
+    "options": [
+     "Auflösungsvertrag",
+     "Anfechtung des Vertrages",
+     "Umzug des Auszubildenden",
+     "Zweckerreichung",
+     "Ordentliche Kündigung",
+     "Zeitablauf",
+     "Außerordentliche Kündigung"
+    ],
+    "correctArr": [
+     3
+    ],
+    "expl": "Lösung: D. Original-IHK-Satz 66, Aufgabe 18."
+   }
+  },
+  {
+   "id": "ihk66-a19",
+   "title": "S66·A19: Sie sind Ausbilder und als Mitarbeiter der Personalentwicklung eines mittelständ…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 19",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 19/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: A</strong>",
+    "A) Vorlage sämtlicher Bewerberunterlagen, einschließlich der nicht in Frage kommenden Bewerber"
+   ],
+   "quiz": {
+    "q": "Sie sind Ausbilder und als Mitarbeiter der Personalentwicklung eines mittelständischen Einzelhandelsbetriebes für die Einstellung von Auszubildenden zuständig. In jeder Filiale ist ein Betriebsrat gewählt. Es existieren keine Betriebsvereinbarungen f…",
+    "options": [
+     "Vorlage sämtlicher Bewerberunterlagen, einschließlich der nicht in Frage kommenden Bewerber",
+     "Anwesenheit eines Betriebsratsmitgliedes bei jedem Bewerbergespräch",
+     "Bevorzugte Einstellung von Kindern der Mitarbeiter",
+     "Anwesenheit eines Betriebsratsmitgliedes bei der Durchführung des Einstellungstests",
+     "Protokollierung des Bewerbergesprächs zur Einsichtnahme",
+     "Mitbestimmung bei der Höhe der Ausbildungsvergütung",
+     "Mitbestimmung darüber, in welcher Abteilung ein Auszubildender eingesetzt wird"
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung: A. Original-IHK-Satz 66, Aufgabe 19."
+   }
+  },
+  {
+   "id": "ihk66-a20",
+   "title": "S66·A20: Ein Bewerbungsgespräch mit einem Ausbildungsplatzbewerber unterscheidet sich gru…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 20",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 20/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die zwei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: C, E</strong>",
+    "C) Bei Ausbildungsplatzbewerbern sind die Eltern grundsätzlich anwesend.",
+    "E) Bei Ausbildungsplatzbewerbern dauern die Bewerbungsgespräche erheblich länger, weil alle"
+   ],
+   "quiz": {
+    "q": "Ein Bewerbungsgespräch mit einem Ausbildungsplatzbewerber unterscheidet sich grundsätzlich von anderen Bewerbungsgesprächen. Hierfür gibt es verschiedene Gründe, von denen einige nachfolgend genannt sind.",
+    "options": [
+     "Bei Ausbildungsplatzbewerbern werden keine Fragen zu beruflichen Entwicklungsmöglichkeiten",
+     "gestellt.",
+     "Bei Ausbildungsplatzbewerbern sind die Eltern grundsätzlich anwesend.",
+     "Bei Ausbildungsplatzbewerbern können die Inhalte des Gesprächs nur wenig berufsbezogen sein.",
+     "Bei Ausbildungsplatzbewerbern dauern die Bewerbungsgespräche erheblich länger, weil alle",
+     "Ausbildungsinhalte eingehend erläutert werden müssen.",
+     "Junge Ausbildungsplatzbewerber entwickeln im Bewerbungsgespräch häufig wenig Eigeninitiative."
+    ],
+    "correctArr": [
+     2,
+     4
+    ],
+    "expl": "Lösung: C, E. Original-IHK-Satz 66, Aufgabe 20."
+   }
+  },
+  {
+   "id": "ihk66-a21",
+   "title": "S66·A21: Die Seedeich GmbH schließt mit drei Bewerbern Berufsausbildungsverträge zum Indu…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 21",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 21/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die drei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C, E</strong>",
+    "B) Franzi kann mit dem Ausbildenden eine einjährige Verkürzung der Ausbildung vereinbaren.",
+    "C) Alberto kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren.",
+    "E) Franzi kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren."
+   ],
+   "quiz": {
+    "q": "Die Seedeich GmbH schließt mit drei Bewerbern Berufsausbildungsverträge zum Industriekaufmann ab: Franzi, 18 Jahre, Sekundarabschluss I BFS Wirtschaft Alberto, 17 Jahre, Sekundarabschluss Pepe, 21 Jahre, Allgemeine Hochschulreife Franzi, Alberto und …",
+    "options": [
+     "Pepe hat Rechtsanspruch auf eine einjährige Verkürzung.",
+     "Franzi kann mit dem Ausbildenden eine einjährige Verkürzung der Ausbildung vereinbaren.",
+     "Alberto kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren.",
+     "Franzi hat Rechtsanspruch auf eine einjährige Verkürzung.",
+     "Franzi kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren.",
+     "Alberto hat Rechtsanspruch auf eine halbjährige Verkürzung."
+    ],
+    "correctArr": [
+     1,
+     2,
+     4
+    ],
+    "expl": "Lösung: B, C, E. Original-IHK-Satz 66, Aufgabe 21."
+   }
+  },
+  {
+   "id": "ihk66-a22",
+   "title": "S66·A22: Herr Schuster fragt sich, welche Maßnahme besonders gut geeignet ist, berufsbezo…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 22",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 22/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) genügt."
+   ],
+   "quiz": {
+    "q": "Herr Schuster fragt sich, welche Maßnahme besonders gut geeignet ist, berufsbezogene Motive des Auszubildenden zu verstärken.",
+    "options": [
+     "Er lässt den Auszubildenden wiederholt erkennen, wie wenig er den beruflichen Anforderungen",
+     "genügt.",
+     "Er übergibt dem Auszubildenden Verantwortung.",
+     "Er äußert wiederholt, dass der Beruf nur ein Mittel zum Geldverdienen ist.",
+     "Er stellt an den Auszubildenden niedrige Anforderungen."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 22."
+   }
+  },
+  {
+   "id": "ihk66-a23",
+   "title": "S66·A23: Ihnen wird als verantwortlicher Ausbilder in einem Betrieb mit 150 Mitarbeitern …",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 23",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 23/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die sechs richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: C, D, F, G, I, J</strong>",
+    "C) Erläuterung betrieblicher Zusammenhänge anhand eines Videos",
+    "D) Lockere Gesprächsrunde zum Kennenlernen",
+    "F) Vorstellung sozialer Einrichtungen des Unternehmens",
+    "G) Informationen zur Arbeitssicherheit",
+    "I) Erläuterung des betrieblichen Ausbildungsplanes",
+    "J) Erläuterung zur Führung des Ausbildungsnachweisheftes"
+   ],
+   "quiz": {
+    "q": "Ihnen wird als verantwortlicher Ausbilder in einem Betrieb mit 150 Mitarbeitern die kaufmännische Ausbildung der neuen Auszubildenden zum Industriekaufmann übertragen. Sie sollen die drei zukünftigen Auszubildenden am ersten Ausbildungstag um 08.00 U…",
+    "options": [
+     "Einarbeitung in das zukünftige Aufgabengebiet",
+     "Hinweise auf Sanktionen bei Fehlverhalten",
+     "Erläuterung betrieblicher Zusammenhänge anhand eines Videos",
+     "Lockere Gesprächsrunde zum Kennenlernen",
+     "Erläuterungen zur Höhe der Mindestausbildungsvergütung",
+     "Vorstellung sozialer Einrichtungen des Unternehmens",
+     "Informationen zur Arbeitssicherheit",
+     "Vorstellung aller Mitarbeiter",
+     "Erläuterung des betrieblichen Ausbildungsplanes",
+     "Erläuterung zur Führung des Ausbildungsnachweisheftes"
+    ],
+    "correctArr": [
+     2,
+     3,
+     5,
+     6,
+     8,
+     9
+    ],
+    "expl": "Lösung: C, D, F, G, I, J. Original-IHK-Satz 66, Aufgabe 23."
+   }
+  },
+  {
+   "id": "ihk66-a24",
+   "title": "S66·A24: Im Rahmen Ihrer Tätigkeit als Ausbilder ist es Ihnen ein besonderes Anliegen, ne…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 24",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 24/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die sechs richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C, E, H, I, L</strong>",
+    "A) Selbstständigkeit in der Arbeitsabwicklung/Arbeitsplanung",
+    "C) Lern- und Transferfähigkeit",
+    "E) Systematisches, analytisches Vorgehen",
+    "H) Entscheidungsfähigkeit",
+    "I) Erkennen der Grenzen des eigenen Könnens",
+    "L) Eigeninitiative"
+   ],
+   "quiz": {
+    "q": "Im Rahmen Ihrer Tätigkeit als Ausbilder ist es Ihnen ein besonderes Anliegen, neben den beruflichen Fertigkeiten und Kenntnissen (Fachkompetenz) auch langfristig verwertbare, berufsübergreifende Qualifikationen zu fördern. Deshalb halten Sie es für b…",
+    "options": [
+     "Selbstständigkeit in der Arbeitsabwicklung/Arbeitsplanung",
+     "Verantwortung für andere Auszubildende übernehmen",
+     "Lern- und Transferfähigkeit",
+     "Teamfähigkeit, bereitwillige Zusammenarbeit mit anderen",
+     "Systematisches, analytisches Vorgehen",
+     "Höflichkeit",
+     "Arbeiten nach Anweisung",
+     "Entscheidungsfähigkeit",
+     "Erkennen der Grenzen des eigenen Könnens",
+     "Freundlichkeit",
+     "Sauberkeit und Ordnung",
+     "Eigeninitiative"
+    ],
+    "correctArr": [
+     0,
+     2,
+     4,
+     7,
+     8,
+     11
+    ],
+    "expl": "Lösung: A, C, E, H, I, L. Original-IHK-Satz 66, Aufgabe 24."
+   }
+  },
+  {
+   "id": "ihk66-a25",
+   "title": "S66·A25: Als Ausbilder/in sollten Sie zwischen den einzelnen Lernbereichen unterscheiden …",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 25",
+   "summary": "Original-IHK-Aufgabe 25/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte füllen Sie die Kästchen aus! psycho-",
+   "keyPoints": [
+    "<strong>Lösung: Organisation beschreiben → kognitiv; Maschinen bedienen → motorisch; Arbeitsanweisungen erläutern → kognitiv; Toner wechseln → motorisch; Unfallverhütung beachten → kognitiv; Portogebühren berechnen → kognitiv.</strong>"
+   ],
+   "quiz": {
+    "q": "Als Ausbilder/in sollten Sie zwischen den einzelnen Lernbereichen unterscheiden können, um zu wissen, ob Sie beim Auszubildenden Verhaltensänderungen durch Ausbilden (Vermittlung von Fertigkeiten und Kenntnissen über die Formulierung von Lernzielen)  (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung: Organisation beschreiben → kognitiv; Maschinen bedienen → motorisch; Arbeitsanweisungen erläutern → kognitiv; Toner wechseln → motorisch; Unfallverhütung beachten → kognitiv; Portogebühren berechnen → kognitiv."
+   }
+  },
+  {
+   "id": "ihk66-a26",
+   "title": "S66·A26: Um den Lernerfolg z.B. nach Ausbildungsabschnitten zu kontrollieren, können Sie …",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 26",
+   "summary": "Original-IHK-Aufgabe 26/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte füllen Sie die Kästchen des Rasters aus!",
+   "keyPoints": [
+    "<strong>Lösung (8 Markierungen): unmittelbare Korrektur → mündliche Befragung; objektive Bewertung → MW+Alternativ+Umordnung; sprachl. Gestaltungsspielraum → mündliche; rationelle Auswertung → MW+Alternativ.</strong>"
+   ],
+   "quiz": {
+    "q": "Um den Lernerfolg z.B. nach Ausbildungsabschnitten zu kontrollieren, können Sie eine Vielzahl von verschiedenen Aufgabenformen einsetzen. Deshalb sollten Sie die Merkmale dieser Aufgabenformen kennen. Ordnen Sie durch Ankreuzen die nachfolgend genann (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung (8 Markierungen): unmittelbare Korrektur → mündliche Befragung; objektive Bewertung → MW+Alternativ+Umordnung; sprachl. Gestaltungsspielraum → mündliche; rationelle Auswertung → MW+Alternativ."
+   }
+  },
+  {
+   "id": "ihk66-a27",
+   "title": "S66·A27: Sie sind für die Ausbildung der Industriekaufleute in ihrem Unternehmen verantwo…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 27",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 27/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die drei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D, E</strong>",
+    "B) Sabine Klein, 40 Jahre alt, Mutter von drei Kindern, Industriekauffrau mit AEVO-Prüfung.",
+    "D) Katharina Theis, 45 Jahre alt, Bilanzbuchhalterin.",
+    "E) Otto Adam, 52 Jahre alt, Bürokaufmann, Führerscheinentzug nach Verkehrsverstoß."
+   ],
+   "quiz": {
+    "q": "Sie sind für die Ausbildung der Industriekaufleute in ihrem Unternehmen verantwortlich. Nachdem sich einige Auszubildende über eine mangelnde Betreuung in den Fachabteilungen bei Ihnen beschwert haben, beschließen Sie, dass in jeder Fachabteilung ein…",
+    "options": [
+     "Hugo Schmidt, 22 Jahre alt, seit zwei Jahren als Gabelstaplerfahrer tätig.",
+     "Sabine Klein, 40 Jahre alt, Mutter von drei Kindern, Industriekauffrau mit AEVO-Prüfung.",
+     "Torsten Mantey, 35 Jahre alt, verheiratet, Zerspanungsmechaniker.",
+     "Katharina Theis, 45 Jahre alt, Bilanzbuchhalterin.",
+     "Otto Adam, 52 Jahre alt, Bürokaufmann, Führerscheinentzug nach Verkehrsverstoß.",
+     "Manuel Wagner, 27 Jahre alt, Industriekaufmann, vor einem Jahr eine Vorstrafe wegen Verkaufs",
+     "pornografischer Schriften an Jugendliche."
+    ],
+    "correctArr": [
+     1,
+     3,
+     4
+    ],
+    "expl": "Lösung: B, D, E. Original-IHK-Satz 66, Aufgabe 27."
+   }
+  },
+  {
+   "id": "ihk66-a28",
+   "title": "S66·A28: Als Ausbilder sollten Sie zwischen den einzelnen Kompetenzbereichen unterscheide…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 28",
+   "summary": "Original-IHK-Aufgabe 28/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte füllen Sie die Kästchen des Rasters aus!",
+   "keyPoints": [
+    "<strong>Lösung (8 X): Arbeitsaufgabe planen → Methodenkomp.; zusammenarbeiten → Sozialkomp.; Entscheidungen treffen → Methodenkomp.; Banküberweisung ausfüllen → Fachkomp.; Feinmotorik trainieren → Fachkomp.; selbst etwas erarbeiten → Methodenkomp.; Verantwortung übernehmen → Sozialkomp.</strong>"
+   ],
+   "quiz": {
+    "q": "Als Ausbilder sollten Sie zwischen den einzelnen Kompetenzbereichen unterscheiden können, um zu wissen, ob Sie beim Auszubildenden Verhaltensänderungen durch Ausbilden (Vermittlung von Fertigkeiten und Kenntnissen über die Formulierung von Lernzielen (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung (8 X): Arbeitsaufgabe planen → Methodenkomp.; zusammenarbeiten → Sozialkomp.; Entscheidungen treffen → Methodenkomp.; Banküberweisung ausfüllen → Fachkomp.; Feinmotorik trainieren → Fachkomp.; selbst etwas erarbeiten → Methodenkomp.; Verantwortung übernehmen → Sozialkomp."
+   }
+  },
+  {
+   "id": "ihk66-a29",
+   "title": "S66·A29: Um die vorgegebenen Lernziele erreichen zu können, setzen Sie die unterschiedlic…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 29",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 29/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die sechs richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C, G, H, J, K</strong>",
+    "A) Erarbeitende Unterweisungsform",
+    "C) Diskussion",
+    "G) Entwickelnde Unterweisungsform",
+    "H) Brainstorming",
+    "J) Besprechende Unterweisungsform",
+    "K) Verarbeitende Unterweisungsform"
+   ],
+   "quiz": {
+    "q": "Um die vorgegebenen Lernziele erreichen zu können, setzen Sie die unterschiedlichsten Methoden ein. Wenn Sie entsprechende Methoden wählen, gehen Sie davon aus, dass u.U. nicht eine Methode zum erwünschten Erfolg führt, sondern ein Methodenmix! Insbe…",
+    "options": [
+     "Erarbeitende Unterweisungsform",
+     "Vormachende Unterweisungsform",
+     "Diskussion",
+     "Vortrag",
+     "Veranschaulichende Unterweisungsform",
+     "Vier-Stufen-Methode",
+     "Entwickelnde Unterweisungsform",
+     "Brainstorming",
+     "Lehrgespräch",
+     "Besprechende Unterweisungsform",
+     "Verarbeitende Unterweisungsform",
+     "Demonstration"
+    ],
+    "correctArr": [
+     0,
+     2,
+     6,
+     7,
+     9,
+     10
+    ],
+    "expl": "Lösung: A, C, G, H, J, K. Original-IHK-Satz 66, Aufgabe 29."
+   }
+  },
+  {
+   "id": "ihk66-a30",
+   "title": "S66·A30: Der Auszubildende Manuel hat in einem programmierten Test über Werkstoffkunde nu…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 30",
+   "summary": "Original-IHK-Aufgabe 30/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte bringen Sie die Vorgänge in die richtige Reihenfolge, indem Sie die Käs tchen nummerieren!",
+   "keyPoints": [
+    "<strong>Zuordnungslösung aus Musterlösung: c=3, d=6, e=2, f=4, g=1, h=5.</strong>"
+   ],
+   "quiz": {
+    "q": "Der Auszubildende Manuel hat in einem programmierten Test über Werkstoffkunde nur 55 Prozent erreicht. Dieses Ergebnis liegt weit unter den sonst von ihm erbrachten Leistungen. Sie wollen in einem Beurteilungsgespräch mit ihm darüber reden und dabei  (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Zuordnungslösung aus Musterlösung: c=3, d=6, e=2, f=4, g=1, h=5."
+   }
+  },
+  {
+   "id": "ihk66-a31",
+   "title": "S66·A31: Zur in der Berufsausbildung angestrebten Handlungskompetenz gehören u.a. die Fäh…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 31",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 31/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die drei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B, D</strong>",
+    "A) Fragend-entwickelnde Unterweisungsform",
+    "B) Verarbeitende Unterweisungsform",
+    "D) Erarbeitende Unterweisungsform"
+   ],
+   "quiz": {
+    "q": "Zur in der Berufsausbildung angestrebten Handlungskompetenz gehören u.a. die Fähigkeiten zum “Erfassen von Zusammenhängen” und das “Systematische Denken”. Mit welchen Unterweisungsformen kann man die Fähigkeit zum Erfassen von Zusammenhängen entwicke…",
+    "options": [
+     "Fragend-entwickelnde Unterweisungsform",
+     "Verarbeitende Unterweisungsform",
+     "Vortragende Unterweisungsform",
+     "Erarbeitende Unterweisungsform",
+     "Vorführende Unterweisungsform",
+     "Vormachende Unterweisungsform"
+    ],
+    "correctArr": [
+     0,
+     1,
+     3
+    ],
+    "expl": "Lösung: A, B, D. Original-IHK-Satz 66, Aufgabe 31."
+   }
+  },
+  {
+   "id": "ihk66-a32",
+   "title": "S66·A32: Der Auszubildende Michael hat Schwierigkeiten, Zusammenhänge zu erfassen und sys…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 32",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 32/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die zwei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: D, F</strong>",
+    "D) Sie halten sich völlig aus dem Lernprozess heraus und beurteilen nur zum Schluss das Ergebnis.",
+    "F) können."
+   ],
+   "quiz": {
+    "q": "Der Auszubildende Michael hat Schwierigkeiten, Zusammenhänge zu erfassen und systematisch zu denken. Darum beauftragen Sie die Auszubildende Erika, mit Michael gemeinsam einen neuen Lerninhalt zu erarbeiten. Welche Funktion haben Sie als Ausbilder in…",
+    "options": [
+     "Sie bereiten die Lernarbeit für die beiden Auszubildenden bis ins Detail vor.",
+     "Sie haben die Lernarbeit Ihrer Auszubildenden ständig unter Kontrolle und greifen bei Fehlern sofort",
+     "korrigierend ein.",
+     "Sie halten sich völlig aus dem Lernprozess heraus und beurteilen nur zum Schluss das Ergebnis.",
+     "Sie bereiten die Aufgabe so vor, dass die Auszubildenden die gestellte Aufgabe selbstständig lösen",
+     "können.",
+     "Sie beobachten den Lernprozess genau und beraten die Auszubildenden fortlaufend.",
+     "Die Auszubildenden werden bereits bei der Planung der Aufgaben von Ihnen mit einbezogen."
+    ],
+    "correctArr": [
+     3,
+     5
+    ],
+    "expl": "Lösung: D, F. Original-IHK-Satz 66, Aufgabe 32."
+   }
+  },
+  {
+   "id": "ihk66-a33",
+   "title": "S66·A33: Herr Schuster würde gerne die Gedächtnisleistung seiner Auszubildenden trainiere…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 33",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 33/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: A</strong>",
+    "A) Der Intelligenz"
+   ],
+   "quiz": {
+    "q": "Herr Schuster würde gerne die Gedächtnisleistung seiner Auszubildenden trainieren. Welchem Bereich ist diese Gedächtnisleistung zuzuordnen?",
+    "options": [
+     "Der Intelligenz",
+     "Der Vitalität",
+     "Des Antriebs",
+     "Der Motorik"
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung: A. Original-IHK-Satz 66, Aufgabe 33."
+   }
+  },
+  {
+   "id": "ihk66-a34",
+   "title": "S66·A34: Im Rahmen der Ausbildung Kaufmann im Einzelhandel – Fachbereich Schuheinzelhande…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 34",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 34/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die zwei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C</strong>",
+    "B) Fachausdruck.",
+    "C) Aufschreiben von sechs Fachausdrücken für die bei der Schuhherstellung verwendeten"
+   ],
+   "quiz": {
+    "q": "Im Rahmen der Ausbildung Kaufmann im Einzelhandel – Fachbereich Schuheinzelhandel – müssen die Auszubildenden eine differenzierte Fachkenntnis bezüglich der verwendeten Materialien bei der Herstellung des angebotenen Schuhsortiments erwerben. Dabei k…",
+    "options": [
+     "Aufschreiben von zehn für die Schuhherstellung verwendeten Materialien mit dem jeweiligen",
+     "Fachausdruck.",
+     "Aufschreiben von sechs Fachausdrücken für die bei der Schuhherstellung verwendeten",
+     "Obermaterialien und das selbstständige Heraussuchen von qualitätsbestimmenden",
+     "Materialeigenschaften aus geeigneter Fac hliteratur.",
+     "Vorbereiten und Darbieten eines Referates, in dem am Beispiel von drei verschiedenen Schuharten",
+     "das gewählte Material beschrieben und die besondere Eignung begründet wird.",
+     "Auswendiglernen und Aufsagen von sechs Fachausdrücken für in der Schuhherstellung verwendete",
+     "Obermaterialien."
+    ],
+    "correctArr": [
+     1,
+     2
+    ],
+    "expl": "Lösung: B, C. Original-IHK-Satz 66, Aufgabe 34."
+   }
+  },
+  {
+   "id": "ihk66-a35",
+   "title": "S66·A35: Besonders bei dem etwas weniger begabten Auszubildenden Michael wollen Sie errei…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 35",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 35/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) erfolgreich gelernt hat."
+   ],
+   "quiz": {
+    "q": "Besonders bei dem etwas weniger begabten Auszubildenden Michael wollen Sie erreichen, dass er die gewonnenen Erkenntnisse aus bestimmten Aufgaben auch auf andere betriebliche Situationen anwenden kann. Sie überlegen, mit welcher Lernhilfe Sie dieses …",
+    "options": [
+     "Sie lassen Michael den Lernstoff auswendig lernen, da Sie so die Gewissheit haben, dass er",
+     "erfolgreich gelernt hat.",
+     "Sie leiten Michael dazu an, auf die Gleichartigkeit der Problemstellung zu achten.",
+     "Sie achten darauf, dass Sie in Ihren Unterweisungen möglichst viele Sinne bei Michael ansprechen.",
+     "Michael schreibt den Lernstoff auf, damit er das Gelernte immer griffbereit hat.",
+     "Sie vereinbaren für diese Fälle mit dem Firmeninhaber, Herrn Peters, zusätzliche externe",
+     "Schulungsmaßnahmen, die an den Wochenenden stattfinden sollen."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 35."
+   }
+  },
+  {
+   "id": "ihk66-a36",
+   "title": "S66·A36: Bei der Erstellung des betrieblichen Ausbildungsplans stellen Sie fest, dass ein…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 36",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 36/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die zwei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: B, E</strong>",
+    "B) Durch Vermittlung der Inhalte in einem anderen Unternehmen.",
+    "E) Durch Vermittlung der Inhalte in einer Überbetrieblichen Ausbildungsstätte."
+   ],
+   "quiz": {
+    "q": "Bei der Erstellung des betrieblichen Ausbildungsplans stellen Sie fest, dass einige Ausbildungsinhalte nicht vermittelt werden können, da zwei Fachabteilungen ausgegliedert wurden. Welche Möglichkeiten haben Sie, die Ausbildung dennoch durchführen zu…",
+    "options": [
+     "Durch Vermittlung der Inhalte in der Berufsschule.",
+     "Durch Vermittlung der Inhalte in einem anderen Unternehmen.",
+     "Durch Ersetzen der Inhalte durch andere berufsspezifische Ausbildungsinhalte.",
+     "Durch Weglassen der Inhalte.",
+     "Durch Vermittlung der Inhalte in einer Überbetrieblichen Ausbildungsstätte."
+    ],
+    "correctArr": [
+     1,
+     4
+    ],
+    "expl": "Lösung: B, E. Original-IHK-Satz 66, Aufgabe 36."
+   }
+  },
+  {
+   "id": "ihk66-a37",
+   "title": "S66·A37: In Ihrem Unternehmen wurden Testergebnisse bisher nur benotet Welche andere Mögl…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 37",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 37/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Der Ausbilder kann jedem Auszubildenden seinen Leistungsstand, gemessen am zu erreichenden"
+   ],
+   "quiz": {
+    "q": "In Ihrem Unternehmen wurden Testergebnisse bisher nur benotet Welche andere Möglichkeit der Bewertung gibt es?",
+    "options": [
+     "Die drei Besten des Tests werden vor der Gruppe gelobt und namentlich im Betrieb bekannt gegeben.",
+     "Der Ausbilder kann jedem Auszubildenden seinen Leistungsstand, gemessen am zu erreichenden",
+     "Lernziel, verdeutlichen.",
+     "Es gibt keine andere Möglichkeit. Notenvergabe ist das beste Mittel.",
+     "Ein Beurteilungsgespräch führen."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 37."
+   }
+  },
+  {
+   "id": "ihk66-a39",
+   "title": "S66·A39: Als Ausbilder müssen Sie häufig kurze Informationen an Ihre Auszubildenden weite…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 39",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 39/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) abzuschreiben."
+   ],
+   "quiz": {
+    "q": "Als Ausbilder müssen Sie häufig kurze Informationen an Ihre Auszubildenden weiter reichen. Sie stellen sich dabei die Frage, inwieweit Sie eine methodische Form für dieses Vorhaben einsetzen, die die selbstständige Erarbeitung durch Ihre Auszubildend…",
+    "options": [
+     "Der Ausbilder verteilt Handzettel, aus denen die Lieferbedingungen hervorgehen.",
+     "Der Ausbilder hält an der Tafel die Lieferbedingungen fest und fordert die Auszubildenden auf, diese",
+     "abzuschreiben.",
+     "Der Ausbilder hält einen Kurzvortrag und ordnet das Thema – hier Lieferbedingungen – in andere",
+     "Ausbildungsinhalte ein.",
+     "Der Ausbilder verteilt eine Liste der Lieferbedingungen an seine Auszubildenden und fordert sie zu",
+     "einer Gruppendiskussion auf."
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original-IHK-Satz 66, Aufgabe 39."
+   }
+  },
+  {
+   "id": "ihk66-a40",
+   "title": "S66·A40: Im Rahmen der Ausbildung zum Kaufmann im Einzelhandel – Fachbereich Digitalisier…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 40",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 40/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die zwei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C</strong>",
+    "B) Mit einem Lehrgespräch kann man über gezielte Fragen und Denkanstöße Erkenntnisprozesse auf",
+    "C) der Basis von Vorwissen in Gang setzen und schrittweise das Verstehen der Gesamtfunktion"
+   ],
+   "quiz": {
+    "q": "Im Rahmen der Ausbildung zum Kaufmann im Einzelhandel – Fachbereich Digitalisieruung – müssen die Auszubildenden Kenntnisse über die Netzwerkstrukturen, die Bedeutung der einzelnen Funktionseinheiten und die Voraussetzungen für die Gesamtfunktion erw…",
+    "options": [
+     "Im Lehrgespräch kann die Funktion des Gesamtsystems besonders gut praktisch dargestellt werden.",
+     "Mit einem Lehrgespräch kann man über gezielte Fragen und Denkanstöße Erkenntnisprozesse auf",
+     "der Basis von Vorwissen in Gang setzen und schrittweise das Verstehen der Gesamtfunktion",
+     "erarbeiten.",
+     "Im Lehrgespräch können alle Teilnehmer ihr Vorwissen einbringen und zum Erreichen des",
+     "Verstehens der Gesamtfunktion beitragen.",
+     "Im Lehrgespräch kann der Ausbilder sein gesamtes Fachwissen den Auszubildenden vermitteln."
+    ],
+    "correctArr": [
+     1,
+     2
+    ],
+    "expl": "Lösung: B, C. Original-IHK-Satz 66, Aufgabe 40."
+   }
+  },
+  {
+   "id": "ihk66-a41",
+   "title": "S66·A41: Ihre Personalabteilung bittet Sie als verantwortlichen Ausbilder, für Ihre Auszu…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 41",
+   "summary": "Original-IHK-Aufgabe 41/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte füllen Sie die Kästchen aus!",
+   "keyPoints": [
+    "<strong>Zuordnungslösung aus Musterlösung: a=3, b=2, c=1, d=2, e=1, f=3, g=3, h=1.</strong>"
+   ],
+   "quiz": {
+    "q": "Ihre Personalabteilung bittet Sie als verantwortlichen Ausbilder, für Ihre Auszubildenden, die Ausbildungs- zeugnisse zu erstellen. Bettina und Jörg wünschen ein qualifiziertes Zeugnis. Günter hat sich dagegen nicht geäußert. Prüfen Sie die nachfolge (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Zuordnungslösung aus Musterlösung: a=3, b=2, c=1, d=2, e=1, f=3, g=3, h=1."
+   }
+  },
+  {
+   "id": "ihk66-a42",
+   "title": "S66·A42: Sie sind Ausbilder in einer Einzelhandelsfirma im Bereich der Computertechnik. I…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 42",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 42/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die zwei richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) Die Gruppe beeinflusst die Lernmotivation.",
+    "D) Diese Gruppe mindert die Lernmotivation des ohnehin schwach interessierten Auszubildenden."
+   ],
+   "quiz": {
+    "q": "Sie sind Ausbilder in einer Einzelhandelsfirma im Bereich der Computertechnik. Im Monat Dezember findet eine Präsentation in Ihrer Firma statt. Diese Präsentation soll von Ihren Auszubildenden durch Gruppenarbeit vorbereitet werden. Es handelt sich d…",
+    "options": [
+     "Die Gruppe beeinflusst die Lernmotivation.",
+     "Da auch themenfremde Gespräche stattfinden können, bewirken diese ein Nachlassen der",
+     "Lernmotivation.",
+     "Diese Gruppe mindert die Lernmotivation des ohnehin schwach interessierten Auszubildenden.",
+     "Die Gruppe fördert die Lernmotivation, weil die Lernanstrengungen des Einzelnen Beachtung und",
+     "Anerkennung finden."
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original-IHK-Satz 66, Aufgabe 42."
+   }
+  },
+  {
+   "id": "ihk66-a43",
+   "title": "S66·A43: Sie sind Ausbilder in einer Einzelhandelsfirma im Bereich der Computertechnik. I…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 43",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 43/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) Das Gruppenmitglied erhält bei seinen Lernversuchen Ermutigungen, die die"
+   ],
+   "quiz": {
+    "q": "Sie sind Ausbilder in einer Einzelhandelsfirma im Bereich der Computertechnik. Im Monat Dezember findet eine Präsentation in Ihrer Firma statt. Diese Präsentation soll von Ihren Auszubildenden durch Gruppenarbeit vorbereitet werden. Es handelt sich d…",
+    "options": [
+     "Der Gruppeneinfluss verhindert die Entfaltung der Persönlichkeit.",
+     "Die Gruppe dämpft die Lernmotivation des Einzelnen.",
+     "Das Gruppenmitglied erhält bei seinen Lernversuchen Ermutigungen, die die",
+     "Anstrengungsbereitschaft fördern.",
+     "Die Gruppe lässt keine Initiativen zu.",
+     "Beim Auftreten von Lernschwierigkeiten wird eine Gruppe schneller entmutigt als ein individuell",
+     "Lernender."
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original-IHK-Satz 66, Aufgabe 43."
+   }
+  },
+  {
+   "id": "ihk66-a44",
+   "title": "S66·A44: Bei der Aufgabenstellung an die Auszubildenden, den Verkaufsraum der Firma optis…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 44",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 44/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D</strong>",
+    "B) In Gruppen entwickeln sich Rangordnungen, z. B. nach der Beliebtheit und Tüchtigkeit.",
+    "D) Die Gruppen der Auszubildenden erwählen zumeist den Ausbilder zu ihrem Gruppenführer."
+   ],
+   "quiz": {
+    "q": "Bei der Aufgabenstellung an die Auszubildenden, den Verkaufsraum der Firma optisch neu zu gestalten, wünschen Sie sich, dass sich die Auszubildenden in Gruppen zusammenfinden. Dieser Gruppenbildungsprozess soll von den Auszubildenden selbstständig du…",
+    "options": [
+     "Gruppen lassen zu, dass ihre Mitglieder eine Vielfalt unterschiedlicher Ziele verfolgen.",
+     "In Gruppen entwickeln sich Rangordnungen, z. B. nach der Beliebtheit und Tüchtigkeit.",
+     "Gruppen, die von außen unter Druck gesetzt werden, zerfallen sehr leicht.",
+     "Die Gruppen der Auszubildenden erwählen zumeist den Ausbilder zu ihrem Gruppenführer.",
+     "Gruppen, die ihre Ziele nicht erreichen, schließen sich zu immer engeren Notgemeinschaften",
+     "zusammen."
+    ],
+    "correctArr": [
+     1,
+     3
+    ],
+    "expl": "Lösung: B, D. Original-IHK-Satz 66, Aufgabe 44."
+   }
+  },
+  {
+   "id": "ihk66-a45",
+   "title": "S66·A45: Im Rahmen Ihrer Tätigkeit als Ausbilder ist es Ihnen ein besonderes Anliegen, au…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 45",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 45/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Die Team-/Partnerarbeit erleichtert das selbstständige Planen, weil sich die Partner gegenseitig"
+   ],
+   "quiz": {
+    "q": "Im Rahmen Ihrer Tätigkeit als Ausbilder ist es Ihnen ein besonderes Anliegen, auch das selbstgesteuerte Lernen in Team- oder Partnerarbeit zu aktivieren. Sie halten es für besonders wichtig, dass Ihre Auszubildenden die Bearbeitung der an sie gestell…",
+    "options": [
+     "Die Team-/Partnerarbeit behindert die Entwicklung der Selbstständigkeit.",
+     "Die Team-/Partnerarbeit erleichtert das selbstständige Planen, weil sich die Partner gegenseitig",
+     "unterstützen können.",
+     "Die Team-/Partnerarbeit beeinträchtigt im Regelfall die Ausprägung von Lernstrategien.",
+     "Die Team-/Partnerarbeit kann erst dann verantwortet werden, wenn die Auszubildenden über alle",
+     "Techniken verfügen, die innerhalb einer Team-/Partnerarbeit zur Anwendung gelangen können."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 45."
+   }
+  },
+  {
+   "id": "ihk66-a46",
+   "title": "S66·A46: Wie viele Auszubildende sollten an einem Lehrgespräch teilnehmen?",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 46",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 46/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) Bis zu maximal 16 Gesprächsteilnehmer"
+   ],
+   "quiz": {
+    "q": "Wie viele Auszubildende sollten an einem Lehrgespräch teilnehmen?",
+    "options": [
+     "Grundsätzlich nur eine Person neben dem Gesprächsleiter",
+     "Maximal drei Gesprächsteilnehmer",
+     "Bis zu maximal 16 Gesprächsteilnehmer",
+     "Bis zu maximal 48 Gesprächsteilnehmer"
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original-IHK-Satz 66, Aufgabe 46."
+   }
+  },
+  {
+   "id": "ihk66-a47",
+   "title": "S66·A47: Sie sind als Mitarbeiter der Solan GmbH der verantwortliche Ausbilder für die ka…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 47",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 47/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: A</strong>",
+    "A) Die Verantwortung trägt die Solan GmbH."
+   ],
+   "quiz": {
+    "q": "Sie sind als Mitarbeiter der Solan GmbH der verantwortliche Ausbilder für die kaufmännische Ausbildung. Thomas, Auszubildender im dritten Ausbildungsjahr, entwickelte sich bis zum Teil 1 der gestreckten Abschlussprüfung gut bis sehr gut. Nun sind sei…",
+    "options": [
+     "Die Verantwortung trägt die Solan GmbH.",
+     "Die Verantwortung trägt die Berufsschule.",
+     "Die Verantwortung tragen die Solan GmbH und die Berufsschule.",
+     "Die Verantwortung trägt Thomas.",
+     "Sie als Ausbilder haften persönlich."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung: A. Original-IHK-Satz 66, Aufgabe 47."
+   }
+  },
+  {
+   "id": "ihk66-a48",
+   "title": "S66·A48: Sie sind als Mitarbeiter der Solan GmbH der verantwortliche Ausbilder für die ka…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 48",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 48/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die richtige Antwort an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Prüfungsausschusses."
+   ],
+   "quiz": {
+    "q": "Sie sind als Mitarbeiter der Solan GmbH der verantwortliche Ausbilder für die kaufmännische Ausbildung. Thomas, Auszubildender im dritten Ausbildungsjahres, entwickelte sich bis zum Teil 1 der gestreckten Abschlussprüfung gut bis sehr gut. Nun sind s…",
+    "options": [
+     "Durch einen Ausbildungsverlängerungsvertrag zwischen Ihnen und Thomas und mit Zustimmung des",
+     "Prüfungsausschusses.",
+     "Auf Antrag von Thomas bei der zuständigen Stelle.",
+     "Indem Sie einen Antrag bei der Industrie- und Handelskammer stellen.",
+     "Durch ein Gutachten, das Sie gemeinsam mit der Berufsschule erstellen und der Industrie- und",
+     "Handelskammer zusenden.",
+     "Erst wenn Thomas die Abschlussprüfung nicht bestanden hat, kann er einen Antrag auf Verlängerung",
+     "stellen."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original-IHK-Satz 66, Aufgabe 48."
+   }
+  },
+  {
+   "id": "ihk66-a49",
+   "title": "S66·A49: Sie müssen als Ausbilder der Solan GmbH ihre Auszubildenden zur Abschlussprüfung…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 49",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 49/50 aus dem Musteraufgabensatz (Satz Nr. 66). Bitte kreuzen Sie in den Kästchen die vier richtigen Antworten an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B, D, F</strong>",
+    "A) Zuzulassen ist, wer die Ausbildungszeit zurückgelegt hat.",
+    "B) Zuzulassen ist, wessen Berufsausbildungsverhältnis in das Verzeichnis der",
+    "D) Zuzulassen ist, wer die entsprechenden Leistungen in der Berufsschule und im Betrieb erbracht hat.",
+    "F) Zuzulassen ist, wer an der vorgeschriebenen Zwischenprüfung, bzw. Teil 1 der gestreckten"
+   ],
+   "quiz": {
+    "q": "Sie müssen als Ausbilder der Solan GmbH ihre Auszubildenden zur Abschlussprüfung anmelden. Welche Bedingungen müssen in der Regel erfüllt sein, damit die Industrie- und Handelskammer die Zulassung erteilt?",
+    "options": [
+     "Zuzulassen ist, wer die Ausbildungszeit zurückgelegt hat.",
+     "Zuzulassen ist, wessen Berufsausbildungsverhältnis in das Verzeichnis der",
+     "Berufsausbildungsverhältnisse eingetragen ist.",
+     "Zuzulassen ist, wer die entsprechenden Leistungen in der Berufsschule und im Betrieb erbracht hat.",
+     "Zuzulassen ist, wer ein vom Ausbilder verfasstes Empfehlungsschreiben vorlegen kann.",
+     "Zuzulassen ist, wer an der vorgeschriebenen Zwischenprüfung, bzw. Teil 1 der gestreckten",
+     "Abschlussprüfung teilgenommen und vorgeschriebene Ausbildungsnachweise geführt hat.",
+     "Zuzulassen ist, wer eine ärztliche Bescheinigung (1. Nachuntersuchung) vorlegen kann.",
+     "Zuzulassen ist, wer die Ausbildungszeit zurückgelegt hat oder wessen Ausbildungszeit nicht später als",
+     "zwei Monate nach dem Prüfungstermin endet.",
+     "Zuzulassen ist, wer nicht mehr als 30 Ausbildungstage versäumt hat.",
+     "Zuzulassen ist, wer die Zwischenprüfung bestanden hat."
+    ],
+    "correctArr": [
+     0,
+     1,
+     3,
+     5
+    ],
+    "expl": "Lösung: A, B, D, F. Original-IHK-Satz 66, Aufgabe 49."
+   }
+  },
+  {
+   "id": "ihk66-a50",
+   "title": "S66·A50: Ihre Personalabteilung bittet Sie als verantwortlichen Ausbilder, für Ihre Auszu…",
+   "paragraphs": "IHK Musteraufgabensatz · Satz 66 · Aufgabe 50",
+   "summary": "Original-IHK-Aufgabe 50/50 (Satz 66) — Raster-/Zuordnungsaufgabe. Bitte füllen Sie die Kästchen aus!",
+   "keyPoints": [
+    "<strong>Zuordnungslösung aus Musterlösung: a=3, b=2, c=1, d=2, e=1, f=3, g=3, h=1.</strong>"
+   ],
+   "quiz": {
+    "q": "Ihre Personalabteilung bittet Sie als verantwortlichen Ausbilder, für Ihre Auszubildenden, die Ausbildungs- zeugnisse zu erstellen. Bettina und Jörg wünschen ein qualifiziertes Zeugnis. Günter hat sich dagegen nicht geäußert. Prüfen Sie die nachfolge (Rasteraufgabe)",
+    "options": [
+     "Ich habe die Zuordnung verstanden (Lösung in den Lernhinweisen)."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Zuordnungslösung aus Musterlösung: a=3, b=2, c=1, d=2, e=1, f=3, g=3, h=1."
+   }
+  }
+ ]
+});
 AEVO_MODULES.push(...PC_MODULES);
 
 // === %d Buch-Themen aus den 5 Handlungsfeld-Buechern (Eiling/Schlotthauer, Feldhaus Verlag, OCR-extrahiert) ===
@@ -8807,7 +10130,944 @@ const AEVO_QUESTIONS = [
       "Die Prüfungsanforderungen mit den betrieblichen Produkten vergleichen.",
       "Die Inhalte des Rahmenlehrplans mit den Anforderungen des Inhabers an eine betriebliche Fachkraft vergleichen.",
       "Die Inhalte des Ausbildungsrahmenplans mit den betrieblichen Ausbildungszielen vergleichen."
-    ],
+    ,
+// --- 40 Original-IHK-Aufgaben: Musteraufgabensatz Satz Nr. 66 ---
+{
+ "id": 656,
+ "hf": 1,
+ "category": "Planung",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "In Gesprächen mit anderen Ausbildern haben Sie erfahren, dass sich im Gegensatz zu Ihrer eigenen Ausbildung viel geändert hat.",
+ "question": "Wo sind die Ausbildungsinhalte festgelegt, die im Rahmen der Berufsausbildung zu vermitteln sind?",
+ "options": [
+  "Ausbildungsberufsbild",
+  "AEVO",
+  "Ausbildungsvertragsmuster",
+  "Ausbildungsrahmenplan",
+  "Rahmenstoffplan",
+  "Arbeitsvertrag"
+ ],
+ "correctIndices": [
+  0,
+  3
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 1): A, D. A) Ausbildungsberufsbild D) Ausbildungsrahmenplan"
+},
+{
+ "id": 657,
+ "hf": 1,
+ "category": "Planung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Für die Kooperation zwischen Ausbildungsbetrieb und Berufsschule gibt es eine bestimmte Fachbezeichnung.",
+ "question": "Wie lautet dieser?",
+ "options": [
+  "Sonderpädagogische Laufbahn",
+  "Tertiäres Ausbildungssystem",
+  "Schulisches Monosystem",
+  "Berufsausbildung nach europäischem Vorbild",
+  "Berufsausbildung im dualen System",
+  "System der Euro-Berufsausbildung"
+ ],
+ "correctIndices": [
+  4
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 2): E. E) Berufsausbildung im dualen System"
+},
+{
+ "id": 658,
+ "hf": 1,
+ "category": "Planung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Sie sind Ausbilder in einem Einzelhandelsfachgeschäft mit fünf Beschäftigten. In einem Gespräch zwischen Ihnen und dem Firmeninhaber geht es um das Thema, ob es aus betrieblicher Sicht sinnvoll ist, Auszubildende einzustellen.",
+ "question": "Welches Argument spricht für eine Ausbildung?",
+ "options": [
+  "Ausbildung von Fachkräften, die im zweiten Ausbildungsjahr im Betrieb schon voll mitarbeiten können.",
+  "Sie ersetzen einen gelernten Kaufmann im Einzelhandel und übernehmen gleichzeitig die Ausbildung",
+  "von Auszubildenden aus dem ersten Ausbildungsjahr.",
+  "Ausbildung von Fachkräften, die nach Ausbildungsabschluss in ein Arbeitsverhältnis übernommen",
+  "werden. Hierbei würde dann eine umfangreiche betriebliche Einarbeitung entfallen, da sie während",
+  "der Ausbildung schon betriebsspezifische Abläufe kennen gelernt haben.",
+  "Es ist davon auszugehen, dass Beschäftigte das Einzelhandelsfachgeschäft mittelfristig verlassen.",
+  "Sinnvoll ist es, zwei Auszubildende einzustellen. Beide werden dann jeweils ausschließ-",
+  "lich für die Aufgaben ausgebildet, welche die ausscheidenden Mitarbeiter ausführen.",
+  "Für jeden Auszubildenden erhält das Unternehmen Fördermittel. Diese übersteigen grundsätzlich die",
+  "betrieblich zu zahlende Ausbildungsvergütung. Ist das nicht der Fall, zahlt der Azubi selbst den",
+  "Differenzbetrag oder stellt einen Antrag bei der IHK."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 3): B. B) Sie ersetzen einen gelernten Kaufmann im Einzelhandel und übernehmen gleichzeitig die Ausbildung"
+},
+{
+ "id": 659,
+ "hf": 1,
+ "category": "Planung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Vor Beginn der Ausbildung möchten Sie sich mit der Berufsschule in Verbindung setzen. Nachdem der Firmeninhaber hiervon erfahren hat, bittet er Sie zu einem Gespräch. Er möchte von Ihnen den Grund Ihres Vorhabens erläutert haben.",
+ "question": "Welche Antwort geben Sie?",
+ "options": [
+  "Auswahl einer geeigneten Berufsschule und einer geeigneten Klasse für die Auszubildenden. Der",
+  "Ausbildungsbetrieb ist verpf lichtet, der Schule die Ziele seiner Ausbildung mitzuteilen.",
+  "Abstimmung der Ausbildungsinhalte. Berufsschule und Ausbildungsbetrieb arbeiten nach",
+  "unterschiedlichen Rechtsquellen. Gleiche Themen werden gegebenenfalls zu unterschiedlichen",
+  "Zeiten vermittelt. Durch eine mögliche Abstimmung kann dieses vielleicht vermieden werden.",
+  "Mitteilung an die Berufsschule, nach welcher Rechtsgrundlage der Betrieb seine Auszubildenden",
+  "ausbildet. Außerdem möchten Sie schon zu diesem Zeitpunkt den Termin der Abschlussprüfung von",
+  "der Schule erfahren.",
+  "Abstimmung und Festlegung der Prüfungsinhalte. Berufsschule und Ausbildungsbetrieb arbeiten nach",
+  "gleichen Rechtsquellen. Gleiche Themen werden aber trotzdem zu unterschiedlichen Zeiten vermittelt.",
+  "Durch eine mögliche Abstimmung kann dies vielleicht vermieden werden."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 4): B. B) Ausbildungsbetrieb ist verpf lichtet, der Schule die Ziele seiner Ausbildung mitzuteilen."
+},
+{
+ "id": 660,
+ "hf": 1,
+ "category": "Planung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Sie sind Inhaber des Gastronomieunternehmens “Classic & Co”. In Ihrem Unternehmen macht gerade der 14jährige Spanier Miguel sein Schülerpraktikum. Miguel fragt Sie, ob die Ausbildung in allen Ländern der Europäischen Union gleich verläuft.",
+ "question": "Was antworten Sie ihm?",
+ "options": [
+  "Seit Einführung des Binnenmarktes gibt es ein einheitliches Ausbildungssystem.",
+  "Nur die zuletzt beigetretenen Staaten der EU haben noch ein anderes System der beruflichen",
+  "Erstausbildung.",
+  "Innerhalb der EU gibt es verschiedene Systeme der beruflichen Erstausbildung."
+ ],
+ "correctIndices": [
+  2
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 5): C. C) Erstausbildung."
+},
+{
+ "id": 661,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Frau Schreiber bildet eine angehende Buchhändlerin aus, die den mittleren Bildungsabschluss erreicht und eine halbjährige Verkürzung ihrer Ausbildung vereinbart hat.",
+ "question": "Welchen Plan bezeichnet man in diesem Fall als “individuellen Ausbildungsplan”?",
+ "options": [
+  "Ein Plan für Buchhändler, ausgelegt auf die reguläre Ausbildungsdauer von drei Ausbildungsjahren.",
+  "Ein in allen Ausbildungsabschnitten insgesamt um 6 Monate verkürzter betrieblicher Ausbildungsplan.",
+  "Ein verkürzter Ausbildungsplan, der auch die schulischen Inhalte umfasst."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 7): B. B) Ein in allen Ausbildungsabschnitten insgesamt um 6 Monate verkürzter betrieblicher Ausbildungsplan."
+},
+{
+ "id": 662,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "multi",
+ "targetCount": 6,
+ "situation": "Wie würden Sie aus pädagogischen Gründen den ersten Tag gestalten, den ein Jugendlicher in einem mittelständischem Ausbildungsbetrieb erlebt?",
+ "question": "Wie würden Sie aus pädagogischen Gründen den ersten Tag gestalten, den ein Jugendlicher in einem mittelständischem Ausbildungsbetrieb erlebt? Kreuzen Sie sechs Aussagen an, die für die Gestaltung des ersten Ausbildungstages sinnvoll sind!",
+ "options": [
+  "Die Auszubildenden pünktlich zum vereinbarten Zeitpunkt persönlich empfangen und ihnen mit",
+  "freundlichen Worten über die erste Befangenheit hinwegT helfen.",
+  "Die Auszubildenden von jüngeren Mitarbeitern in Empfang nehmen lassen, weil die Jugendlichen sich",
+  "dann \"unter ihres Gleichen\" fühlen und weniger befangen sind.",
+  "Die Arbeitsräume und die Nebenräume (Lagerraum, Aufenthaltsraum, sanitäre Anlagen,",
+  "Garderobenraum) mit dem Auszubildenden gemeinsam begehen.",
+  "Alle Mitarbeiter - auch die nur samstags beschäftigten, die Raumpflegerin und den zeitweilig",
+  "beschäftigten Gärtner - namentlich mit dem Auszubildenden bekannt machen.",
+  "Beim Rundgang ausführlich auf die Sicherheitsbestimmungen aufmerksam machen.",
+  "Mit dem Auszubildenden im Aufenthaltsraum den Verlauf der Ausbildung in den ersten vier Wochen",
+  "der Probezeit besprechen.",
+  "Erläuterungen zur Führung des Ausbildungsnachweises geben.",
+  "Am ersten Tag muss der Jugendliche weitgehend im Hintergrund der Arbeitsräume bleiben, um ihn",
+  "vor Überforderung durch den Geschäftsbetrieb zu schützen.",
+  "Sie verhelfen bereits am ersten Tag dem Auszubildenden zu kleinen Erfolgserlebnissen."
+ ],
+ "correctIndices": [
+  0,
+  2,
+  4,
+  5,
+  6,
+  8
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 8): A, C, E, F, G, I. A) Die Auszubildenden pünktlich zum vereinbarten Zeitpunkt persönlich empfangen und ihnen mit C) Die Auszubildenden von jüngeren Mitarbeitern in Empfang nehmen lassen, weil die Jugendlichen sich E) Die Arbeitsräume und die Nebenräume (Lagerraum, Aufenthaltsraum, sanitäre Anlagen, F) Garderobenraum) mit dem Auszubildenden gemeinsam begehen. G) Alle Mitarbeiter - auch die nur samstags beschäftigten, die Raumpflegerin und den zeitweilig I) Beim Rundgang ausführlich auf die Sicherheitsbestimmungen aufmerksam machen."
+},
+{
+ "id": 663,
+ "hf": 1,
+ "category": "Planung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "",
+ "question": "Inwieweit sind die im betrieblichen Ausbildungsplan von Ihnen veranschlagten Ausbildungszeiten bindend?",
+ "options": [
+  "Sie müssen die geplanten Ausbildungszeiten strikt einhalten.",
+  "Sie müssen die geplanten Ausbildungszeiten so weit wie möglich einhalten.",
+  "Sie müssen die geplanten Ausbildungszeiten großzügig handhaben."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 9): B. B) Sie müssen die geplanten Ausbildungszeiten so weit wie möglich einhalten."
+},
+{
+ "id": 664,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "multi",
+ "targetCount": 3,
+ "situation": "Es gibt Einflüsse, die sich auf die fortlaufende Ausbildung auswirken und deshalb im betrieblichen Ausbildungsplan in die zeitliche Gliederung einbezogen werden müssen.",
+ "question": "Es gibt Einflüsse, die sich auf die fortlaufende Ausbildung auswirken und deshalb im betrieblichen Ausbildungsplan in die zeitliche Gliederung einbezogen werden müssen. Kreuzen Sie in den entsprechenden Lösungskästchen bei den nachfolgend aufgeführten Gegebenheiten insgesamt drei an, die Einfluss auf den betrieblichen Ausbildungsplan haben!",
+ "options": [
+  "Blockunterricht",
+  "Alle Feiertage wie Ostern, Pfingsten usw.",
+  "Urlaub des Auszubildenden",
+  "Urlaub des Ausbilders",
+  "Außergewöhnliche Belastungsspitzen",
+  "Eintägige Schulung im Betrieb eines Lieferanten",
+  "Außerbetriebliche Ausbildung"
+ ],
+ "correctIndices": [
+  0,
+  2,
+  6
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 10): A, C, G. A) Blockunterricht C) Urlaub des Auszubildenden G) Außerbetriebliche Ausbildung"
+},
+{
+ "id": 665,
+ "hf": 4,
+ "category": "Abschluss",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Sie sind Geschäftsführer der Solan GmbH und der verantwortliche Ausbilder für die kaufmännische Ausbildung. Die betriebliche Situation lässt eine Übernahme aller Auszubildenden in ein unbefristetes Angestelltenverhältnis nicht zu. Daher haben sie sechs Monate vor Abschluss der Ausbildung entschieden, Sven, Auszubildender zum Kaufmann für Büromanagement, nicht zu übernehmen.",
+ "question": "Welche der nachfolgenden Aussagen trifft zu?",
+ "options": [
+  "Sie kündigen Sven sofort fristlos, da er vermutlich das Ausbildungsende nicht erreicht.",
+  "Sie kündigen Sven fristgerecht zum Ende der Ausbildung.",
+  "Sie müssen nichts tun, da ein Ausbildungsvertrag ein befristeter Vertrag ist. Sie sollten aber Sven",
+  "rechtzeitig informieren.",
+  "Sie schließen mit Sven einen Auflösungsvertrag über die Beendigung des Ausbildungsverhältnisses",
+  "ab.",
+  "Sie können sich nach der Ausbildung von Sven nur trennen, wenn der Ausbildungsberater der",
+  "zuständigen Stelle seine Zustimmung erteilt."
+ ],
+ "correctIndices": [
+  2
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 11): C. C) Sie müssen nichts tun, da ein Ausbildungsvertrag ein befristeter Vertrag ist. Sie sollten aber Sven"
+},
+{
+ "id": 666,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "multi",
+ "targetCount": 4,
+ "situation": "Die Erwo GmbH schließt vor Beginn der Ausbildung mit den zukünftigen Auszubildenden einen Berufsausbildungsvertrag ab.",
+ "question": "Welche der folgenden Inhalte sind sogenannte nichtige Vereinbarungen?",
+ "options": [
+  "Verpflichtung des Auszubildenden zur Weiterbeschäftigung nach der Ausbildung",
+  "Charakterliche Förderung des Auszubildenden",
+  "Vereinbarung von Vertragsstrafen",
+  "Voraussetzungen, unter denen der Berufsausbildungsvertrag gekündigt werden kann",
+  "Ausbildungsmaßnahmen außerhalb der Ausbildungsstätte",
+  "Ausschluss oder die Beschränkung von Schadensersatzansprüchen",
+  "Kostenübernahme von Ausbildungsmitteln",
+  "Dauer der Probezeit"
+ ],
+ "correctIndices": [
+  0,
+  2,
+  5,
+  6
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 12): A, C, F, G. A) Verpflichtung des Auszubildenden zur Weiterbeschäftigung nach der Ausbildung C) Vereinbarung von Vertragsstrafen F) Ausschluss oder die Beschränkung von Schadensersatzansprüchen G) Kostenübernahme von Ausbildungsmitteln"
+},
+{
+ "id": 667,
+ "hf": 4,
+ "category": "Abschluss",
+ "type": "multi",
+ "targetCount": 4,
+ "situation": "Georg, 19 Jahre alt, ist Auszubildender im dritten Ausbildungsjahr. In der Zwischenprüfung wurden drei Fächer mit mangelhaft bewertet, der letzte Teil seiner Abschlussprüfung ist am 15. Juli.",
+ "question": "Welche Voraussetzungen müssen grundsätzlich erfüllt sein, damit Georg zur Abschlussprüfung zugelassen werden kann?",
+ "options": [
+  "Georg muss den vorgeschriebenen schriftlichen Ausbildungsnachweis geführt haben.",
+  "Seine Ausbildungsdauer laut Ausbildungsvertrag endet nicht nach dem 15. September.",
+  "Georg muss an der Zwischenprüfung teilgenommen haben.",
+  "Seine Ausbildungsdauer laut Ausbildungsvertrag darf nicht nach dem 15. August beendet sein.",
+  "Der Berufsausbildungsvertrag wurde in das Verzeichnis der Berufsausbildungsverhältnisse",
+  "eingetragen.",
+  "Georg muss eine Zwischenprüfung bestanden haben.",
+  "Der Berufsausbildungsvertrag wurde in die Kammerordnung eingetragen.",
+  "Georg muss einen Berufsschulabschluss vorweisen."
+ ],
+ "correctIndices": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 13): A, B, C, E. A) Georg muss den vorgeschriebenen schriftlichen Ausbildungsnachweis geführt haben. B) Seine Ausbildungsdauer laut Ausbildungsvertrag endet nicht nach dem 15. September. C) Georg muss an der Zwischenprüfung teilgenommen haben. E) Der Berufsausbildungsvertrag wurde in das Verzeichnis der Berufsausbildungsverhältnisse"
+},
+{
+ "id": 668,
+ "hf": 4,
+ "category": "Abschluss",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Der Auszubildende Bruno äußert Ihnen gegenüber, dass er später auch gern die Ausbildereignungsprüfung ablegen möchte. Ihn interessiert, ob der Bildungsgang zur Vermittlung von berufs- und arbeitspädagogischen Kenntnissen als eine Art von Ausbildung zu sehen ist.",
+ "question": "Was antworten Sie ihm?",
+ "options": [
+  "Der Bildungsgang ist eine Anpassungsfortbildung.",
+  "Der Bildungsgang ist eine Erhaltungsfortbildung.",
+  "Der Bildungsgang ist eine Umschulung.",
+  "Der Bildungsgang ist eine Weiterqualifizierung bzw. Durchführungsberechtigung.",
+  "Der Bildungsgang ist eine Ausbildung.",
+  "Der Bildungsgang ist eine Berufssicherungsfortbildung."
+ ],
+ "correctIndices": [
+  4
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 14): E. E) Der Bildungsgang ist eine Ausbildung."
+},
+{
+ "id": 669,
+ "hf": 4,
+ "category": "Abschluss",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "Frau Krause, Auszubildende zur Kauffrau für Büromanagement, befindet sich am Anfang des dritten Ausbildungsjahres.",
+ "question": "Frau Krause, Auszubildende zur Kauffrau für Büromanagement, befindet sich am Anfang des dritten Ausbildungsjahres. In einem Gespräch mit ihrer Ausbilderin Frau Ackermann möchte sie wissen, wann ihre Ausbildung endet.",
+ "options": [
+  "Die Ausbildung kann mit einer ordentlichen Kündigung durch den Ausbildenden enden.",
+  "Die Ausbildung kann bei sehr guten Leistungen vorzeitig beendet werden.",
+  "Die Ausbildung endet mit dem im Ausbildungsvertrag vereinbarten Termin.",
+  "Bei Auszubildenden mit allgemeiner Hochschulreife endet die Ausbildung immer zwei Jahre nach",
+  "ihrem Beginn.",
+  "Die Ausbildung endet mit dem Bestehen der Abschlussprüfung."
+ ],
+ "correctIndices": [
+  2,
+  4
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 16): C, E. C) Die Ausbildung endet mit dem im Ausbildungsvertrag vereinbarten Termin. E) ihrem Beginn."
+},
+{
+ "id": 670,
+ "hf": 4,
+ "category": "Abschluss",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Das Berufsausbildungsverhältnis kann auf die nachfolgend aufgeführten Arten beendet werden.",
+ "question": "Das Berufsausbildungsverhältnis kann auf die nachfolgend aufgeführten Arten beendet werden. Kreuzen Sie die in der Praxis häufigste Beendigungsart an!",
+ "options": [
+  "Auflösungsvertrag",
+  "Anfechtung des Vertrages",
+  "Umzug des Auszubildenden",
+  "Zweckerreichung",
+  "Ordentliche Kündigung",
+  "Zeitablauf",
+  "Außerordentliche Kündigung"
+ ],
+ "correctIndices": [
+  3
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 18): D. D) Zweckerreichung"
+},
+{
+ "id": 671,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Sie sind Ausbilder und als Mitarbeiter der Personalentwicklung eines mittelständischen Einzelhandelsbetriebes für die Einstellung von Auszubildenden zuständig. In jeder Filiale ist ein Betriebsrat gewählt. Es existieren keine Betriebsvereinbarungen für die Einstellung von Auszubildenden. Der Betriebsrat möchte bei der Einstellung der Auszubildenden entscheidend mitwirken. Unter anderem stellt er die unten genannten Forderungen.",
+ "question": "Sie sind Ausbilder und als Mitarbeiter der Personalentwicklung eines mittelständischen Einzelhandelsbetriebes für die Einstellung von Auszubildenden zuständig. In jeder Filiale ist ein Betriebsrat gewählt. Es existieren keine Betriebsvereinbarungen für die Einstellung von Auszubildenden. Der Betriebsrat möchte bei der Einstellung der Auszubildenden entscheidend mitwirken. Unter anderem stellt er die unten genannten Forderungen. Kreuzen Sie in dem Lösungskästchen die Forderung an, auf die der Betriebsrat einen rechtlichen Anspruch hat!",
+ "options": [
+  "Vorlage sämtlicher Bewerberunterlagen, einschließlich der nicht in Frage kommenden Bewerber",
+  "Anwesenheit eines Betriebsratsmitgliedes bei jedem Bewerbergespräch",
+  "Bevorzugte Einstellung von Kindern der Mitarbeiter",
+  "Anwesenheit eines Betriebsratsmitgliedes bei der Durchführung des Einstellungstests",
+  "Protokollierung des Bewerbergesprächs zur Einsichtnahme",
+  "Mitbestimmung bei der Höhe der Ausbildungsvergütung",
+  "Mitbestimmung darüber, in welcher Abteilung ein Auszubildender eingesetzt wird"
+ ],
+ "correctIndices": [
+  0
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 19): A. A) Vorlage sämtlicher Bewerberunterlagen, einschließlich der nicht in Frage kommenden Bewerber"
+},
+{
+ "id": 672,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "Ein Bewerbungsgespräch mit einem Ausbildungsplatzbewerber unterscheidet sich grundsätzlich von anderen Bewerbungsgesprächen.",
+ "question": "Ein Bewerbungsgespräch mit einem Ausbildungsplatzbewerber unterscheidet sich grundsätzlich von anderen Bewerbungsgesprächen. Hierfür gibt es verschiedene Gründe, von denen einige nachfolgend genannt sind.",
+ "options": [
+  "Bei Ausbildungsplatzbewerbern werden keine Fragen zu beruflichen Entwicklungsmöglichkeiten",
+  "gestellt.",
+  "Bei Ausbildungsplatzbewerbern sind die Eltern grundsätzlich anwesend.",
+  "Bei Ausbildungsplatzbewerbern können die Inhalte des Gesprächs nur wenig berufsbezogen sein.",
+  "Bei Ausbildungsplatzbewerbern dauern die Bewerbungsgespräche erheblich länger, weil alle",
+  "Ausbildungsinhalte eingehend erläutert werden müssen.",
+  "Junge Ausbildungsplatzbewerber entwickeln im Bewerbungsgespräch häufig wenig Eigeninitiative."
+ ],
+ "correctIndices": [
+  2,
+  4
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 20): C, E. C) Bei Ausbildungsplatzbewerbern sind die Eltern grundsätzlich anwesend. E) Bei Ausbildungsplatzbewerbern dauern die Bewerbungsgespräche erheblich länger, weil alle"
+},
+{
+ "id": 673,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "multi",
+ "targetCount": 3,
+ "situation": "Die Seedeich GmbH schließt mit drei Bewerbern Berufsausbildungsverträge zum Industriekaufmann ab: Franzi, 18 Jahre, Sekundarabschluss I BFS Wirtschaft Alberto, 17 Jahre, Sekundarabschluss Pepe, 21 Jahre, Allgemeine Hochschulreife Franzi, Alberto und Pepe wollen wissen, welche Möglichkeiten der Verkürzung ihrer Ausbildungsdauer gegeben sind, bzw.",
+ "question": "Die Seedeich GmbH schließt mit drei Bewerbern Berufsausbildungsverträge zum Industriekaufmann ab: Franzi, 18 Jahre, Sekundarabschluss I BFS Wirtschaft Alberto, 17 Jahre, Sekundarabschluss Pepe, 21 Jahre, Allgemeine Hochschulreife Franzi, Alberto und Pepe wollen wissen, welche Möglichkeiten der Verkürzung ihrer Ausbildungsdauer gegeben sind, bzw. sein können.",
+ "options": [
+  "Pepe hat Rechtsanspruch auf eine einjährige Verkürzung.",
+  "Franzi kann mit dem Ausbildenden eine einjährige Verkürzung der Ausbildung vereinbaren.",
+  "Alberto kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren.",
+  "Franzi hat Rechtsanspruch auf eine einjährige Verkürzung.",
+  "Franzi kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren.",
+  "Alberto hat Rechtsanspruch auf eine halbjährige Verkürzung."
+ ],
+ "correctIndices": [
+  1,
+  2,
+  4
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 21): B, C, E. B) Franzi kann mit dem Ausbildenden eine einjährige Verkürzung der Ausbildung vereinbaren. C) Alberto kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren. E) Franzi kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren."
+},
+{
+ "id": 674,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "",
+ "question": "Herr Schuster fragt sich, welche Maßnahme besonders gut geeignet ist, berufsbezogene Motive des Auszubildenden zu verstärken.",
+ "options": [
+  "Er lässt den Auszubildenden wiederholt erkennen, wie wenig er den beruflichen Anforderungen",
+  "genügt.",
+  "Er übergibt dem Auszubildenden Verantwortung.",
+  "Er äußert wiederholt, dass der Beruf nur ein Mittel zum Geldverdienen ist.",
+  "Er stellt an den Auszubildenden niedrige Anforderungen."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 22): B. B) genügt."
+},
+{
+ "id": 675,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "multi",
+ "targetCount": 6,
+ "situation": "Ihnen wird als verantwortlicher Ausbilder in einem Betrieb mit 150 Mitarbeitern die kaufmännische Ausbildung der neuen Auszubildenden zum Industriekaufmann übertragen. Sie sollen die drei zukünftigen Auszubildenden am ersten Ausbildungstag um 08.00 Uhr begrüßen. Stellen Sie deshalb Überlegungen zum Ablauf und zur Gestaltung dieses Tages an!",
+ "question": "Welche der nachfolgend aufgelisteten Maßnahmen oder Hinweise zum Ablauf und zur Gestaltung des ersten Ausbildungstages sind sinnvoll?",
+ "options": [
+  "Einarbeitung in das zukünftige Aufgabengebiet",
+  "Hinweise auf Sanktionen bei Fehlverhalten",
+  "Erläuterung betrieblicher Zusammenhänge anhand eines Videos",
+  "Lockere Gesprächsrunde zum Kennenlernen",
+  "Erläuterungen zur Höhe der Mindestausbildungsvergütung",
+  "Vorstellung sozialer Einrichtungen des Unternehmens",
+  "Informationen zur Arbeitssicherheit",
+  "Vorstellung aller Mitarbeiter",
+  "Erläuterung des betrieblichen Ausbildungsplanes",
+  "Erläuterung zur Führung des Ausbildungsnachweisheftes"
+ ],
+ "correctIndices": [
+  2,
+  3,
+  5,
+  6,
+  8,
+  9
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 23): C, D, F, G, I, J. C) Erläuterung betrieblicher Zusammenhänge anhand eines Videos D) Lockere Gesprächsrunde zum Kennenlernen F) Vorstellung sozialer Einrichtungen des Unternehmens G) Informationen zur Arbeitssicherheit I) Erläuterung des betrieblichen Ausbildungsplanes J) Erläuterung zur Führung des Ausbildungsnachweisheftes"
+},
+{
+ "id": 676,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "multi",
+ "targetCount": 6,
+ "situation": "Im Rahmen Ihrer Tätigkeit als Ausbilder ist es Ihnen ein besonderes Anliegen, neben den beruflichen Fertigkeiten und Kenntnissen (Fachkompetenz) auch langfristig verwertbare, berufsübergreifende Qualifikationen zu fördern. Deshalb halten Sie es für besonders wichtig, dass Ihre Auszubildenden lernen, wie sie ihre Aufgaben selbstständig planen, durchführen und kontrollieren können.",
+ "question": "Welche Schlüsselqualifikationen (Fähigkeiten) sind in diesem Zusammenhang bei den Auszubildenden besonders zu fördern?",
+ "options": [
+  "Selbstständigkeit in der Arbeitsabwicklung/Arbeitsplanung",
+  "Verantwortung für andere Auszubildende übernehmen",
+  "Lern- und Transferfähigkeit",
+  "Teamfähigkeit, bereitwillige Zusammenarbeit mit anderen",
+  "Systematisches, analytisches Vorgehen",
+  "Höflichkeit",
+  "Arbeiten nach Anweisung",
+  "Entscheidungsfähigkeit",
+  "Erkennen der Grenzen des eigenen Könnens",
+  "Freundlichkeit",
+  "Sauberkeit und Ordnung",
+  "Eigeninitiative"
+ ],
+ "correctIndices": [
+  0,
+  2,
+  4,
+  7,
+  8,
+  11
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 24): A, C, E, H, I, L. A) Selbstständigkeit in der Arbeitsabwicklung/Arbeitsplanung C) Lern- und Transferfähigkeit E) Systematisches, analytisches Vorgehen H) Entscheidungsfähigkeit I) Erkennen der Grenzen des eigenen Könnens L) Eigeninitiative"
+},
+{
+ "id": 677,
+ "hf": 1,
+ "category": "Planung",
+ "type": "multi",
+ "targetCount": 3,
+ "situation": "Sie sind für die Ausbildung der Industriekaufleute in ihrem Unternehmen verantwortlich. Nachdem sich einige Auszubildende über eine mangelnde Betreuung in den Fachabteilungen bei Ihnen beschwert haben, beschließen Sie, dass in jeder Fachabteilung ein “Ausbildungsbeauftragter” benannt werden soll. Sie bitten die Abteilungsleiter geeignete Mitarbeiter, die sich für diese Zusatzaufgabe interessieren, vorzuschlagen.",
+ "question": "Welchen Mitarbeiter werden Sie die Aufgabe eines “Ausbildungsbeauftragten” übertragen?",
+ "options": [
+  "Hugo Schmidt, 22 Jahre alt, seit zwei Jahren als Gabelstaplerfahrer tätig.",
+  "Sabine Klein, 40 Jahre alt, Mutter von drei Kindern, Industriekauffrau mit AEVO-Prüfung.",
+  "Torsten Mantey, 35 Jahre alt, verheiratet, Zerspanungsmechaniker.",
+  "Katharina Theis, 45 Jahre alt, Bilanzbuchhalterin.",
+  "Otto Adam, 52 Jahre alt, Bürokaufmann, Führerscheinentzug nach Verkehrsverstoß.",
+  "Manuel Wagner, 27 Jahre alt, Industriekaufmann, vor einem Jahr eine Vorstrafe wegen Verkaufs",
+  "pornografischer Schriften an Jugendliche."
+ ],
+ "correctIndices": [
+  1,
+  3,
+  4
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 27): B, D, E. B) Sabine Klein, 40 Jahre alt, Mutter von drei Kindern, Industriekauffrau mit AEVO-Prüfung. D) Katharina Theis, 45 Jahre alt, Bilanzbuchhalterin. E) Otto Adam, 52 Jahre alt, Bürokaufmann, Führerscheinentzug nach Verkehrsverstoß."
+},
+{
+ "id": 678,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "multi",
+ "targetCount": 6,
+ "situation": "Um die vorgegebenen Lernziele erreichen zu können, setzen Sie die unterschiedlichsten Methoden ein. Wenn Sie entsprechende Methoden wählen, gehen Sie davon aus, dass u.U. nicht eine Methode zum erwünschten Erfolg führt, sondern ein Methodenmix! Insbesondere beim Einsatz der Projektmethode können die unterschiedlichsten Formen von den Auszubilddenden eingesetzt werden.",
+ "question": "Um die vorgegebenen Lernziele erreichen zu können, setzen Sie die unterschiedlichsten Methoden ein. Wenn Sie entsprechende Methoden wählen, gehen Sie davon aus, dass u.U. nicht eine Methode zum erwünschten Erfolg führt, sondern ein Methodenmix! Insbesondere beim Einsatz der Projektmethode können die unterschiedlichsten Formen von den Auszubilddenden eingesetzt werden. Kreuzen Sie die Möglichkeiten an, die in einem Projekt durch die Auszubilddenden angewandt werden können.",
+ "options": [
+  "Erarbeitende Unterweisungsform",
+  "Vormachende Unterweisungsform",
+  "Diskussion",
+  "Vortrag",
+  "Veranschaulichende Unterweisungsform",
+  "Vier-Stufen-Methode",
+  "Entwickelnde Unterweisungsform",
+  "Brainstorming",
+  "Lehrgespräch",
+  "Besprechende Unterweisungsform",
+  "Verarbeitende Unterweisungsform",
+  "Demonstration"
+ ],
+ "correctIndices": [
+  0,
+  2,
+  6,
+  7,
+  9,
+  10
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 29): A, C, G, H, J, K. A) Erarbeitende Unterweisungsform C) Diskussion G) Entwickelnde Unterweisungsform H) Brainstorming J) Besprechende Unterweisungsform K) Verarbeitende Unterweisungsform"
+},
+{
+ "id": 679,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "multi",
+ "targetCount": 3,
+ "situation": "Zur in der Berufsausbildung angestrebten Handlungskompetenz gehören u.a. die Fähigkeiten zum “Erfassen von Zusammenhängen” und das “Systematische Denken”. Mit welchen Unterweisungsformen kann man die Fähigkeit zum Erfassen von Zusammenhängen entwickeln bzw.",
+ "question": "fördern ?",
+ "options": [
+  "Fragend-entwickelnde Unterweisungsform",
+  "Verarbeitende Unterweisungsform",
+  "Vortragende Unterweisungsform",
+  "Erarbeitende Unterweisungsform",
+  "Vorführende Unterweisungsform",
+  "Vormachende Unterweisungsform"
+ ],
+ "correctIndices": [
+  0,
+  1,
+  3
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 31): A, B, D. A) Fragend-entwickelnde Unterweisungsform B) Verarbeitende Unterweisungsform D) Erarbeitende Unterweisungsform"
+},
+{
+ "id": 680,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "Der Auszubildende Michael hat Schwierigkeiten, Zusammenhänge zu erfassen und systematisch zu denken. Darum beauftragen Sie die Auszubildende Erika, mit Michael gemeinsam einen neuen Lerninhalt zu erarbeiten.",
+ "question": "Welche Funktion haben Sie als Ausbilder insbesondere bei der Förderung des selbst gesteuerten Lernens?",
+ "options": [
+  "Sie bereiten die Lernarbeit für die beiden Auszubildenden bis ins Detail vor.",
+  "Sie haben die Lernarbeit Ihrer Auszubildenden ständig unter Kontrolle und greifen bei Fehlern sofort",
+  "korrigierend ein.",
+  "Sie halten sich völlig aus dem Lernprozess heraus und beurteilen nur zum Schluss das Ergebnis.",
+  "Sie bereiten die Aufgabe so vor, dass die Auszubildenden die gestellte Aufgabe selbstständig lösen",
+  "können.",
+  "Sie beobachten den Lernprozess genau und beraten die Auszubildenden fortlaufend.",
+  "Die Auszubildenden werden bereits bei der Planung der Aufgaben von Ihnen mit einbezogen."
+ ],
+ "correctIndices": [
+  3,
+  5
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 32): D, F. D) Sie halten sich völlig aus dem Lernprozess heraus und beurteilen nur zum Schluss das Ergebnis. F) können."
+},
+{
+ "id": 681,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Herr Schuster würde gerne die Gedächtnisleistung seiner Auszubildenden trainieren.",
+ "question": "Welchem Bereich ist diese Gedächtnisleistung zuzuordnen?",
+ "options": [
+  "Der Intelligenz",
+  "Der Vitalität",
+  "Des Antriebs",
+  "Der Motorik"
+ ],
+ "correctIndices": [
+  0
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 33): A. A) Der Intelligenz"
+},
+{
+ "id": 682,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "Im Rahmen der Ausbildung Kaufmann im Einzelhandel – Fachbereich Schuheinzelhandel – müssen die Auszubildenden eine differenzierte Fachkenntnis bezüglich der verwendeten Materialien bei der Herstellung des angebotenen Schuhsortiments erwerben. Dabei können verschiedene Lern- und Arbeitstechniken von den Auszubildenden angewendet werden, die der Ausbilder fördern sollte.",
+ "question": "Im Rahmen der Ausbildung Kaufmann im Einzelhandel – Fachbereich Schuheinzelhandel – müssen die Auszubildenden eine differenzierte Fachkenntnis bezüglich der verwendeten Materialien bei der Herstellung des angebotenen Schuhsortiments erwerben. Dabei können verschiedene Lern- und Arbeitstechniken von den Auszubildenden angewendet werden, die der Ausbilder fördern sollte. Kennzeichnen Sie in den Lösungskästchen die zwei Lern- und Arbeitstechniken, die aufgrund lernpsychologischer Einflüsse die besten Lernerfolge versprechen!",
+ "options": [
+  "Aufschreiben von zehn für die Schuhherstellung verwendeten Materialien mit dem jeweiligen",
+  "Fachausdruck.",
+  "Aufschreiben von sechs Fachausdrücken für die bei der Schuhherstellung verwendeten",
+  "Obermaterialien und das selbstständige Heraussuchen von qualitätsbestimmenden",
+  "Materialeigenschaften aus geeigneter Fac hliteratur.",
+  "Vorbereiten und Darbieten eines Referates, in dem am Beispiel von drei verschiedenen Schuharten",
+  "das gewählte Material beschrieben und die besondere Eignung begründet wird.",
+  "Auswendiglernen und Aufsagen von sechs Fachausdrücken für in der Schuhherstellung verwendete",
+  "Obermaterialien."
+ ],
+ "correctIndices": [
+  1,
+  2
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 34): B, C. B) Fachausdruck. C) Aufschreiben von sechs Fachausdrücken für die bei der Schuhherstellung verwendeten"
+},
+{
+ "id": 683,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Besonders bei dem etwas weniger begabten Auszubildenden Michael wollen Sie erreichen, dass er die gewonnenen Erkenntnisse aus bestimmten Aufgaben auch auf andere betriebliche Situationen anwenden kann.",
+ "question": "Besonders bei dem etwas weniger begabten Auszubildenden Michael wollen Sie erreichen, dass er die gewonnenen Erkenntnisse aus bestimmten Aufgaben auch auf andere betriebliche Situationen anwenden kann. Sie überlegen, mit welcher Lernhilfe Sie dieses Ziel am ehesten erreichen können.",
+ "options": [
+  "Sie lassen Michael den Lernstoff auswendig lernen, da Sie so die Gewissheit haben, dass er",
+  "erfolgreich gelernt hat.",
+  "Sie leiten Michael dazu an, auf die Gleichartigkeit der Problemstellung zu achten.",
+  "Sie achten darauf, dass Sie in Ihren Unterweisungen möglichst viele Sinne bei Michael ansprechen.",
+  "Michael schreibt den Lernstoff auf, damit er das Gelernte immer griffbereit hat.",
+  "Sie vereinbaren für diese Fälle mit dem Firmeninhaber, Herrn Peters, zusätzliche externe",
+  "Schulungsmaßnahmen, die an den Wochenenden stattfinden sollen."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 35): B. B) erfolgreich gelernt hat."
+},
+{
+ "id": 684,
+ "hf": 2,
+ "category": "Einstellung",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "Bei der Erstellung des betrieblichen Ausbildungsplans stellen Sie fest, dass einige Ausbildungsinhalte nicht vermittelt werden können, da zwei Fachabteilungen ausgegliedert wurden.",
+ "question": "Welche Möglichkeiten haben Sie, die Ausbildung dennoch durchführen zu können?",
+ "options": [
+  "Durch Vermittlung der Inhalte in der Berufsschule.",
+  "Durch Vermittlung der Inhalte in einem anderen Unternehmen.",
+  "Durch Ersetzen der Inhalte durch andere berufsspezifische Ausbildungsinhalte.",
+  "Durch Weglassen der Inhalte.",
+  "Durch Vermittlung der Inhalte in einer Überbetrieblichen Ausbildungsstätte."
+ ],
+ "correctIndices": [
+  1,
+  4
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 36): B, E. B) Durch Vermittlung der Inhalte in einem anderen Unternehmen. E) Durch Vermittlung der Inhalte in einer Überbetrieblichen Ausbildungsstätte."
+},
+{
+ "id": 685,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "",
+ "question": "In Ihrem Unternehmen wurden Testergebnisse bisher nur benotet Welche andere Möglichkeit der Bewertung gibt es?",
+ "options": [
+  "Die drei Besten des Tests werden vor der Gruppe gelobt und namentlich im Betrieb bekannt gegeben.",
+  "Der Ausbilder kann jedem Auszubildenden seinen Leistungsstand, gemessen am zu erreichenden",
+  "Lernziel, verdeutlichen.",
+  "Es gibt keine andere Möglichkeit. Notenvergabe ist das beste Mittel.",
+  "Ein Beurteilungsgespräch führen."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 37): B. B) Der Ausbilder kann jedem Auszubildenden seinen Leistungsstand, gemessen am zu erreichenden"
+},
+{
+ "id": 686,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Als Ausbilder müssen Sie häufig kurze Informationen an Ihre Auszubildenden weiter reichen. Sie stellen sich dabei die Frage, inwieweit Sie eine methodische Form für dieses Vorhaben einsetzen, die die selbstständige Erarbeitung durch Ihre Auszubildenden nicht behindert. In unserem Beispiel soll es darum gehen, dass Sie einen neuen Lieferanten vorstellen und die Auszubildenden in dessen Lieferbedingungen einzuweisen haben.",
+ "question": "Als Ausbilder müssen Sie häufig kurze Informationen an Ihre Auszubildenden weiter reichen. Sie stellen sich dabei die Frage, inwieweit Sie eine methodische Form für dieses Vorhaben einsetzen, die die selbstständige Erarbeitung durch Ihre Auszubildenden nicht behindert. In unserem Beispiel soll es darum gehen, dass Sie einen neuen Lieferanten vorstellen und die Auszubildenden in dessen Lieferbedingungen einzuweisen haben. Kreuzen Sie im Lösungskästchen die Aussage an, in der die geeignete Methode für das geschilderte Vorhaben deutlich wird!",
+ "options": [
+  "Der Ausbilder verteilt Handzettel, aus denen die Lieferbedingungen hervorgehen.",
+  "Der Ausbilder hält an der Tafel die Lieferbedingungen fest und fordert die Auszubildenden auf, diese",
+  "abzuschreiben.",
+  "Der Ausbilder hält einen Kurzvortrag und ordnet das Thema – hier Lieferbedingungen – in andere",
+  "Ausbildungsinhalte ein.",
+  "Der Ausbilder verteilt eine Liste der Lieferbedingungen an seine Auszubildenden und fordert sie zu",
+  "einer Gruppendiskussion auf."
+ ],
+ "correctIndices": [
+  2
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 39): C. C) abzuschreiben."
+},
+{
+ "id": 687,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "Im Rahmen der Ausbildung zum Kaufmann im Einzelhandel – Fachbereich Digitalisieruung – müssen die Auszubildenden Kenntnisse über die Netzwerkstrukturen, die Bedeutung der einzelnen Funktionseinheiten und die Voraussetzungen für die Gesamtfunktion erwerben.",
+ "question": "Im Rahmen der Ausbildung zum Kaufmann im Einzelhandel – Fachbereich Digitalisieruung – müssen die Auszubildenden Kenntnisse über die Netzwerkstrukturen, die Bedeutung der einzelnen Funktionseinheiten und die Voraussetzungen für die Gesamtfunktion erwerben. Kreuzen Sie im zugeordneten Kästchen die richtige Begründung dafür an, dass das Lehrgespräch besonders geeignet ist, das Verstehen der Gesamtfunktion beim Auszubildenden zu bewirken.",
+ "options": [
+  "Im Lehrgespräch kann die Funktion des Gesamtsystems besonders gut praktisch dargestellt werden.",
+  "Mit einem Lehrgespräch kann man über gezielte Fragen und Denkanstöße Erkenntnisprozesse auf",
+  "der Basis von Vorwissen in Gang setzen und schrittweise das Verstehen der Gesamtfunktion",
+  "erarbeiten.",
+  "Im Lehrgespräch können alle Teilnehmer ihr Vorwissen einbringen und zum Erreichen des",
+  "Verstehens der Gesamtfunktion beitragen.",
+  "Im Lehrgespräch kann der Ausbilder sein gesamtes Fachwissen den Auszubildenden vermitteln."
+ ],
+ "correctIndices": [
+  1,
+  2
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 40): B, C. B) Mit einem Lehrgespräch kann man über gezielte Fragen und Denkanstöße Erkenntnisprozesse auf C) der Basis von Vorwissen in Gang setzen und schrittweise das Verstehen der Gesamtfunktion"
+},
+{
+ "id": 688,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "Sie sind Ausbilder in einer Einzelhandelsfirma im Bereich der Computertechnik. Im Monat Dezember findet eine Präsentation in Ihrer Firma statt. Diese Präsentation soll von Ihren Auszubildenden durch Gruppenarbeit vorbereitet werden. Es handelt sich dabei um die Dekoration Ihrer Eingangshalle zu dem Themenschwerpunkt “Digitalisierung - Arbeitswelt 4.0”. Ein Auszubildender zeigt wenig Interesse an dieser Aufgabenstellung.",
+ "question": "Welchen Einfluss würde eine Gruppe auf diesen Auszubildenden ausüben, in der eine positive Einstellung zur Gruppenarbeit vorherrscht?",
+ "options": [
+  "Die Gruppe beeinflusst die Lernmotivation.",
+  "Da auch themenfremde Gespräche stattfinden können, bewirken diese ein Nachlassen der",
+  "Lernmotivation.",
+  "Diese Gruppe mindert die Lernmotivation des ohnehin schwach interessierten Auszubildenden.",
+  "Die Gruppe fördert die Lernmotivation, weil die Lernanstrengungen des Einzelnen Beachtung und",
+  "Anerkennung finden."
+ ],
+ "correctIndices": [
+  0,
+  3
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 42): A, D. A) Die Gruppe beeinflusst die Lernmotivation. D) Diese Gruppe mindert die Lernmotivation des ohnehin schwach interessierten Auszubildenden."
+},
+{
+ "id": 689,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Sie sind Ausbilder in einer Einzelhandelsfirma im Bereich der Computertechnik. Im Monat Dezember findet eine Präsentation in Ihrer Firma statt. Diese Präsentation soll von Ihren Auszubildenden durch Gruppenarbeit vorbereitet werden. Es handelt sich dabei um die Dekoration Ihrer Eingangshalle zu dem Themenschwerpunkt “Digitalisierung - Arbeitswelt 4.0”. Ein Auszubildender zeigt wenig Interesse an dieser Aufgabenstellung.",
+ "question": "Welche Aussage kennzeichnet treffend den Einfluss, den eine funktionierende Gruppe auf das Lernverhalten des Einzelnen im Regelfall ausübt?",
+ "options": [
+  "Der Gruppeneinfluss verhindert die Entfaltung der Persönlichkeit.",
+  "Die Gruppe dämpft die Lernmotivation des Einzelnen.",
+  "Das Gruppenmitglied erhält bei seinen Lernversuchen Ermutigungen, die die",
+  "Anstrengungsbereitschaft fördern.",
+  "Die Gruppe lässt keine Initiativen zu.",
+  "Beim Auftreten von Lernschwierigkeiten wird eine Gruppe schneller entmutigt als ein individuell",
+  "Lernender."
+ ],
+ "correctIndices": [
+  2
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 43): C. C) Das Gruppenmitglied erhält bei seinen Lernversuchen Ermutigungen, die die"
+},
+{
+ "id": 690,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "multi",
+ "targetCount": 2,
+ "situation": "Bei der Aufgabenstellung an die Auszubildenden, den Verkaufsraum der Firma optisch neu zu gestalten, wünschen Sie sich, dass sich die Auszubildenden in Gruppen zusammenfinden. Dieser Gruppenbildungsprozess soll von den Auszubildenden selbstständig durchgeführt werden.",
+ "question": "Welche Aussage zu gruppendynamischen Prozessen ist zutreffend?",
+ "options": [
+  "Gruppen lassen zu, dass ihre Mitglieder eine Vielfalt unterschiedlicher Ziele verfolgen.",
+  "In Gruppen entwickeln sich Rangordnungen, z. B. nach der Beliebtheit und Tüchtigkeit.",
+  "Gruppen, die von außen unter Druck gesetzt werden, zerfallen sehr leicht.",
+  "Die Gruppen der Auszubildenden erwählen zumeist den Ausbilder zu ihrem Gruppenführer.",
+  "Gruppen, die ihre Ziele nicht erreichen, schließen sich zu immer engeren Notgemeinschaften",
+  "zusammen."
+ ],
+ "correctIndices": [
+  1,
+  3
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 44): B, D. B) In Gruppen entwickeln sich Rangordnungen, z. B. nach der Beliebtheit und Tüchtigkeit. D) Die Gruppen der Auszubildenden erwählen zumeist den Ausbilder zu ihrem Gruppenführer."
+},
+{
+ "id": 691,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Im Rahmen Ihrer Tätigkeit als Ausbilder ist es Ihnen ein besonderes Anliegen, auch das selbstgesteuerte Lernen in Team- oder Partnerarbeit zu aktivieren. Sie halten es für besonders wichtig, dass Ihre Auszubildenden die Bearbeitung der an sie gestellten Aufgaben selbstständig planen, durchführen und kontrollieren.",
+ "question": "Wie ist die Team-/Partnerarbeit im Hinblick auf das selbstgesteuerte Lernen zu beurteilen?",
+ "options": [
+  "Die Team-/Partnerarbeit behindert die Entwicklung der Selbstständigkeit.",
+  "Die Team-/Partnerarbeit erleichtert das selbstständige Planen, weil sich die Partner gegenseitig",
+  "unterstützen können.",
+  "Die Team-/Partnerarbeit beeinträchtigt im Regelfall die Ausprägung von Lernstrategien.",
+  "Die Team-/Partnerarbeit kann erst dann verantwortet werden, wenn die Auszubildenden über alle",
+  "Techniken verfügen, die innerhalb einer Team-/Partnerarbeit zur Anwendung gelangen können."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 45): B. B) Die Team-/Partnerarbeit erleichtert das selbstständige Planen, weil sich die Partner gegenseitig"
+},
+{
+ "id": 692,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "",
+ "question": "Wie viele Auszubildende sollten an einem Lehrgespräch teilnehmen?",
+ "options": [
+  "Grundsätzlich nur eine Person neben dem Gesprächsleiter",
+  "Maximal drei Gesprächsteilnehmer",
+  "Bis zu maximal 16 Gesprächsteilnehmer",
+  "Bis zu maximal 48 Gesprächsteilnehmer"
+ ],
+ "correctIndices": [
+  2
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 46): C. C) Bis zu maximal 16 Gesprächsteilnehmer"
+},
+{
+ "id": 693,
+ "hf": 3,
+ "category": "Durchfuehrung",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Sie sind als Mitarbeiter der Solan GmbH der verantwortliche Ausbilder für die kaufmännische Ausbildung. Thomas, Auszubildender im dritten Ausbildungsjahr, entwickelte sich bis zum Teil 1 der gestreckten Abschlussprüfung gut bis sehr gut. Nun sind seine schulischen Leistungen in allen Fächern mangelhaft bis ungenügend. Auf der Suche nach dem Grund des Leistungsabfalls stellen Sie fest, dass in der Berufsschule der Stundenausfall erheblich ist.",
+ "question": "Wer ist für das Ausgleichen der Defizite in der Ausbildung verantwortlich?",
+ "options": [
+  "Die Verantwortung trägt die Solan GmbH.",
+  "Die Verantwortung trägt die Berufsschule.",
+  "Die Verantwortung tragen die Solan GmbH und die Berufsschule.",
+  "Die Verantwortung trägt Thomas.",
+  "Sie als Ausbilder haften persönlich."
+ ],
+ "correctIndices": [
+  0
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 47): A. A) Die Verantwortung trägt die Solan GmbH."
+},
+{
+ "id": 694,
+ "hf": 4,
+ "category": "Abschluss",
+ "type": "single",
+ "targetCount": 1,
+ "situation": "Sie sind als Mitarbeiter der Solan GmbH der verantwortliche Ausbilder für die kaufmännische Ausbildung. Thomas, Auszubildender im dritten Ausbildungsjahres, entwickelte sich bis zum Teil 1 der gestreckten Abschlussprüfung gut bis sehr gut. Nun sind seine schulischen Leistungen in allen Fächern mangelhaft bis ungenügend. Da Sie bei Thomas der Auffassung sind, dass ihm die ausreichende Prüfungsreife fehlt, möchten Sie ihm ein “Nichtbestehen” der Abschlussprüfung ersparen und überlegen, die Ausbildung um sechs Monate zu verlängern.",
+ "question": "Wie kommt in dieser Situation eine Verlängerung der Ausbildung zustande?",
+ "options": [
+  "Durch einen Ausbildungsverlängerungsvertrag zwischen Ihnen und Thomas und mit Zustimmung des",
+  "Prüfungsausschusses.",
+  "Auf Antrag von Thomas bei der zuständigen Stelle.",
+  "Indem Sie einen Antrag bei der Industrie- und Handelskammer stellen.",
+  "Durch ein Gutachten, das Sie gemeinsam mit der Berufsschule erstellen und der Industrie- und",
+  "Handelskammer zusenden.",
+  "Erst wenn Thomas die Abschlussprüfung nicht bestanden hat, kann er einen Antrag auf Verlängerung",
+  "stellen."
+ ],
+ "correctIndices": [
+  1
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 48): B. B) Prüfungsausschusses."
+},
+{
+ "id": 695,
+ "hf": 4,
+ "category": "Abschluss",
+ "type": "multi",
+ "targetCount": 4,
+ "situation": "Sie müssen als Ausbilder der Solan GmbH ihre Auszubildenden zur Abschlussprüfung anmelden.",
+ "question": "Welche Bedingungen müssen in der Regel erfüllt sein, damit die Industrie- und Handelskammer die Zulassung erteilt?",
+ "options": [
+  "Zuzulassen ist, wer die Ausbildungszeit zurückgelegt hat.",
+  "Zuzulassen ist, wessen Berufsausbildungsverhältnis in das Verzeichnis der",
+  "Berufsausbildungsverhältnisse eingetragen ist.",
+  "Zuzulassen ist, wer die entsprechenden Leistungen in der Berufsschule und im Betrieb erbracht hat.",
+  "Zuzulassen ist, wer ein vom Ausbilder verfasstes Empfehlungsschreiben vorlegen kann.",
+  "Zuzulassen ist, wer an der vorgeschriebenen Zwischenprüfung, bzw. Teil 1 der gestreckten",
+  "Abschlussprüfung teilgenommen und vorgeschriebene Ausbildungsnachweise geführt hat.",
+  "Zuzulassen ist, wer eine ärztliche Bescheinigung (1. Nachuntersuchung) vorlegen kann.",
+  "Zuzulassen ist, wer die Ausbildungszeit zurückgelegt hat oder wessen Ausbildungszeit nicht später als",
+  "zwei Monate nach dem Prüfungstermin endet.",
+  "Zuzulassen ist, wer nicht mehr als 30 Ausbildungstage versäumt hat.",
+  "Zuzulassen ist, wer die Zwischenprüfung bestanden hat."
+ ],
+ "correctIndices": [
+  0,
+  1,
+  3,
+  5
+ ],
+ "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 49): A, B, D, F. A) Zuzulassen ist, wer die Ausbildungszeit zurückgelegt hat. B) Zuzulassen ist, wessen Berufsausbildungsverhältnis in das Verzeichnis der D) Zuzulassen ist, wer die entsprechenden Leistungen in der Berufsschule und im Betrieb erbracht hat. F) Zuzulassen ist, wer an der vorgeschriebenen Zwischenprüfung, bzw. Teil 1 der gestreckten"
+}
+],
     correctIndices: [0, 4],
     explanation: "Der Ausbildungsrahmenplan (§ 5 Abs. 1 Nr. 4 BBiG) ist die verbindliche bundeseinheitliche Grundlage für den Betrieb. Er gibt die zu vermittelnden Fertigkeiten vor, die mit den betrieblichen Möglichkeiten und Zielen abgeglichen werden müssen. Der Rahmenlehrplan bindet hingegen die Berufsschule."
   },
@@ -22748,6 +25008,7 @@ function getFilteredPracticeQuestions() {
     // HF filter
     if (hf === 'pc') { if (q.id < 416) return false; }
     else if (hf === 'pc1') { if (q.id < 416 || q.id > 495) return false; }
+    else if (hf === 'ihk66') { if (q.id < 656 || q.id > 695) return false; }
     else if (hf !== 'all' && String(q.hf) !== hf) return false;
     
     // Category filter
@@ -23199,11 +25460,14 @@ function generateNewExamSet(source) {
   // Quellen (ID-basiert): basis = DIHK-gewichtet aus Nicht-PC | all = 40/40 Mix | pc240 = Feldhaus 240 | pc1 = Original-Satz 1
   const pcAll = AEVO_QUESTIONS.filter(q => q.id >= 416);              // 240 Pruefungs-Check
   const pcS1 = AEVO_QUESTIONS.filter(q => q.id >= 416 && q.id <= 495); // Original-Satz 1 (80)
+  const ihk66 = AEVO_QUESTIONS.filter(q => q.id >= 656 && q.id <= 695); // IHK Original-Satz 66 (40 MC)
   const basis = q => q.id < 416;                                       // 415 DIHK- & Lernmodul-Fragen
   let selected;
 
   if (source === 'pc1') {
     selected = [...pcS1];
+  } else if (source === 'ihk66') {
+    selected = [...ihk66];
   } else if (source === 'pc240') {
     selected = sampleRandom(pcAll, 80);
   } else if (source === 'all') {
