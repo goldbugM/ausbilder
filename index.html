@@ -356,6 +356,7 @@
               <option value="pc">Prüfungs-Check Feldhaus (240)</option>
               <option value="pc1">Prüfungs-Check: Original-Satz 1 (80)</option>
               <option value="ihk66">IHK Original-Satz 66 (50, echte Prüfung)</option>
+              <option value="ihkf">IHK Original-Prüfung (fotografiert) (80, echte Prüfung)</option>
               <option value="1">HF 1: Planen & Voraussetzungen</option>
               <option value="2">HF 2: Einstellen & Vertrag</option>
               <option value="3">HF 3: Durchführen & Didaktik</option>
@@ -529,6 +530,7 @@
                   <option value="pc240">Prüfungs-Check Feldhaus (240, 80 zufällig)</option>
                   <option value="pc1">Original-Satz 1 (80, exakt wie in der PDF)</option>
                   <option value="ihk66">IHK Original-Satz 66 (40 MC + 9 Raster)</option>
+                  <option value="ihkf">IHK Original-Prüfung (fotografiert) (80, exakt A1–A80)</option>
                 </select>
                 <button onclick="generateNewExamSetFromSelect()" title="Generiert einen neuen 80-Aufgaben Prüfungssatz aus der gewählten Quelle" class="w-full mt-1 py-2 px-3 bg-[var(--c-inset)] hover:bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink)] text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
                   <span>🎲</span>
@@ -10104,6 +10106,2090 @@ PC_MODULES.push({
   }
  ]
 });
+PC_MODULES.push({
+ "id": "pc-ihkf",
+ "hf": 8,
+ "title": "Prüfungs-Check: IHK Original-Prüfung (fotografiert), Aufgaben 1–80",
+ "subtitle": "Echte fotografierte IHK-Abschlussprüfung (AEVO) – alle 80 Aufgaben mit KI-verifizierten Lösungen",
+ "color": "rose",
+ "topics": [
+  {
+   "id": "ihkf-a1",
+   "title": "P·A1: Welche Aufgaben haben Berater der zuständigen Stellen laut B…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 1",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 1/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) die an der Durchführung der Ausbildung beteiligten Personen zu beraten",
+    "B) alle an der Ausbildung beteiligten Personen zu beraten"
+   ],
+   "quiz": {
+    "q": "Welche Aufgaben haben Berater der zuständigen Stellen laut Berufsbildungsgesetz wahrzunehmen?",
+    "options": [
+     "die an der Durchführung der Ausbildung beteiligten Personen zu beraten",
+     "alle an der Ausbildung beteiligten Personen zu beraten",
+     "die an der Durchführung der Ausbildung beteiligte Agentur für Arbeit",
+     "Erstellung von Prüfungsaufgaben für Zwischen- und Abschlussprüfungen",
+     "Ausbildungsplätze an entsprechende Betriebe zu vermitteln",
+     "die Berufsausbildung durch finanzielle Hilfe zu fördern"
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 1."
+   }
+  },
+  {
+   "id": "ihkf-a2",
+   "title": "P·A2: In der Vorbereitung auf die Ausbildungseignungsprüfung hat L…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 2",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 2/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, E</strong>",
+    "B) erfordert vom Ausbilder ein hohes Maß an Einschätzungs- und Einfühlungsvermögen.",
+    "E) berücksichtigt grundsätzlich die Kompetenzen des einzelnen Auszubildenden."
+   ],
+   "quiz": {
+    "q": "Welche Merkmale des situativen Führungsstiles nennen Sie Lisa Berendes?",
+    "options": [
+     "ermöglicht jederzeit demokratische Prozesse der Entscheidungsfindung.",
+     "erfordert vom Ausbilder ein hohes Maß an Einschätzungs- und Einfühlungsvermögen.",
+     "lässt den Auszubildenden einen großen Spielraum bei der Bearbeitung aller Aufgaben.",
+     "setzt den Auszubildenden in jeder Phase der Ausbildung enge Grenzen.",
+     "berücksichtigt grundsätzlich die Kompetenzen des einzelnen Auszubildenden."
+    ],
+    "correctArr": [
+     1,
+     4
+    ],
+    "expl": "Lösung: B, E. Original IHK-Prüfung (fotografiert), Aufgabe 2."
+   }
+  },
+  {
+   "id": "ihkf-a3",
+   "title": "P·A3: Sie leiten als Ausbilder die Ausbildungswerkstatt in einem M…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 3",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 3/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C</strong>",
+    "A) Grundfertigkeiten strukturiert und intensiv geübt werden.",
+    "C) der gesamte Ausbildungsinhalt ungestört und konzentriert vermittelt werden"
+   ],
+   "quiz": {
+    "q": "Welche Vorteile der Ausbildung in der Ausbildungswerkstatt können Sie Herrn Münch nennen?",
+    "options": [
+     "Grundfertigkeiten strukturiert und intensiv geübt werden.",
+     "die Produktionsunabhängigen Lernprozesse individuell gestaltet werden",
+     "der gesamte Ausbildungsinhalt ungestört und konzentriert vermittelt werden",
+     "durch die häufigen Übungswiederholungen die Selbstständigkeit gefördert werden",
+     "Feedback über deren Eindrücke erhalten."
+    ],
+    "correctArr": [
+     0,
+     2
+    ],
+    "expl": "Lösung: A, C. Original IHK-Prüfung (fotografiert), Aufgabe 3."
+   }
+  },
+  {
+   "id": "ihkf-a4",
+   "title": "P·A4: Nach der Einführungswoche wollen Sie von Ihren Auszubildende…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 4",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 4/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C</strong>",
+    "B) Sie führen ein moderiertes Gruppengespräch mit den Auszubildenden, in dem diese ihre Eindr",
+    "C) Sie setzen einen anonymisierten Fragebogen mit offenen und geschlossenen Fragen ein, da Si"
+   ],
+   "quiz": {
+    "q": "Wie gehen Sie vor?",
+    "options": [
+     "Sie beauftragen die Auszubildenden aus dem 3. Ausbildungsjahr, sich bei den „Neuen\" umzuhören.",
+     "Sie führen ein moderiertes Gruppengespräch mit den Auszubildenden, in dem diese ihre Eindrücke reflektieren sollen.",
+     "Sie setzen einen anonymisierten Fragebogen mit offenen und geschlossenen Fragen ein, da Sie so eine realistischere Einschätzung bekommen können.",
+     "Sie befragen die Fachkräfte der Abteilungen, wie sich die Auszubildenden verhalten haben."
+    ],
+    "correctArr": [
+     1,
+     2
+    ],
+    "expl": "Lösung: B, C. Original IHK-Prüfung (fotografiert), Aufgabe 4."
+   }
+  },
+  {
+   "id": "ihkf-a5",
+   "title": "P·A5: Ihr Unternehmen bildet derzeit zehn Auszubildende in kaufmän…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 5",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 5/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: D, E</strong>",
+    "D) übernehmen die Auszubildenden selbstständig realitätsnahe Geschäftsvorfälle.",
+    "E) wird die betriebliche Praxis simuliert."
+   ],
+   "quiz": {
+    "q": "Welche Vorteile besitzen für Ihre Auszubildenden bei der Ausbildung in einer Übungsfirma?",
+    "options": [
+     "In der Übungsfirma wird kein Ausbildungspersonal benötigt.",
+     "werden eigene Produkte hergestellt und an reale Kunden verkauft.",
+     "bearbeiten die Auszubildenden überwiegend die ausgelagerten Hilfsausgaben.",
+     "übernehmen die Auszubildenden selbstständig realitätsnahe Geschäftsvorfälle.",
+     "wird die betriebliche Praxis simuliert."
+    ],
+    "correctArr": [
+     3,
+     4
+    ],
+    "expl": "Lösung: D, E. Original IHK-Prüfung (fotografiert), Aufgabe 5."
+   }
+  },
+  {
+   "id": "ihkf-a6",
+   "title": "P·A6: Sie haben Ihren Auszubildenden einen mehrwöchigen Projektauf…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 6",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 6/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Sie bitten die IT-Abteilung, für die Auszubildenden einen Messenger freizuschalten, der di",
+    "B) Sie besprechen mit den Auszubildenden, warum der Einsatz von ‚Message' für betriebliche Be"
+   ],
+   "quiz": {
+    "q": "Wie reagieren Sie pädagogisch sinnvoll auf die Bitte der Auszubildenden?",
+    "options": [
+     "Sie bitten die IT-Abteilung, für die Auszubildenden einen Messenger freizuschalten, der die datenschutzrechtlichen Vorschriften erfüllt.",
+     "Sie besprechen mit den Auszubildenden, warum der Einsatz von ‚Message' für betriebliche Belange datenschutzrechtlich problematisch ist.",
+     "Sie weisen Ihre Auszubildenden an, die Kommunikation in der Projektgruppe auch weiterhin nur via E-Mail und Telefon durchzuführen.",
+     "Sie erlauben den Auszubildenden, die betrieblichen Informationen via ‚Message' auf ihren privaten Smartphones auszutauschen.",
+     "Sie erhöhen die Anzahl der regelmäßigen Projektkreffen, damit die Auszubildenden sich vor Ort austauschen können."
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 6."
+   }
+  },
+  {
+   "id": "ihkf-a7",
+   "title": "P·A7: Sie sind in einem kleineren Industriebetrieb mit zwei Auszub…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 7",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 7/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Regelmäßige Gespräche mit den Berufsschullehrern.",
+    "B) Inhaltliche Anpassung des betrieblichen Ausbildungsplans."
+   ],
+   "quiz": {
+    "q": "Wie kann die Kooperation aus betrieblicher Sicht organisatorisch verbessert werden?",
+    "options": [
+     "Regelmäßige Gespräche mit den Berufsschullehrern.",
+     "Inhaltliche Anpassung des betrieblichen Ausbildungsplans.",
+     "Änderung des Ausbildungsrahmenplans.",
+     "Inhaltliche Anpassung des betrieblichen Ausbildungsplans.",
+     "(nicht vollständig sichtbar / folgt auf Seite 7)"
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 7."
+   }
+  },
+  {
+   "id": "ihkf-a8",
+   "title": "P·A8: Sie sind Ausbildungsleiter/in in einem überregional tätigen…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 8",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 8/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D</strong>",
+    "B) Ein duales Studium verknüpft praktische Arbeit in einem Unternehmen mit theoretischer Ausb",
+    "D) Ausbildungsintegrierende Studierende verbinden die Ausbildung in einem anerkannten Ausbild"
+   ],
+   "quiz": {
+    "q": "Welche Aussagen sind richtig?",
+    "options": [
+     "Beim ausbildungsintegrierenden Studienmodell hat der Studierende einen Arbeitsvertrag mit dem Unternehmen.",
+     "Ein duales Studium verknüpft praktische Arbeit in einem Unternehmen mit theoretischer Ausbildung an einer Hochschule oder Berufsakademie.",
+     "(Text teilweise abgeschnitten – bezieht sich auf berufstätige Studierende)",
+     "Ausbildungsintegrierende Studierende verbinden die Ausbildung in einem anerkannten Ausbildungsberuf in der Praxisphase mit der theoretischen Ausbildung.",
+     "Praxisintegrierende Studierende verbinden die Ausbildung in einem anerkannten Ausbildungsberuf in der Praxisphase mit der theoretischen Ausbildung."
+    ],
+    "correctArr": [
+     1,
+     3
+    ],
+    "expl": "Lösung: B, D. Original IHK-Prüfung (fotografiert), Aufgabe 8."
+   }
+  },
+  {
+   "id": "ihkf-a9",
+   "title": "P·A9: In letzter Zeit ist es zu Konflikten zwischen einigen Ihrer…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 9",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 9/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) Kommunikation ist ein wertvolles Mittel zur Konfliktlösung. Sie sollten auf jeden Fall Ges",
+    "D) Beim Schlichten von Konflikten setzen Sie auf Empathie und versetzen sich in die Lage der "
+   ],
+   "quiz": {
+    "q": "Worauf ist bei Konfliktlösungen zu achten?",
+    "options": [
+     "Kommunikation ist ein wertvolles Mittel zur Konfliktlösung. Sie sollten auf jeden Fall Gespräche mit den Konfliktparteien führen.",
+     "Durch genaue Beobachtung der Gruppendynamik lassen sich Konflikte auf jeden Fall verhindern.",
+     "Konflikte müssen auf jeden Fall unbunden werden.",
+     "Beim Schlichten von Konflikten setzen Sie auf Empathie und versetzen sich in die Lage der beteiligten Auszubildenden."
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original IHK-Prüfung (fotografiert), Aufgabe 9."
+   }
+  },
+  {
+   "id": "ihkf-a10",
+   "title": "P·A10: Sie wollen die Ausbildung handlungsorientierter und für die…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 10",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 10/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Von den Auszubildenden wird eine zielgerichtete Aufgabenliste erstellt.",
+    "B) Die Auszubildenden prüfen die zusammengestellten inhaltlichen Informationen und legen die "
+   ],
+   "quiz": {
+    "q": "Welche Aktivitäten werden in der Phase \"Planen\" umgesetzt?",
+    "options": [
+     "Von den Auszubildenden wird eine zielgerichtete Aufgabenliste erstellt.",
+     "Die Auszubildenden prüfen die zusammengestellten inhaltlichen Informationen und legen die weitere Vorgehensweise fest.",
+     "Zusammen mit den Auszubildenden besprechen Sie das weitere Vorgehen für die nächsten Schritte innerhalb der Projektarbeit.",
+     "Die Auszubildenden setzen die mit dem Ausbilder besprochenen Schritte in die Praxis um."
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 10."
+   }
+  },
+  {
+   "id": "ihkf-a11",
+   "title": "P·A11: Es gibt ein Verzeichnis, in dem alle anerkannten Ausbildungs…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 11",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 11/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Zuordnung zu den Niveaustufen des Deutschen Qualifikationsrahmens (DQR).",
+    "B) Informationen über die Ausbildungsdauer des jeweiligen Berufes."
+   ],
+   "quiz": {
+    "q": "Was enthält das Verzeichnis der anerkannten Ausbildungsberufe?",
+    "options": [
+     "Zuordnung zu den Niveaustufen des Deutschen Qualifikationsrahmens (DQR).",
+     "Informationen über die Ausbildungsdauer des jeweiligen Berufes.",
+     "Prüfungsordnungen der ausgeführten Berufe.",
+     "zu vermittelnde Fertigkeiten, Fähigkeiten und Kenntnisse des jeweiligen Berufes."
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 11."
+   }
+  },
+  {
+   "id": "ihkf-a12",
+   "title": "P·A12: Ihre ersten Auszubildenden Julia und Tim werden in sechs Mon…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 12",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 12/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, E</strong>",
+    "B) Auf Verlangen des Auszubildenden muss ihm der Ausbildende bis zur nächsten Wiederholung de",
+    "E) Der Auszubildende kann dem Ausbildenden einen Antrag auf Verlängerung stellen."
+   ],
+   "quiz": {
+    "q": "Welche Aussagen zur Verlängerung bei Nichtbestehen der Prüfung gemäß BBiG sind richtig?",
+    "options": [
+     "Das Ausbildungsverhältnis endet mit dem Ablauf der Ausbildungsdauer ohne Verlängerung.",
+     "Auf Verlangen des Auszubildenden muss ihm der Ausbildende bis zur nächsten Wiederholung der Ausbildungszeit ein Jahr, weiterbeschäftigen.",
+     "Dem Auszubildenden ist vom Ausbildungsbetrieb ein Angebot zur Verlängerung des Ausbildungsverhältnisses zu unterbreiten.",
+     "Der Ausbildungsbetrieb kann die Verlängerung des Ausbildungsverhältnisses verweigern.",
+     "Der Auszubildende kann dem Ausbildenden einen Antrag auf Verlängerung stellen.",
+     "Das Ausbildungsverhältnis verlängert sich automatisch bis zum nächsten Prüfungstermin."
+    ],
+    "correctArr": [
+     1,
+     4
+    ],
+    "expl": "Lösung: B, E. Original IHK-Prüfung (fotografiert), Aufgabe 12."
+   }
+  },
+  {
+   "id": "ihkf-a13",
+   "title": "P·A13: Sie sind Ausbilder in einem Industrieunternehmen mit mehr al…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 13",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 13/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B, D</strong>",
+    "A) Der Betriebsrat hat Anspruch auf Auskunft über die Auswirkung der geplanten Übernahme.",
+    "B) Der Betriebsrat muss der Einstellung der zu übernehmenden Auszubildenden zustimmen.",
+    "D) Der Betriebsrat hat Anspruch auf Auskunft über die Personen, die übernommen werden sollen."
+   ],
+   "quiz": {
+    "q": "Welche Rechte hat der Betriebsrat in diesem Verfahren?",
+    "options": [
+     "Der Betriebsrat hat Anspruch auf Auskunft über die Auswirkung der geplanten Übernahme.",
+     "Der Betriebsrat muss der Einstellung der zu übernehmenden Auszubildenden zustimmen.",
+     "Der Betriebsrat muss bei mehr als 20 Mitarbeitern nicht beteiligt werden.",
+     "Der Betriebsrat hat Anspruch auf Auskunft über die Personen, die übernommen werden sollen.",
+     "Der Betriebsrat darf seine Zustimmung zur Übernahme ohne Angabe von Gründen verweigern.",
+     "Der Betriebsrat hat zehn Tage Zeit, um seine Zustimmung schriftlich mitzuteilen."
+    ],
+    "correctArr": [
+     0,
+     1,
+     3
+    ],
+    "expl": "Lösung: A, B, D. Original IHK-Prüfung (fotografiert), Aufgabe 13."
+   }
+  },
+  {
+   "id": "ihkf-a14",
+   "title": "P·A14: Sie bereiten für Ihre Auszubildenden im dritten Ausbildungsj…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 14",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 14/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D</strong>",
+    "B) Der Master Professional ist dem Niveau 7 des Deutschen Qualifikationsrahmens zugeordnet.",
+    "D) Die neu eingeführten Abschlussbezeichnungen „Geprüfter Berufsspezialist\", „Bachelor Profes"
+   ],
+   "quiz": {
+    "q": "Welche Aussagen sind hierzu richtig?",
+    "options": [
+     "Mit den neuen Ausschussbezeichnungen sind treffende Ausbildungsberufe den Beobachtungszeiten an Hochschulen gleichgestellt.",
+     "Der Master Professional ist dem Niveau 7 des Deutschen Qualifikationsrahmens zugeordnet.",
+     "Die Berufsspezialist ist dem Niveau 8 des Deutschen Qualifikationsrahmens zugeordnet.",
+     "Die neu eingeführten Abschlussbezeichnungen „Geprüfter Berufsspezialist\", „Bachelor Professional\" und „Master Professional\" sollen die Gleichwertigkeit von beruflicher und akademischer Bildung zum Ausdruck bringen."
+    ],
+    "correctArr": [
+     1,
+     3
+    ],
+    "expl": "Lösung: B, D. Original IHK-Prüfung (fotografiert), Aufgabe 14."
+   }
+  },
+  {
+   "id": "ihkf-a15",
+   "title": "P·A15: Sie wollen mit Ihren Auszubildenden im Rahmen des Themas „Le…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 15",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 15/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Ablegen der Prüfung zum Nachweis der berufs- und arbeitspädagogischen Fertigkeiten, Fähigk",
+    "B) Etwas zusätzlicher Fertigkeiten und Kenntnisse durch Erlernen einer zusätzlichen Fremdspra"
+   ],
+   "quiz": {
+    "q": "Welche dieser Fortbildungstätigkeit hat die Erweiterung der beruflichen Handlungsfähigkeit zum Ziel (Erweiterungsfortbildung)?",
+    "options": [
+     "Ablegen der Prüfung zum Nachweis der berufs- und arbeitspädagogischen Fertigkeiten, Fähigkeiten und Kenntnisse gemäß BBiG.",
+     "Etwas zusätzlicher Fertigkeiten und Kenntnisse durch Erlernen einer zusätzlichen Fremdsprache bei Wiedereinstieg in den Beruf",
+     "Ausgleich von fehlenden Fertigkeiten und Kenntnissen, um eine Aufgabe mit größeren Verantwortungsbereich und höherer Vergütung übernehmen zu können",
+     "Erwerb einer höheren Qualifizierung mit Abschlussprüfung, um einen höheren Verantwortungsbereich und höherer Vergütung übernehmen zu können",
+     "Aufmischen bereits vorhandener Fertigkeiten und Kenntnisse z. B. bei Rückkehr nach Elternzeit",
+     "Erwerb von Fertigkeiten und Kenntnissen, z. B. bei Veränderung eines bestehenden EDV-Programms im Betrieb"
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 15."
+   }
+  },
+  {
+   "id": "ihkf-a16",
+   "title": "P·A16: Das Unternehmen W. Kurzer GmbH hat mit Liane einen Berufsaus…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 16",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 16/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) Der Berufsausbildungsvertrag endet mit dem Ablauf der Ausbildungsdauer oder mit der Beendi",
+    "D) Der Einigung bei der zuständigen Stelle ist für die Auszubildenden gebührenfrei."
+   ],
+   "quiz": {
+    "q": "Welche Aussagen entsprechen den Vorgaben des Berufsbildungsgesetzes?",
+    "options": [
+     "Der Berufsausbildungsvertrag endet mit dem Ablauf der Ausbildungsdauer oder mit der Beendigung des Berufens.",
+     "Die Probezeit des Bestehens endet mit dem Ablauf der Ausbildungsdauer oder mit der Beendigung des Berufens.",
+     "Die Eintragung verlängert sich automatisch bei Krankheit.",
+     "Der Einigung bei der zuständigen Stelle ist für die Auszubildenden gebührenfrei.",
+     "Bei schulischer Vorbildung verkürzt sich die Berufsausbildung grundsätzlich."
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original IHK-Prüfung (fotografiert), Aufgabe 16."
+   }
+  },
+  {
+   "id": "ihkf-a17",
+   "title": "P·A17: Durch die hohe Fluktuation der betrieblich ausgebildeten Fac…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 17",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 17/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, E, F</strong>",
+    "B) Schärfung von Aufstiegsmöglichkeiten für ausgelernte Fachkräfte.",
+    "E) Kostenlose Weiterbildung von Fachpersonal.",
+    "F) Mitarbeitergespräche über persönliche Entwicklungsperspektiven."
+   ],
+   "quiz": {
+    "q": "Welche Kernpunkte sprechen Sie an?",
+    "options": [
+     "Hinweise und Informationen der diesjährigen Unternehmensziele.",
+     "Schärfung von Aufstiegsmöglichkeiten für ausgelernte Fachkräfte.",
+     "Bekanntgabe der Aufgaben und Leistungen des Unternehmens.",
+     "Informationen über die Mitgliederzahl der Arbeitnehmervertretung.",
+     "Kostenlose Weiterbildung von Fachpersonal.",
+     "Mitarbeitergespräche über persönliche Entwicklungsperspektiven."
+    ],
+    "correctArr": [
+     1,
+     4,
+     5
+    ],
+    "expl": "Lösung: B, E, F. Original IHK-Prüfung (fotografiert), Aufgabe 17."
+   }
+  },
+  {
+   "id": "ihkf-a18",
+   "title": "P·A18: Sie bilden in einem Großhandelsbetrieb mit 40 Auszubildenden…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 18",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 18/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A</strong>",
+    "A) Sie bilden alle Ihre Auszubildenden gemeinsam aus und bitten Sprachzentren, bei Verständig"
+   ],
+   "quiz": {
+    "q": "Wie integrieren Sie die spanischen Auszubildenden in den Betrieb?",
+    "options": [
+     "Sie bilden alle Ihre Auszubildenden gemeinsam aus und bitten Sprachzentren, bei Verständigungsschwierigkeiten zu unterstützen.",
+     "Sie lassen die gesamte Ausbildung von Kollegen aus dem gleichen Kultur- und Sprachraum in der Muttersprache der Auszubildenden durchführen.",
+     "Sie lassen die Spanier in einer eigenen Gruppe zusammen.",
+     "Sie stellen einen zusätzlichen, von der Ausländerbehörde bestellten Ausbilder ein."
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung: A. Original IHK-Prüfung (fotografiert), Aufgabe 18."
+   }
+  },
+  {
+   "id": "ihkf-a19",
+   "title": "P·A19: Sie haben die Auszubildenden für das nächste Ausbildungsjahr…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 19",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 19/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D</strong>",
+    "B) Sie gratulieren dem Auszubildenden zum Geburtstag, damit bauen Sie eine persönliche Verbin",
+    "D) Sie informieren den Auszubildenden über Ihr Unternehmen, indem Sie ihm Informationsmateria"
+   ],
+   "quiz": {
+    "q": "Wie können Sie eine gute Brückenkommunikation zwischen Entscheidung für den Auszubildenden und Beginn der Ausbildung gestalten?",
+    "options": [
+     "Sie nehmen keinen Kontakt mit dem zukünftigen Auszubildenden auf, damit er sich freiwillig für den Ausbildungsplatz entscheidet.",
+     "Sie gratulieren dem Auszubildenden zum Geburtstag, damit bauen Sie eine persönliche Verbindung auf.",
+     "Sie setzen den Auszubildenden unter Druck, dass er den Ausbildungsvertrag sofort nach Eingang beim Unternehmen unterschreiben soll. Damit stellen Sie sicher, dass er keinen anderen Ausbildungsvertrag bei einem anderen Unternehmen unterschreibt.",
+     "Sie informieren den Auszubildenden über Ihr Unternehmen, indem Sie ihm Informationsmaterial oder auch die Mitarbeiter-Newsletters zuschicken. Damit binden Sie ihn bereits emotional ins Unternehmen ein.",
+     "Sie lassen den Auszubildenden in Ruhe, damit er erst seine Schulbahn positiv abschließen kann und sich nicht gehetzt fühlt."
+    ],
+    "correctArr": [
+     1,
+     3
+    ],
+    "expl": "Lösung: B, D. Original IHK-Prüfung (fotografiert), Aufgabe 19."
+   }
+  },
+  {
+   "id": "ihkf-a20",
+   "title": "P·A20: Sie sind in Ihrem Unternehmen als Ausbilder tätig und möchte…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 20",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 20/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B, E</strong>",
+    "A) Es gibt den Auszubildenden die Chance, betriebliche Zusammenhänge besser zu verstehen.",
+    "B) Die Aufgabe der Auszubildenden ist es, sich selbst zu organisieren, Informationen zu besch",
+    "E) Es werden überwiegend kognitive und affektive Lernzielbereiche angesprochen."
+   ],
+   "quiz": {
+    "q": "Was kennzeichnet diese Ausbildungsmethode?",
+    "options": [
+     "Es gibt den Auszubildenden die Chance, betriebliche Zusammenhänge besser zu verstehen.",
+     "Die Aufgabe der Auszubildenden ist es, sich selbst zu organisieren, Informationen zu beschaffen und Strategien zu entwickeln.",
+     "Ein Planspiel ist nur für Gruppen bis maximal zehn Auszubildende sinnvoll.",
+     "Das Planspiel zielt überwiegend auf die psychomotorischen Lernzielbereiche ab.",
+     "Es werden überwiegend kognitive und affektive Lernzielbereiche angesprochen.",
+     "Bei der Durchführung eines Planspiels müssen die Auszubildenden über keinerlei Vorkenntnisse verfügen."
+    ],
+    "correctArr": [
+     0,
+     1,
+     4
+    ],
+    "expl": "Lösung: A, B, E. Original IHK-Prüfung (fotografiert), Aufgabe 20."
+   }
+  },
+  {
+   "id": "ihkf-a21",
+   "title": "P·A21: Die Berufsschule informiert Sie, dass Ihre beiden Auszubilde…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 21",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 21/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) fristlos ohne Angabe von Gründen kündigen."
+   ],
+   "quiz": {
+    "q": "Welche Kündigungsmöglichkeit haben Sie?",
+    "options": [
+     "Sie können Alexander nicht fristlos kündigen, da er noch minderjährig ist.",
+     "unter Einhaltung der Vier-Wochen-Frist kündigen.",
+     "fristlos ohne Angabe von Gründen kündigen.",
+     "fristlos mit Zustimmung seiner Eltern kündigen."
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original IHK-Prüfung (fotografiert), Aufgabe 21."
+   }
+  },
+  {
+   "id": "ihkf-a22",
+   "title": "P·A22: In Ihrem mündestlichen Unternehmen sollen demnächst drei Aus…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 22",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 22/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Ausbilden darf, wer persönlich und fachlich geeignet ist."
+   ],
+   "quiz": {
+    "q": "Welche der nachfolgenden Aussagen ist richtig?",
+    "options": [
+     "Für diese Tätigkeit reicht die berufspädagogische Eignung.",
+     "Ausbilden darf, wer persönlich und fachlich geeignet ist.",
+     "Das Unternehmen betraut mich mit der Ausbildung, damit sind die Anforderungen erfüllt.",
+     "Ausbilden darf nach dem Berufsbildungsgesetz, wer die persönliche Eignung besitzt."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original IHK-Prüfung (fotografiert), Aufgabe 22."
+   }
+  },
+  {
+   "id": "ihkf-a23",
+   "title": "P·A23: Als Auszubildende einer international tätigen Hotelkette erf…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 23",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 23/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C</strong>",
+    "B) Internationale Erfahrungen und Fremdsprachenkenntnisse",
+    "C) Kennenlernen von neuen Arbeitstechniken und Besonderheiten"
+   ],
+   "quiz": {
+    "q": "Welche Vorteile von Auslandsaufenthalten der Auszubildenden Ihres Hauses nennen Sie der Geschäftsführung?",
+    "options": [
+     "Während des Auslandsaufenthalts entfällt die Ausbildungsvergütung.",
+     "Internationale Erfahrungen und Fremdsprachenkenntnisse",
+     "Kennenlernen von neuen Arbeitstechniken und Besonderheiten",
+     "Auszubildende können nach der Rückkehr als Fachkräfte eingesetzt werden"
+    ],
+    "correctArr": [
+     1,
+     2
+    ],
+    "expl": "Lösung: B, C. Original IHK-Prüfung (fotografiert), Aufgabe 23."
+   }
+  },
+  {
+   "id": "ihkf-a24",
+   "title": "P·A24: Sie denken über die Möglichkeit einer vorzeitigen Zulassung…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 24",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 24/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: D</strong>",
+    "D) wenn die schulischen und betrieblichen Leistungen des rechtfertigen."
+   ],
+   "quiz": {
+    "q": "Welche Bedingung muss hierfür erfüllt sein?",
+    "options": [
+     "wenn eine anschließende Übernahme gewährleistet ist.",
+     "wenn der Auszubildende ansonsten die Ausbildung abbrechen würde, um einen anderen beruflichen Weg einzuschlagen.",
+     "wenn die Leistungen in der Berufsschule dies rechtfertigen, dabei bleiben die betrieblichen Leistungen unberücksichtigt.",
+     "wenn die schulischen und betrieblichen Leistungen des rechtfertigen."
+    ],
+    "correctArr": [
+     3
+    ],
+    "expl": "Lösung: D. Original IHK-Prüfung (fotografiert), Aufgabe 24."
+   }
+  },
+  {
+   "id": "ihkf-a25",
+   "title": "P·A25: Sie sind Ausbilder/in in einem Industrieunternehmen. Ein Bet…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 25",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 25/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B, C</strong>",
+    "A) Kommt eine Einigung über den Personalfragebogen nicht zustande, so entscheidet die Fragest",
+    "B) Personalfragebogen bedürfen der Zustimmung des Betriebsrates.",
+    "C) Der Betriebsrat hat das Recht, sowohl beim Inhalt als auch bei der Gestaltung des Personal"
+   ],
+   "quiz": {
+    "q": "Welche Rechte haben der Betriebsrat und die JAV bei der Erstellung eines Personalfragebogens für Ausbildungsplatzbewerber?",
+    "options": [
+     "Kommt eine Einigung über den Personalfragebogen nicht zustande, so entscheidet die Fragestellung.",
+     "Personalfragebogen bedürfen der Zustimmung des Betriebsrates.",
+     "Der Betriebsrat hat das Recht, sowohl beim Inhalt als auch bei der Gestaltung des Personalfragebogens mitzubestimmen.",
+     "Personalfragebogen unterliegen ausschließlich dem Mitbestimmungsrecht der Jugend- und Auszubildendenvertretung.",
+     "Betriebsrat und Auszubildendenvertretung haben kein Betriebsrecht hinsichtlich der Personalfragebogen."
+    ],
+    "correctArr": [
+     0,
+     1,
+     2
+    ],
+    "expl": "Lösung: A, B, C. Original IHK-Prüfung (fotografiert), Aufgabe 25."
+   }
+  },
+  {
+   "id": "ihkf-a26",
+   "title": "P·A26: Ihre Auszubildende Anne soll eine komplexe Arbeitsaufgabe mi…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 26",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 26/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D, E</strong>",
+    "B) Projektmethode",
+    "D) Leittextmethode",
+    "E) Lern- und Arbeitsauftrag"
+   ],
+   "quiz": {
+    "q": "Welche Auswahlmethoden eignen sich für dieses Lernziel?",
+    "options": [
+     "Kurzvorstellung in Verbindung mit der Vier-Stufen-Methode",
+     "Projektmethode",
+     "Mix aus Lehrgespräch und Rollenspiel",
+     "Leittextmethode",
+     "Lern- und Arbeitsauftrag",
+     "Moderationsmethode"
+    ],
+    "correctArr": [
+     1,
+     3,
+     4
+    ],
+    "expl": "Lösung: B, D, E. Original IHK-Prüfung (fotografiert), Aufgabe 26."
+   }
+  },
+  {
+   "id": "ihkf-a27",
+   "title": "P·A27: Die betrieblichen und individuellen Ausbildungspläne für Ihr…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 27",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 27/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C</strong>",
+    "A) Gespräche mit Auszubildenden und ausbildenden Fachkräften führen",
+    "C) Beurteilungen und Bewertungen der Auszubildenden durchführen lassen"
+   ],
+   "quiz": {
+    "q": "Wie können Sie die Umsetzung der Ausbildungspläne überwachen?",
+    "options": [
+     "Gespräche mit Auszubildenden und ausbildenden Fachkräften führen",
+     "Berufsschulnoten in den Sprechstunden befragen",
+     "Beurteilungen und Bewertungen der Auszubildenden durchführen lassen",
+     "an Ausbilderreferenten der zuständigen Stelle teilnehmen",
+     "ausbildende Fachkräfte durch die Auszubildenden beurteilen lassen"
+    ],
+    "correctArr": [
+     0,
+     2
+    ],
+    "expl": "Lösung: A, C. Original IHK-Prüfung (fotografiert), Aufgabe 27."
+   }
+  },
+  {
+   "id": "ihkf-a28",
+   "title": "P·A28: Der Inhaber des Restaurants „Elbbrücke\" in Dresden möchte zu…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 28",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 28/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: D</strong>",
+    "D) Industrie- und Handelskammer"
+   ],
+   "quiz": {
+    "q": "Welche Stelle genehmigt die Aufnahme der Ausbildung?",
+    "options": [
+     "Berufsschulzentrum",
+     "Handwerkskammer",
+     "Agentur für Arbeit",
+     "Industrie- und Handelskammer",
+     "Kulinarismuseum",
+     "die nach Landesrecht zuständige Behörde"
+    ],
+    "correctArr": [
+     3
+    ],
+    "expl": "Lösung: D. Original IHK-Prüfung (fotografiert), Aufgabe 28."
+   }
+  },
+  {
+   "id": "ihkf-a29",
+   "title": "P·A29: Ihr Auszubildender zum Industriemechaniker Christian (17 Jah…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 29",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 29/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, E</strong>",
+    "A) Christian muss keine ausbildungsfremden Arbeiten ausführen.",
+    "E) Christian muss alle Tätigkeiten innerhalb des Ausbildungszwecks erledigen, diesem Tätigkei"
+   ],
+   "quiz": {
+    "q": "Welche richtigen Antworten geben Sie Christian?",
+    "options": [
+     "Christian muss keine ausbildungsfremden Arbeiten ausführen.",
+     "Wenn die Verteilung der Reinigungsarbeitswerkzeuge auch in der Vergangenheit von den Auszubildenden übernommen wurde, dann wird auch Christian dies erledigen müssen.",
+     "Christian darf diese Tätigkeit nur bei Zahlung einer gesonderten Vergütung übernehmen.",
+     "Christian muss den Anweisungen des Ausbildungsbeauftragten Folge leisten.",
+     "Christian muss alle Tätigkeiten innerhalb des Ausbildungszwecks erledigen, diesem Tätigkeiten denen nicht dem Ausbildungszweck."
+    ],
+    "correctArr": [
+     0,
+     4
+    ],
+    "expl": "Lösung: A, E. Original IHK-Prüfung (fotografiert), Aufgabe 29."
+   }
+  },
+  {
+   "id": "ihkf-a30",
+   "title": "P·A30: Als Ausbilder in der Konfektionsabteilung eines Warenhauses…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 30",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 30/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D</strong>",
+    "B) höfliches Verhalten gegenüber Kunden auch in schwierigen Situationen",
+    "D) Kollegen unterstützen und ihnen behilflich sein"
+   ],
+   "quiz": {
+    "q": "Welche der von Ihnen geplanten Lerninhalte gehören zur Sozialkompetenz?",
+    "options": [
+     "Konzentration und Sorgfalt bei den Tätigkeiten an der Kasse",
+     "höfliches Verhalten gegenüber Kunden auch in schwierigen Situationen",
+     "Verantwortung für Fehler übernehmen",
+     "Kollegen unterstützen und ihnen behilflich sein",
+     "gepflegtes Erscheinungsbild als Grundsatz der Unternehmensphilosophie"
+    ],
+    "correctArr": [
+     1,
+     3
+    ],
+    "expl": "Lösung: B, D. Original IHK-Prüfung (fotografiert), Aufgabe 30."
+   }
+  },
+  {
+   "id": "ihkf-a31",
+   "title": "P·A31: Die Hanse GmbH hat bisher noch nicht ausgebildet und möchte…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 31",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 31/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C</strong>",
+    "A) Das Unternehmen kann die Ausbildung an seinen betrieblichen Anforderungen ausrichten.",
+    "C) Eigene Nachwuchskräfte ersparen unter anderem lange Einarbeitungszeiten."
+   ],
+   "quiz": {
+    "q": "Welchen Nutzen hat das Unternehmen durch die Ausbildung?",
+    "options": [
+     "Das Unternehmen kann die Ausbildung an seinen betrieblichen Anforderungen ausrichten.",
+     "Auszubildende ersetzen teure Fachkräfte ab sie schon von Beginn an produktive Arbeiten erledigen können.",
+     "Eigene Nachwuchskräfte ersparen unter anderem lange Einarbeitungszeiten.",
+     "Es spart die Einstellung von Hilfskräften, deren Aufgaben von Auszubildenden übernommen werden."
+    ],
+    "correctArr": [
+     0,
+     2
+    ],
+    "expl": "Lösung: A, C. Original IHK-Prüfung (fotografiert), Aufgabe 31."
+   }
+  },
+  {
+   "id": "ihkf-a32",
+   "title": "P·A32: Um sich optimal auf Ihre Ausbildungseinheiten vorzubereiten,…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 32",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 32/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, E</strong>",
+    "C) definiert ein beobachtbares Endverhalten.",
+    "E) ist der jeweiligen Ausbildungseinheit anzupassen."
+   ],
+   "quiz": {
+    "q": "Warauf achten Sie bei der Formulierung?",
+    "options": [
+     "Ein Fehlernziel enthält keine Zeitvorgabe.",
+     "darf nicht zu streng verfolgt werden, um den Auszubildenden nicht zu entmutigen.",
+     "definiert ein beobachtbares Endverhalten.",
+     "muss stets der zuständigen Stelle übermittelt werden, um eine fachgerechte Ausbildung sicherzustellen.",
+     "ist der jeweiligen Ausbildungseinheit anzupassen."
+    ],
+    "correctArr": [
+     2,
+     4
+    ],
+    "expl": "Lösung: C, E. Original IHK-Prüfung (fotografiert), Aufgabe 32."
+   }
+  },
+  {
+   "id": "ihkf-a33",
+   "title": "P·A33: Sie sind seit einigen Wochen als Ausbilderin in einem großen…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 33",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 33/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: D, E</strong>",
+    "D) fassen mehrere Berufe mit gemeinsamer Fachbezeichnung zusammen.",
+    "E) beinhalten eine Berufsbezeichnung ohne Spezialisierung in einer Fachrichtung."
+   ],
+   "quiz": {
+    "q": "Was kennzeichnen die Berufsbilder für Monoberufe?",
+    "options": [
+     "Die Berufsbilder für Monoberufe beinhalten verschiedene Fachrichtungen mit eigenständigen Prüfungsanforderungen.",
+     "kombinieren internationale Fachrichtungen mit länderübergreifender Fachqualifikation zusammen.",
+     "lassen mehrere Berufe mit gemeinsamer Fachbezeichnung zu.",
+     "fassen mehrere Berufe mit gemeinsamer Fachbezeichnung zusammen.",
+     "beinhalten eine Berufsbezeichnung ohne Spezialisierung in einer Fachrichtung."
+    ],
+    "correctArr": [
+     3,
+     4
+    ],
+    "expl": "Lösung: D, E. Original IHK-Prüfung (fotografiert), Aufgabe 33."
+   }
+  },
+  {
+   "id": "ihkf-a34",
+   "title": "P·A34: Die Hanse GmbH hat bisher noch nicht ausgebildet und möchte…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 34",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 34/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A</strong>",
+    "A) Jugendarbeitsschutzgesetz"
+   ],
+   "quiz": {
+    "q": "Welches Gesetz ist bei der Gestaltung der Arbeitszeit der Jugendlichen Auszubildenden zu beachten?",
+    "options": [
+     "Jugendarbeitsschutzgesetz",
+     "Arbeitsschutzgesetz",
+     "Jugendarbeitsschutzgesetz",
+     "Bundesausbildungsgesetz",
+     "Kinderschutzgesetz"
+    ],
+    "correctArr": [
+     0
+    ],
+    "expl": "Lösung: A. Original IHK-Prüfung (fotografiert), Aufgabe 34."
+   }
+  },
+  {
+   "id": "ihkf-a35",
+   "title": "P·A35: Eine Ihrer Aufgaben als Ausbilder besteht darin, geeignete A…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 35",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 35/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) Betriebsbesichtigungen für Schulklassen",
+    "D) Zusatzqualifikationen in Aussicht stellen"
+   ],
+   "quiz": {
+    "q": "Welche Maßnahmen sind geeignet, guten Nachwuchs zu rekrutieren?",
+    "options": [
+     "Betriebsbesichtigungen für Schulklassen",
+     "vorzeitige Zulassung zur Abschlussprüfung vereinbaren",
+     "Befreiung vom Berufsschulbesuch zusagen",
+     "Zusatzqualifikationen in Aussicht stellen"
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original IHK-Prüfung (fotografiert), Aufgabe 35."
+   }
+  },
+  {
+   "id": "ihkf-a36",
+   "title": "P·A36: Ein Fertigungs- und Montagebetrieb steht Metalldiehen und mö…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 36",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 36/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, E</strong>",
+    "A) Die Vermittlung des speziellen Montageverfahrens wird innerhalb eines betriebsinternen Leh",
+    "E) Für die Vermittlung des speziellen Montageverfahrens werden entsprechende Zeiträume eingep"
+   ],
+   "quiz": {
+    "q": "In welcher Weise kann dies in den betrieblichen Ausbildungsplan berücksichtigt werden?",
+    "options": [
+     "Die Vermittlung des speziellen Montageverfahrens wird innerhalb eines betriebsinternen Lehrgangs eingeplant.",
+     "Einzelne weniger wichtige Inhalte des Ausbildungsrahmenplanes werden mit denen des speziellen Montageverfahrens Inhalte kompensiert.",
+     "Das Montageverfahren kann nicht vermittelt werden, da es die Inhalte des Ausbildungsrahmenplanes während der zu vermittelnden Ausbildungsdauer zeitlich nicht zulassen.",
+     "Die Vermittlung des speziellen Montageverfahrens soll in einem Zentrum nach der Abschlussprüfung bis zum nächsten Lehrgang erfolgen.",
+     "Für die Vermittlung des speziellen Montageverfahrens werden entsprechende Zeiträume eingeplant."
+    ],
+    "correctArr": [
+     0,
+     4
+    ],
+    "expl": "Lösung: A, E. Original IHK-Prüfung (fotografiert), Aufgabe 36."
+   }
+  },
+  {
+   "id": "ihkf-a37",
+   "title": "P·A37: Wilke Wilkens beabsichtigt, nach dem erfolgreichen Abschluss…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 37",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 37/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C</strong>",
+    "A) Die zweijährige Berufsausbildung wird zeitlich auf den dreijährigen Ausbildungsberuf anger",
+    "C) Der Auszubildende ist bei erfolgreichem Abschluss seiner zweijährigen Berufsausbildung vom"
+   ],
+   "quiz": {
+    "q": "Welche Regelungen können hierzu in Ausbildungsordnungen enthalten sein?",
+    "options": [
+     "Die zweijährige Berufsausbildung wird zeitlich auf den dreijährigen Ausbildungsberuf angerechnet.",
+     "Der Auszubildende ist bei erfolgreichem Abschluss seiner zweijährigen Berufsausbildung vom zweiten Teil der Abschlussprüfung des dreijährigen Ausbildungsberufes befreit.",
+     "Der Auszubildende ist bei erfolgreichem Abschluss seiner zweijährigen Berufsausbildung vom ersten Teil der Abschlussprüfung des dreijährigen Ausbildungsberufes befreit.",
+     "Das zweijährige Berufsausbildungsverhältnis muss vor dem ersten Teil der hierauf geschriebenen Abschlussprüfung in dreijähriges Ausbildungsverhältnis umgewandelt werden.",
+     "Die zweijährige Berufsausbildung muss denselben Zusatzqualifikationen wie der dreijährige Ausbildungsberuf beinhalten.",
+     "Das zweijährige Berufsausbildungsverhältnis darf bei der Umwandlung in ein dreijähriges Ausbildungsverhältnis nicht weiter in Teilzeit durchgeführt werden."
+    ],
+    "correctArr": [
+     0,
+     2
+    ],
+    "expl": "Lösung: A, C. Original IHK-Prüfung (fotografiert), Aufgabe 37."
+   }
+  },
+  {
+   "id": "ihkf-a38",
+   "title": "P·A38: Ihr Unternehmen liegt in einem mit öffentlichen Verkehrsmitt…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 38",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 38/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Sie erstatten die Taxikosten, da Sie die Erstattung von Reisekosten nicht mit der Einladun"
+   ],
+   "quiz": {
+    "q": "Wie gehen Sie mit den Ansprüchen zur Kostenerstattung um?",
+    "options": [
+     "Sie erstatten die Taxikosten maximal in Höhe eines Fahrtscheins für die Buslinie, die ca. 3 km von Ihrem Betrieb entfernt eine Haltestelle unterhält.",
+     "Sie erstatten die Taxikosten, da Sie die Erstattung von Reisekosten nicht mit der Einladung abgelehnt haben.",
+     "Sie erstatten die Taxikosten, da die Bewerber unabhängig davon, ob sie von Ihnen eingeladen wurden oder nicht, darauf Anspruch haben.",
+     "Sie erstatten die Taxikosten nicht, da die Bewerber von Ihnen eingeladen wurden und die Kosten daher steuerlich absetzen können.",
+     "Sie erstatten die Taxikosten unter Abzug der Ihnen enthaltenen Umsatzsteuer, da Ihr Unternehmen umsatzsteuerpflichtig ist."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original IHK-Prüfung (fotografiert), Aufgabe 38."
+   }
+  },
+  {
+   "id": "ihkf-a39",
+   "title": "P·A39: Der 19-jährige Peier befindet sich im 3. Ausbildungsjahr. In…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 39",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 39/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: D</strong>",
+    "D) Betriebsverfassungsgesetz"
+   ],
+   "quiz": {
+    "q": "Welches Gesetz bildet die Grundlage für Peiers Vorhaben?",
+    "options": [
+     "Allgemeines Gleichbehandlungsgesetz",
+     "Berufsbildungsgesetz",
+     "Jugendschutzgesetz",
+     "Betriebsverfassungsgesetz",
+     "Jugendarbeitsschutzgesetz"
+    ],
+    "correctArr": [
+     3
+    ],
+    "expl": "Lösung: D. Original IHK-Prüfung (fotografiert), Aufgabe 39."
+   }
+  },
+  {
+   "id": "ihkf-a40",
+   "title": "P·A40: Sie sind als Ausbilder in einem mittelständischen Unternehme…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 40",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 40/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C</strong>",
+    "B) führt Ihr Unternehmen im Vertrag von Mona als Ausbildungsmaßnahme außerhalb der Ausbildung",
+    "C) ist vertragspartner der Auszubildenden Mona im Berufsausbildungsvertrag."
+   ],
+   "quiz": {
+    "q": "Was beachten Sie bei der Auftragsausbildung in Zusammenarbeit mit dem Partner?",
+    "options": [
+     "muss im Gegenzug auch eine Auszubildende Phasenweise ausbilden.",
+     "führt Ihr Unternehmen im Vertrag von Mona als Ausbildungsmaßnahme außerhalb der Ausbildungsstätte auf.",
+     "ist vertragspartner der Auszubildenden Mona im Berufsausbildungsvertrag.",
+     "zahlt für den Einsatz der Auszubildenden Mona im Berufsausbildungsvertrag.",
+     "zahlt die Kosten auf",
+     "überlässt Ihnen den Abschluss des Ausbildungsvertrages mit der Auszubildenden Mona."
+    ],
+    "correctArr": [
+     1,
+     2
+    ],
+    "expl": "Lösung: B, C. Original IHK-Prüfung (fotografiert), Aufgabe 40."
+   }
+  },
+  {
+   "id": "ihkf-a41",
+   "title": "P·A41: Als Ausbilder der Löbauer Backspezialitäten GmbH bereiten Si…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 41",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 41/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D</strong>",
+    "B) auf eine für das Gespräch geeignete Sitzordnung achten.",
+    "D) die Motivation und die Eignung des Bewerbers in den Mittelpunkt des Gespräches stellen."
+   ],
+   "quiz": {
+    "q": "Was sollten Sie bei der Durchführung des Gespräches berücksichtigen?",
+    "options": [
+     "keine Fragen des Bewerbers zulassen.",
+     "auf eine für das Gespräch geeignete Sitzordnung achten.",
+     "die anfängliche Unsicherheit des Bewerbers bewahren.",
+     "die Motivation und die Eignung des Bewerbers in den Mittelpunkt des Gespräches stellen."
+    ],
+    "correctArr": [
+     1,
+     3
+    ],
+    "expl": "Lösung: B, D. Original IHK-Prüfung (fotografiert), Aufgabe 41."
+   }
+  },
+  {
+   "id": "ihkf-a42",
+   "title": "P·A42: In einer Informationsveranstaltung der Agentur für Arbeit mi…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 42",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 42/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, D, E</strong>",
+    "C) Kennenlernen einer Vielzahl von Ausbildungsberufen",
+    "D) Grundlage für den Erwerb von beruflicher Handlungsfähigkeit",
+    "E) Erlernen von berufsrelevanten Ausbildungsinhalten"
+   ],
+   "quiz": {
+    "q": "Welche Vorteile bietet die Einstiegsqualifizierung den Jugendlichen?",
+    "options": [
+     "Erwerb eines qualifizierten Berufsabschlusses.",
+     "generelle Befristung von der Berufsschulpflicht.",
+     "Kennenlernen einer Vielzahl von Ausbildungsberufen",
+     "Grundlage für den Erwerb von beruflicher Handlungsfähigkeit",
+     "Erlernen von berufsrelevanten Ausbildungsinhalten"
+    ],
+    "correctArr": [
+     2,
+     3,
+     4
+    ],
+    "expl": "Lösung: C, D, E. Original IHK-Prüfung (fotografiert), Aufgabe 42."
+   }
+  },
+  {
+   "id": "ihkf-a43",
+   "title": "P·A43: Sie führen wöchentlich innerbetrieblichen Unterricht für Ihr…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 43",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 43/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) Der technologische Wandel beschleunigt sich Daher geraten lebenslanges Lernen zu einer Vor"
+   ],
+   "quiz": {
+    "q": "Welche Aussagen hierzu sind richtig?",
+    "options": [
+     "Weiterbildungssituation im jeweiligen Land zusammen hängen immer auch sehr stark mit der wirtschaftlichen Situation im jeweiligen Land zusammen.",
+     "Weiterbildungsmaßnahmen sollten sich verstärkt auf fachliche Kompetenzen beziehen. Soziale Kompetenzen können über eine betriebliche Weiterbildungsmaßnahme nicht erworben werden.",
+     "Der technologische Wandel beschleunigt sich Daher geraten lebenslanges Lernen zu einer Voraussetzung für ein erfolgreiches Berufsleben.",
+     "Als Auszubildende müssen Sie sich nicht zwangsläufig mit den Weiterbildungsbemühungen Ihrer Ausbilder auseinandersetzen, Ihre Aufgabe ist es überwiegend, den Erwerb von beruflicher Handlungsfähigkeit zu gewährleisten.",
+     "Zusatzqualifikationen (z. B. Präsentationstechniken) sind nicht wirklich erforderlich, um"
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original IHK-Prüfung (fotografiert), Aufgabe 43."
+   }
+  },
+  {
+   "id": "ihkf-a44",
+   "title": "P·A44: Zu Beginn einer Ausbildungssituation signalisieren Ihnen Ihr…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 44",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 44/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, D</strong>",
+    "C) Sie greifen die Vorkenntnisse auf und hinterfragen diese kritisch.",
+    "D) Sie greifen die Vorkenntnisse auf und passen Ihre Vorgehensweise an die Inhalte des Ausbil"
+   ],
+   "quiz": {
+    "q": "Welchem Einfluss hat diese Aussage auf Ihr weiteres Vorgehen?",
+    "options": [
+     "Sie brechen die Ausbildungssituation ab und befragen ein neues Thema vor.",
+     "Sie greifen die Vorkenntnisse auf und hinterfragen diese anhand des Ausbildungsrahmenplanes zu vermitteln.",
+     "Sie greifen die Vorkenntnisse auf und hinterfragen diese kritisch.",
+     "Sie greifen die Vorkenntnisse auf und passen Ihre Vorgehensweise an die Inhalte des Ausbildungsrahmenplanes zu vermitteln.",
+     "Sie überspringen die Vermittlung der Inhalte und übergeben der Auszubildenden umgehenden Übungsaufgaben."
+    ],
+    "correctArr": [
+     2,
+     3
+    ],
+    "expl": "Lösung: C, D. Original IHK-Prüfung (fotografiert), Aufgabe 44."
+   }
+  },
+  {
+   "id": "ihkf-a45",
+   "title": "P·A45: Im Januar haben Sie die Verantwortung für die Auszubildende…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 45",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 45/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C</strong>",
+    "A) Der Urlaubsanspruch von Lisa entsteht in jedem Urlaubsjahr neu; diese drei Tage können nic",
+    "C) Der Ausbilder hat keinen Anspruch auf Rückzahlung des Urlaubsanspruchs der im Urlaub verga"
+   ],
+   "quiz": {
+    "q": "Wie verhält es sich rechtlich mit den drei zu viel gewährten Urlaubstagen aus dem Vorjahr?",
+    "options": [
+     "Der Urlaubsanspruch von Lisa entsteht in jedem Urlaubsjahr neu; diese drei Tage können nicht mit dem Anspruch des neuen Jahres verrechnet werden.",
+     "Die drei zu viel gewährten Urlaubstage können von Lisas Urlaubsanspruch des laufenden Jahres abgezogen werden.",
+     "Der Ausbilder hat keinen Anspruch auf Rückzahlung des Urlaubsanspruchs der im Urlaub vergangenen Vergütung.",
+     "Lisa kann die drei Tage im Rahmen der Mehrarbeit/Überstunden unter Berücksichtigung der gesetzlichen Höchstarbeitszeit in laute dieses Jahres abarbeiten.",
+     "Lisa hatte diese Tatsache selbst bemerken und melden müssen, neben den Verrechnung in Tagen und Geld bekommt sie eine Abmahnung wegen der groben Pflichtverletzung.",
+     "Das Urlaubsentgelt für diese drei Tage wird Lisa in Form von abgesprochenen Raten von der Ausbildungsvergütung oder von Sonderzahlungen in diesem Jahr abgezogen."
+    ],
+    "correctArr": [
+     0,
+     2
+    ],
+    "expl": "Lösung: A, C. Original IHK-Prüfung (fotografiert), Aufgabe 45."
+   }
+  },
+  {
+   "id": "ihkf-a46",
+   "title": "P·A46: Ihr Auszubildender Jonas, 17 Jahre, wird demnächst an einem…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 46",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 46/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, E</strong>",
+    "C) wird am Mittwoch für die Teilnahme an der Prüfung freigestellt.",
+    "E) wird für den gesamten Mittwoch freigestellt, obwohl die Prüfung nur drei Stunden dauert."
+   ],
+   "quiz": {
+    "q": "Welche gesetzlichen Regelungen treffen auf Jonas zu?",
+    "options": [
+     "Jonas braucht am Montag nicht im Betrieb zu erscheinen.",
+     "hat am Dienstag Berufsschule, darum gibt es keine Freistellung im Betrieb.",
+     "wird am Mittwoch für die Teilnahme an der Prüfung freigestellt.",
+     "muss am Dienstag vor der Prüfung nicht in die Berufsschule.",
+     "wird für den gesamten Mittwoch freigestellt, obwohl die Prüfung nur drei Stunden dauert."
+    ],
+    "correctArr": [
+     2,
+     4
+    ],
+    "expl": "Lösung: C, E. Original IHK-Prüfung (fotografiert), Aufgabe 46."
+   }
+  },
+  {
+   "id": "ihkf-a47",
+   "title": "P·A47: Gerhilde beginnt demnächst ihre Berufsausbildung zur Fachkra…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 47",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 47/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, E</strong>",
+    "C) Werkzeuge, Werkstoffs- und Fachliteratur im Rahmen der praktischen Berufsausbildung",
+    "E) alle Ausbildungsmittel zum Ablegen vorgeschriebener Prüfungen"
+   ],
+   "quiz": {
+    "q": "Welche Ausbildungsmittel betrifft diese Regelung?",
+    "options": [
+     "Schreibpapier für den Berufsschulbesuch",
+     "Schreibbücher und Lernmittel für den Berufsschulbesuch",
+     "Werkzeuge, Werkstoffs- und Fachliteratur im Rahmen der praktischen Berufsausbildung",
+     "alle Prüfungsaufgaben als Information zu den Prüfungen",
+     "alle Ausbildungsmittel zum Ablegen vorgeschriebener Prüfungen",
+     "Magazine der Süßwarenindustrie"
+    ],
+    "correctArr": [
+     2,
+     4
+    ],
+    "expl": "Lösung: C, E. Original IHK-Prüfung (fotografiert), Aufgabe 47."
+   }
+  },
+  {
+   "id": "ihkf-a48",
+   "title": "P·A48: Sie sind Ausbilder in einem mittelständischen Betrieb und pl…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 48",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 48/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, D</strong>",
+    "C) Sie bestimmen das gewünschte Endverhalten.",
+    "D) Sie definieren die Feinlernziele."
+   ],
+   "quiz": {
+    "q": "Wie gehen Sie bei der Planung vor?",
+    "options": [
+     "Sie erarbeiten die Richtlernziele aus dem Berufsbild der Ausbildungsordnung.",
+     "Sie stellen den Lernerfolg fest.",
+     "Sie bestimmen das gewünschte Endverhalten.",
+     "Sie definieren die Feinlernziele."
+    ],
+    "correctArr": [
+     2,
+     3
+    ],
+    "expl": "Lösung: C, D. Original IHK-Prüfung (fotografiert), Aufgabe 48."
+   }
+  },
+  {
+   "id": "ihkf-a49",
+   "title": "P·A49: Ihre Auszubildende Lilly, 20 Jahre, hat vor drei Monaten die…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 49",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 49/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) Der Ausbildungsplatz von Lisa ist nicht gefährdet. Eine Kündigung von Lisa während der Sch"
+   ],
+   "quiz": {
+    "q": "Was können Sie Lisa zu ihren Rechten sagen?",
+    "options": [
+     "Die sofortige Kündigung von Lisa wäre zulässig, sie könnte die Ausbildung fortführen, wenn sie wegen der Einschränkungen aufgrund der Schwangerschaft mit einer Kürzung der Ausbildungsvergütung einverstanden ist.",
+     "Da Lisa sich noch in der Probezeit befindet, darf ihr Ausbildungsverhältnis ohne Angaben von Gründen gekündigt werden, die Schwangerschaft ist nicht zu beachten.",
+     "Der Ausbildungsplatz von Lisa ist nicht gefährdet. Eine Kündigung von Lisa während der Schwangerschaft und vier Monate nach der Geburt ist unzulässig. Für sie gilt in diesem Fall auch das Mutterschutzgesetz.",
+     "Die Bestimmungen des Mutterschutzgesetzes gelten nur für Arbeitnehmer und nicht für Auszubildende. Lisa kann daher sofort gekündigt werden.",
+     "Wenn Lisa noch minderjährig wäre, dürfte ihr nicht gekündigt werden, als volljährige Auszubildende muss sie während der Probezeit mit der Kündigung rechnen."
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original IHK-Prüfung (fotografiert), Aufgabe 49."
+   }
+  },
+  {
+   "id": "ihkf-a50",
+   "title": "P·A50: Sie werden beauftragt, im Betrieb die erstmalige Ausbildung…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 50",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 50/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C</strong>",
+    "A) Abschluss von Vereinbarungen zur Verbundausbildung mit anderen Unternehmen.",
+    "C) Kooperation mit einem anerkannten Bildungsträger zur Übernahme von Ausbildungsinhalten."
+   ],
+   "quiz": {
+    "q": "Welche Möglichkeiten können Sie nutzen, um die Ausbildung trotzdem durchführen zu können?",
+    "options": [
+     "Abschluss von Vereinbarungen zur Verbundausbildung mit anderen Unternehmen.",
+     "Auflistung der nicht vermittelbaren Ausbildungsinhalte als Anlage zum Berufsausbildungsvertrag.",
+     "Kooperation mit einem anerkannten Bildungsträger zur Übernahme von Ausbildungsinhalten.",
+     "Kooperation mit der Berufsschule zur Vermittlung der nicht im Betriebes vermittelbaren Fertigkeiten.",
+     "Ein Vortrag zieht auf Lerninhalte des kognitiven Lernzielbereiches ab."
+    ],
+    "correctArr": [
+     0,
+     2
+    ],
+    "expl": "Lösung: A, C. Original IHK-Prüfung (fotografiert), Aufgabe 50."
+   }
+  },
+  {
+   "id": "ihkf-a51",
+   "title": "P·A51: Sie sind in Ihrem Unternehmen als Ausbilder tätig und möchte…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 51",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 51/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, E</strong>",
+    "C) Ein Vortrag dient in der Regel dazu, in einen neuen Themenbereich einzuführen.",
+    "E) Ein Vortrag zielt auf Lerninhalte des kognitiven Lernzielbereiches ab."
+   ],
+   "quiz": {
+    "q": "Was kennzeichnet diese Ausbildungsmethode?",
+    "options": [
+     "Ein Vortrag fördert die Prozessorientierung.",
+     "Ein Vortrag dient in der Regel dazu Fertigkeiten zu vermitteln.",
+     "Ein Vortrag dient in der Regel dazu, in einen neuen Themenbereich einzuführen.",
+     "Ein Vortrag zieht auf Lerninhalte des psychomotorischen Lernzielbereiches ab.",
+     "Ein Vortrag zielt auf Lerninhalte des kognitiven Lernzielbereiches ab."
+    ],
+    "correctArr": [
+     2,
+     4
+    ],
+    "expl": "Lösung: C, E. Original IHK-Prüfung (fotografiert), Aufgabe 51."
+   }
+  },
+  {
+   "id": "ihkf-a52",
+   "title": "P·A52: Welche Bestimmungen legt demnach seine Abschlussprüfung ab?…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 52",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 52/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C</strong>",
+    "B) Berufsbildungsgesetz",
+    "C) Ausbildungsordnung"
+   ],
+   "quiz": {
+    "q": "Welche Bestimmungen legt demnach seine Abschlussprüfung ab?",
+    "options": [
+     "Bundesbildungsgesetz",
+     "Berufsbildungsgesetz",
+     "Ausbildungsordnung",
+     "Bürgerliches Gesetzbuch",
+     "Manteltarifvertrag"
+    ],
+    "correctArr": [
+     1,
+     2
+    ],
+    "expl": "Lösung: B, C. Original IHK-Prüfung (fotografiert), Aufgabe 52."
+   }
+  },
+  {
+   "id": "ihkf-a53",
+   "title": "P·A53: Sie wollen die Ausbildung handlungsorientiert und für die Au…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 53",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 53/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D</strong>",
+    "B) Sie beobachten die Auszubildenden zeitweise und stehen für Fragen jederzeit bereit.",
+    "D) Sie geben auf Nachfrage der Auszubildenden Hinweise und regen zu Lösungen an."
+   ],
+   "quiz": {
+    "q": "Auf welche Aktivitäten beschränken Sie sich als Ausbilder in der 4. Phase „Planen“?",
+    "options": [
+     "Sie beraten und korrigieren die Auszubildenden, damit sich im weiteren Verlauf keine Fehler einschleichen können.",
+     "Sie beobachten die Auszubildenden zeitweise und stehen für Fragen jederzeit bereit.",
+     "Sie stellen den Auszubildenden die Ergebnisse von ähnlichen Ausbildungseinheiten zur Orientierung und Nachahmung vor.",
+     "Sie geben auf Nachfrage der Auszubildenden Hinweise und regen zu Lösungen an.",
+     "Sie geben Hinweise und animieren die Auszubildenden zu einer schnelleren und effektiveren Vorgehensweise."
+    ],
+    "correctArr": [
+     1,
+     3
+    ],
+    "expl": "Lösung: B, D. Original IHK-Prüfung (fotografiert), Aufgabe 53."
+   }
+  },
+  {
+   "id": "ihkf-a54",
+   "title": "P·A54: In der Berufsausbildung kommen verschiedene Sozialformen des…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 54",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 54/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) Die Auszubildenden geben sich gegenseitig Impulse.",
+    "D) Die Auszubildenden ergänzen gegenseitig ihre Kenntnisse, Fähigkeiten und Fertigkeiten und "
+   ],
+   "quiz": {
+    "q": "Welchen Zweck verfolgen Sie, wenn Sie bestimmte Aufgabenseitungen in Gruppenarbeit lösen lassen?",
+    "options": [
+     "Die Auszubildenden geben sich gegenseitig Impulse.",
+     "Die Auszubildenden kommen gemeinsam schneller zu Lösungen.",
+     "Durch den Gruppenleiter kommt die Gruppe schnell zur Lösung der Aufgaben.",
+     "Die Auszubildenden ergänzen gegenseitig ihre Kenntnisse, Fähigkeiten und Fertigkeiten und können auf diese Weise zu qualitativ besseren Ergebnissen kommen."
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original IHK-Prüfung (fotografiert), Aufgabe 54."
+   }
+  },
+  {
+   "id": "ihkf-a55",
+   "title": "P·A55: Sie erstellen eine Stellenanzeige für einen Ausbildungsplatz…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 55",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 55/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Die Stellenausschreibung muss geschlechtsneutral formuliert sein.",
+    "B) darf einen gewünschten Schulabschluss beinhalten."
+   ],
+   "quiz": {
+    "q": "Was müssen Sie im Rahmen des Allgemeinen Gleichbehandlungsgesetzes für die Stellenausschreibung beachten?",
+    "options": [
+     "Die Stellenausschreibung muss geschlechtsneutral formuliert sein.",
+     "darf einen gewünschten Schulabschluss beinhalten.",
+     "darf sich ausschließlich an weibliche Personen richten.",
+     "darf von Bewerber als Muttersprache Deutsch fordern.",
+     "darf eine Höchstaltergrenze formulieren."
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 55."
+   }
+  },
+  {
+   "id": "ihkf-a56",
+   "title": "P·A56: Ausbilder Hansen besucht mit seinen Auszubildenden des dritt…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 56",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 56/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Jenny benötigt den Nachweis der berufs- und arbeitspädagogischen Eignung.",
+    "B) Max kann sich zum Handelsfachwirt weiterbilden."
+   ],
+   "quiz": {
+    "q": "Welche Informationen zu Ihrem jeweiligen Vorhaben sind richtig?",
+    "options": [
+     "Jenny benötigt den Nachweis der berufs- und arbeitspädagogischen Eignung.",
+     "Max kann sich zum Handelsfachwirt weiterbilden.",
+     "Max hat die Möglichkeit, sich in einen anderen technischen Beruf umschulen zu lassen.",
+     "Max könnte sich zum Meister qualifizieren.",
+     "Jenny muss als Ausbilderin das 24. Lebensjahr vollendet haben."
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 56."
+   }
+  },
+  {
+   "id": "ihkf-a57",
+   "title": "P·A57: Zum ersten Mal werden zwei Auszubildende unter Ihrer Verantw…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 57",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 57/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) Verwaltungsgericht"
+   ],
+   "quiz": {
+    "q": "Welches Gericht ist zuständig, wenn der Auszubildende eine Klage gegen sein Prüfungsergebnis anstrebt?",
+    "options": [
+     "Sozialgericht",
+     "Landgericht",
+     "Verwaltungsgericht",
+     "Arbeitsgericht",
+     "Amtsgericht"
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original IHK-Prüfung (fotografiert), Aufgabe 57."
+   }
+  },
+  {
+   "id": "ihkf-a58",
+   "title": "P·A58: Sie bilden im Beruf Kaufmann für Büromanagement aus und sech…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 58",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 58/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D</strong>",
+    "B) Sie führen eine Prüfungssimulation durch, die besonders der praktischen Prüfungsteile deck",
+    "D) Sie führen Lehrgespräche, um vergessenes Wissen wieder systemisch zu reaktivieren."
+   ],
+   "quiz": {
+    "q": "Wie gehen Sie vor?",
+    "options": [
+     "Sie sind verpflichtet, die Auszubildenden zwei Stunden wöchentlich zum gemeinsamen Lernen freizustellen.",
+     "Sie führen eine Prüfungssimulation durch, die besonders der praktischen Prüfungsteile deckt.",
+     "Sie verweisen Ihre Auszubildenden auf die Prüfungsordnung der zuständigen Stelle, um sich auf die Inhalte der Prüfung vorzubereiten.",
+     "Sie führen Lehrgespräche, um vergessenes Wissen wieder systemisch zu reaktivieren.",
+     "Sie weisen Ihre Auszubildenden abzudecken."
+    ],
+    "correctArr": [
+     1,
+     3
+    ],
+    "expl": "Lösung: B, D. Original IHK-Prüfung (fotografiert), Aufgabe 58."
+   }
+  },
+  {
+   "id": "ihkf-a59",
+   "title": "P·A59: Alexander (17 Jahre alt) wird mit mittlerem Bildungsabschlus…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 59",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 59/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C</strong>",
+    "C) durch die erworbene schulische Vorbildung"
+   ],
+   "quiz": {
+    "q": "Aufgrund welcher rechtlichen Voraussetzungen kann bei Alexander die Regelausbildungsdauer im Ausbildungsvertrag verkürzt werden?",
+    "options": [
+     "durch eine vorzeitige Zulassung zur Abschlussprüfung wegen guter Leistungen",
+     "durch die erfolgreiche Teilnahme an der Zwischenprüfung",
+     "durch die erworbene schulische Vorbildung",
+     "bei Vollendung des 18. Lebensjahres",
+     "durch eine häufige Teilnahme an Fortbildungsmaßnahmen"
+    ],
+    "correctArr": [
+     2
+    ],
+    "expl": "Lösung: C. Original IHK-Prüfung (fotografiert), Aufgabe 59."
+   }
+  },
+  {
+   "id": "ihkf-a60",
+   "title": "P·A60: Sie sind Ausbildungsleiter eines überregional tätigen Untern…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 60",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 60/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Berufsschulpflicht besteht nicht nur für Auszubildende, sondern in vielen Bundesländern au",
+    "B) Die Berufsschulpflicht in den einzelnen Bundesländern unterliegt den landesspezifischen Re"
+   ],
+   "quiz": {
+    "q": "Welche Aussagen zur Schulpflicht sind richtig? Für Auszubildende besteht grundsätzlich Vollzeitschulpflicht, da der Unterricht in den Berufsschulen ganztägig stattfindet.",
+    "options": [
+     "Berufsschulpflicht besteht nicht nur für Auszubildende, sondern in vielen Bundesländern auch für Jugendliche, die ohne Ausbildung erwerbstätig werden.",
+     "Die Berufsschulpflicht in den einzelnen Bundesländern unterliegt den landesspezifischen Regelungen.",
+     "Auszubildende mit allgemeiner Hochschulreife und einer Ausbildungsverkürzung vom maximal zwölf Monaten können bei guten Ausbildungsleistungen unabhängig vom Lebensalter von der Berufsschulpflicht befreit werden.",
+     "Nach Erfüllung der allgemeinen Schulpflicht sind Auszubildende grundsätzlich nicht mehr berufsschulpflichtig.",
+     "[Text teilweise verdeckt/auf nächster Seite]"
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 60."
+   }
+  },
+  {
+   "id": "ihkf-a61",
+   "title": "P·A61: In einer internen Schulungsmaßnahme zum Thema Ausbildungszeu…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 61",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 61/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: E, F</strong>",
+    "E) Jedes Ausbildungszeugnis muss für den jeweiligen Auszubildenden formuliert werden.",
+    "F) Das Zeugnis muss ein möglichst komplettes Bild des Auszubildenden, seiner Leistungen und s"
+   ],
+   "quiz": {
+    "q": "Welche der folgenden Beschreibungen entsprechen diesem Grundsatz?",
+    "options": [
+     "[Text durch handschriftliche Markierung teilweise verdeckt]",
+     "Bei einer Schwangerschaft darf der Arbeitgeber das Ausbildungsverhältnis ohne [Wort verdeckt] kündigen.",
+     "Es müssen die Leistungen und das Verhalten des Auszubildenden vermerkt werden.",
+     "[Text teilweise verdeckt]",
+     "Jedes Ausbildungszeugnis muss für den jeweiligen Auszubildenden formuliert werden.",
+     "Das Zeugnis muss ein möglichst komplettes Bild des Auszubildenden, seiner Leistungen und seines Verhaltens vermitteln."
+    ],
+    "correctArr": [
+     4,
+     5
+    ],
+    "expl": "Lösung: E, F. Original IHK-Prüfung (fotografiert), Aufgabe 61."
+   }
+  },
+  {
+   "id": "ihkf-a62",
+   "title": "P·A62: Sie beenden die Ausbildungszeugnisse für Ihre Auszubildenden…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 62",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 62/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, D</strong>",
+    "C) Sie hat unseren Erwartungen in jeder Hinsicht und bester Weise entsprochen.",
+    "D) Seine Leistungen haben in jeder Hinsicht und volle Anerkennung gefunden."
+   ],
+   "quiz": {
+    "q": "Welche der folgenden Formulierungen beschreiben Sie eine gute Beurteilung?",
+    "options": [
+     "Er hat seine Aufgaben sorgfältig und genau erledigt.",
+     "Er erledigte zugeteilte Aufgaben zu unserer Zufriedenheit.",
+     "Sie hat unseren Erwartungen in jeder Hinsicht und bester Weise entsprochen.",
+     "Seine Leistungen haben in jeder Hinsicht und volle Anerkennung gefunden.",
+     "Sie zeigte für die Ausbildung Verständnis und Interesse.",
+     "Sie war immer bemüht, die Aufgaben sorgfältig zu erledigen."
+    ],
+    "correctArr": [
+     2,
+     3
+    ],
+    "expl": "Lösung: C, D. Original IHK-Prüfung (fotografiert), Aufgabe 62."
+   }
+  },
+  {
+   "id": "ihkf-a63",
+   "title": "P·A63: Im Rahmen Ihrer Vorbereitung auf die Ausbildereignungsprüfun…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 63",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 63/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, D, F</strong>",
+    "C) definiert, wer Tarifverträge abschließen kann.",
+    "D) regelt die Rechte und Pflichten der Tarifvertragsparteien.",
+    "F) ermöglicht die Allgemeinverbindlicherklärung von Tarifverträgen."
+   ],
+   "quiz": {
+    "q": "Welche Aussagen zum Tarifvertragsgesetz sind zutreffend?",
+    "options": [
+     "legt den gesetzlichen Mindestlohn als Untergrenze für Tarifverträge fest.",
+     "beschreibt die Vorgehensweise bei Arbeitskämpfen.",
+     "definiert, wer Tarifverträge abschließen kann.",
+     "regelt die Rechte und Pflichten der Tarifvertragsparteien.",
+     "ist als Landesgesetz in den einzelnen Bundesländern unterschiedlich.",
+     "ermöglicht die Allgemeinverbindlicherklärung von Tarifverträgen."
+    ],
+    "correctArr": [
+     2,
+     3,
+     5
+    ],
+    "expl": "Lösung: C, D, F. Original IHK-Prüfung (fotografiert), Aufgabe 63."
+   }
+  },
+  {
+   "id": "ihkf-a64",
+   "title": "P·A64: Sie wollen den Auszubildenden die Bedeutung des Ausbildungsn…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 64",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 64/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) ist Zulassungsvoraussetzung für die Abschlussprüfung.",
+    "D) gibt Auskunft über vermittelte Zusatzqualifikationen."
+   ],
+   "quiz": {
+    "q": "Welche Argumente können Sie einbringen?",
+    "options": [
+     "ist Zulassungsvoraussetzung für die Abschlussprüfung.",
+     "wird bei der Abschlussprüfung zur Bewertung der Gesamtleistungen einbezogen.",
+     "wird gegen den Auszubildenden bei mangelnder Leistung als Erziehungsmittel eingesetzt.",
+     "gibt Auskunft über vermittelte Zusatzqualifikationen."
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original IHK-Prüfung (fotografiert), Aufgabe 64."
+   }
+  },
+  {
+   "id": "ihkf-a65",
+   "title": "P·A65: Ihre gehörlose Auszubildende Mia ist im letzten Ausbildungsj…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 65",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 65/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C, F</strong>",
+    "B) Für Mia können Sie mit der Anmeldung zur Abschlussprüfung einen Nachteilsausgleich beantra",
+    "C) Mit der Anmeldung zur Abschlussprüfung reichen Sie eine Kopie des Schwerbehindertenausweis",
+    "F) Mia kann für die Prüfung einen Gebärdendolmetscher gestellt bekommen; dies muss mit der An"
+   ],
+   "quiz": {
+    "q": "Welche Besonderheiten beachten Sie bei der Anmeldung von Mia zur Abschlussprüfung?",
+    "options": [
+     "Für den Antrag zur Abschlussprüfung müssen Sie keine Besonderheiten berücksichtigen, da alle erforderlichen Daten zu Mias Hörschädigung der zuständigen Stelle bereits vorliegen.",
+     "Für Mia können Sie mit der Anmeldung zur Abschlussprüfung einen Nachteilsausgleich beantragen.",
+     "Mit der Anmeldung zur Abschlussprüfung reichen Sie eine Kopie des Schwerbehindertenausweises von Mia bei der zuständigen Stelle ein.",
+     "Es reicht aus, Mias Hörschädigung im Abschnitt „Anmerkungen\" der Anmeldung zur Abschlussprüfung einzutragen; ein gesonderter Antrag ist für einen Nachteilsausgleich nicht erforderlich.",
+     "Ein Antrag auf Nachteilsausgleich für Mia ist nicht an Fristen gebunden und kann auch noch am Tag vor der Prüfung bei der zuständigen Stelle eingereicht werden.",
+     "Mia kann für die Prüfung einen Gebärdendolmetscher gestellt bekommen; dies muss mit der Anmeldung zur Abschlussprüfung beantragt werden."
+    ],
+    "correctArr": [
+     1,
+     2,
+     5
+    ],
+    "expl": "Lösung: B, C, F. Original IHK-Prüfung (fotografiert), Aufgabe 65."
+   }
+  },
+  {
+   "id": "ihkf-a66",
+   "title": "P·A66: Die zuständige Stelle fragt bei Ihnen an, ob Sie daran inter…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 66",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 66/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: E</strong>",
+    "E) Ein Prüfungsausschuss kann die Abnahme und Bewertung von Prüfungsleistungen auf eine Prüfd"
+   ],
+   "quiz": {
+    "q": "Welche Aussage zu Prüfdelegationen ist korrekt?",
+    "options": [
+     "Mindestens drei Mitglieder einer Prüfdelegation bewerten einzelne Prüfungsleistungen selbständig und unabhängig voneinander.",
+     "Prüfdelegationen sind von Prüfungsausschüssen unabhängige Gremien, die vom Bildausschuss der zuständigen Stelle berufen werden.",
+     "Die Arbeit in einer Prüfdelegation ist im Gegensatz zur Arbeit in einem Prüfungsausschuss nicht ehrenamtlich und wird angemessen vergütet.",
+     "Eine Prüfdelegation ist paritätisch zu besetzen. Mindestens zwei Drittel der Mitglieder sind Vertreter von Arbeitgebern und Arbeitnehmern.",
+     "Ein Prüfungsausschuss kann die Abnahme und Bewertung von Prüfungsleistungen auf eine Prüfdelegation übertragen."
+    ],
+    "correctArr": [
+     4
+    ],
+    "expl": "Lösung: E. Original IHK-Prüfung (fotografiert), Aufgabe 66."
+   }
+  },
+  {
+   "id": "ihkf-a67",
+   "title": "P·A67: Wenn Sie beabsichtigen, einem Ihnen geeigneten Industriemech…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 67",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 67/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: D, E</strong>",
+    "D) Der Ausbildungsbetrieb muss die Kündigung der zuständigen Stelle anzeigen.",
+    "E) Bernd hat eine Kündigungsfrist von vier Wochen zu beachten."
+   ],
+   "quiz": {
+    "q": "Welche der Aussagen zur Kündigung des Ausbildungsverhältnisses sind richtig?",
+    "options": [
+     "Der Ausbildungsbetrieb kann vom Azubi Schadensersatz verlangen.",
+     "Nach der Probezeit ist eine Kündigung durch den Auszubildenden ausgeschlossen.",
+     "Der Beruf kann nur mit Einverständnis des Ausbildungsbetriebes ausgesprochen werden.",
+     "Der Ausbildungsbetrieb muss die Kündigung der zuständigen Stelle anzeigen.",
+     "Bernd hat eine Kündigungsfrist von vier Wochen zu beachten."
+    ],
+    "correctArr": [
+     3,
+     4
+    ],
+    "expl": "Lösung: D, E. Original IHK-Prüfung (fotografiert), Aufgabe 67."
+   }
+  },
+  {
+   "id": "ihkf-a68",
+   "title": "P·A68: Sie wollen dieses Jahr das erste Mal ausbilden und haben sic…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 68",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 68/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, E</strong>",
+    "C) Sie bezeichnen den Eltern, mit ein, damit diese einen Einblick in Ihr Unternehmen bekommen",
+    "E) Sie beziehen die Abteilungsleiter mit ein, denen Sie Ihren Auszubildenden zu Beginn Einbli"
+   ],
+   "quiz": {
+    "q": "Wann beziehen Sie bei der Ausbildungsplanung mit ein?",
+    "options": [
+     "Sie bezeichnen den Ausbildungsplan erst nach der Beendigung des Berufes.",
+     "Sie bezeichnen den Ausbildungsplan erst nach dem Berufsstart.",
+     "Sie bezeichnen den Eltern, mit ein, damit diese einen Einblick in Ihr Unternehmen bekommen.",
+     "Sie nehmen den Kontakt mit der Agentur für Arbeit mit ein, falls sich ein Auszubildender als ungeeignet erweist.",
+     "Sie beziehen die Abteilungsleiter mit ein, denen Sie Ihren Auszubildenden zu Beginn Einblicke in ihre betrieblichen Abläufe geben."
+    ],
+    "correctArr": [
+     2,
+     4
+    ],
+    "expl": "Lösung: C, E. Original IHK-Prüfung (fotografiert), Aufgabe 68."
+   }
+  },
+  {
+   "id": "ihkf-a69",
+   "title": "P·A69: Als Ausbildender müssen Sie am Ende der Ausbildung Ihrem Aus…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 69",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 69/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, D, E</strong>",
+    "B) Das Zeugnis unterliegt einer Wahrheitspflicht.",
+    "D) Das Zeugnis muss wohlwollend formuliert sein.",
+    "E) Das Zeugnis muss individuell auf den Auszubildenden ausgerichtet sein."
+   ],
+   "quiz": {
+    "q": "Welche Grundsätze haben Sie bei der Erstellung eines qualifizierten betrieblichen Zeugnisses für Ihre Auszubildenden zu beachten?",
+    "options": [
+     "Das Zeugnis muss durch den Betriebsrat bestätigt werden.",
+     "Das Zeugnis unterliegt einer Wahrheitspflicht.",
+     "Das Zeugnis muss über die Fehlzeiten informieren.",
+     "Das Zeugnis muss wohlwollend formuliert sein.",
+     "Das Zeugnis muss individuell auf den Auszubildenden ausgerichtet sein."
+    ],
+    "correctArr": [
+     1,
+     3,
+     4
+    ],
+    "expl": "Lösung: B, D, E. Original IHK-Prüfung (fotografiert), Aufgabe 69."
+   }
+  },
+  {
+   "id": "ihkf-a70",
+   "title": "P·A70: Vanessa ist mit Ihrer Ausbildung unzufrieden, da Ausbilder L…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 70",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 70/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B</strong>",
+    "B) Ordnungswidrigkeit mit einer Geldstrafe bis zu 5.000 €"
+   ],
+   "quiz": {
+    "q": "Die Verstöße können geahndet werden als",
+    "options": [
+     "Ordnungswidrigkeit mit einem Bußgeld bis zu 300 €",
+     "Ordnungswidrigkeit mit einer Geldstrafe bis zu 5.000 €",
+     "Strafahnbescheid mit 90 Tagessätzen.",
+     "Verbrechen mit Entzug der Eignung zum Ausbilden.",
+     "Vorsätzliche Straftat mit Freiheitsstrafe."
+    ],
+    "correctArr": [
+     1
+    ],
+    "expl": "Lösung: B. Original IHK-Prüfung (fotografiert), Aufgabe 70."
+   }
+  },
+  {
+   "id": "ihkf-a71",
+   "title": "P·A71: Sie bereiten die Ausbildungszeugnisse für Ihre Auszubildende…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 71",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 71/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: D, E</strong>",
+    "D) Sie müssen Ronja aufgrund der Nichteinnahme direkt ein qualifiziertes Zeugnis ausstellen.",
+    "E) Für Ronja und Benjamin müssen Sie ein einfaches Zeugnis ausstellen."
+   ],
+   "quiz": {
+    "q": "Was gilt hinsichtlich der Ausbildungszeugnisse bei den Auszubildenden?",
+    "options": [
+     "Bei Ronja dürfen im qualifizierten Ausbildungszeugnis aufgrund des Grundsatzes des Wohlwollens keine Beurteilungen der Leistung enthalten sein.",
+     "Da Benjamin unerfahren ist, hat er keinen Anspruch auf ein Ausbildungszeugnis.",
+     "Bei Benjamin wird die zuständige Stelle die Ausfertigung eines Ausbildungszeugnisses übernehmen.",
+     "Sie müssen Ronja aufgrund der Nichteinnahme direkt ein qualifiziertes Zeugnis ausstellen.",
+     "Für Ronja und Benjamin müssen Sie ein einfaches Zeugnis ausstellen."
+    ],
+    "correctArr": [
+     3,
+     4
+    ],
+    "expl": "Lösung: D, E. Original IHK-Prüfung (fotografiert), Aufgabe 71."
+   }
+  },
+  {
+   "id": "ihkf-a72",
+   "title": "P·A72: Sie bemerken, dass sich einige Ihrer ausbildenden Fachkräfte…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 72",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 72/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: C, E, F</strong>",
+    "C) Sie bei der Planung und Durchführung der Ausbildung in Ihrer Abteilung unterstützen.",
+    "E) Ihnen Unterstützung bei der Vermittlung von Lerninhalten geben.",
+    "F) Ihnen die Teilnahme an Ausbilderseminaren ermöglichen."
+   ],
+   "quiz": {
+    "q": "Wie können Sie die ausbildenden Fachkräfte zukünftig besser fordern und unterstützen?",
+    "options": [
+     "Ihnen bei unklarem Verhalten mit Abmahnungen drohen.",
+     "Ihnen freie Hand bei der Wahl der Ausbildungsinhalte lassen.",
+     "Sie bei der Planung und Durchführung der Ausbildung in Ihrer Abteilung unterstützen.",
+     "Ihnen die zu vermittelnden Fehlzeiten vorgeben.",
+     "Ihnen Unterstützung bei der Vermittlung von Lerninhalten geben.",
+     "Ihnen die Teilnahme an Ausbilderseminaren ermöglichen."
+    ],
+    "correctArr": [
+     2,
+     4,
+     5
+    ],
+    "expl": "Lösung: C, E, F. Original IHK-Prüfung (fotografiert), Aufgabe 72."
+   }
+  },
+  {
+   "id": "ihkf-a73",
+   "title": "P·A73: Laut entsprechendem Berufsausbildungsvertrag endet das Ausbi…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 73",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 73/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) Paula wird nicht zugelassen, da ihre Ausbildungsdauer später als zwei Monate nach dem Prüf",
+    "D) Leon wird zugelassen, da er die Ausbildungsdauer zurückgelegt hat."
+   ],
+   "quiz": {
+    "q": "Welche Aussagen treffen hinsichtlich der Zulassung zur Abschlussprüfung gemäß § 43 BBiG zu?",
+    "options": [
+     "Paula wird nicht zugelassen, da ihre Ausbildungsdauer später als zwei Monate nach dem Prüfungstermin endet.",
+     "Leon wird nicht zugelassen, da seine Ausbildungsdauer vor dem Prüfungstermin endet.",
+     "Paula wird zugelassen, da sie die Ausbildungsdauer zurückgelegt hat.",
+     "Leon wird zugelassen, da er die Ausbildungsdauer zurückgelegt hat."
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original IHK-Prüfung (fotografiert), Aufgabe 73."
+   }
+  },
+  {
+   "id": "ihkf-a74",
+   "title": "P·A74: Ihr Auszubildender Tim wird in sechs Monaten die Abschlusspr…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 74",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 74/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 3 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C, F</strong>",
+    "B) Mit Tim die möglichen Ursachen von Prüfungsangst besprechen und geeignete Strategien aufze",
+    "C) Tims Fragen zum Prüfungsverlauf beantworten",
+    "F) Die praktische Prüfung simulieren, das gibt Sicherheit für die reale Situation."
+   ],
+   "quiz": {
+    "q": "Welche Maßnahmen kommen Tim gegen die Prüfungsangst helfen?",
+    "options": [
+     "Tim die Konsequenzen eines Nichtbestehens der Prüfung aufzeigen, um ihn zu motivieren",
+     "Mit Tim die möglichen Ursachen von Prüfungsangst besprechen und geeignete Strategien aufzeigen",
+     "Tims Fragen zum Prüfungsverlauf beantworten",
+     "Tim kontaktiert aus dem Arbeitsprozess herauszuholen, damit er sich auf die Prüfung vorbereiten kann",
+     "Mit Tim die Gesächtsleitung über sein mögliches Scheitern informieren, das nimmt den Druck von Tim, unbedingt die Prüfung bestehen zu müssen.",
+     "Die praktische Prüfung simulieren, das gibt Sicherheit für die reale Situation."
+    ],
+    "correctArr": [
+     1,
+     2,
+     5
+    ],
+    "expl": "Lösung: B, C, F. Original IHK-Prüfung (fotografiert), Aufgabe 74."
+   }
+  },
+  {
+   "id": "ihkf-a75",
+   "title": "P·A75: Ihre Auszubildende Nadja hat vor zwei Tagen ihre Abschlusspr…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 75",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 75/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Nadja muss Ihnen beweisen, dass eine gute bzw. sehr gute Gesamtbewertung gerechtfertigt is",
+    "B) Das Prinzip der Zeugniswahrheit steht höher als das Prinzip des Wohlwollens. Aus diesem Gr"
+   ],
+   "quiz": {
+    "q": "Welche Aussagen sind richtig?",
+    "options": [
+     "Nadja muss Ihnen beweisen, dass eine gute bzw. sehr gute Gesamtbewertung gerechtfertigt ist. Kann sie das nicht, ist eine Verbesserung nicht möglich.",
+     "Das Prinzip der Zeugniswahrheit steht höher als das Prinzip des Wohlwollens. Aus diesem Grund ist eine Verbesserung gesetzlich nicht zulässig.",
+     "Sie müssen beweisen, dass Nadjas tatsächliche Gesamtbewertung die befriedigenden Beurteilungen rechtfertigt. Da das mithilfe der Beurteilungen tun können, hat Nadja keinen Anspruch auf Verbesserung.",
+     "Nadjas Begründung: 'Ihr Zeugnis beeinflusse ihren weiteren Berufsweg', besteht zu Recht. Deshalb müssen Sie nach dem Grundsatz des Wohlwollens Ihre Formulierungen den Wünschen von Nadja anpassen.",
+     "Sie als Ausbilder bestimmen die Bewertungen und Formulierungen im Ausbildungszeugnis. Daher kann Nadja keine Verbesserung verlangen.",
+     "Nadjas Widerspruch gegen Ihr Ausbildungszeugnis ist rechtlich nicht zulässig, da sie die Ausbildung bereits beendet hat und nicht mehr im Unternehmen tätig ist. Vor der Beendigung Einspruch in das Zeugnis verlangen müssen, hätte Nadja vor der Beendigung Einspruch erheben müssen."
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 75."
+   }
+  },
+  {
+   "id": "ihkf-a76",
+   "title": "P·A76: Ihre Rolle als Ausbilder gestaltet sich sehr vielfältig. Neb…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 76",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 76/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, C</strong>",
+    "A) Sie achten auf eine frühzeitige Problemlösung. Nur so können Sie verhindern, dass Konflikt",
+    "C) Sie werden die gruppendynamischen Prozesse in Ihren Ausbildungsgruppen genau beobachten. N"
+   ],
+   "quiz": {
+    "q": "Welche Aussagen sind richtig?",
+    "options": [
+     "Sie achten auf eine frühzeitige Problemlösung. Nur so können Sie verhindern, dass Konflikte eine destruktive Wirkung entfalten.",
+     "Sie halten sich als Ausbilder aus der Konfliktbearbeitung raus.",
+     "Sie werden die gruppendynamischen Prozesse in Ihren Ausbildungsgruppen genau beobachten. Nur so können Sie Konfliktpotenziale rechtzeitig erkennen und gegensteuern.",
+     "Sie betrachten Konflikte als negative Begleiterscheinung Ihrer Ausbildertätigkeit. Daher stellen Sie sicher, dass Konflikte erst gar nicht entstehen.",
+     "Sie greifen bei Konflikten nicht ein, denn nur so werden die Auszubildenden in Ihrer Individualkompetenz gefördert."
+    ],
+    "correctArr": [
+     0,
+     2
+    ],
+    "expl": "Lösung: A, C. Original IHK-Prüfung (fotografiert), Aufgabe 76."
+   }
+  },
+  {
+   "id": "ihkf-a77",
+   "title": "P·A77: Die Industrielle GmbH möchte in diesem Jahr erstmals Auszubi…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 77",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 77/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: B, C</strong>",
+    "B) Ausbildende Fachkräfte müssen über die für die Vermittlung der Ausbildungsinhalte erforder",
+    "C) Ausbildende Fachkräfte müssen die persönliche Eignung zum Ausbilden besitzen."
+   ],
+   "quiz": {
+    "q": "Welche der folgenden Aussagen treffen auf die ausbildenden Fachkräfte zu?",
+    "options": [
+     "Ausbildende Fachkräfte müssen über eine abgeschlossene Berufsausbildung in dem Beruf verfügen, in dem sie ausbilden möchten.",
+     "Ausbildende Fachkräfte müssen über die für die Vermittlung der Ausbildungsinhalte erforderlichen beruflichen Fertigkeiten, Kenntnisse und Fähigkeiten verfügen.",
+     "Ausbildende Fachkräfte müssen die persönliche Eignung zum Ausbilden besitzen.",
+     "Ausbildende Fachkräfte brauchen für ihre Hilfsdienste in der Ausbildung weder eine persönliche noch eine fachliche Eignung.",
+     "Ausbildende Fachkräfte sind für die Planung, Durchführung und Kontrolle der Berufsausbildung verantwortlich."
+    ],
+    "correctArr": [
+     1,
+     2
+    ],
+    "expl": "Lösung: B, C. Original IHK-Prüfung (fotografiert), Aufgabe 77."
+   }
+  },
+  {
+   "id": "ihkf-a78",
+   "title": "P·A78: Sie informieren die Schüler in einer allgemeinbildenden Schu…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 78",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 78/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie eine richtige Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: E</strong>",
+    "E) Grundgesetz"
+   ],
+   "quiz": {
+    "q": "Welches Gesetz meint Jan?",
+    "options": [
+     "Jugendarbeitsschutzgesetz",
+     "Berufsbildungsgesetz",
+     "Ausbildungsberufsgesetz",
+     "Schulgesetz des Landes",
+     "Grundgesetz",
+     "Betriebsverfassungsgesetz"
+    ],
+    "correctArr": [
+     4
+    ],
+    "expl": "Lösung: E. Original IHK-Prüfung (fotografiert), Aufgabe 78."
+   }
+  },
+  {
+   "id": "ihkf-a79",
+   "title": "P·A79: Ihr Auszubildender Peter beginnt bald sein drittes Ausbildun…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 79",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 79/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, D</strong>",
+    "A) kann durch Peter erfolgen.",
+    "D) hat schriftlich zu erfolgen."
+   ],
+   "quiz": {
+    "q": "Welche Antworten geben Sie Peter bezüglich der Anschlussprüfung teilnehmen. Die Antragstellung zur Prüfung an die zuständige Stelle",
+    "options": [
+     "kann durch Peter erfolgen.",
+     "kann die Berufsschule vornehmen.",
+     "kann formlos vorgenommen werden.",
+     "hat schriftlich zu erfolgen.",
+     "muss persönlich vorgetragen werden."
+    ],
+    "correctArr": [
+     0,
+     3
+    ],
+    "expl": "Lösung: A, D. Original IHK-Prüfung (fotografiert), Aufgabe 79."
+   }
+  },
+  {
+   "id": "ihkf-a80",
+   "title": "P·A80: Sie haben in Ihrem Betrieb jugendliche und volljährige Auszu…",
+   "paragraphs": "IHK Original-Prüfung (fotografiert) · Aufgabe 80",
+   "summary": "Sie bearbeiten die Original-IHK-Prüfungsaufgabe 80/80 aus der fotografierten Abschlussprüfung. Bitte kreuzen Sie die 2 richtigen Antwort(en) an!",
+   "keyPoints": [
+    "<strong>Lösung: A, B</strong>",
+    "A) Jugendliche und volljährige Auszubildende dürfen im Blockunterricht für maximal zwei Stund",
+    "B) Jugendliche und volljährige Auszubildende sind am Arbeitsbeginn, der schriftlichen Abschlu"
+   ],
+   "quiz": {
+    "q": "Was ist gelerntes Recht bezüglich der Freistellung für die Berufsschule und die Abschlussprüfung?",
+    "options": [
+     "Jugendliche und volljährige Auszubildende dürfen im Blockunterricht für maximal zwei Stunden pro Woche in den Betrieb zu zusätzlichen Ausbildungsinhalten geholt werden.",
+     "Jugendliche und volljährige Auszubildende sind am Arbeitsbeginn, der schriftlichen Abschlussprüfung unmittelbar vorangegangen.",
+     "Nur Jugendliche sind am Arbeitstag, der der schriftlichen Abschlussprüfung unmittelbar vorausgeht, von der Arbeit freizustellen.",
+     "Ausbildende dürfen volljährige Auszubildende vor einem vor 9 Uhr beginnenden Berufsschultag beschäftigen, wenn der Arbeitsbeginn regelmäßig vor 7 Uhr liegt."
+    ],
+    "correctArr": [
+     0,
+     1
+    ],
+    "expl": "Lösung: A, B. Original IHK-Prüfung (fotografiert), Aufgabe 80."
+   }
+  }
+ ]
+});
+
 AEVO_MODULES.push(...PC_MODULES);
 
 // === %d Buch-Themen aus den 5 Handlungsfeld-Buechern (Eiling/Schlotthauer, Feldhaus Verlag, OCR-extrahiert) ===
@@ -24457,6 +26543,966 @@ const AEVO_QUESTIONS = [
   ],
   "explanation": "A) Das Ersetzen der Berufsbildung in sonstigen Berufsbildungseinrichtungen außerhalb der schulischen und betrieblichen Berufsbildung wird gemäß § 2 BBiG als außerbetriebliche Berufsbildung bezeichnet.\nB) Gemäß § 11 BBiG müssen Maßnahmen, die außerhalb der Ausbildungsstätte durchgeführt werden, in der Vertragsabfassung festgehalten werden.\nC) Gemäß § 27 BBiG dürfen Auszubildende nur in Ausbildungsstätten ausgebildet werden, die die gesetzlichen Eignungsvoraussetzungen erfüllen.\nD) Maßnahmen der überbetrieblichen Ausbildung dürfen auch längere Ausbildungsabschnitte als eine Woche umfassen.\nE) Überbetriebliche Ausbildung findet in der Regel in modularer Lehrgangsform in Berufsbildungseinrichtungen statt und ergänzt die betriebliche Ausbildung."
 }
+,
+// --- 80 Aufgaben: fotografierte IHK Original-Pruefung (AEVO) ---
+  {
+    id: 696,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    question: "Welche Aufgaben haben Berater der zuständigen Stellen laut Berufsbildungsgesetz wahrzunehmen?",
+    options: ["die an der Durchführung der Ausbildung beteiligten Personen zu beraten", "alle an der Ausbildung beteiligten Personen zu beraten", "die an der Durchführung der Ausbildung beteiligte Agentur für Arbeit", "Erstellung von Prüfungsaufgaben für Zwischen- und Abschlussprüfungen", "Ausbildungsplätze an entsprechende Betriebe zu vermitteln", "die Berufsausbildung durch finanzielle Hilfe zu fördern"],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 1."
+  },
+  {
+    id: 697,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "In der Vorbereitung auf die Ausbildungseignungsprüfung hat Lisa Berendes die klassischen Führungsstile kooperativ, autoritär und Laissez-faire kennengelernt. Dabei hat sie erfahren, dass die Entscheidung für einen Führungsstil nicht nur von der Person des Auszubildenden und vor allem von der jeweiligen Ausbildungssituation abhängig ist. Sie hat von dem situativen Führungsstil gehört und möchte von Ihnen die Merkmale dieses Führungsstiles erfahren.",
+    question: "Welche Merkmale des situativen Führungsstiles nennen Sie Lisa Berendes?",
+    options: ["ermöglicht jederzeit demokratische Prozesse der Entscheidungsfindung.", "erfordert vom Ausbilder ein hohes Maß an Einschätzungs- und Einfühlungsvermögen.", "lässt den Auszubildenden einen großen Spielraum bei der Bearbeitung aller Aufgaben.", "setzt den Auszubildenden in jeder Phase der Ausbildung enge Grenzen.", "berücksichtigt grundsätzlich die Kompetenzen des einzelnen Auszubildenden."],
+    correctIndices: [1, 4],
+    explanation: "Lösung: B, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 2."
+  },
+  {
+    id: 698,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie leiten als Ausbilder die Ausbildungswerkstatt in einem Metall verarbeitenden Betrieb. Bei einem Ausbildertreffen kommen Sie mit Herrn Münch ins Gespräch. Herr Münch meint, die Ausbildung in seiner Ausbildungswerkstatt sei praxis- und realitätsfern. Nur die Mitwirkung im Arbeitsprozess ermögliche eine effektive Form des Lernens.",
+    question: "Welche Vorteile der Ausbildung in der Ausbildungswerkstatt können Sie Herrn Münch nennen?",
+    options: ["Grundfertigkeiten strukturiert und intensiv geübt werden.", "die Produktionsunabhängigen Lernprozesse individuell gestaltet werden", "der gesamte Ausbildungsinhalt ungestört und konzentriert vermittelt werden", "durch die häufigen Übungswiederholungen die Selbstständigkeit gefördert werden", "Feedback über deren Eindrücke erhalten."],
+    correctIndices: [0, 2],
+    explanation: "Lösung: A, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 3."
+  },
+  {
+    id: 699,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Nach der Einführungswoche wollen Sie von Ihren Auszubildenden ein ausführliches Feedback über deren Eindrücke erhalten.",
+    question: "Wie gehen Sie vor?",
+    options: ["Sie beauftragen die Auszubildenden aus dem 3. Ausbildungsjahr, sich bei den „Neuen\" umzuhören.", "Sie führen ein moderiertes Gruppengespräch mit den Auszubildenden, in dem diese ihre Eindrücke reflektieren sollen.", "Sie setzen einen anonymisierten Fragebogen mit offenen und geschlossenen Fragen ein, da Sie so eine realistischere Einschätzung bekommen können.", "Sie befragen die Fachkräfte der Abteilungen, wie sich die Auszubildenden verhalten haben."],
+    correctIndices: [1, 2],
+    explanation: "Lösung: B, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 4."
+  },
+  {
+    id: 700,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Unternehmen bildet derzeit zehn Auszubildende in kaufmännischen Berufen aus. Die Personalplanung hat ergeben, dass mittelfristig ein hoher Bedarf an kaufmännischen Fachkräften besteht. Deshalb soll die Anzahl der Auszubildenden auf 20 erhöht werden. Ein Teil der Ausbildung soll in einer hauseigenen Übungsfirma erfolgen.",
+    question: "Welche Vorteile besitzen für Ihre Auszubildenden bei der Ausbildung in einer Übungsfirma?",
+    options: ["In der Übungsfirma wird kein Ausbildungspersonal benötigt.", "werden eigene Produkte hergestellt und an reale Kunden verkauft.", "bearbeiten die Auszubildenden überwiegend die ausgelagerten Hilfsausgaben.", "übernehmen die Auszubildenden selbstständig realitätsnahe Geschäftsvorfälle.", "wird die betriebliche Praxis simuliert."],
+    correctIndices: [3, 4],
+    explanation: "Lösung: D, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 5."
+  },
+  {
+    id: 701,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie haben Ihren Auszubildenden einen mehrwöchigen Projektauftrag gegeben, der in der Gruppe bearbeitet wird. Für die Projektkommunikation stellen Sie den Dienstlaptop zur Verfügung. Die Auszubildenden bitten Sie, ihnen den Einsatz des Messengers zu erlauben. Dieser ist bisher von Ihrer IT-Abteilung aus Datenschutzgründen nicht für den betrieblichen Einsatz freigegeben.",
+    question: "Wie reagieren Sie pädagogisch sinnvoll auf die Bitte der Auszubildenden?",
+    options: ["Sie bitten die IT-Abteilung, für die Auszubildenden einen Messenger freizuschalten, der die datenschutzrechtlichen Vorschriften erfüllt.", "Sie besprechen mit den Auszubildenden, warum der Einsatz von ‚Message' für betriebliche Belange datenschutzrechtlich problematisch ist.", "Sie weisen Ihre Auszubildenden an, die Kommunikation in der Projektgruppe auch weiterhin nur via E-Mail und Telefon durchzuführen.", "Sie erlauben den Auszubildenden, die betrieblichen Informationen via ‚Message' auf ihren privaten Smartphones auszutauschen.", "Sie erhöhen die Anzahl der regelmäßigen Projektkreffen, damit die Auszubildenden sich vor Ort austauschen können."],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 6."
+  },
+  {
+    id: 702,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind in einem kleineren Industriebetrieb mit zwei Auszubildenden im Ausbildungsberuf Elektroniker für Geräte und Systeme verantwortlich. Seit Monaten bemerken Sie, dass der Rahmenlehrplan der Berufsschule mit Ihrem betrieblichen Ausbildungsplan keine Übereinstimmung mehr aufweist. Sie vereinbaren ein Gespräch mit den Berufsschullehrern.",
+    question: "Wie kann die Kooperation aus betrieblicher Sicht organisatorisch verbessert werden?",
+    options: ["Regelmäßige Gespräche mit den Berufsschullehrern.", "Inhaltliche Anpassung des betrieblichen Ausbildungsplans.", "Änderung des Ausbildungsrahmenplans.", "Inhaltliche Anpassung des betrieblichen Ausbildungsplans.", "(nicht vollständig sichtbar / folgt auf Seite 7)"],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 7."
+  },
+  {
+    id: 703,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind Ausbildungsleiter/in in einem überregional tätigen Industrieunternehmen. Um dem Fachkräftemangel entgegenzuwirken, beschäftigen Sie sich mit dem Thema ‚Duales Studium'.",
+    question: "Welche Aussagen sind richtig?",
+    options: ["Beim ausbildungsintegrierenden Studienmodell hat der Studierende einen Arbeitsvertrag mit dem Unternehmen.", "Ein duales Studium verknüpft praktische Arbeit in einem Unternehmen mit theoretischer Ausbildung an einer Hochschule oder Berufsakademie.", "(Text teilweise abgeschnitten – bezieht sich auf berufstätige Studierende)", "Ausbildungsintegrierende Studierende verbinden die Ausbildung in einem anerkannten Ausbildungsberuf in der Praxisphase mit der theoretischen Ausbildung.", "Praxisintegrierende Studierende verbinden die Ausbildung in einem anerkannten Ausbildungsberuf in der Praxisphase mit der theoretischen Ausbildung."],
+    correctIndices: [1, 3],
+    explanation: "Lösung: B, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 8."
+  },
+  {
+    id: 704,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "In letzter Zeit ist es zu Konflikten zwischen einigen Ihrer Auszubildenden gekommen.",
+    question: "Worauf ist bei Konfliktlösungen zu achten?",
+    options: ["Kommunikation ist ein wertvolles Mittel zur Konfliktlösung. Sie sollten auf jeden Fall Gespräche mit den Konfliktparteien führen.", "Durch genaue Beobachtung der Gruppendynamik lassen sich Konflikte auf jeden Fall verhindern.", "Konflikte müssen auf jeden Fall unbunden werden.", "Beim Schlichten von Konflikten setzen Sie auf Empathie und versetzen sich in die Lage der beteiligten Auszubildenden."],
+    correctIndices: [0, 3],
+    explanation: "Lösung: A, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 9."
+  },
+  {
+    id: 705,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie wollen die Ausbildung handlungsorientierter und für die Auszubildenden aktiver gestalten. Hierfür nutzen Sie die Projektmethode mit dem \"Modell der vollständigen Handlung\".",
+    question: "Welche Aktivitäten werden in der Phase \"Planen\" umgesetzt?",
+    options: ["Von den Auszubildenden wird eine zielgerichtete Aufgabenliste erstellt.", "Die Auszubildenden prüfen die zusammengestellten inhaltlichen Informationen und legen die weitere Vorgehensweise fest.", "Zusammen mit den Auszubildenden besprechen Sie das weitere Vorgehen für die nächsten Schritte innerhalb der Projektarbeit.", "Die Auszubildenden setzen die mit dem Ausbilder besprochenen Schritte in die Praxis um."],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 10."
+  },
+  {
+    id: 706,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Es gibt ein Verzeichnis, in dem alle anerkannten Ausbildungsberufe der Bundesrepublik Deutschland aufgeführt sind.",
+    question: "Was enthält das Verzeichnis der anerkannten Ausbildungsberufe?",
+    options: ["Zuordnung zu den Niveaustufen des Deutschen Qualifikationsrahmens (DQR).", "Informationen über die Ausbildungsdauer des jeweiligen Berufes.", "Prüfungsordnungen der ausgeführten Berufe.", "zu vermittelnde Fertigkeiten, Fähigkeiten und Kenntnisse des jeweiligen Berufes."],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 11."
+  },
+  {
+    id: 707,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre ersten Auszubildenden Julia und Tim werden in sechs Monaten die Abschlussprüfung ablegen. In einem Gespräch möchten die beiden von Ihnen wissen, was bei Nichtbestehen der Prüfung passiert.",
+    question: "Welche Aussagen zur Verlängerung bei Nichtbestehen der Prüfung gemäß BBiG sind richtig?",
+    options: ["Das Ausbildungsverhältnis endet mit dem Ablauf der Ausbildungsdauer ohne Verlängerung.", "Auf Verlangen des Auszubildenden muss ihm der Ausbildende bis zur nächsten Wiederholung der Ausbildungszeit ein Jahr, weiterbeschäftigen.", "Dem Auszubildenden ist vom Ausbildungsbetrieb ein Angebot zur Verlängerung des Ausbildungsverhältnisses zu unterbreiten.", "Der Ausbildungsbetrieb kann die Verlängerung des Ausbildungsverhältnisses verweigern.", "Der Auszubildende kann dem Ausbildenden einen Antrag auf Verlängerung stellen.", "Das Ausbildungsverhältnis verlängert sich automatisch bis zum nächsten Prüfungstermin."],
+    correctIndices: [1, 4],
+    explanation: "Lösung: B, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 12."
+  },
+  {
+    id: 708,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Sie sind Ausbilder in einem Industrieunternehmen mit mehr als 20 Mitarbeitern. Ein Betriebsrat und eine Jugend- und Auszubildendenvertretung (JAV) sind vorhanden. Einige Ihrer Auszubildenden beenden demnächst ihre Ausbildung. Sie besprechen mit der Geschäftsleitung das Verfahren zur Übernahme der Auszubildenden.",
+    question: "Welche Rechte hat der Betriebsrat in diesem Verfahren?",
+    options: ["Der Betriebsrat hat Anspruch auf Auskunft über die Auswirkung der geplanten Übernahme.", "Der Betriebsrat muss der Einstellung der zu übernehmenden Auszubildenden zustimmen.", "Der Betriebsrat muss bei mehr als 20 Mitarbeitern nicht beteiligt werden.", "Der Betriebsrat hat Anspruch auf Auskunft über die Personen, die übernommen werden sollen.", "Der Betriebsrat darf seine Zustimmung zur Übernahme ohne Angabe von Gründen verweigern.", "Der Betriebsrat hat zehn Tage Zeit, um seine Zustimmung schriftlich mitzuteilen."],
+    correctIndices: [0, 1, 3],
+    explanation: "Lösung: A, B, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 13."
+  },
+  {
+    id: 709,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bereiten für Ihre Auszubildenden im dritten Ausbildungsjahr eine Informationsveranstaltung vor und beschäftigen sich mit dem Thema „Fortbildung\". Dabei stoßen Sie auf eine Information der IHK über die sich mit Fortbildungsregelungen der höher qualifizierenden Berufsbildung.",
+    question: "Welche Aussagen sind hierzu richtig?",
+    options: ["Mit den neuen Ausschussbezeichnungen sind treffende Ausbildungsberufe den Beobachtungszeiten an Hochschulen gleichgestellt.", "Der Master Professional ist dem Niveau 7 des Deutschen Qualifikationsrahmens zugeordnet.", "Die Berufsspezialist ist dem Niveau 8 des Deutschen Qualifikationsrahmens zugeordnet.", "Die neu eingeführten Abschlussbezeichnungen „Geprüfter Berufsspezialist\", „Bachelor Professional\" und „Master Professional\" sollen die Gleichwertigkeit von beruflicher und akademischer Bildung zum Ausdruck bringen."],
+    correctIndices: [1, 3],
+    explanation: "Lösung: B, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 14."
+  },
+  {
+    id: 710,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie wollen mit Ihren Auszubildenden im Rahmen des Themas „Lebenslanges Lernen\" über die beruflichen Fortbildungsmöglichkeiten sprechen. Genau § 1, Absatz 2 des Berufsbildungsgesetzes werden bei der beruflichen Fortbildung vier verschiedene Zielsetzungen genannt. Eine dieser Zielsetzungen ist die Erweiterung der beruflichen Handlungsfähigkeit.",
+    question: "Welche dieser Fortbildungstätigkeit hat die Erweiterung der beruflichen Handlungsfähigkeit zum Ziel (Erweiterungsfortbildung)?",
+    options: ["Ablegen der Prüfung zum Nachweis der berufs- und arbeitspädagogischen Fertigkeiten, Fähigkeiten und Kenntnisse gemäß BBiG.", "Etwas zusätzlicher Fertigkeiten und Kenntnisse durch Erlernen einer zusätzlichen Fremdsprache bei Wiedereinstieg in den Beruf", "Ausgleich von fehlenden Fertigkeiten und Kenntnissen, um eine Aufgabe mit größeren Verantwortungsbereich und höherer Vergütung übernehmen zu können", "Erwerb einer höheren Qualifizierung mit Abschlussprüfung, um einen höheren Verantwortungsbereich und höherer Vergütung übernehmen zu können", "Aufmischen bereits vorhandener Fertigkeiten und Kenntnisse z. B. bei Rückkehr nach Elternzeit", "Erwerb von Fertigkeiten und Kenntnissen, z. B. bei Veränderung eines bestehenden EDV-Programms im Betrieb"],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 15."
+  },
+  {
+    id: 711,
+    hf: 2,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Das Unternehmen W. Kurzer GmbH hat mit Liane einen Berufsausbildungsvertrag zur Fachinformatikerin abgeschlossen.",
+    question: "Welche Aussagen entsprechen den Vorgaben des Berufsbildungsgesetzes?",
+    options: ["Der Berufsausbildungsvertrag endet mit dem Ablauf der Ausbildungsdauer oder mit der Beendigung des Berufens.", "Die Probezeit des Bestehens endet mit dem Ablauf der Ausbildungsdauer oder mit der Beendigung des Berufens.", "Die Eintragung verlängert sich automatisch bei Krankheit.", "Der Einigung bei der zuständigen Stelle ist für die Auszubildenden gebührenfrei.", "Bei schulischer Vorbildung verkürzt sich die Berufsausbildung grundsätzlich."],
+    correctIndices: [0, 3],
+    explanation: "Lösung: A, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 16."
+  },
+  {
+    id: 712,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Durch die hohe Fluktuation der betrieblich ausgebildeten Fachkräfte möchte die Unternehmensführung der Belegschaft, insbesondere aber den Auszubildenden die betrieblichen Entwicklungsmöglichkeiten bei einer Betriebsversammlung durch Sie in einem Präsentation bekannt machen.",
+    question: "Welche Kernpunkte sprechen Sie an?",
+    options: ["Hinweise und Informationen der diesjährigen Unternehmensziele.", "Schärfung von Aufstiegsmöglichkeiten für ausgelernte Fachkräfte.", "Bekanntgabe der Aufgaben und Leistungen des Unternehmens.", "Informationen über die Mitgliederzahl der Arbeitnehmervertretung.", "Kostenlose Weiterbildung von Fachpersonal.", "Mitarbeitergespräche über persönliche Entwicklungsperspektiven."],
+    correctIndices: [1, 4, 5],
+    explanation: "Lösung: B, E, F. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 17."
+  },
+  {
+    id: 713,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie bilden in einem Großhandelsbetrieb mit 40 Auszubildenden aus. Da es zunehmend schwierig wird, die Ausbildungsplätze zu besetzen, wollen Sie zukünftig auch in Spanien auszubildende anwerben.",
+    question: "Wie integrieren Sie die spanischen Auszubildenden in den Betrieb?",
+    options: ["Sie bilden alle Ihre Auszubildenden gemeinsam aus und bitten Sprachzentren, bei Verständigungsschwierigkeiten zu unterstützen.", "Sie lassen die gesamte Ausbildung von Kollegen aus dem gleichen Kultur- und Sprachraum in der Muttersprache der Auszubildenden durchführen.", "Sie lassen die Spanier in einer eigenen Gruppe zusammen.", "Sie stellen einen zusätzlichen, von der Ausländerbehörde bestellten Ausbilder ein."],
+    correctIndices: [0],
+    explanation: "Lösung: A. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 18."
+  },
+  {
+    id: 714,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie haben die Auszubildenden für das nächste Ausbildungsjahr bereits ausgewählt. Aufgrund der Pandemie ist das Auswahlverfahren komplett virtuell abgelaufen. Sie konnten die zukünftigen Auszubildenden bisher noch nicht in Präsenz treffen. Die Ausbildungsverträge müssen noch abgeschlossen und unterschrieben werden.",
+    question: "Wie können Sie eine gute Brückenkommunikation zwischen Entscheidung für den Auszubildenden und Beginn der Ausbildung gestalten?",
+    options: ["Sie nehmen keinen Kontakt mit dem zukünftigen Auszubildenden auf, damit er sich freiwillig für den Ausbildungsplatz entscheidet.", "Sie gratulieren dem Auszubildenden zum Geburtstag, damit bauen Sie eine persönliche Verbindung auf.", "Sie setzen den Auszubildenden unter Druck, dass er den Ausbildungsvertrag sofort nach Eingang beim Unternehmen unterschreiben soll. Damit stellen Sie sicher, dass er keinen anderen Ausbildungsvertrag bei einem anderen Unternehmen unterschreibt.", "Sie informieren den Auszubildenden über Ihr Unternehmen, indem Sie ihm Informationsmaterial oder auch die Mitarbeiter-Newsletters zuschicken. Damit binden Sie ihn bereits emotional ins Unternehmen ein.", "Sie lassen den Auszubildenden in Ruhe, damit er erst seine Schulbahn positiv abschließen kann und sich nicht gehetzt fühlt."],
+    correctIndices: [1, 3],
+    explanation: "Lösung: B, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 19."
+  },
+  {
+    id: 715,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Sie sind in Ihrem Unternehmen als Ausbilder tätig und möchten gerne Ihren Ausbildungsauftrag, die Ausbildungsmethode 'Planspiel', in analoger Form als Gruppenarbeit näherbringen.",
+    question: "Was kennzeichnet diese Ausbildungsmethode?",
+    options: ["Es gibt den Auszubildenden die Chance, betriebliche Zusammenhänge besser zu verstehen.", "Die Aufgabe der Auszubildenden ist es, sich selbst zu organisieren, Informationen zu beschaffen und Strategien zu entwickeln.", "Ein Planspiel ist nur für Gruppen bis maximal zehn Auszubildende sinnvoll.", "Das Planspiel zielt überwiegend auf die psychomotorischen Lernzielbereiche ab.", "Es werden überwiegend kognitive und affektive Lernzielbereiche angesprochen.", "Bei der Durchführung eines Planspiels müssen die Auszubildenden über keinerlei Vorkenntnisse verfügen."],
+    correctIndices: [0, 1, 4],
+    explanation: "Lösung: A, B, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 20."
+  },
+  {
+    id: 716,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Die Berufsschule informiert Sie, dass Ihre beiden Auszubildenden Alexander, 17 Jahre, und Jan, 19 Jahre, auf dem Schießstand in Streit geraten sind. Dabei verletzte Alexander Jan mit einem Messer, sodass dieser ärztliche Hilfe in Anspruch nehmen musste. Alexander befindet sich noch in der Probezeit. Sie möchten das Berufsausbildungsverhältnis mit ihm beenden.",
+    question: "Welche Kündigungsmöglichkeit haben Sie?",
+    options: ["Sie können Alexander nicht fristlos kündigen, da er noch minderjährig ist.", "unter Einhaltung der Vier-Wochen-Frist kündigen.", "fristlos ohne Angabe von Gründen kündigen.", "fristlos mit Zustimmung seiner Eltern kündigen."],
+    correctIndices: [2],
+    explanation: "Lösung: C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 21."
+  },
+  {
+    id: 717,
+    hf: 1,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "In Ihrem mündestlichen Unternehmen sollen demnächst drei Auszubildende eingestellt werden. Sie sollen die Ausbildung planen und organisieren. Der Firmeninhaber möchte wissen, ob Sie die notwendige Eignung besitzen, um ausbilden zu können.",
+    question: "Welche der nachfolgenden Aussagen ist richtig?",
+    options: ["Für diese Tätigkeit reicht die berufspädagogische Eignung.", "Ausbilden darf, wer persönlich und fachlich geeignet ist.", "Das Unternehmen betraut mich mit der Ausbildung, damit sind die Anforderungen erfüllt.", "Ausbilden darf nach dem Berufsbildungsgesetz, wer die persönliche Eignung besitzt."],
+    correctIndices: [1],
+    explanation: "Lösung: B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 22."
+  },
+  {
+    id: 718,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als Auszubildende einer international tätigen Hotelkette erfahren Sie von Ihrer IHK, dass nach dem Berufsbildungsgesetz Teile der Ausbildung im Ausland absolviert werden können. Gerne möchten Sie auch Ihren Auszubildenden den Blick „über den Tellerrand“ ermöglichen und planen in einem Gespräch mit der Hoteldirektion, diesbezüglich in den Ausbildungsablauf des Hauses individuell aufzunehmen.",
+    question: "Welche Vorteile von Auslandsaufenthalten der Auszubildenden Ihres Hauses nennen Sie der Geschäftsführung?",
+    options: ["Während des Auslandsaufenthalts entfällt die Ausbildungsvergütung.", "Internationale Erfahrungen und Fremdsprachenkenntnisse", "Kennenlernen von neuen Arbeitstechniken und Besonderheiten", "Auszubildende können nach der Rückkehr als Fachkräfte eingesetzt werden"],
+    correctIndices: [1, 2],
+    explanation: "Lösung: B, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 23."
+  },
+  {
+    id: 719,
+    hf: 4,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie denken über die Möglichkeit einer vorzeitigen Zulassung zur Abschlussprüfung nach.",
+    question: "Welche Bedingung muss hierfür erfüllt sein?",
+    options: ["wenn eine anschließende Übernahme gewährleistet ist.", "wenn der Auszubildende ansonsten die Ausbildung abbrechen würde, um einen anderen beruflichen Weg einzuschlagen.", "wenn die Leistungen in der Berufsschule dies rechtfertigen, dabei bleiben die betrieblichen Leistungen unberücksichtigt.", "wenn die schulischen und betrieblichen Leistungen des rechtfertigen."],
+    correctIndices: [3],
+    explanation: "Lösung: D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 24."
+  },
+  {
+    id: 720,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Sie sind Ausbilder/in in einem Industrieunternehmen. Ein Betriebsrat und eine Jugend- und Auszubildendenvertretung (JAV) sind vorhanden.",
+    question: "Welche Rechte haben der Betriebsrat und die JAV bei der Erstellung eines Personalfragebogens für Ausbildungsplatzbewerber?",
+    options: ["Kommt eine Einigung über den Personalfragebogen nicht zustande, so entscheidet die Fragestellung.", "Personalfragebogen bedürfen der Zustimmung des Betriebsrates.", "Der Betriebsrat hat das Recht, sowohl beim Inhalt als auch bei der Gestaltung des Personalfragebogens mitzubestimmen.", "Personalfragebogen unterliegen ausschließlich dem Mitbestimmungsrecht der Jugend- und Auszubildendenvertretung.", "Betriebsrat und Auszubildendenvertretung haben kein Betriebsrecht hinsichtlich der Personalfragebogen."],
+    correctIndices: [0, 1, 2],
+    explanation: "Lösung: A, B, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 25."
+  },
+  {
+    id: 721,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Ihre Auszubildende Anne soll eine komplexe Arbeitsaufgabe mit folgendem Lernziel bearbeiten: Anne kann innerhalb von drei Tagen eine Informationsveranstaltung unter Nutzung der vorhandenen Büroausstattung selbständig und fachgerecht vorbereiten.",
+    question: "Welche Auswahlmethoden eignen sich für dieses Lernziel?",
+    options: ["Kurzvorstellung in Verbindung mit der Vier-Stufen-Methode", "Projektmethode", "Mix aus Lehrgespräch und Rollenspiel", "Leittextmethode", "Lern- und Arbeitsauftrag", "Moderationsmethode"],
+    correctIndices: [1, 3, 4],
+    explanation: "Lösung: B, D, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 26."
+  },
+  {
+    id: 722,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Die betrieblichen und individuellen Ausbildungspläne für Ihre neuen Auszubildenden sind erstellt. Als Ausbilder sind Sie dafür verantwortlich, dass diese Ausbildungspläne auch umgesetzt werden.",
+    question: "Wie können Sie die Umsetzung der Ausbildungspläne überwachen?",
+    options: ["Gespräche mit Auszubildenden und ausbildenden Fachkräften führen", "Berufsschulnoten in den Sprechstunden befragen", "Beurteilungen und Bewertungen der Auszubildenden durchführen lassen", "an Ausbilderreferenten der zuständigen Stelle teilnehmen", "ausbildende Fachkräfte durch die Auszubildenden beurteilen lassen"],
+    correctIndices: [0, 2],
+    explanation: "Lösung: A, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 27."
+  },
+  {
+    id: 723,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Der Inhaber des Restaurants „Elbbrücke\" in Dresden möchte zum ersten Mal Fachkräfte für Restaurant- und Veranstaltungsgewerbe ausbilden. Er beauftragt Sie, sich um die notwendigen Schritte zu kümmern.",
+    question: "Welche Stelle genehmigt die Aufnahme der Ausbildung?",
+    options: ["Berufsschulzentrum", "Handwerkskammer", "Agentur für Arbeit", "Industrie- und Handelskammer", "Kulinarismuseum", "die nach Landesrecht zuständige Behörde"],
+    correctIndices: [3],
+    explanation: "Lösung: D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 28."
+  },
+  {
+    id: 724,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubildender zum Industriemechaniker Christian (17 Jahre) bittet Sie um ein Gespräch. Die ausbildende Fachkraft hat ihm gesagt, dass er in den nächsten Wochen die Reinigungskraft vertreten und die Reinigung der Schließfächer aller Mitarbeiter der Abfallentsorgung übernehmen soll. Er möchte von Ihnen wissen, ob er diese Aufgabe übernehmen muss.",
+    question: "Welche richtigen Antworten geben Sie Christian?",
+    options: ["Christian muss keine ausbildungsfremden Arbeiten ausführen.", "Wenn die Verteilung der Reinigungsarbeitswerkzeuge auch in der Vergangenheit von den Auszubildenden übernommen wurde, dann wird auch Christian dies erledigen müssen.", "Christian darf diese Tätigkeit nur bei Zahlung einer gesonderten Vergütung übernehmen.", "Christian muss den Anweisungen des Ausbildungsbeauftragten Folge leisten.", "Christian muss alle Tätigkeiten innerhalb des Ausbildungszwecks erledigen, diesem Tätigkeiten denen nicht dem Ausbildungszweck."],
+    correctIndices: [0, 4],
+    explanation: "Lösung: A, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 29."
+  },
+  {
+    id: 725,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als Ausbilder in der Konfektionsabteilung eines Warenhauses betreuen Sie die Ausbildung des Ausbildungsberufes „Servicebereich Kasse\" für die beiden Auszubildenden Jana und Henrik. Vor drei Tagen haben Ihre Auszubildenden mit den Kunden begonnen und haben bisher noch keinen direkten Kundenkontakt. Deshalb wollen Sie mit beiden in einem Lerngespräch Grundsätzliches besprechen.",
+    question: "Welche der von Ihnen geplanten Lerninhalte gehören zur Sozialkompetenz?",
+    options: ["Konzentration und Sorgfalt bei den Tätigkeiten an der Kasse", "höfliches Verhalten gegenüber Kunden auch in schwierigen Situationen", "Verantwortung für Fehler übernehmen", "Kollegen unterstützen und ihnen behilflich sein", "gepflegtes Erscheinungsbild als Grundsatz der Unternehmensphilosophie"],
+    correctIndices: [1, 3],
+    explanation: "Lösung: B, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 30."
+  },
+  {
+    id: 726,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Die Hanse GmbH hat bisher noch nicht ausgebildet und möchte demnächst die ersten Jugendlichen Auszubildenden einstellen.",
+    question: "Welchen Nutzen hat das Unternehmen durch die Ausbildung?",
+    options: ["Das Unternehmen kann die Ausbildung an seinen betrieblichen Anforderungen ausrichten.", "Auszubildende ersetzen teure Fachkräfte ab sie schon von Beginn an produktive Arbeiten erledigen können.", "Eigene Nachwuchskräfte ersparen unter anderem lange Einarbeitungszeiten.", "Es spart die Einstellung von Hilfskräften, deren Aufgaben von Auszubildenden übernommen werden."],
+    correctIndices: [0, 2],
+    explanation: "Lösung: A, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 31."
+  },
+  {
+    id: 727,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Um sich optimal auf Ihre Ausbildungseinheiten vorzubereiten, formulieren Sie vorab Fehlernziele.",
+    question: "Warauf achten Sie bei der Formulierung?",
+    options: ["Ein Fehlernziel enthält keine Zeitvorgabe.", "darf nicht zu streng verfolgt werden, um den Auszubildenden nicht zu entmutigen.", "definiert ein beobachtbares Endverhalten.", "muss stets der zuständigen Stelle übermittelt werden, um eine fachgerechte Ausbildung sicherzustellen.", "ist der jeweiligen Ausbildungseinheit anzupassen."],
+    correctIndices: [2, 4],
+    explanation: "Lösung: C, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 32."
+  },
+  {
+    id: 728,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind seit einigen Wochen als Ausbilderin in einem großen Industrieunternehmen tätig. In diesem Unternehmen werden 40 Auszubildende in zehn verschiedenen Berufen ausgebildet. Die Berufsbilder dieser Ausbildungsberufe haben unterschiedliche Strukturen, wie z. B. Monteur (fortsetzung auf nächster Seite).",
+    question: "Was kennzeichnen die Berufsbilder für Monoberufe?",
+    options: ["Die Berufsbilder für Monoberufe beinhalten verschiedene Fachrichtungen mit eigenständigen Prüfungsanforderungen.", "kombinieren internationale Fachrichtungen mit länderübergreifender Fachqualifikation zusammen.", "lassen mehrere Berufe mit gemeinsamer Fachbezeichnung zu.", "fassen mehrere Berufe mit gemeinsamer Fachbezeichnung zusammen.", "beinhalten eine Berufsbezeichnung ohne Spezialisierung in einer Fachrichtung."],
+    correctIndices: [3, 4],
+    explanation: "Lösung: D, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 33."
+  },
+  {
+    id: 729,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Die Hanse GmbH hat bisher noch nicht ausgebildet und möchte demnächst Jugendliche ausbilden.",
+    question: "Welches Gesetz ist bei der Gestaltung der Arbeitszeit der Jugendlichen Auszubildenden zu beachten?",
+    options: ["Jugendarbeitsschutzgesetz", "Arbeitsschutzgesetz", "Jugendarbeitsschutzgesetz", "Bundesausbildungsgesetz", "Kinderschutzgesetz"],
+    correctIndices: [0],
+    explanation: "Lösung: A. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 34."
+  },
+  {
+    id: 730,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Eine Ihrer Aufgaben als Ausbilder besteht darin, geeignete Auszubildende einzustellen. Gerade für kleine und mittlere Betriebe ist es schwierig, gute Auszubildende zu finden.",
+    question: "Welche Maßnahmen sind geeignet, guten Nachwuchs zu rekrutieren?",
+    options: ["Betriebsbesichtigungen für Schulklassen", "vorzeitige Zulassung zur Abschlussprüfung vereinbaren", "Befreiung vom Berufsschulbesuch zusagen", "Zusatzqualifikationen in Aussicht stellen"],
+    correctIndices: [0, 3],
+    explanation: "Lösung: A, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 35."
+  },
+  {
+    id: 731,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ein Fertigungs- und Montagebetrieb steht Metalldiehen und möchte demnächst einen Auszubildenden für einen Metallberuf einstellen. Der Betrieb kann alle Kenntnisse, Fertigkeiten und Fähigkeiten des Ausbildungsberufes vermitteln. Darüber hinaus möchte der Betrieb zusätzlich noch Inhalte für ein spezielles Montageverfahren vermitteln. In welcher Weise kann dies in den betrieblichen Ausbildungsplan berücksichtigt werden?",
+    question: "In welcher Weise kann dies in den betrieblichen Ausbildungsplan berücksichtigt werden?",
+    options: ["Die Vermittlung des speziellen Montageverfahrens wird innerhalb eines betriebsinternen Lehrgangs eingeplant.", "Einzelne weniger wichtige Inhalte des Ausbildungsrahmenplanes werden mit denen des speziellen Montageverfahrens Inhalte kompensiert.", "Das Montageverfahren kann nicht vermittelt werden, da es die Inhalte des Ausbildungsrahmenplanes während der zu vermittelnden Ausbildungsdauer zeitlich nicht zulassen.", "Die Vermittlung des speziellen Montageverfahrens soll in einem Zentrum nach der Abschlussprüfung bis zum nächsten Lehrgang erfolgen.", "Für die Vermittlung des speziellen Montageverfahrens werden entsprechende Zeiträume eingeplant."],
+    correctIndices: [0, 4],
+    explanation: "Lösung: A, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 36."
+  },
+  {
+    id: 732,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Wilke Wilkens beabsichtigt, nach dem erfolgreichen Abschluss eines zweijährigen Ausbildungsberufes seine Ausbildung in einem darauf aufbauenden dreijährigen Beruf weiterzuführen. Welche Regelungen können hierzu in Ausbildungsordnungen enthalten sein?",
+    question: "Welche Regelungen können hierzu in Ausbildungsordnungen enthalten sein?",
+    options: ["Die zweijährige Berufsausbildung wird zeitlich auf den dreijährigen Ausbildungsberuf angerechnet.", "Der Auszubildende ist bei erfolgreichem Abschluss seiner zweijährigen Berufsausbildung vom zweiten Teil der Abschlussprüfung des dreijährigen Ausbildungsberufes befreit.", "Der Auszubildende ist bei erfolgreichem Abschluss seiner zweijährigen Berufsausbildung vom ersten Teil der Abschlussprüfung des dreijährigen Ausbildungsberufes befreit.", "Das zweijährige Berufsausbildungsverhältnis muss vor dem ersten Teil der hierauf geschriebenen Abschlussprüfung in dreijähriges Ausbildungsverhältnis umgewandelt werden.", "Die zweijährige Berufsausbildung muss denselben Zusatzqualifikationen wie der dreijährige Ausbildungsberuf beinhalten.", "Das zweijährige Berufsausbildungsverhältnis darf bei der Umwandlung in ein dreijähriges Ausbildungsverhältnis nicht weiter in Teilzeit durchgeführt werden."],
+    correctIndices: [0, 2],
+    explanation: "Lösung: A, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 37."
+  },
+  {
+    id: 733,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Ihr Unternehmen liegt in einem mit öffentlichen Verkehrsmitteln schwierig zu erreichenden Gewerbepark. In der letzten Woche haben Sie mehrere Bewerbungsgespräche zur Besetzung offener Ausbildungsstellen geführt. Vier der von Ihnen eingeladenen Bewerber schicken Ihnen nun Quittungen über die Taxikosten zu. Sie erstatten sollen.",
+    question: "Wie gehen Sie mit den Ansprüchen zur Kostenerstattung um?",
+    options: ["Sie erstatten die Taxikosten maximal in Höhe eines Fahrtscheins für die Buslinie, die ca. 3 km von Ihrem Betrieb entfernt eine Haltestelle unterhält.", "Sie erstatten die Taxikosten, da Sie die Erstattung von Reisekosten nicht mit der Einladung abgelehnt haben.", "Sie erstatten die Taxikosten, da die Bewerber unabhängig davon, ob sie von Ihnen eingeladen wurden oder nicht, darauf Anspruch haben.", "Sie erstatten die Taxikosten nicht, da die Bewerber von Ihnen eingeladen wurden und die Kosten daher steuerlich absetzen können.", "Sie erstatten die Taxikosten unter Abzug der Ihnen enthaltenen Umsatzsteuer, da Ihr Unternehmen umsatzsteuerpflichtig ist."],
+    correctIndices: [1],
+    explanation: "Lösung: B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 38."
+  },
+  {
+    id: 734,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Der 19-jährige Peier befindet sich im 3. Ausbildungsjahr. In dem Unternehmen sind 150 Mitarbeiter, davon zwölf Auszubildende, beschäftigt. Peier möchte sich für die Belange der Auszubildenden und der Mitarbeiter im Betrieb einsetzen.",
+    question: "Welches Gesetz bildet die Grundlage für Peiers Vorhaben?",
+    options: ["Allgemeines Gleichbehandlungsgesetz", "Berufsbildungsgesetz", "Jugendschutzgesetz", "Betriebsverfassungsgesetz", "Jugendarbeitsschutzgesetz"],
+    correctIndices: [3],
+    explanation: "Lösung: D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 39."
+  },
+  {
+    id: 735,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind als Ausbilder in einem mittelständischen Unternehmen für drei Auszubildende zum Kaufmann für Büromanagement verantwortlich. Gestern erhielten Sie eine Anfrage eines kleinen Metallbauunternehmens, ob es möglich sei, dass deren Auszubildende Mona den Ausbildungsabschnitt Rechnungswesen in Ihrem Unternehmen absolviert. Sie überlegen, wie die Zusammenarbeit erfolgen kann, und entscheiden sich für die Auftragsausbildung als Art der Verbundausbildung.",
+    question: "Was beachten Sie bei der Auftragsausbildung in Zusammenarbeit mit dem Partner?",
+    options: ["muss im Gegenzug auch eine Auszubildende Phasenweise ausbilden.", "führt Ihr Unternehmen im Vertrag von Mona als Ausbildungsmaßnahme außerhalb der Ausbildungsstätte auf.", "ist vertragspartner der Auszubildenden Mona im Berufsausbildungsvertrag.", "zahlt für den Einsatz der Auszubildenden Mona im Berufsausbildungsvertrag.", "zahlt die Kosten auf", "überlässt Ihnen den Abschluss des Ausbildungsvertrages mit der Auszubildenden Mona."],
+    correctIndices: [1, 2],
+    explanation: "Lösung: B, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 40."
+  },
+  {
+    id: 736,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als Ausbilder der Löbauer Backspezialitäten GmbH bereiten Sie die anschaffenden Bewerbungsgespräche vor. Für jedes Gespräch haben Sie 30 Minuten geplant. Sie überlegen Ihre Vorgehensweise.",
+    question: "Was sollten Sie bei der Durchführung des Gespräches berücksichtigen?",
+    options: ["keine Fragen des Bewerbers zulassen.", "auf eine für das Gespräch geeignete Sitzordnung achten.", "die anfängliche Unsicherheit des Bewerbers bewahren.", "die Motivation und die Eignung des Bewerbers in den Mittelpunkt des Gespräches stellen."],
+    correctIndices: [1, 3],
+    explanation: "Lösung: B, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 41."
+  },
+  {
+    id: 737,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "In einer Informationsveranstaltung der Agentur für Arbeit mit dem Thema „Brücken in die Ausbildung bauen\", wurde unter anderem kurz über die sogenannte Einstiegsqualifizierung (EQ) berichtet. Sie möchten mehr über diese Qualifizierungsmöglichkeit erfahren und bitten den zuständigen Ausbildungsberater Ihrer IHK um ein Gespräch, um die Rahmenbedingungen kennenzulernen.",
+    question: "Welche Vorteile bietet die Einstiegsqualifizierung den Jugendlichen?",
+    options: ["Erwerb eines qualifizierten Berufsabschlusses.", "generelle Befristung von der Berufsschulpflicht.", "Kennenlernen einer Vielzahl von Ausbildungsberufen", "Grundlage für den Erwerb von beruflicher Handlungsfähigkeit", "Erlernen von berufsrelevanten Ausbildungsinhalten"],
+    correctIndices: [2, 3, 4],
+    explanation: "Lösung: C, D, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 42."
+  },
+  {
+    id: 738,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie führen wöchentlich innerbetrieblichen Unterricht für Ihre Auszubildenden durch. In der nächsten Woche wollen Sie über den Stellenwert von Weiterbildung sprechen.",
+    question: "Welche Aussagen hierzu sind richtig?",
+    options: ["Weiterbildungssituation im jeweiligen Land zusammen hängen immer auch sehr stark mit der wirtschaftlichen Situation im jeweiligen Land zusammen.", "Weiterbildungsmaßnahmen sollten sich verstärkt auf fachliche Kompetenzen beziehen. Soziale Kompetenzen können über eine betriebliche Weiterbildungsmaßnahme nicht erworben werden.", "Der technologische Wandel beschleunigt sich Daher geraten lebenslanges Lernen zu einer Voraussetzung für ein erfolgreiches Berufsleben.", "Als Auszubildende müssen Sie sich nicht zwangsläufig mit den Weiterbildungsbemühungen Ihrer Ausbilder auseinandersetzen, Ihre Aufgabe ist es überwiegend, den Erwerb von beruflicher Handlungsfähigkeit zu gewährleisten.", "Zusatzqualifikationen (z. B. Präsentationstechniken) sind nicht wirklich erforderlich, um"],
+    correctIndices: [2],
+    explanation: "Lösung: C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 43."
+  },
+  {
+    id: 739,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Zu Beginn einer Ausbildungssituation signalisieren Ihnen Ihre Auszubildende, dass sie Vorkenntnisse zu dem Thema haben.",
+    question: "Welchem Einfluss hat diese Aussage auf Ihr weiteres Vorgehen?",
+    options: ["Sie brechen die Ausbildungssituation ab und befragen ein neues Thema vor.", "Sie greifen die Vorkenntnisse auf und hinterfragen diese anhand des Ausbildungsrahmenplanes zu vermitteln.", "Sie greifen die Vorkenntnisse auf und hinterfragen diese kritisch.", "Sie greifen die Vorkenntnisse auf und passen Ihre Vorgehensweise an die Inhalte des Ausbildungsrahmenplanes zu vermitteln.", "Sie überspringen die Vermittlung der Inhalte und übergeben der Auszubildenden umgehenden Übungsaufgaben."],
+    correctIndices: [2, 3],
+    explanation: "Lösung: C, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 44."
+  },
+  {
+    id: 740,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Im Januar haben Sie die Verantwortung für die Auszubildende Lisa, 19 Jahre, übernommen. Lisa legt Ihnen einen Urlaubsantrag für fünf Tage während der Osterferien vor. Bei der Durchsicht von Lisas Personalakte stellen Sie fest, dass Lisa im vergangenen Kalenderjahr drei Urlaubstage zu viel gewährt und auch genommen wurden.",
+    question: "Wie verhält es sich rechtlich mit den drei zu viel gewährten Urlaubstagen aus dem Vorjahr?",
+    options: ["Der Urlaubsanspruch von Lisa entsteht in jedem Urlaubsjahr neu; diese drei Tage können nicht mit dem Anspruch des neuen Jahres verrechnet werden.", "Die drei zu viel gewährten Urlaubstage können von Lisas Urlaubsanspruch des laufenden Jahres abgezogen werden.", "Der Ausbilder hat keinen Anspruch auf Rückzahlung des Urlaubsanspruchs der im Urlaub vergangenen Vergütung.", "Lisa kann die drei Tage im Rahmen der Mehrarbeit/Überstunden unter Berücksichtigung der gesetzlichen Höchstarbeitszeit in laute dieses Jahres abarbeiten.", "Lisa hatte diese Tatsache selbst bemerken und melden müssen, neben den Verrechnung in Tagen und Geld bekommt sie eine Abmahnung wegen der groben Pflichtverletzung.", "Das Urlaubsentgelt für diese drei Tage wird Lisa in Form von abgesprochenen Raten von der Ausbildungsvergütung oder von Sonderzahlungen in diesem Jahr abgezogen."],
+    correctIndices: [0, 2],
+    explanation: "Lösung: A, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 45."
+  },
+  {
+    id: 741,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubildender Jonas, 17 Jahre, wird demnächst an einem Mittwoch die schriftliche Abschlussprüfung (Dauer: drei Stunden) ablegen. Der letzte Berufsschultag ist der Dienstag unmittelbar vor der Prüfung. Jonas möchte wissen, wann er freigestellt wird.",
+    question: "Welche gesetzlichen Regelungen treffen auf Jonas zu?",
+    options: ["Jonas braucht am Montag nicht im Betrieb zu erscheinen.", "hat am Dienstag Berufsschule, darum gibt es keine Freistellung im Betrieb.", "wird am Mittwoch für die Teilnahme an der Prüfung freigestellt.", "muss am Dienstag vor der Prüfung nicht in die Berufsschule.", "wird für den gesamten Mittwoch freigestellt, obwohl die Prüfung nur drei Stunden dauert."],
+    correctIndices: [2, 4],
+    explanation: "Lösung: C, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 46."
+  },
+  {
+    id: 742,
+    hf: 2,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Gerhilde beginnt demnächst ihre Berufsausbildung zur Fachkraft für Süßwarentechnik. Aus dem ihr zugesandten Berufsausbildungsvertrag entnimmt sie, dass der Ausbildungsbetrieb den Auszubildenden die erforderlichen Ausbildungsmittel kostenlos zur Verfügung stellen muss.",
+    question: "Welche Ausbildungsmittel betrifft diese Regelung?",
+    options: ["Schreibpapier für den Berufsschulbesuch", "Schreibbücher und Lernmittel für den Berufsschulbesuch", "Werkzeuge, Werkstoffs- und Fachliteratur im Rahmen der praktischen Berufsausbildung", "alle Prüfungsaufgaben als Information zu den Prüfungen", "alle Ausbildungsmittel zum Ablegen vorgeschriebener Prüfungen", "Magazine der Süßwarenindustrie"],
+    correctIndices: [2, 4],
+    explanation: "Lösung: C, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 47."
+  },
+  {
+    id: 743,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind Ausbilder in einem mittelständischen Betrieb und planen eine der nächsten Ausbildungseinheiten mit Ihren drei Auszubildenden.",
+    question: "Wie gehen Sie bei der Planung vor?",
+    options: ["Sie erarbeiten die Richtlernziele aus dem Berufsbild der Ausbildungsordnung.", "Sie stellen den Lernerfolg fest.", "Sie bestimmen das gewünschte Endverhalten.", "Sie definieren die Feinlernziele."],
+    correctIndices: [2, 3],
+    explanation: "Lösung: C, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 48."
+  },
+  {
+    id: 744,
+    hf: 2,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Ihre Auszubildende Lilly, 20 Jahre, hat vor drei Monaten die Ausbildung zur Kauffrau für Dialogmarketing begonnen. Sie kommt zu Ihnen, weil sie gestern erfahren hat, dass sie schwanger ist. Sie möchte die Ausbildung gern weitermachen und hat Angst vor der Kündigung, weil sie sich noch in der Probezeit befindet.",
+    question: "Was können Sie Lisa zu ihren Rechten sagen?",
+    options: ["Die sofortige Kündigung von Lisa wäre zulässig, sie könnte die Ausbildung fortführen, wenn sie wegen der Einschränkungen aufgrund der Schwangerschaft mit einer Kürzung der Ausbildungsvergütung einverstanden ist.", "Da Lisa sich noch in der Probezeit befindet, darf ihr Ausbildungsverhältnis ohne Angaben von Gründen gekündigt werden, die Schwangerschaft ist nicht zu beachten.", "Der Ausbildungsplatz von Lisa ist nicht gefährdet. Eine Kündigung von Lisa während der Schwangerschaft und vier Monate nach der Geburt ist unzulässig. Für sie gilt in diesem Fall auch das Mutterschutzgesetz.", "Die Bestimmungen des Mutterschutzgesetzes gelten nur für Arbeitnehmer und nicht für Auszubildende. Lisa kann daher sofort gekündigt werden.", "Wenn Lisa noch minderjährig wäre, dürfte ihr nicht gekündigt werden, als volljährige Auszubildende muss sie während der Probezeit mit der Kündigung rechnen."],
+    correctIndices: [2],
+    explanation: "Lösung: C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 49."
+  },
+  {
+    id: 745,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie werden beauftragt, im Betrieb die erstmalige Ausbildung eines Industriemechanikers für das kommende Ausbildungsjahr vorzubereiten. Beim Prüfen der Ausbildungsvoraussetzungen stellen Sie fest, dass im Arbeitsprozess nicht alle Ausbildungsmittel vermittelt werden können.",
+    question: "Welche Möglichkeiten können Sie nutzen, um die Ausbildung trotzdem durchführen zu können?",
+    options: ["Abschluss von Vereinbarungen zur Verbundausbildung mit anderen Unternehmen.", "Auflistung der nicht vermittelbaren Ausbildungsinhalte als Anlage zum Berufsausbildungsvertrag.", "Kooperation mit einem anerkannten Bildungsträger zur Übernahme von Ausbildungsinhalten.", "Kooperation mit der Berufsschule zur Vermittlung der nicht im Betriebes vermittelbaren Fertigkeiten.", "Ein Vortrag zieht auf Lerninhalte des kognitiven Lernzielbereiches ab."],
+    correctIndices: [0, 2],
+    explanation: "Lösung: A, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 50."
+  },
+  {
+    id: 746,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind in Ihrem Unternehmen als Ausbilder tätig und möchten Ihren auszubildenden Fachkräften die Ausbildungsmethode „Vortrag\" näherbringen.",
+    question: "Was kennzeichnet diese Ausbildungsmethode?",
+    options: ["Ein Vortrag fördert die Prozessorientierung.", "Ein Vortrag dient in der Regel dazu Fertigkeiten zu vermitteln.", "Ein Vortrag dient in der Regel dazu, in einen neuen Themenbereich einzuführen.", "Ein Vortrag zieht auf Lerninhalte des psychomotorischen Lernzielbereiches ab.", "Ein Vortrag zielt auf Lerninhalte des kognitiven Lernzielbereiches ab."],
+    correctIndices: [2, 4],
+    explanation: "Lösung: C, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 51."
+  },
+  {
+    id: 747,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    question: "Welche Bestimmungen legt demnach seine Abschlussprüfung ab?",
+    options: ["Bundesbildungsgesetz", "Berufsbildungsgesetz", "Ausbildungsordnung", "Bürgerliches Gesetzbuch", "Manteltarifvertrag"],
+    correctIndices: [1, 2],
+    explanation: "Lösung: B, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 52."
+  },
+  {
+    id: 748,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie wollen die Ausbildung handlungsorientiert und für die Auszubildenden aktiver gestalten. Hierfür nutzen Sie die Lehrmethode mit dem „Modell der vollständigen Handlung“.",
+    question: "Auf welche Aktivitäten beschränken Sie sich als Ausbilder in der 4. Phase „Planen“?",
+    options: ["Sie beraten und korrigieren die Auszubildenden, damit sich im weiteren Verlauf keine Fehler einschleichen können.", "Sie beobachten die Auszubildenden zeitweise und stehen für Fragen jederzeit bereit.", "Sie stellen den Auszubildenden die Ergebnisse von ähnlichen Ausbildungseinheiten zur Orientierung und Nachahmung vor.", "Sie geben auf Nachfrage der Auszubildenden Hinweise und regen zu Lösungen an.", "Sie geben Hinweise und animieren die Auszubildenden zu einer schnelleren und effektiveren Vorgehensweise."],
+    correctIndices: [1, 3],
+    explanation: "Lösung: B, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 53."
+  },
+  {
+    id: 749,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "In der Berufsausbildung kommen verschiedene Sozialformen des Lernens zum Einsatz, unter anderem die Gruppenarbeit.",
+    question: "Welchen Zweck verfolgen Sie, wenn Sie bestimmte Aufgabenseitungen in Gruppenarbeit lösen lassen?",
+    options: ["Die Auszubildenden geben sich gegenseitig Impulse.", "Die Auszubildenden kommen gemeinsam schneller zu Lösungen.", "Durch den Gruppenleiter kommt die Gruppe schnell zur Lösung der Aufgaben.", "Die Auszubildenden ergänzen gegenseitig ihre Kenntnisse, Fähigkeiten und Fertigkeiten und können auf diese Weise zu qualitativ besseren Ergebnissen kommen."],
+    correctIndices: [0, 3],
+    explanation: "Lösung: A, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 54."
+  },
+  {
+    id: 750,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie erstellen eine Stellenanzeige für einen Ausbildungsplatz zur Kauffrau für Büromanagement.",
+    question: "Was müssen Sie im Rahmen des Allgemeinen Gleichbehandlungsgesetzes für die Stellenausschreibung beachten?",
+    options: ["Die Stellenausschreibung muss geschlechtsneutral formuliert sein.", "darf einen gewünschten Schulabschluss beinhalten.", "darf sich ausschließlich an weibliche Personen richten.", "darf von Bewerber als Muttersprache Deutsch fordern.", "darf eine Höchstaltergrenze formulieren."],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 55."
+  },
+  {
+    id: 751,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ausbilder Hansen besucht mit seinen Auszubildenden des dritten Ausbildungsjahres eine Bildungsmesse. Hier informieren sich Jenny und Max über weiterführende Bildungsgänge für die Zeit nach ihrem erfolgreichen Ausbildungsabschluss. Jenny beabsichtigt, künftig als Ausbilderin zu arbeiten, Max möchte sich in seinem fachlichen Beruf fortbilden.",
+    question: "Welche Informationen zu Ihrem jeweiligen Vorhaben sind richtig?",
+    options: ["Jenny benötigt den Nachweis der berufs- und arbeitspädagogischen Eignung.", "Max kann sich zum Handelsfachwirt weiterbilden.", "Max hat die Möglichkeit, sich in einen anderen technischen Beruf umschulen zu lassen.", "Max könnte sich zum Meister qualifizieren.", "Jenny muss als Ausbilderin das 24. Lebensjahr vollendet haben."],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 56."
+  },
+  {
+    id: 752,
+    hf: 4,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Zum ersten Mal werden zwei Auszubildende unter Ihrer Verantwortung ihre Abschlussprüfung ablegen. Mit einem Berater der zuständigen Stelle führen Sie ein Informationsgespräch und bereiten dafür mehrere Fragen vor.",
+    question: "Welches Gericht ist zuständig, wenn der Auszubildende eine Klage gegen sein Prüfungsergebnis anstrebt?",
+    options: ["Sozialgericht", "Landgericht", "Verwaltungsgericht", "Arbeitsgericht", "Amtsgericht"],
+    correctIndices: [2],
+    explanation: "Lösung: C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 57."
+  },
+  {
+    id: 753,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bilden im Beruf Kaufmann für Büromanagement aus und sechs Ihrer Auszubildenden gehen demnächst in die Abschlussprüfung. Sie wollen für sie eine optimale Prüfungsvorbereitung gestalten.",
+    question: "Wie gehen Sie vor?",
+    options: ["Sie sind verpflichtet, die Auszubildenden zwei Stunden wöchentlich zum gemeinsamen Lernen freizustellen.", "Sie führen eine Prüfungssimulation durch, die besonders der praktischen Prüfungsteile deckt.", "Sie verweisen Ihre Auszubildenden auf die Prüfungsordnung der zuständigen Stelle, um sich auf die Inhalte der Prüfung vorzubereiten.", "Sie führen Lehrgespräche, um vergessenes Wissen wieder systemisch zu reaktivieren.", "Sie weisen Ihre Auszubildenden abzudecken."],
+    correctIndices: [1, 3],
+    explanation: "Lösung: B, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 58."
+  },
+  {
+    id: 754,
+    hf: 2,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Alexander (17 Jahre alt) wird mit mittlerem Bildungsabschluss eine Berufsausbildung Fachkraft für Lagerlogistik in Ihrem Unternehmen beginnen. Ausbildungsbeginn soll der 1. September sein.",
+    question: "Aufgrund welcher rechtlichen Voraussetzungen kann bei Alexander die Regelausbildungsdauer im Ausbildungsvertrag verkürzt werden?",
+    options: ["durch eine vorzeitige Zulassung zur Abschlussprüfung wegen guter Leistungen", "durch die erfolgreiche Teilnahme an der Zwischenprüfung", "durch die erworbene schulische Vorbildung", "bei Vollendung des 18. Lebensjahres", "durch eine häufige Teilnahme an Fortbildungsmaßnahmen"],
+    correctIndices: [2],
+    explanation: "Lösung: C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 59."
+  },
+  {
+    id: 755,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind Ausbildungsleiter eines überregional tätigen Unternehmens und wollen demnächst an mehreren Standorten in verschiedenen Bundesländern ausbilden.",
+    question: "Welche Aussagen zur Schulpflicht sind richtig? Für Auszubildende besteht grundsätzlich Vollzeitschulpflicht, da der Unterricht in den Berufsschulen ganztägig stattfindet.",
+    options: ["Berufsschulpflicht besteht nicht nur für Auszubildende, sondern in vielen Bundesländern auch für Jugendliche, die ohne Ausbildung erwerbstätig werden.", "Die Berufsschulpflicht in den einzelnen Bundesländern unterliegt den landesspezifischen Regelungen.", "Auszubildende mit allgemeiner Hochschulreife und einer Ausbildungsverkürzung vom maximal zwölf Monaten können bei guten Ausbildungsleistungen unabhängig vom Lebensalter von der Berufsschulpflicht befreit werden.", "Nach Erfüllung der allgemeinen Schulpflicht sind Auszubildende grundsätzlich nicht mehr berufsschulpflichtig.", "[Text teilweise verdeckt/auf nächster Seite]"],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 60."
+  },
+  {
+    id: 756,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "In einer internen Schulungsmaßnahme zum Thema Ausbildungszeugnis hemmalesen Sie die Unterschiede zwischen einem einfachen und einem qualifizierten Ausbildungszeugnis. Danach gehen Sie auf die Zeugnisgrundsätze ein. Ein Teilnehmer bittet Sie, den ‚Grundsatz der Individualität‘ näher zu erläutern.",
+    question: "Welche der folgenden Beschreibungen entsprechen diesem Grundsatz?",
+    options: ["[Text durch handschriftliche Markierung teilweise verdeckt]", "Bei einer Schwangerschaft darf der Arbeitgeber das Ausbildungsverhältnis ohne [Wort verdeckt] kündigen.", "Es müssen die Leistungen und das Verhalten des Auszubildenden vermerkt werden.", "[Text teilweise verdeckt]", "Jedes Ausbildungszeugnis muss für den jeweiligen Auszubildenden formuliert werden.", "Das Zeugnis muss ein möglichst komplettes Bild des Auszubildenden, seiner Leistungen und seines Verhaltens vermitteln."],
+    correctIndices: [4, 5],
+    explanation: "Lösung: E, F. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 61."
+  },
+  {
+    id: 757,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie beenden die Ausbildungszeugnisse für Ihre Auszubildenden Lisa und Yannick aus dem dritten Ausbildungsjahr vor. Dabei bescheinigen Sie ihnen Leistungen mit den Formulierungen für Leistungsbeurteilungen.",
+    question: "Welche der folgenden Formulierungen beschreiben Sie eine gute Beurteilung?",
+    options: ["Er hat seine Aufgaben sorgfältig und genau erledigt.", "Er erledigte zugeteilte Aufgaben zu unserer Zufriedenheit.", "Sie hat unseren Erwartungen in jeder Hinsicht und bester Weise entsprochen.", "Seine Leistungen haben in jeder Hinsicht und volle Anerkennung gefunden.", "Sie zeigte für die Ausbildung Verständnis und Interesse.", "Sie war immer bemüht, die Aufgaben sorgfältig zu erledigen."],
+    correctIndices: [2, 3],
+    explanation: "Lösung: C, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 62."
+  },
+  {
+    id: 758,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Im Rahmen Ihrer Vorbereitung auf die Ausbildereignungsprüfung haben Sie von dem Tarifvertragsgesetz gehört.",
+    question: "Welche Aussagen zum Tarifvertragsgesetz sind zutreffend?",
+    options: ["legt den gesetzlichen Mindestlohn als Untergrenze für Tarifverträge fest.", "beschreibt die Vorgehensweise bei Arbeitskämpfen.", "definiert, wer Tarifverträge abschließen kann.", "regelt die Rechte und Pflichten der Tarifvertragsparteien.", "ist als Landesgesetz in den einzelnen Bundesländern unterschiedlich.", "ermöglicht die Allgemeinverbindlicherklärung von Tarifverträgen."],
+    correctIndices: [2, 3, 5],
+    explanation: "Lösung: C, D, F. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 63."
+  },
+  {
+    id: 759,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie wollen den Auszubildenden die Bedeutung des Ausbildungsnachweises verdeutlichen.",
+    question: "Welche Argumente können Sie einbringen?",
+    options: ["ist Zulassungsvoraussetzung für die Abschlussprüfung.", "wird bei der Abschlussprüfung zur Bewertung der Gesamtleistungen einbezogen.", "wird gegen den Auszubildenden bei mangelnder Leistung als Erziehungsmittel eingesetzt.", "gibt Auskunft über vermittelte Zusatzqualifikationen."],
+    correctIndices: [0, 3],
+    explanation: "Lösung: A, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 64."
+  },
+  {
+    id: 760,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Ihre gehörlose Auszubildende Mia ist im letzten Ausbildungsjahr. Ihnen liegt das Anmeldeformular für die Abschlussprüfung vor.",
+    question: "Welche Besonderheiten beachten Sie bei der Anmeldung von Mia zur Abschlussprüfung?",
+    options: ["Für den Antrag zur Abschlussprüfung müssen Sie keine Besonderheiten berücksichtigen, da alle erforderlichen Daten zu Mias Hörschädigung der zuständigen Stelle bereits vorliegen.", "Für Mia können Sie mit der Anmeldung zur Abschlussprüfung einen Nachteilsausgleich beantragen.", "Mit der Anmeldung zur Abschlussprüfung reichen Sie eine Kopie des Schwerbehindertenausweises von Mia bei der zuständigen Stelle ein.", "Es reicht aus, Mias Hörschädigung im Abschnitt „Anmerkungen\" der Anmeldung zur Abschlussprüfung einzutragen; ein gesonderter Antrag ist für einen Nachteilsausgleich nicht erforderlich.", "Ein Antrag auf Nachteilsausgleich für Mia ist nicht an Fristen gebunden und kann auch noch am Tag vor der Prüfung bei der zuständigen Stelle eingereicht werden.", "Mia kann für die Prüfung einen Gebärdendolmetscher gestellt bekommen; dies muss mit der Anmeldung zur Abschlussprüfung beantragt werden."],
+    correctIndices: [1, 2, 5],
+    explanation: "Lösung: B, C, F. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 65."
+  },
+  {
+    id: 761,
+    hf: 2,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Die zuständige Stelle fragt bei Ihnen an, ob Sie daran interessiert sind, in einer Prüfdelegation mitzuwirken. Da Sie sich nicht sicher sind, worum es sich dabei handelt, informieren Sie sich über die Funktion und Aufgaben von Prüfdelegationen.",
+    question: "Welche Aussage zu Prüfdelegationen ist korrekt?",
+    options: ["Mindestens drei Mitglieder einer Prüfdelegation bewerten einzelne Prüfungsleistungen selbständig und unabhängig voneinander.", "Prüfdelegationen sind von Prüfungsausschüssen unabhängige Gremien, die vom Bildausschuss der zuständigen Stelle berufen werden.", "Die Arbeit in einer Prüfdelegation ist im Gegensatz zur Arbeit in einem Prüfungsausschuss nicht ehrenamtlich und wird angemessen vergütet.", "Eine Prüfdelegation ist paritätisch zu besetzen. Mindestens zwei Drittel der Mitglieder sind Vertreter von Arbeitgebern und Arbeitnehmern.", "Ein Prüfungsausschuss kann die Abnahme und Bewertung von Prüfungsleistungen auf eine Prüfdelegation übertragen."],
+    correctIndices: [4],
+    explanation: "Lösung: E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 66."
+  },
+  {
+    id: 762,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Wenn Sie beabsichtigen, einem Ihnen geeigneten Industriemechaniker (zweites Ausbildungsjahr, 19 Jahre) nach der zweiten Ausbildung eine Ausbildung zum Industrie-mechaniker anzubieten, müssen Sie am Ende der Ausbildung Ihren Auszubildenden ein betriebliches Zeugnis ausstellen.",
+    question: "Welche der Aussagen zur Kündigung des Ausbildungsverhältnisses sind richtig?",
+    options: ["Der Ausbildungsbetrieb kann vom Azubi Schadensersatz verlangen.", "Nach der Probezeit ist eine Kündigung durch den Auszubildenden ausgeschlossen.", "Der Beruf kann nur mit Einverständnis des Ausbildungsbetriebes ausgesprochen werden.", "Der Ausbildungsbetrieb muss die Kündigung der zuständigen Stelle anzeigen.", "Bernd hat eine Kündigungsfrist von vier Wochen zu beachten."],
+    correctIndices: [3, 4],
+    explanation: "Lösung: D, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 67."
+  },
+  {
+    id: 763,
+    hf: 1,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie wollen dieses Jahr das erste Mal ausbilden und haben sich für zwei Auszubildende entschieden.",
+    question: "Wann beziehen Sie bei der Ausbildungsplanung mit ein?",
+    options: ["Sie bezeichnen den Ausbildungsplan erst nach der Beendigung des Berufes.", "Sie bezeichnen den Ausbildungsplan erst nach dem Berufsstart.", "Sie bezeichnen den Eltern, mit ein, damit diese einen Einblick in Ihr Unternehmen bekommen.", "Sie nehmen den Kontakt mit der Agentur für Arbeit mit ein, falls sich ein Auszubildender als ungeeignet erweist.", "Sie beziehen die Abteilungsleiter mit ein, denen Sie Ihren Auszubildenden zu Beginn Einblicke in ihre betrieblichen Abläufe geben."],
+    correctIndices: [2, 4],
+    explanation: "Lösung: C, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 68."
+  },
+  {
+    id: 764,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Als Ausbildender müssen Sie am Ende der Ausbildung Ihrem Auszubildenden ein betriebliches Zeugnis ausstellen.",
+    question: "Welche Grundsätze haben Sie bei der Erstellung eines qualifizierten betrieblichen Zeugnisses für Ihre Auszubildenden zu beachten?",
+    options: ["Das Zeugnis muss durch den Betriebsrat bestätigt werden.", "Das Zeugnis unterliegt einer Wahrheitspflicht.", "Das Zeugnis muss über die Fehlzeiten informieren.", "Das Zeugnis muss wohlwollend formuliert sein.", "Das Zeugnis muss individuell auf den Auszubildenden ausgerichtet sein."],
+    correctIndices: [1, 3, 4],
+    explanation: "Lösung: B, D, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 69."
+  },
+  {
+    id: 765,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Vanessa ist mit Ihrer Ausbildung unzufrieden, da Ausbilder Lehn ihr wiederholt Aufgaben überträgt, die nicht dem Ausbildungszweck dienen. Vanessa beschwert sich bei der zuständigen Stelle über ihre Situation.",
+    question: "Die Verstöße können geahndet werden als",
+    options: ["Ordnungswidrigkeit mit einem Bußgeld bis zu 300 €", "Ordnungswidrigkeit mit einer Geldstrafe bis zu 5.000 €", "Strafahnbescheid mit 90 Tagessätzen.", "Verbrechen mit Entzug der Eignung zum Ausbilden.", "Vorsätzliche Straftat mit Freiheitsstrafe."],
+    correctIndices: [1],
+    explanation: "Lösung: B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 70."
+  },
+  {
+    id: 766,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bereiten die Ausbildungszeugnisse für Ihre Auszubildenden (Ronja und Benjamin) vor, die dementsprechende Prüfung ablegen werden. Benjamin wird unbefristet übernehmen, Ronja nicht.",
+    question: "Was gilt hinsichtlich der Ausbildungszeugnisse bei den Auszubildenden?",
+    options: ["Bei Ronja dürfen im qualifizierten Ausbildungszeugnis aufgrund des Grundsatzes des Wohlwollens keine Beurteilungen der Leistung enthalten sein.", "Da Benjamin unerfahren ist, hat er keinen Anspruch auf ein Ausbildungszeugnis.", "Bei Benjamin wird die zuständige Stelle die Ausfertigung eines Ausbildungszeugnisses übernehmen.", "Sie müssen Ronja aufgrund der Nichteinnahme direkt ein qualifiziertes Zeugnis ausstellen.", "Für Ronja und Benjamin müssen Sie ein einfaches Zeugnis ausstellen."],
+    correctIndices: [3, 4],
+    explanation: "Lösung: D, E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 71."
+  },
+  {
+    id: 767,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Sie bemerken, dass sich einige Ihrer ausbildenden Fachkräfte mit den ständig wachsenden Anforderungen an eine handlungsorientierte Ausbildung und deren Umsetzung schwer tun.",
+    question: "Wie können Sie die ausbildenden Fachkräfte zukünftig besser fordern und unterstützen?",
+    options: ["Ihnen bei unklarem Verhalten mit Abmahnungen drohen.", "Ihnen freie Hand bei der Wahl der Ausbildungsinhalte lassen.", "Sie bei der Planung und Durchführung der Ausbildung in Ihrer Abteilung unterstützen.", "Ihnen die zu vermittelnden Fehlzeiten vorgeben.", "Ihnen Unterstützung bei der Vermittlung von Lerninhalten geben.", "Ihnen die Teilnahme an Ausbilderseminaren ermöglichen."],
+    correctIndices: [2, 4, 5],
+    explanation: "Lösung: C, E, F. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 72."
+  },
+  {
+    id: 768,
+    hf: 2,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Laut entsprechendem Berufsausbildungsvertrag endet das Ausbildungsverhältnis von Leon am 30. Juni und das Ausbildungsverhältnis von Paula am 31. Oktober. Der letzte Prüfungstag findet am 15. Juli statt.",
+    question: "Welche Aussagen treffen hinsichtlich der Zulassung zur Abschlussprüfung gemäß § 43 BBiG zu?",
+    options: ["Paula wird nicht zugelassen, da ihre Ausbildungsdauer später als zwei Monate nach dem Prüfungstermin endet.", "Leon wird nicht zugelassen, da seine Ausbildungsdauer vor dem Prüfungstermin endet.", "Paula wird zugelassen, da sie die Ausbildungsdauer zurückgelegt hat.", "Leon wird zugelassen, da er die Ausbildungsdauer zurückgelegt hat."],
+    correctIndices: [0, 3],
+    explanation: "Lösung: A, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 73."
+  },
+  {
+    id: 769,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 3,
+    situation: "Ihr Auszubildender Tim wird in sechs Monaten die Abschlussprüfung ablegen. Tim hat so große Prüfungsangst, dass er das Thema ‚Prüfung' am liebsten ignorieren möchte. Sie planen die Prüfungsvorbereitung für Tim.",
+    question: "Welche Maßnahmen kommen Tim gegen die Prüfungsangst helfen?",
+    options: ["Tim die Konsequenzen eines Nichtbestehens der Prüfung aufzeigen, um ihn zu motivieren", "Mit Tim die möglichen Ursachen von Prüfungsangst besprechen und geeignete Strategien aufzeigen", "Tims Fragen zum Prüfungsverlauf beantworten", "Tim kontaktiert aus dem Arbeitsprozess herauszuholen, damit er sich auf die Prüfung vorbereiten kann", "Mit Tim die Gesächtsleitung über sein mögliches Scheitern informieren, das nimmt den Druck von Tim, unbedingt die Prüfung bestehen zu müssen.", "Die praktische Prüfung simulieren, das gibt Sicherheit für die reale Situation."],
+    correctIndices: [1, 2, 5],
+    explanation: "Lösung: B, C, F. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 74."
+  },
+  {
+    id: 770,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre Auszubildende Nadja hat vor zwei Tagen ihre Abschlussprüfung als Kauffrau für Büromanagement mit der Durchschnittsnote 3,7 bestanden. Nadja ist auf eigenen Wunsch nicht übernommen worden, weil sie im elterlichen Betrieb lang sein wird. Nadja hat ein qualifiziertes Ausbildungszeugnis gebeten. Als Grundlage für das Zeugnis haben Sie die Beurteilungen gesammelt. Nadja hat insgesamt befriedigende Leistungen gezeigt. Im Team konnte sie auch bei längeren Diskussionen eine Einzelaufgabe übernehmen. Die Beurteilungen der Kollegen im Zeugnis findet Nadja zu negativ und möchte, dass die Beurteilungen besser formuliert werden. Die entsprechende Formulierung im Zeugnis findet Nadja ungerechtfertigt, weil sie der Ansicht ist, ungeprüft beurteilt worden zu sein. Ausdrücklich sollen Formulierungen im Zeugnis wohlwollend sein, so Ihre Begründung. Auch wenn sie jetzt im elterlichen Betrieb [tätig] ist!, benötige sie doch ein gutes Zeugnis für ihren weiteren beruflichen Werdegang.",
+    question: "Welche Aussagen sind richtig?",
+    options: ["Nadja muss Ihnen beweisen, dass eine gute bzw. sehr gute Gesamtbewertung gerechtfertigt ist. Kann sie das nicht, ist eine Verbesserung nicht möglich.", "Das Prinzip der Zeugniswahrheit steht höher als das Prinzip des Wohlwollens. Aus diesem Grund ist eine Verbesserung gesetzlich nicht zulässig.", "Sie müssen beweisen, dass Nadjas tatsächliche Gesamtbewertung die befriedigenden Beurteilungen rechtfertigt. Da das mithilfe der Beurteilungen tun können, hat Nadja keinen Anspruch auf Verbesserung.", "Nadjas Begründung: 'Ihr Zeugnis beeinflusse ihren weiteren Berufsweg', besteht zu Recht. Deshalb müssen Sie nach dem Grundsatz des Wohlwollens Ihre Formulierungen den Wünschen von Nadja anpassen.", "Sie als Ausbilder bestimmen die Bewertungen und Formulierungen im Ausbildungszeugnis. Daher kann Nadja keine Verbesserung verlangen.", "Nadjas Widerspruch gegen Ihr Ausbildungszeugnis ist rechtlich nicht zulässig, da sie die Ausbildung bereits beendet hat und nicht mehr im Unternehmen tätig ist. Vor der Beendigung Einspruch in das Zeugnis verlangen müssen, hätte Nadja vor der Beendigung Einspruch erheben müssen."],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 75."
+  },
+  {
+    id: 771,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre Rolle als Ausbilder gestaltet sich sehr vielfältig. Neben der Tätigkeit als Lehrender sollten Sie sich auch mit dem Thema 'Konfliktbearbeitung' beschäftigen.",
+    question: "Welche Aussagen sind richtig?",
+    options: ["Sie achten auf eine frühzeitige Problemlösung. Nur so können Sie verhindern, dass Konflikte eine destruktive Wirkung entfalten.", "Sie halten sich als Ausbilder aus der Konfliktbearbeitung raus.", "Sie werden die gruppendynamischen Prozesse in Ihren Ausbildungsgruppen genau beobachten. Nur so können Sie Konfliktpotenziale rechtzeitig erkennen und gegensteuern.", "Sie betrachten Konflikte als negative Begleiterscheinung Ihrer Ausbildertätigkeit. Daher stellen Sie sicher, dass Konflikte erst gar nicht entstehen.", "Sie greifen bei Konflikten nicht ein, denn nur so werden die Auszubildenden in Ihrer Individualkompetenz gefördert."],
+    correctIndices: [0, 2],
+    explanation: "Lösung: A, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 76."
+  },
+  {
+    id: 772,
+    hf: 3,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Die Industrielle GmbH möchte in diesem Jahr erstmals Auszubildende im Ausbildungsberuf Mechatroniker einstellen. Sie rechnen damit, ob es für auszubildende Fachkräfte gesetzliche Vorgaben gibt.",
+    question: "Welche der folgenden Aussagen treffen auf die ausbildenden Fachkräfte zu?",
+    options: ["Ausbildende Fachkräfte müssen über eine abgeschlossene Berufsausbildung in dem Beruf verfügen, in dem sie ausbilden möchten.", "Ausbildende Fachkräfte müssen über die für die Vermittlung der Ausbildungsinhalte erforderlichen beruflichen Fertigkeiten, Kenntnisse und Fähigkeiten verfügen.", "Ausbildende Fachkräfte müssen die persönliche Eignung zum Ausbilden besitzen.", "Ausbildende Fachkräfte brauchen für ihre Hilfsdienste in der Ausbildung weder eine persönliche noch eine fachliche Eignung.", "Ausbildende Fachkräfte sind für die Planung, Durchführung und Kontrolle der Berufsausbildung verantwortlich."],
+    correctIndices: [1, 2],
+    explanation: "Lösung: B, C. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 77."
+  },
+  {
+    id: 773,
+    hf: 3,
+    category: "Prüfung",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie informieren die Schüler in einer allgemeinbildenden Schule über die Ausbildungsmöglichkeiten in Ihrem Unternehmen. Dabei stellen Sie die fünf Berufe vor, in denen ausgebildet wird. Es kommt zu einer Diskussion zwischen den Schülern Jan und Andre. Andre behauptet, man könne sich nicht den Beruf aussuchen, den man erlernen möchte. Jan widerspricht; er sagt, dass es ein Gesetz gäbe, in dem stehe, dass man grundsätzlich erst einmal das Recht der freien Berufswahl habe.",
+    question: "Welches Gesetz meint Jan?",
+    options: ["Jugendarbeitsschutzgesetz", "Berufsbildungsgesetz", "Ausbildungsberufsgesetz", "Schulgesetz des Landes", "Grundgesetz", "Betriebsverfassungsgesetz"],
+    correctIndices: [4],
+    explanation: "Lösung: E. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 78."
+  },
+  {
+    id: 774,
+    hf: 2,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubildender Peter beginnt bald sein drittes Ausbildungsjahr. Sowohl im Betrieb als auch in der Berufsschule sind seine Leistungen überdurchschnittlich gut.",
+    question: "Welche Antworten geben Sie Peter bezüglich der Anschlussprüfung teilnehmen. Die Antragstellung zur Prüfung an die zuständige Stelle",
+    options: ["kann durch Peter erfolgen.", "kann die Berufsschule vornehmen.", "kann formlos vorgenommen werden.", "hat schriftlich zu erfolgen.", "muss persönlich vorgetragen werden."],
+    correctIndices: [0, 3],
+    explanation: "Lösung: A, D. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 79."
+  },
+  {
+    id: 775,
+    hf: 4,
+    category: "Prüfung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie haben in Ihrem Betrieb jugendliche und volljährige Auszubildende beschäftigt.",
+    question: "Was ist gelerntes Recht bezüglich der Freistellung für die Berufsschule und die Abschlussprüfung?",
+    options: ["Jugendliche und volljährige Auszubildende dürfen im Blockunterricht für maximal zwei Stunden pro Woche in den Betrieb zu zusätzlichen Ausbildungsinhalten geholt werden.", "Jugendliche und volljährige Auszubildende sind am Arbeitsbeginn, der schriftlichen Abschlussprüfung unmittelbar vorangegangen.", "Nur Jugendliche sind am Arbeitstag, der der schriftlichen Abschlussprüfung unmittelbar vorausgeht, von der Arbeit freizustellen.", "Ausbildende dürfen volljährige Auszubildende vor einem vor 9 Uhr beginnenden Berufsschultag beschäftigen, wenn der Arbeitsbeginn regelmäßig vor 7 Uhr liegt."],
+    correctIndices: [0, 1],
+    explanation: "Lösung: A, B. Original IHK-Prüfungsaufgabe (fotografiert), Aufgabe 80."
+  }
 ];
   </script>
 
@@ -25009,6 +28055,7 @@ function getFilteredPracticeQuestions() {
     if (hf === 'pc') { if (q.id < 416) return false; }
     else if (hf === 'pc1') { if (q.id < 416 || q.id > 495) return false; }
     else if (hf === 'ihk66') { if (q.id < 656 || q.id > 695) return false; }
+    else if (hf === 'ihkf') { if (q.id < 696 || q.id > 775) return false; }
     else if (hf !== 'all' && String(q.hf) !== hf) return false;
     
     // Category filter
@@ -25461,6 +28508,7 @@ function generateNewExamSet(source) {
   const pcAll = AEVO_QUESTIONS.filter(q => q.id >= 416);              // 240 Pruefungs-Check
   const pcS1 = AEVO_QUESTIONS.filter(q => q.id >= 416 && q.id <= 495); // Original-Satz 1 (80)
   const ihk66 = AEVO_QUESTIONS.filter(q => q.id >= 656 && q.id <= 695); // IHK Original-Satz 66 (40 MC)
+  const ihkf = AEVO_QUESTIONS.filter(q => q.id >= 696 && q.id <= 775); // IHK Original-Pruefung fotografiert (80)
   const basis = q => q.id < 416;                                       // 415 DIHK- & Lernmodul-Fragen
   let selected;
 
@@ -25468,7 +28516,10 @@ function generateNewExamSet(source) {
     selected = [...pcS1];
   } else if (source === 'ihk66') {
     selected = [...ihk66];
-  } else if (source === 'pc240') {
+  }
+   else if (source === 'ihkf') {
+    selected = [...ihkf];
+   } else if (source === 'pc240') {
     selected = sampleRandom(pcAll, 80);
   } else if (source === 'all') {
     selected = [
