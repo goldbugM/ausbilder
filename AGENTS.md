@@ -45,3 +45,6 @@ Deploy: Vercel (project: ausbilder) + GitHub goldbugM/ausbilder.
 - UI-Integration: (1) Fallen-Radar VOR Antwort im Practice-View (einklappbar via toggleTrapRadar), (2) renderTrapAnalysisBlock() NACH falscher Antwort in Practice + Exam-Review + beiden Topic-Quiz-Funktionen (checkTopicQuiz/checkTopicQuizPc)
 - Rollen-Blindheit-Heuristik: verpasste Berater-Option + gewaehlte Kontroll-/Jahres-/Muss-Option -> zusaetzlicher Fallback-Hit
 - Neue Fallen IMMER in AEVO_TRAPS mit id/name/patterns/lure/logic/merk anlegen; Test: Engine-Simulation via node mit extrahiertem Script-Block
+- v1.1 (Commit 57694ac): +7 Fallen aus Distraktor-Analyse (2448 Distraktoren aller 775 Fragen): anspruchsmythos, fantasyinst, pflichtverweigerung, lernzieldreh, altersmythos, sofortaktion, verguetungsmythos — alle Precision-geprueft (80-100% Trefferquote nur in falschen Optionen)
+- radarOk: false Flag bei unpraezisen Fallen (verneinung, zahlenkoeder, rollenkonflikt, mussfalle) = nur Post-Antwort-Analyse, kein praeventiver Radar; Radar-Rate 22% gesamt / 18% ihkf
+- Analyse-Pipeline: Distraktoren via Bracket-Counting aus AEVO_QUESTIONS extrahieren, gegen Kandidaten-Regex testen, Precision = Treffer(falsch)/(Treffer falsch+richtig), nur >=80% uebernehmen
