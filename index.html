@@ -12333,7 +12333,7 @@ const AEVO_TRAPS = [
     merk: 'Totalwörter = Rotstift. Prüfen Sie jede Option auf „immer/nie/ausschließlich/permanent“ — solche Optionen sind fast immer Distraktoren.'
   },
   {
-    id: 'rollenkonflikt',
+    id: 'rollenkonflikt', radarOk: false,
     name: 'Ausbilder-Rollen-Falle (Kontrolleur vs. Berater)',
     patterns: [
       /(permanent|ständig|lückenlos|jeden Schritt|Schritt für Schritt|ununterbrochen)[^.]{0,80}(zur Seite stehen|überwachen|kontrollieren|anleiten|begleiten)/i,
@@ -12345,7 +12345,7 @@ const AEVO_TRAPS = [
     merk: 'Bei Methodenfragen gilt: Die Ausbilder-Rolle wandelt sich vom Vormacher zum Berater/Begleiter. „Permanent zur Seite stehen“ = Falle.'
   },
   {
-    id: 'verneinung',
+    id: 'verneinung', radarOk: false,
     name: 'Verneinungs-Kipper („nicht/kein“ überlesen)',
     patterns: [
       /\b(nicht|kein|keine|keinen|ohne|weder)\b/i
@@ -12355,7 +12355,7 @@ const AEVO_TRAPS = [
     merk: 'Verneinungswörter aktiv markieren (unterstreichen!), dann den Satz erneut langsam lesen — kippt die Aussage?'
   },
   {
-    id: 'zahlenkoeder',
+    id: 'zahlenkoeder', radarOk: false,
     name: 'Zahlen-Köder (präzise wirkende Fake-Fristen)',
     patterns: [
       /\b(zwei|drei|vier|fünf|sechs|zwölf|\d+([.,]\d+)?)\s*(Monate|Wochen|Tage|Jahre|Stunden|Prozent|%|€|Euro)\b/i
@@ -12365,7 +12365,7 @@ const AEVO_TRAPS = [
     merk: 'Zahl gefunden → Paragraph prüfen! Zahlen ohne klare Rechtsgrundlage im Kontext sind klassische Köder.'
   },
   {
-    id: 'mussfalle',
+    id: 'mussfalle', radarOk: false,
     name: 'Pseudo-Pflicht-Falle („müssen“ bei didaktischer Freiheit)',
     patterns: [
       /(müssen|zwingend|verpflichtet|unbedingt)[^.]{0,80}(einsetzen|verwenden|durchführen|nutzen|anwenden)/i
@@ -12373,6 +12373,82 @@ const AEVO_TRAPS = [
     lure: 'Das Wort „müssen“ verleiht der Option den Anschein einer verbindlichen Vorschrift — im Prüfungsstress sucht das Gehirn nach Regeln, und „müssen“ klingt nach Regel.',
     logic: 'Bei didaktischen Fragen (Methodenwahl, Einsatzzeitpunkt, Sozialformen) gibt es praktisch nie rechtliche Muss-Pflichten — hier entscheidet pädagogische Eignung im Einzelfall. Echte „Muss-Pflichten“ finden sich fast nur im BBiG/JArbSchG (formale Pflichten), nicht in der Methodenlehre.',
     merk: '„Sie müssen [Methode] einsetzen/nutzen“ = fast immer falsch. Echte Pflichten betreffen Formales (Vertrag, Nachweis, Schutz), nie die Methodenwahl.'
+  },
+  {
+    id: 'anspruchsmythos',
+    name: 'Anspruchs-Mythos (Azubi-Rechte kleingeredet)',
+    patterns: [
+      /\b(keinen|kein|nicht)\s+Anspruch\s+auf\b/i,
+      /\b(haben überhaupt keinen|besteht kein|gibt es keinen)\s+Anspruch\b/i
+    ],
+    lure: 'Die Option klingt nach klaren betrieblichen Regeln — „Urlaub/Krankengeld/Zeugnis ist Luxus, den sich der Betrieb leisten kann“. Wer Ausbildungsverhältnisse wie Probearbeitsverhältnisse behandelt, tappt hier ein.',
+    logic: 'Auszubildende haben starke gesetzliche Ansprüche: bezahlter Urlaub nach JArbSchG/BUrlG, Vergütungsfortzahlung im Krankheitsfall (EntgeltFG), Anspruch auf Arbeitszeugnis (§ 16 BBiG). Diese Ansprüche können nicht per Verweis auf den Ausbildungsstatus abgesenkt werden.',
+    merk: '„Keinen Anspruch auf …“ bei Azubi-Rechten = fast immer falsch. Urlaub, Lohnfortzahlung und Zeugnis sind gesetzliche Pflicht.'
+  },
+  {
+    id: 'fantasyinst',
+    name: 'Fantasy-Institution (erfundene Gremien)',
+    patterns: [
+      /\b(Prüfdelegation|Prüfdelegationen|Bildausschuss|Prüfungsrat|Kammerversammlung|Ausbildungsrat|Prüfungskommission des Betriebs)\b/i
+    ],
+    lure: 'Der Name klingt amtlich und bürokratisch-plausibel — wer nicht sicher ist, welche Gremien es wirklich gibt, nimmt „Prüfdelegation vom Bildausschuss“ als möglich an.',
+    logic: 'Echte Gremien im Prüfungsrecht: der PRÜFUNGSAUSSCHUSS (§ 40 ff. BBiG, von der zuständigen Stelle bestellt) und der BERUFSBILDUNGSAUSSCHUSS (§ 79 BBiG, paritätisch besetzt). Erfundene Kunstwörter wie „Prüfdelegationen“ oder „Bildausschuss“ existieren im BBiG nicht.',
+    merk: 'Unbekanntes Gremium? Auf BBiG-Realien prüfen: Prüfungsausschuss + Berufsbildungsausschuss. Alles andere ist erfunden.'
+  },
+  {
+    id: 'pflichtverweigerung',
+    name: 'Pflicht-Verweigerungs-Mythos („Betrieb kann ablehnen“)',
+    patterns: [
+      /Verlängerung[^.]{0,60}(verweigern|ablehnen|versagen)/i,
+      /\b(kann|darf)\b[^.]{0,70}Verlängerung[^.]{0,40}(verweigern|ablehnen)/i
+    ],
+    lure: 'Betriebslogik sagt: Wer nicht mehr will, muss nicht weiterbeschäftigen. Die Option nutzt diese intuitive Arbeitgeber-Perspektive.',
+    logic: '§ 21 Abs. 3 BBiG: Bei Nichtbestehen VERLANGT der Azubi die Verlängerung bis zur nächstmöglichen Wiederholungsprüfung (max. 1 Jahr) — der Ausbildende MUSS fortführen und sogar die Prüfungsvorbereitung unterstützen. Es gibt kein Vetorecht des Betriebs.',
+    merk: 'Verlängerung nach Nichtbestehen = Pflicht ohne Ermessen (§ 21 Abs. 3 BBiG). „Betrieb kann verweigern“ = Falle.'
+  },
+  {
+    id: 'lernzieldreh',
+    name: 'Lernziel-Falschzuordnung (Taxonomie-Dreh)',
+    patterns: [
+      /\bpsychomotorisch\w*\b[^.]{0,70}(Lernziel|Bereich|abzielt|ausgerichtet|gefördert)/i,
+      /\b(Vortrag|Frontalunterricht)\b[^.]{0,80}(Prozessorientierung|Selbstständigkeit)/i
+    ],
+    lure: 'Die Begriffe klingen alle didaktisch korrekt — nur wer die Lernziel-Taxonomie sicher beherrscht, merkt den Dreh nicht. „Planspiel → psychomotorisch“ wirkt wie gelerntes Fachwissen.',
+    logic: 'Die drei Lernzielbereiche: kognitiv (Wissen/Verstehen), affektiv (Einstellungen/Haltungen), psychomotorisch (manuelle Fertigkeiten). Planspiele und Rollenspiele fördern kognitive und sozial-affektive Bereiche, NICHT psychomotorische. Vorträge fördern keine Selbstständigkeit.',
+    merk: 'Methode + falscher Lernzielbereich = klassischer Dreher. Psychomotorisch nur bei manuellen Fertigkeiten (Feilen, Löten, Tippen).'
+  },
+  {
+    id: 'altersmythos',
+    name: 'Alters-Grenzen-Mythos (erfundene Jahresgrenzen)',
+    patterns: [
+      /\bAusbilder(in|innen)?\b[^.]{0,80}\b(24|25|26|30)\.?\s*Lebensjahr/i,
+      /\b(24|25|26|30)\.?\s*Lebensjahr[^.]{0,80}\bAusbilder(in|innen)?/i
+    ],
+    lure: 'Früher galt im BBiG tatsächlich eine Altersgrenze (24 Jahre) für Ausbilder — dieses „Halbwissen“ kursiert weiter und macht die Option besonders verführerisch.',
+    logic: 'Für die Ausbildereignung (AEVO) gibt es KEINE Altersgrenze — maßgeblich ist allein die persönliche und fachliche Eignung (§ 28 BBiG).',
+    merk: 'Lebensjahr-Grenze bei Ausbilder-Eignung = Relikt und Distraktor. Es zählt Eignung + AEVO-Prüfung, niemals das Alter.'
+  },
+  {
+    id: 'sofortaktion',
+    name: 'Sofort-Aktions-Druck (Eskalations-Skip)',
+    patterns: [
+      /\b(sofort|unmittelbar|umgehend)\b[^.]{0,70}(kündigen|entlassen|einschalten|sperren|abmelden|verhängen|schicken)/i,
+      /\b(kündigen|entlassen)\b[^.]{0,40}\b(sofort|umgehend|ohne Vorwarnung|fristlos)\b/i
+    ],
+    lure: 'Bei Konflikten fühlt sich sofortiges Handeln verantwortungsvoll an — Konsequenz statt Nachsicht. Der Zeitdruck in der Prüfung verstärkt den Impuls.',
+    logic: 'Das pädagogische Stufenmodell verlangt vorher: Ursachen klären (Vier-Augen-Gespräch), ermahnen, schriftlich abmahnen, erst dann Sanktionen bis Kündigung. Sofort-Eskalation überspringt Verhältnismäßigkeit und Gesprächspflicht.',
+    merk: '„Sofort kündigen/einschalten“ = Stufenmodell verletzt. Erst Gespräch → Ermahnung → Abmahnung → Sanktion.'
+  },
+  {
+    id: 'verguetungsmythos',
+    name: 'Vergütungs-Mythos (Geld-Streichung)',
+    patterns: [
+      /\b(entfällt|wird nicht gezahlt|gestrichen|einbehalten)\b[^.]{0,70}(Vergütung|Ausbildungsvergütung)/i,
+      /\b(Vergütung|Ausbildungsvergütung)\b[^.]{0,70}\b(entfällt|wird nicht gezahlt|gestrichen|einbehalten)/i
+    ],
+    lure: 'Betriebslogik: „Keine Arbeit, kein Lohn“ — besonders bei Auslandsaufenthalten oder Freistellungen klingt das fair. Die Option bedient die intuitive Austausch-Gerechtigkeit.',
+    logic: 'Die Ausbildungsvergütung ist vertraglich für die gesamte Ausbildungszeit geschuldet (§ 17 BBiG) — unabhängig davon, ob gerade produktive Arbeit anfällt. Sie entfällt nicht bei Auslandsstationen, Berufsschulphasen oder Freistellungen.',
+    merk: 'Vergütung läuft weiter: Berufsschule, Auslandsstation, Prüfungsfreistellung. „Wird gestrichen/entfällt“ = Mythos.'
   }
 ];
 
@@ -12413,6 +12489,7 @@ function detectTrapRadar(optionTexts, questionText) {
   const seen = new Set();
   const all = [questionText || ''].concat(optionTexts || []);
   AEVO_TRAPS.forEach(trap => {
+    if (trap.radarOk === false) return;
     const hit = all.some(t => _trapMatchesText(trap, t));
     if (hit && !seen.has(trap.id)) { seen.add(trap.id); radar.push(trap); }
   });
