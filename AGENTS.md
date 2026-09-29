@@ -42,9 +42,9 @@ Deploy: Vercel (project: ausbilder) + GitHub goldbugM/ausbilder.
 - Regelbasierte Distraktor-Analyse: `AEVO_TRAPS` (6 Fallen-Typen) + `detectTrapsForAnswer()` / `detectTrapRadar()` in index.html (vor AEVO_QUESTIONS injiziert)
 - Fallen-Typen: jahrbindung (Ausbildungsjahr-Koeder), absolutismus (immer/nie), rollenkonflikt (Kontrolleur vs. Berater + missedPattern fuer uebersehene Berater-Loesung), verneinung (nicht/kein Kipper), zahlenkoeder (Fake-Fristen), mussfalle (Pseudo-Pflicht bei Methodenfreiheit)
 - Jede Falle: name, patterns[] (Regex), lure (Verfuehrungs-Psychologie), logic (Pruefungslogik), merk (Merksatz)
-- UI-Integration: (1) Fallen-Radar VOR Antwort im Practice-View (einklappbar via toggleTrapRadar), (2) renderTrapAnalysisBlock() NACH falscher Antwort in Practice + Exam-Review + beiden Topic-Quiz-Funktionen (checkTopicQuiz/checkTopicQuizPc)
+- UI-Integration: renderTrapAnalysisBlock() NUR NACH falscher Antwort in Practice + Exam-Review + beiden Topic-Quiz-Funktionen (checkTopicQuiz/checkTopicQuizPc). KEIN praeventiver Radar mehr vor der Antwort (v1.1 entfernt auf Mos Wunsch - Pruefungssituation bleibt unbeeinflusst)
 - Rollen-Blindheit-Heuristik: verpasste Berater-Option + gewaehlte Kontroll-/Jahres-/Muss-Option -> zusaetzlicher Fallback-Hit
 - Neue Fallen IMMER in AEVO_TRAPS mit id/name/patterns/lure/logic/merk anlegen; Test: Engine-Simulation via node mit extrahiertem Script-Block
 - v1.1 (Commit 57694ac): +7 Fallen aus Distraktor-Analyse (2448 Distraktoren aller 775 Fragen): anspruchsmythos, fantasyinst, pflichtverweigerung, lernzieldreh, altersmythos, sofortaktion, verguetungsmythos — alle Precision-geprueft (80-100% Trefferquote nur in falschen Optionen)
-- radarOk: false Flag bei unpraezisen Fallen (verneinung, zahlenkoeder, rollenkonflikt, mussfalle) = nur Post-Antwort-Analyse, kein praeventiver Radar; Radar-Rate 22% gesamt / 18% ihkf
+- radarOk-Flags sind seit Radar-Entferung obsolet (alle Fallen nur Post-Antwort)
 - Analyse-Pipeline: Distraktoren via Bracket-Counting aus AEVO_QUESTIONS extrahieren, gegen Kandidaten-Regex testen, Precision = Treffer(falsch)/(Treffer falsch+richtig), nur >=80% uebernehmen
