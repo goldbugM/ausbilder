@@ -48,3 +48,5 @@ Deploy: Vercel (project: ausbilder) + GitHub goldbugM/ausbilder.
 - v1.1 (Commit 57694ac): +7 Fallen aus Distraktor-Analyse (2448 Distraktoren aller 775 Fragen): anspruchsmythos, fantasyinst, pflichtverweigerung, lernzieldreh, altersmythos, sofortaktion, verguetungsmythos — alle Precision-geprueft (80-100% Trefferquote nur in falschen Optionen)
 - radarOk-Flags sind seit Radar-Entferung obsolet (alle Fallen nur Post-Antwort)
 - Analyse-Pipeline: Distraktoren via Bracket-Counting aus AEVO_QUESTIONS extrahieren, gegen Kandidaten-Regex testen, Precision = Treffer(falsch)/(Treffer falsch+richtig), nur >=80% uebernehmen
+
+- ihk2-Set: IDs 776-805 (30 bereinigte Fragen aus Test-App-Transkripten, 2026-09-29). Pipeline: /a0/usr/workdir/2026-09-29_aevo-transkript-fix/ (Majority-Voting ueber 1727 Frames, OCR-Fixes, fachlich abgeleitete Loesungen). pcAll bleibt 416-775.
