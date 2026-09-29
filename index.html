@@ -12306,6 +12306,215 @@ for (const [modId, ts] of Object.entries(BOOK_TOPICS)) {
 }
 
 
+// ==========================================
+// DENKFALLEN-ENGINE v1.0 (2026-09-29)
+// Erkennt typische AEVO-Distraktor-Fallen in falsch gewaehlten Optionen
+// ==========================================
+const AEVO_TRAPS = [
+  {
+    id: 'jahrbindung',
+    name: 'Zeitbindungs-Falle (Ausbildungsjahr-Köder)',
+    patterns: [
+      /(ab dem|erst ab|spätestens ab|zwingend ab|grundsätzlich ab|erst wenn)[^.]{0,80}(ersten|zweiten|dritten|vierten|1\.|2\.|3\.|4\.)?\s*(Ausbildungsjahr|Lehrjahr|Ausbildungshalbjahr|Halbjahr)/i,
+      /(Ausbildungsjahr|Lehrjahr)[^.]{0,60}(einsetzen|verwenden|durchführen|beginnen)/i
+    ],
+    lure: 'Die Option klingt vertraut, weil man anspruchsvolle Methoden in der Praxis meist erst mit fortgeschrittenen Azubis verbindet. Das Praxisgefühl „früher geht das noch nicht“ macht die starre Jahresbindung plausibel.',
+    logic: 'Für den Einsatz von Ausbildungsmethoden gibt es KEINE Bindung an ein bestimmtes Ausbildungsjahr. Ein gut vorbereiteter Leittext oder Lernauftrag kann schon im 1. Lehrjahr sinnvoll sein. Didaktische Methodenfragen verlangen nach pädagogischer Eignung, nie nach einem festen Zeitpunkt.',
+    merk: 'Methoden sind nie an Ausbildungsjahre gebunden. Jede Option mit „ab dem 2./3. Ausbildungsjahr einsetzen“ ist zu 99 % ein Distraktor.'
+  },
+  {
+    id: 'absolutismus',
+    name: 'Absolutheits-Falle (immer / nie / ausschließlich)',
+    patterns: [
+      /\b(immer|niemals|ausschließlich|auf jeden Fall|unter keinen Umständen|permanent|ständig|lückenlos|sämtliche|nur noch|lediglich|einzig)\b/i
+    ],
+    lure: 'Der absolute Tonfall wirkt entschlossen und sicher — als wäre die Aussage eine klare Regel. Besonders in stressigen Prüfungssituationen greift man gern nach der „sicher klingenden“ Option.',
+    logic: 'Im Ausbildungsrecht und in der Pädagogik gilt fast alles als Einzelfall- und Verhältnisprüfung. Absolute Totalformulierungen sind bei AEVO-Aufgaben fast immer falsch, weil es Ausnahmen, Ermessens- oder Einzelfallregelungen gibt.',
+    merk: 'Totalwörter = Rotstift. Prüfen Sie jede Option auf „immer/nie/ausschließlich/permanent“ — solche Optionen sind fast immer Distraktoren.'
+  },
+  {
+    id: 'rollenkonflikt',
+    name: 'Ausbilder-Rollen-Falle (Kontrolleur vs. Berater)',
+    patterns: [
+      /(permanent|ständig|lückenlos|jeden Schritt|Schritt für Schritt|ununterbrochen)[^.]{0,80}(zur Seite stehen|überwachen|kontrollieren|anleiten|begleiten)/i,
+      /(Sie müssen den Auszubildenden)[^.]{0,60}(überwachen|kontrollieren|anweisen)/i
+    ],
+    missedPattern: /(beratend|Berater|Lernbegleit|Coach|Moderator|im Hintergrund|Begleiter|unterstützend)/i,
+    lure: 'Als verantwortlicher Ausbilder möchte man „dicht dran“ sein — ständige Präsenz fühlt sich wie Fürsorge und Qualitätssicherung an. Die Option bedient das Kontrollbedürfnis.',
+    logic: 'Handlungsorientierte Methoden (Leittext, Projekt, Lernauftrag) leben von der Selbstständigkeit des Azubis nach dem Modell der vollständigen Handlung. Der Ausbilder wechselt zwingend in die Rolle des Beraters, Lernbegleiters und Coaches. Permanente Steuerung würde die geforderte Eigenverantwortung zerstören.',
+    merk: 'Bei Methodenfragen gilt: Die Ausbilder-Rolle wandelt sich vom Vormacher zum Berater/Begleiter. „Permanent zur Seite stehen“ = Falle.'
+  },
+  {
+    id: 'verneinung',
+    name: 'Verneinungs-Kipper („nicht/kein“ überlesen)',
+    patterns: [
+      /\b(nicht|kein|keine|keinen|ohne|weder)\b/i
+    ],
+    lure: 'Ein kleines „nicht“ oder „kein“ mitten im Satz dreht die gesamte Aussage ins Gegenteil — es wird beim schnellen Lesen leicht überlesen, weil der Rest des Satzes völlig korrekt klingt.',
+    logic: 'Der Distraktor besteht aus einer wahren Kernaussage, die durch ein einziges Verneinungswort falsch wird. Liest man nur den Satzanfang, wirkt die Option richtig.',
+    merk: 'Verneinungswörter aktiv markieren (unterstreichen!), dann den Satz erneut langsam lesen — kippt die Aussage?'
+  },
+  {
+    id: 'zahlenkoeder',
+    name: 'Zahlen-Köder (präzise wirkende Fake-Fristen)',
+    patterns: [
+      /\b(zwei|drei|vier|fünf|sechs|zwölf|\d+([.,]\d+)?)\s*(Monate|Wochen|Tage|Jahre|Stunden|Prozent|%|€|Euro)\b/i
+    ],
+    lure: 'Konkrete Zahlen wirken wie exakt gelerntes Rechts- oder Verwaltungswissen — „so genau kann das keiner erfinden“, denkt man. Zahlen erzeugen Scheinkompetenz.',
+    logic: 'Viele Zahlen-Distraktoren nennen erfundene oder in den Kontext verschobene Fristen/Quoten. Prüfen Sie, ob es wirklich eine gesetzliche oder verbindliche Grundlage (Paragraph, Verordnung, Ausbildungsordnung) für genau DIESE Zahl gibt.',
+    merk: 'Zahl gefunden → Paragraph prüfen! Zahlen ohne klare Rechtsgrundlage im Kontext sind klassische Köder.'
+  },
+  {
+    id: 'mussfalle',
+    name: 'Pseudo-Pflicht-Falle („müssen“ bei didaktischer Freiheit)',
+    patterns: [
+      /(müssen|zwingend|verpflichtet|unbedingt)[^.]{0,80}(einsetzen|verwenden|durchführen|nutzen|anwenden)/i
+    ],
+    lure: 'Das Wort „müssen“ verleiht der Option den Anschein einer verbindlichen Vorschrift — im Prüfungsstress sucht das Gehirn nach Regeln, und „müssen“ klingt nach Regel.',
+    logic: 'Bei didaktischen Fragen (Methodenwahl, Einsatzzeitpunkt, Sozialformen) gibt es praktisch nie rechtliche Muss-Pflichten — hier entscheidet pädagogische Eignung im Einzelfall. Echte „Muss-Pflichten“ finden sich fast nur im BBiG/JArbSchG (formale Pflichten), nicht in der Methodenlehre.',
+    merk: '„Sie müssen [Methode] einsetzen/nutzen“ = fast immer falsch. Echte Pflichten betreffen Formales (Vertrag, Nachweis, Schutz), nie die Methodenwahl.'
+  }
+];
+
+
+function _trapMatchesText(trap, text) {
+  if (!text) return false;
+  return (trap.patterns || []).some(re => re.test(text));
+}
+
+// Findet Fallentypen fuer falsch gewaehlte Optionen (+ verpasste richtige)
+function detectTrapsForAnswer(optionTexts, pickedIndices, correctIndices) {
+  const hits = [];
+  const seen = new Set();
+  const wrongPicks = (pickedIndices || []).filter(i => !(correctIndices || []).includes(i));
+  const missed = (correctIndices || []).filter(i => !(pickedIndices || []).includes(i));
+
+  AEVO_TRAPS.forEach(trap => {
+    const hitPicked = wrongPicks.some(i => _trapMatchesText(trap, optionTexts[i]));
+    if (hitPicked && !seen.has(trap.id)) { seen.add(trap.id); hits.push({ trap, kind: 'picked' }); }
+  });
+
+  // Rollen-Blindheit: richtige Option mit Berater-/Begleiter-Begriffen verpasst
+  if (missed.length > 0) {
+    const rolesTrap = AEVO_TRAPS.find(t => t.id === 'rollenkonflikt');
+    const missedRole = missed.some(i => rolesTrap.missedPattern && rolesTrap.missedPattern.test(optionTexts[i]));
+    const pickedControl = wrongPicks.some(i => /(überwach|kontroll|anweis|vormachen|vorzeigen|anleiten)/i.test(optionTexts[i])) || wrongPicks.some(i => _trapMatchesText(AEVO_TRAPS.find(t => t.id === 'jahrbindung'), optionTexts[i]) || _trapMatchesText(AEVO_TRAPS.find(t => t.id === 'mussfalle'), optionTexts[i]));
+    if (missedRole && pickedControl && !seen.has('rollenkonflikt')) {
+      seen.add('rollenkonflikt');
+      hits.push({ trap: rolesTrap, kind: 'missed' });
+    }
+  }
+  return hits;
+}
+
+// Praeventiver Radar: welche Fallen lauern in DIESEM Frage-Set? (vor der Antwort)
+function detectTrapRadar(optionTexts, questionText) {
+  const radar = [];
+  const seen = new Set();
+  const all = [questionText || ''].concat(optionTexts || []);
+  AEVO_TRAPS.forEach(trap => {
+    const hit = all.some(t => _trapMatchesText(trap, t));
+    if (hit && !seen.has(trap.id)) { seen.add(trap.id); radar.push(trap); }
+  });
+  return radar;
+}
+
+function _renderTrapCard(t, kind, letter) {
+  const kindBadge = kind === 'missed'
+    ? '<span class="ml-2 text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 border border-amber-400 text-amber-900">Richtige Lösung übersehen</span>'
+    : '<span class="ml-2 text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-100 border border-rose-400 text-rose-900">Gewählte Falle</span>';
+  const ref = letter ? `<span class="font-mono font-bold">${letter})</span> ` : '';
+  return `
+    <div class="p-3 rounded-md border border-violet-300 bg-violet-50/70 space-y-1.5">
+      <div class="text-xs font-bold text-violet-950">
+        <svg class="icn" aria-hidden="true" style="display:inline-block;vertical-align:-2px"><use href="#i-alert"/></svg>
+        ${t.name}${kindBadge}
+      </div>
+      ${letter ? `<div class="text-xs text-violet-900"><strong>Betroffene Option:</strong> ${ref} ${kind === 'missed' ? 'Diese korrekte Option wurde übersehen.' : 'Diese falsche Option wurde gewählt.'}</div>` : ''}
+      <div class="text-xs text-violet-900 leading-relaxed"><strong class="text-violet-950">Warum sie verführt:</strong> ${t.lure}</div>
+      <div class="text-xs text-violet-900 leading-relaxed"><strong class="text-violet-950">Prüfungslogik:</strong> ${t.logic}</div>
+      <div class="text-xs font-semibold text-violet-950 bg-violet-100 border border-violet-300 rounded px-2 py-1">
+        <svg class="icn" aria-hidden="true" style="display:inline-block;vertical-align:-2px"><use href="#i-bulb"/></svg> Merksatz: ${t.merk}
+      </div>
+    </div>
+  `;
+}
+
+// Analyse-Block NACH Auswertung (falsche Antwort)
+function renderTrapAnalysisBlock(q, userAns) {
+  const hits = detectTrapsForAnswer(q.options, userAns, q.correctIndices);
+  if (hits.length === 0) {
+    return `
+      <div class="p-3 rounded-md border border-violet-300 bg-violet-50/70 space-y-1">
+        <div class="text-xs font-bold text-violet-950">
+          <svg class="icn" aria-hidden="true" style="display:inline-block;vertical-align:-2px"><use href="#i-alert"/></svg>
+          Denkfallen-Check
+        </div>
+        <div class="text-xs text-violet-900 leading-relaxed">In den gewählten Optionen wurde keine der klassischen AEVO-Fallenmuster erkannt. Die falsche Auswahl beruht vermutlich auf inhaltlichen Feinheiten – vergleichen Sie Ihre Auswahl mit der DIHK-Lösungsbegründung und achten Sie auf Klang-Zwillinge (z. B. Ausbildungsrahmenplan vs. Rahmenlehrplan).</div>
+      </div>
+    `;
+  }
+  const letters = {};
+  const wrongIdx = (userAns || []).filter(i => !q.correctIndices.includes(i));
+  const missedIdx = q.correctIndices.filter(i => !(userAns || []).includes(i));
+  const cards = hits.map(h => {
+    let letter = null;
+    for (const i of wrongIdx) { if (_trapMatchesText(h.trap, q.options[i])) { letter = String.fromCharCode(65 + i); break; } }
+    if (!letter && h.kind === 'missed') {
+      for (const i of missedIdx) { if (h.trap.missedPattern && h.trap.missedPattern.test(q.options[i])) { letter = String.fromCharCode(65 + i); break; } }
+    }
+    return _renderTrapCard(h.trap, h.kind, letter);
+  }).join('');
+  return `
+    <div class="space-y-2">
+      <div class="font-bold font-mono uppercase tracking-wider text-[11px] text-violet-800">
+        Denkfallen-Analyse – warum diese Auswahl verführt hat:
+      </div>
+      ${cards}
+    </div>
+  `;
+}
+
+// Radar-Block VOR der Antwort (collapsible)
+let _radarOpen = {};
+function toggleTrapRadar(qid) {
+  _radarOpen[qid] = !_radarOpen[qid];
+  const el = document.getElementById('trap-radar-body-' + qid);
+  if (el) el.classList.toggle('hidden');
+}
+
+function renderTrapRadarBlock(q) {
+  const radar = detectTrapRadar(q.options, q.question);
+  if (radar.length === 0) return '';
+  const items = radar.map(t => `
+    <button onclick="toggleTrapRadar(${q.id})" class="w-full text-left p-2.5 rounded border border-violet-300 bg-violet-50/70 hover:bg-violet-100 transition space-y-1">
+      <div class="text-xs font-bold text-violet-950">
+        <svg class="icn" aria-hidden="true" style="display:inline-block;vertical-align:-2px"><use href="#i-alert"/></svg>
+        ${t.name}
+      </div>
+      <div class="text-xs text-violet-900 leading-relaxed"><strong>Warum sie verführt:</strong> ${t.lure}</div>
+      <div class="text-xs text-violet-900 leading-relaxed"><strong>Prüfungslogik:</strong> ${t.logic}</div>
+      <div class="text-xs font-semibold text-violet-950 bg-violet-100 border border-violet-300 rounded px-2 py-1">Merksatz: ${t.merk}</div>
+    </button>
+  `).join('');
+  return `
+    <div class="p-4 rounded-lg border border-violet-400 bg-violet-50/40 space-y-2">
+      <div class="flex items-center justify-between">
+        <div class="text-xs font-bold text-violet-950 flex items-center gap-1.5">
+          <svg class="icn" aria-hidden="true"><use href="#i-search"/></svg>
+          Fallen-Radar: In dieser Frage lauern ${radar.length} typische Stolperfalle${radar.length > 1 ? 'n' : ''}
+        </div>
+        <button onclick="toggleTrapRadar(${q.id})" class="text-[11px] font-bold text-violet-700 underline">
+          ${_radarOpen[q.id] ? 'Hinweise ausblenden' : 'Hinweise zeigen'}
+        </button>
+      </div>
+      <div id="trap-radar-body-${q.id}" class="${_radarOpen[q.id] ? '' : 'hidden'} space-y-2">
+        ${items}
+      </div>
+    </div>
+  `;
+}
+
 const AEVO_QUESTIONS = [
   {
     "id": 1,
@@ -29151,7 +29360,9 @@ function checkTopicQuiz(topicId, selectedIdx, correctIdx) {
     fb.innerHTML = `<strong>Richtig!</strong> ${escapeHtml(explText)}`;
   } else {
     fb.className = 'p-3 rounded text-xs leading-relaxed bg-rose-100 border border-rose-400 text-rose-950';
-    fb.innerHTML = `<strong>Leider nicht zutreffend.</strong> ${escapeHtml(explText)}`;
+    const _optTexts = [...container.querySelectorAll('button')].map(b => b.textContent.trim());
+    const _trapHtml = renderTrapAnalysisBlock({ options: _optTexts, correctIndices: [correctIdx] }, [selectedIdx]);
+    fb.innerHTML = `<strong>Leider nicht zutreffend.</strong> ${escapeHtml(explText)}` + _trapHtml;
   }
 }
 
@@ -29199,7 +29410,8 @@ function checkTopicQuizPc(topicId, selectedIdx) {
   fb.className = isRight
     ? 'p-3 rounded text-xs leading-relaxed bg-emerald-100 border border-emerald-400 text-emerald-950'
     : 'p-3 rounded text-xs leading-relaxed bg-rose-100 border border-rose-400 text-rose-950';
-  fb.innerHTML = `<strong>${isRight ? 'Richtig!' : 'Leider nicht vollständig zutreffend.'}</strong> Lösung: ${correct.map(i => String.fromCharCode(65 + i)).join(', ')}. ${escapeHtml(topic.quiz.expl || '')} <em class="not-italic font-semibold">Ausführliche Begründung: siehe Lernhinweise oben.</em>`;
+  const _trapHtmlM = isRight ? '' : renderTrapAnalysisBlock({ options: topic.quiz.options, correctIndices: correct }, picked);
+  fb.innerHTML = `<strong>${isRight ? 'Richtig!' : 'Leider nicht vollständig zutreffend.'}</strong> Lösung: ${correct.map(i => String.fromCharCode(65 + i)).join(', ')}. ${escapeHtml(topic.quiz.expl || '')} <em class="not-italic font-semibold">Ausführliche Begründung: siehe Lernhinweise oben.</em>` + _trapHtmlM;
 }
 
 function jumpToPracticeFromHf(hf) {
@@ -29372,6 +29584,7 @@ function renderPracticeQuestion() {
           </p>
         </div>
 
+        ${!isChecked ? renderTrapRadarBlock(q) : ''}
         <!-- Options List -->
         <div class="space-y-2.5">
           ${q.options.map((opt, idx) => {
@@ -29430,6 +29643,8 @@ function renderPracticeQuestion() {
             </div>
           </div>
         ` : ''}
+
+        ${isChecked && !isCorrect ? renderTrapAnalysisBlock(q, userAns) : ''}
 
         <!-- Card Footer Actions -->
         <div class="pt-4 border-t border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
@@ -30298,6 +30513,7 @@ function renderReviewList() {
           <div class="font-bold font-mono text-[10px] uppercase tracking-wider text-[var(--c-muted)]">DIHK-Lösungsbegründung & Rechtsgrundlage</div>
           <p class="text-[var(--c-ink-soft)] leading-relaxed">${escapeHtml(q.explanation)}</p>
         </div>
+        ${!isCorrect ? renderTrapAnalysisBlock(q, userAnswers) : ''}
       </div>
     `;
   });
