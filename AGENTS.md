@@ -37,3 +37,11 @@ Deploy: Vercel (project: ausbilder) + GitHub goldbugM/ausbilder.
 - JS-Icon-Swaps (Theme-Toggle, Timer) nutzen innerHTML statt textContent (SVG-Markup).
 - Typografische Glyphen (→ ← ✓ ✗ ⚑ ⚐ ⚠ ▲ ▼) bewusst erhalten.
 - Neue Icons IMMER als symbol ins Sprite + via use referenzieren, nie als Emoji zurückbauen.
+
+## Denkfallen-Engine (2026-09-29, Commit fa2cc38)
+- Regelbasierte Distraktor-Analyse: `AEVO_TRAPS` (6 Fallen-Typen) + `detectTrapsForAnswer()` / `detectTrapRadar()` in index.html (vor AEVO_QUESTIONS injiziert)
+- Fallen-Typen: jahrbindung (Ausbildungsjahr-Koeder), absolutismus (immer/nie), rollenkonflikt (Kontrolleur vs. Berater + missedPattern fuer uebersehene Berater-Loesung), verneinung (nicht/kein Kipper), zahlenkoeder (Fake-Fristen), mussfalle (Pseudo-Pflicht bei Methodenfreiheit)
+- Jede Falle: name, patterns[] (Regex), lure (Verfuehrungs-Psychologie), logic (Pruefungslogik), merk (Merksatz)
+- UI-Integration: (1) Fallen-Radar VOR Antwort im Practice-View (einklappbar via toggleTrapRadar), (2) renderTrapAnalysisBlock() NACH falscher Antwort in Practice + Exam-Review + beiden Topic-Quiz-Funktionen (checkTopicQuiz/checkTopicQuizPc)
+- Rollen-Blindheit-Heuristik: verpasste Berater-Option + gewaehlte Kontroll-/Jahres-/Muss-Option -> zusaetzlicher Fallback-Hit
+- Neue Fallen IMMER in AEVO_TRAPS mit id/name/patterns/lure/logic/merk anlegen; Test: Engine-Simulation via node mit extrahiertem Script-Block
