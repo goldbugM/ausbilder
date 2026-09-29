@@ -464,6 +464,7 @@
               <option value="ihk66">IHK Original-Satz 66 (50, echte Prüfung)</option>
               <option value="ihkf">IHK Original-Prüfung (fotografiert) (80, echte Prüfung)</option>
                <option value="ihk2">IHK Test-App transkribiert (30, echte Fragen)</option>
+               <option value="ihk3">IHK Test-App komplett (133, echte Fragen)</option>
               <option value="1">HF 1: Planen & Voraussetzungen</option>
               <option value="2">HF 2: Einstellen & Vertrag</option>
               <option value="3">HF 3: Durchführen & Didaktik</option>
@@ -639,6 +640,7 @@
                   <option value="ihk66">IHK Original-Satz 66 (40 MC + 9 Raster)</option>
                   <option value="ihkf">IHK Original-Prüfung (fotografiert) (80, exakt A1–A80)</option>
                  <option value="ihk2">IHK Test-App transkribiert (30)</option>
+                 <option value="ihk3">IHK Test-App komplett (133)</option>
                 </select>
                 <button onclick="generateNewExamSetFromSelect()" title="Generiert einen neuen 80-Aufgaben Prüfungssatz aus der gewählten Quelle" class="w-full mt-1 py-2 px-3 bg-[var(--c-inset)] hover:bg-[var(--c-elevated)] border border-[var(--c-border)] text-[var(--c-ink)] text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
                   <span><svg class="icn" aria-hidden="true"><use href="#i-shuffle"/></svg></span>
@@ -29924,6 +29926,7 @@ function generateNewExamSet(source) {
   const ihk66 = AEVO_QUESTIONS.filter(q => q.id >= 656 && q.id <= 695); // IHK Original-Satz 66 (40 MC)
   const ihkf = AEVO_QUESTIONS.filter(q => q.id >= 696 && q.id <= 775); // IHK Original-Pruefung fotografiert (80)
   const ihk2 = AEVO_QUESTIONS.filter(q => q.id >= 776 && q.id <= 805); // IHK Test-App transkribiert (30)
+  const ihk3 = AEVO_QUESTIONS.filter(q => q.id >= 806); // IHK Test-App komplett (133)
   const basis = q => q.id < 416;                                       // 415 DIHK- & Lernmodul-Fragen
   let selected;
 
@@ -29936,6 +29939,8 @@ function generateNewExamSet(source) {
     selected = [...ihkf];
    } else if (source === 'ihk2') {
     selected = [...ihk2];
+   } else if (source === 'ihk3') {
+    selected = [...ihk3];
    } else if (source === 'pc240') {
     selected = sampleRandom(pcAll, 80);
   } else if (source === 'all') {
@@ -30824,6 +30829,2714 @@ function startTimer() {
       4
     ],
     explanation: "Nach bestandener Abschlussprüfung endet das Berufsausbildungsverhältnis; Sabrina ist reguläre Arbeitnehmerin. Nach § 109 GewO hat sie Anspruch auf ein einfaches Zeugnis und AUF VERLANGEN auf ein qualifiziertes (erweitertes) Zeugnis mit Angaben zu Verhalten und Leistung."
+  },
+    {
+    id: 806,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie haben eine besonders leistungsstarke Au und wollen ihr ermöglichen, eine kodifizierte Zusatzqua erwerben.",
+    question: "Was müssen Sie bezüglich der bestehenden Berufsausbildungsverträge dabei beachten? [Test-App]",
+    options: [
+      "Sie werden die Vereinbarungen der Änderungen zusammen mit der neuen sachlichen und zeitlichen Gliederung der zuständigen Stelle (IHK) zur Eintragung ins Verzeichnis der Berufsausbildungsverträge einreichen.",
+      "Sie werden eine schriftliche Ergänzung zum Berufsausbildungsvertrag ausstellen, die von Ihnen und der Geschäftsführung unterschrieben wird.",
+      "Sie werden die Zusatzqualifikationen als Änderung zum Berufsausbildungsvertrag vereinbaren.",
+      "Sie werden dem Auszubildenden eine schriftliche Aufstellung der geplanten Zusatzqualifikationen mit Inhaltsbeschreibung und Dauer zur Kenntnis geben."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Kodifizierte Zusatzqualifikationen werden im bestehenden Berufsausbildungsvertrag durch schriftliche Ergänzung (Änderungsvertrag) vereinbart, §§ 11, 34 BBiG. Die Vertragsänderung ist der zuständigen Stelle zusammen mit der neuen sachlichen und zeitlichen Gliederung zur Eintragung ins Verzeichnis der Berufsausbildungsverträge vorzulegen. Eine bloße Kenntnisgabe der geplanten Inhalte genügt nicht."
+  },
+  {
+    id: 807,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzelhandesgeschäft wissen Sie, dass in der Lernzieltaxonomie Lernziele nach dem Schwierigkeitsgrad geordnet werden. Sie planen gerade die nächste Ausbildungseinheit.",
+    question: "Welches Lernziel hat die Taxonomiestufe (1) \"Wissen\"? [Test-App]",
+    options: [
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden benennen die Funktionen der Kasse.",
+      "Die Auszubildenden kontrollieren eingehende Waren.",
+      "Die Auszubildenden bearbeiten eine Reklamation."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "Die Taxonomiestufe 1 „Wissen“ verlangt das Wiedergeben und Benennen erlernter Fakten – hier das Benennen der Kassenfunktionen. Eingeben, Kontrollieren und Bearbeiten von Vorgängen sind der Stufe „Anwenden“ zugeordnet."
+  },
+  {
+    id: 808,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie besprechen mit Ihrer ausbildenden Fachkraft übe Probleme im Umgang mit der noch in der Probezeit befindliche Auszubildenden Tina: Sie kann sich nicht konzentrieren und es sie schwierig sich neue Informationen zu merken.",
+    question: "Wie sollte die zuständige ausbildende Fachkraft mit Tim Verhalten umgehen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft überträgt Tina Aufgaben, die diese aufgrund ihrer Vorkenntnisse lösen kann. So ermöglicht sie ihr Erfolgserlebnisse.",
+      "Die ausbildende Fachkraft ermittelt Tinas Lernstil und passt ihre Ausbildungsmethoden entsprechend an.",
+      "Die ausbildende Fachkraft überträgt Tina nur noch Routineaufgaben. So fördert sie ihre Konzentrationsfähigkeit.",
+      "Die ausbildende Fachkraft droht Tina mit der Kündigung zum Ende der Probezeit. So motiviert sie Tina, sich mehr anzustrengen."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Bei Konzentrations- und Merkschwierigkeiten sind Aufgaben im Bereich der aktuellen Leistungsfähigkeit (Erfolgserlebnisse) sowie die Anpassung der Ausbildungsmethoden an den Lernstil die richtigen lernförderlichen Maßnahmen. Routineaufgaben und Kündigungsdrohungen demotivieren und fördern Lernen und Konzentration nicht."
+  },
+  {
+    id: 809,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind als Ausbilder tätig. Sie möchten zukünftig bei Akquise von Ausbildungsplatzbewerbern die Möglichkeit des Erwerbs von Zusatzqualifikationen anbieten. Damit wollen Sie di Ausbildung in Ihrem Unternehmen attraktiver und interessanter gestalten. Zunächst prüfen Sie, ob es gesetzliche Vorschriften g",
+    question: "Welche Aussagen dazu sind rechtlich richtig? [Test-App]",
+    options: [
+      "Zusatzqualifikationen finden parallel zur und während der Ausbildung statt und sind den Auszubildenden vorbehalten.",
+      "Zusatzqualifikationen, die in der Ausbildungsordnung aufgenommen sind, werden gesondert geprüft und bescheinigt.",
+      "Das Ergebnis der Abschlussprüfung bleibt unberührt.",
+      "Zusatzqualifikationen, die über die Mindestinhalte des Ausbildungsrahmenplans hinausgehen, können auf einen individuell zu bestimmenden Teil der Abschlussprüfung angerechnet werden.",
+      "Zusatzqualifikationen müssen berufsrelevant sein und dürfen in ihrem Stundenumfang umgerechnet ein Zehntel der gesamten wöchentlichen Ausbildungszeit nicht übersteigen.",
+      "Die Zusatzqualifikationen müssen lt. BBiG Bestandteil der jeweiligen Ausbildungsordnung bzw. des Ausbildungsrahmenplans sein, ansonsten dürfen sie nicht vermittelt werden."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Zusatzqualifikationen werden definitionsgemäß parallel zur Berufsausbildung für Auszubildende angeboten; ihre Prüfung lässt das Ergebnis der Abschlussprüfung unberührt (§§ 1, 38 BBiG i. V. m. Ausbildungsordnungsrecht). Eine Anrechnung auf Prüfungsteile, eine Zehntel-Regel oder ein Verbot außerhalb der Ausbildungsordnung existieren im BBiG nicht."
+  },
+  {
+    id: 810,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubildender Jakob, 2. Ausbildungsjahr, fragt, die Ausbildung verkürzen und die Abschlussprüfung vorzeitig ablegen kann.",
+    question: "Unter welchen Bedingungen ist eine vorzeitige Zulassun Abschlussprüfung bei Jakob möglich? [Test-App]",
+    options: [
+      "Der Ausbildungsbetrieb und die jeweilige Berufsschule bescheinigen Jakob mindestens gute Leistungen und befürworten die vorzeitige Zulassung.",
+      "Jakob und der Ausbildende müssen einen gemeinsamen Antrag auf Verkürzung stellen, den die zuständige Stelle genehmigen muss.",
+      "Eine Verkürzung der Ausbildungsdauer ist bei Jakob nicht mehr möglich.",
+      "Er hätte den Antrag auf Verkürzung bei Vertragsabschluss stellen müssen.",
+      "Jakob muss aufgrund seiner Leistungen in der Lage sein, das Ausbildungsziel in der kürzeren Zeit zu erreichen.",
+      "Jakob kann auf eigenen Wunsch früher zur Abschlussprüfung zugelassen werden. Der Ausbildende darf diesem Wunsch nicht widersprechen."
+    ],
+    correctIndices: [
+      1,
+      4
+    ],
+    explanation: "Die vorzeitige Zulassung zur Abschlussprüfung setzt die Verkürzung der Ausbildungszeit voraus: Ausbildender und Auszubildender stellen gemeinsam den Antrag, über den die zuständige Stelle entscheidet (§ 8 BBiG). Voraussetzung ist, dass das Ausbildungsziel in der verkürzten Zeit erreicht werden kann; die Berufsschule ist nicht beteiligt und ein einseitiges Recht des Auszubildenden besteht nicht."
+  },
+  {
+    id: 811,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind Ausbildungs- und Bezirksleiterin eines Lebensmitteleinzelhändlers mit Filialbetrieb. Bei einem einer der Filialen spricht Sie die neue Ausbilderin Mona LE hat den Eindruck, dass die beiden Auszubildenden Mahla zu wenig Eigenmotivation zeigen. Frau Lange kann das ni verstehen, schließlich hätten sich beide diesen Beruf ausc Immer wieder muss sie die beiden mehrmals auffordern, Tätigkeiten zu erledigen. Frau Lange ist eine engagierte LII verantwortungsvolle Mitarbeiterin und möchte sich mit de \"Motivation\" intensiver beschäftigen. Als erstes möchte S Ihnen wissen, wie sie unmittelbar sinnvollerweise tun soll' Mahla und Tom diese Aufgaben erledigen.",
+    question: "Welche Vorschläge sollten Sie Frau Lange sinnvol in diesem Fall machen? [Test-App]",
+    options: [
+      "Frau Lange zeigt Mahla und Tom anhand des betrieblichen Ausbildungsplans, dass auch diese ungeliebten Tätigkeiten zu ihrer Ausbildung gehören und die Aufgabenstellung nicht nach Interessenlage erfolgen kann.",
+      "Frau Lange überträgt Mahla und Tom in der nächsten Zeit überwiegend die von den beiden ungeliebten Tätigkeiten, um sie zu disziplinieren. Erst wenn sie diese eine Zeit lang ohne Widerstand erledigt haben, gibt es neue interessantere Aufgaben.",
+      "Frau Lange zeigt Mahla und Tom den Nutzen und die Sinnzusammenhänge dieser Aufgaben und wählt zusätzlich abwechslungsreiche, praxisbezogene Aufgaben aus.",
+      "Frau Lange sollte Mahla und Tom immer wieder deutlich machen, dass es in jedem Beruf ungeliebte Tätigkeiten gibt, die aber trotzdem erledigt werden müssen. Weitere Weigerungen oder Verzögerungen könnten eine Abmahnung bedeuten.",
+      "Frau Lange führt mit Mahla und Tom ein Gespräch, in dem sie gemeinsam mit ihnen Ideen zur Lösung dieses Problems erarbeitet und Ziele vereinbart."
+    ],
+    correctIndices: [
+      2,
+      4
+    ],
+    explanation: "Zur Förderung der Lernmotivation gehört es, Nutzen und Sinn der Aufgaben transparent zu machen und durch abwechslungsreiche, praxisbezogene Aufgaben Interesse zu wecken. Ein gemeinsames Gespräch mit Zielvereinbarungen aktiviert die Auszubildenden; Disziplinierung, Abmahnungsdrohungen oder bloßes Verweisen auf den Ausbildungsplan wirken demotivierend."
+  },
+  {
+    id: 812,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie erstellen gerade den Ausbildungsvertrag für ihre neuen Auszubildenden. Sie machen sich grundsätzliche Gedar über die Probezeit.",
+    question: "Welche Besonderheiten sind in der Probezeit zu beacht< [Test-App]",
+    options: [
+      "Wenn ein bisheriger Arbeitnehmer in demselben Betrieb eine Ausbildung beginnt, darf keine Probezeit mehr vereinbart werden.",
+      "Die Probezeit bezieht sich generell auf den jeweiligen Betrieb und die Berufsausbildung.",
+      "Vorhergehende Ausbildungen und Tätigkeiten führen nicht automatisch zu einer Verkürzung der Probezeit.",
+      "Hat ein Auszubildender den Ausbildungsbetrieb gewechselt und möchte die Ausbildung in Ihrem Betrieb fortsetzen, muss trotzdem eine Probezeit vereinbart werden.",
+      "Eine kürzere Probezeit als die nach BBiG maximalen vier Monate führt automatisch zu einer Verkürzung der Ausbildung.",
+      "Ein Praktikum zur Eignungsfeststellung muss auf die Probezeit angerechnet werden."
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Die Probezeit (mindestens 1, höchstens 4 Monate, § 20 BBiG) muss auch bei einem Betriebswechsel neu vereinbart werden; frühere Ausbildungen oder Tätigkeiten verkürzen sie nicht automatisch. Auch für frühere Arbeitnehmer desselben Betriebs gilt die vereinbarte Probezeit, und ein Eignungspraktikum wird nicht automatisch angerechnet."
+  },
+  {
+    id: 813,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Im Rahmen eines Erfahrungsaustausches zwische Ausbildern und Ausbilderinnen werden Sie darauf angesprocl Sie in Ihrem Unternehmen bereits die neuen Standardberufsbildpositionen umsetzen.",
+    question: "Welche Bedeutung haben Standardberufsbildpositioru die Ausbildung? [Test-App]",
+    options: [
+      "Standardberufsbildpositionen sind bildungspolitische Steuerungsinstrumente, die in den Ausbildungsordnungen im Ausbildungsrahmenplan geregelt sind.",
+      "Standardberufsbildpositionen sind nicht Gegenstand der Ausbildungsprüfungen.",
+      "Standardberufsbildpositionen legen die Grundlage für alle anerkannten Ausbildungsberufe und sind in den ersten sechs Monaten der Ausbildung im Betrieb zu vermitteln.",
+      "Die Vermittlung von Standardberufsbildpositionen ist von allen ausbildenden Betrieben integrativ im Zusammenhang mit fachspezifischen Ausbildungsinhalten zu vermitteln.",
+      "Mithilfe der Standardberufsbildpositionen können die ausbildenden Betriebe die zu vermittelnden Inhalte auf eine überbetriebliche Ebene heben."
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Standardberufsbildpositionen (Berufsbildung, Arbeits- und Tarifrecht, Sicherheit und Gesundheitsschutz, Umweltschutz u. a.) sind in allen Ausbildungsordnungen verankert, bilden die gemeinsame Grundlage der anerkannten Ausbildungsberufe und sollen in den ersten sechs Monaten vermittelt werden. Sie sind integrativ mit den fachspezifischen Ausbildungsinhalten zu vermitteln und zudem prüfungsrelevant; „Steuerungsinstrumente“ bzw. „überbetriebliche Ebene“ sind falsch."
+  },
+  {
+    id: 814,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie besprechen mit Ihrer ausbildenden Fachkra Probleme im Umgang mit der noch in der Probezeit befinl Auszubildenden Tina: Sie kann sich nicht konzentrieren u sie schwierig sich neue Informationen zu merken.",
+    question: "Wie sollte die zuständige ausbildende Fachkraft m Verhalten umgehen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft überträgt Tina Aufgaben, die diese aufgrund ihrer Vorkenntnisse lösen kann. So ermöglicht sie ihr Erfolgserlebnisse.",
+      "Die ausbildende Fachkraft überträgt Tina nur noch Routineaufgaben. So fördert sie ihre Konzentrationsfähigkeit.",
+      "Die ausbildende Fachkraft ermittelt Tinas Lernstil und passt ihre Ausbildungsmethoden entsprechend an.",
+      "Die ausbildende Fachkraft droht Tina mit der Kündigung zum Ende der Probezeit. So motiviert sie Tina, sich mehr anzustrengen."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Lernförderlich sind Aufgaben im Bereich der aktuellen Leistungsfähigkeit (Erfolgserlebnisse) und die Anpassung der Ausbildungsmethoden an den Lernstil. Routineaufgaben oder Kündigungsdrohungen demotivieren und verbessern weder Konzentration noch Merkfähigkeit."
+  },
+  {
+    id: 815,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Im Rahmen eines Erfahrungsaustausches zwis Ausbildern und Ausbilderinnen werden Sie darauf angesp Sie in Ihrem Unternehmen bereits die neuen Standardberufsbildpositionen umsetzen.",
+    question: "Welche Bedeutung haben Standardberufsbildposit die Ausbildung? [Test-App]",
+    options: [
+      "Mithilfe der Standardberufsbildpositionen können die ausbildenden Betriebe die zu vermittelnden Inhalte auf eine überbetriebliche Ebene heben.",
+      "Standardberufsbildpositionen legen die Grundlage für alle anerkannten Ausbildungsberufe und sind in den ersten sechs Monaten der Ausbildung im Betrieb zu vermitteln.",
+      "Standardberufsbildpositionen sind bildungspolitische Steuerungsinstrumente, die in den Ausbildungsordnungen im Ausbildungsrahmenplan geregelt sind.",
+      "Die Vermittlung von Standardberufsbildpositionen ist von allen ausbildenden Betrieben integrativ im Zusammenhang mit fachspezifischen Ausbildungsinhalten zu vermitteln.",
+      "Standardberufsbildpositionen sind nicht Gegenstand der Ausbildungsprüfungen."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Standardberufsbildpositionen sind in allen Ausbildungsordnungen geregelt und bilden die gemeinsame Grundlage der anerkannten Ausbildungsberufe; ihre Vermittlung erfolgt in den ersten sechs Monaten und integrativ mit den fachspezifischen Inhalten. Sie sind prüfungsrelevant; „überbetriebliche Ebene“ und „Steuerungsinstrumente“ sind falsch."
+  },
+  {
+    id: 816,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Im Rahmen eines Erfahrungsaustausches Ausbildern und Ausbilderinnen werden Sie darauf ange: Sie in Ihrem Unternehmen bereits die neuen Standardberufsbildpositionen umsetzen.",
+    question: "Welche Bedeutung haben Standardberufsbildpo: die Ausbildung? [Test-App]",
+    options: [
+      "Mithilfe der Standardberufsbildpositionen können die ausbildenden Betriebe die zu vermittelnden Inhalte auf eine überbetriebliche Ebene heben.",
+      "Die Vermittlung von Standardberufsbildpositionen ist von allen ausbildenden Betrieben integrativ im Zusammenhang mit fachspezifischen Ausbildungsinhalten zu vermitteln.",
+      "Standardberufsbildpositionen legen die Grundlage für alle anerkannten Ausbildungsberufe und sind in den ersten sechs Monaten der Ausbildung im Betrieb zu vermitteln.",
+      "Standardberufsbildpositionen sind bildungspolitische Steuerungsinstrumente, die in den Ausbildungsordnungen im Ausbildungsrahmenplan geregelt sind.",
+      "Standardberufsbildpositionen sind nicht Gegenstand der Ausbildungsprüfungen."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Standardberufsbildpositionen bilden die gemeinsame Grundlage aller anerkannten Ausbildungsberufe und sind in den ersten sechs Monaten im Betrieb zu vermitteln. Ihre Vermittlung hat integrativ im Zusammenhang mit den fachspezifischen Ausbildungsinhalten zu erfolgen; die Aussagen zu „Steuerungsinstrumenten“ und „nicht prüfungsrelevant“ sind falsch."
+  },
+  {
+    id: 817,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubildender Paul befindet sich am E Probezeit. Seine beiden ausbildenden Fachkräfte hab Paul hat bei den meisten Beurteilungskriterien eine g erhalten - nicht jedoch bei dem Kriterium „Selbststänl erhält er nur ein „zufriedenstellend\".",
+    question: "Welche Aussagen treffen auf Pauls Selbstständigkeit zu? [Test-App]",
+    options: [
+      "Paul kann ohne Unterstützung keine Aufgabe lösen.",
+      "Paul arbeitet allein und ohne Anleitung.",
+      "Paul muss seine Selbstständigkeit noch ausbauen.",
+      "Pauls Selbstständigkeit liegt im durchschnittlichen Leistungsbereich."
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Pauls Beurteilungsbild (überwiegend gut bis zufriedenstellend) spricht für eine durchschnittliche Selbstständigkeit mit Entwicklungsbedarf. Die Extremaussagen – völlige Unselbstständigkeit bzw. vollkommen eigenständiges Arbeiten ohne jede Anleitung – widersprechen dem Beurteilungsergebnis."
+  },
+  {
+    id: 818,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie veranstalten regelmäßig Workshops für Ihre ausbildenden Fachkräfte. Beim nächsten Termin möchten Sie den Begriff „berufliche Handlungsfähigkeit\" diskutieren.",
+    question: "Wie erklären Sie Ihren ausbildenden Fachkräften diesen Begriff? Die berufliche Handlungsfähigkeit . [Test-App]",
+    options: [
+      "umfasst die für die Ausübung einer qualifizierten beruflichen Tätigkeit erforderlichen beruflichen Fertigkeiten, Kenntnisse und Fähigkeiten.",
+      "hat der Auszubildende erreicht, der seine Abschlussprüfung mindestens mit der Note „gut“ bestanden hat.",
+      "bedeutet das selbstständige Planen, Durchführen und Kontrollieren beruflicher Aufgaben.",
+      "ist in eine berufsfeldbreite allgemeine Grundbildung und eine darauf aufbauende Zusatzqualifikation gegliedert.",
+      "beschreibt die Reproduktion und Reorganisation von gelernten beruflichen Tätigkeiten in den Arbeitsalltag."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Berufliche Handlungsfähigkeit umfasst nach § 1 BBiG die für die Ausübung einer qualifizierten beruflichen Tätigkeit erforderlichen Fertigkeiten, Kenntnisse und Fähigkeiten. Sie zeigt sich im selbstständigen Planen, Durchführen und Kontrollieren beruflicher Aufgaben (vollständige Handlung). Prüfungsnoten oder Gedächtnisleistungen definieren sie nicht."
+  },
+  {
+    id: 819,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre Auszubildenden kommen mit df Jugend- und Auszubildendenvertretung (JAV) Sie zu. Sie begrüßen diese Idee und informiere über Grundsätzliches zur Wahl einer JAV. Es e) in ihrem Unternehmen. Das Unternehmen hat il Mitarbeitende.",
+    question: "Welche Aussagen sind richtig? [Test-App]",
+    options: [
+      "Sie sind als Ausbilder verpflichtet, die Wahlen zu organisieren.",
+      "Der Betriebsrat setzt einen Wahlvorstand für die Wahl ein.",
+      "Die JAV darf unabhängig von der Anzahl der beschäftigten Jugendlichen und Auszubildenden während der Arbeitszeit Sprechstunden einrichten.",
+      "Die Wahlen zur JAV finden alle zwei Jahre statt.",
+      "Die JAV entsendet den Vorsitzenden in die Geschäftsführung des Unternehmens."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "JAV-Wahlen finden alle zwei Jahre statt (§§ 62 f. BetrVG); den Wahlvorstand für die JAV-Wahl setzt der Betriebsrat ein. Die Organisation der Wahl ist nicht Pflicht des Ausbilders, und die JAV entsendet kein Mitglied in die Geschäftsführung; Sprechstunden sind zudem an Anzahl und betriebliche Verhältnisse gebunden (§ 65 BetrVG)."
+  },
+  {
+    id: 820,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie haben eine besonders und wollen ihr ermöglichen, eine kodi erwerben.",
+    question: "Was müssen Sie bezüglich de Berufsausbildungsverträge dabei beæ [Test-App]",
+    options: [
+      "Sie werden eine schriftliche Ergänzung zum Berufsausbildungsvertrag ausstellen, die von Ihnen und der Geschäftsführung unterschrieben wird.",
+      "Sie werden die Zusatzqualifikationen als Änderung zum Berufsausbildungsvertrag vereinbaren.",
+      "Sie werden dem Auszubildenden eine schriftliche Aufstellung der geplanten Zusatzqualifikationen mit Inhaltsbeschreibung und Dauer zur Kenntnis geben.",
+      "Sie werden die Vereinbarungen der Änderungen zusammen mit der neuen sachlichen und zeitlichen Gliederung der zuständigen Stelle (IHK) zur Eintragung ins Verzeichnis der Berufsausbildungsverträge einreichen."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Kodifizierte Zusatzqualifikationen werden per schriftlicher Ergänzung im bestehenden Berufsausbildungsvertrag vereinbart, §§ 11, 34 BBiG. Die Änderung ist mit der neuen sachlichen und zeitlichen Gliederung zur Eintragung ins Verzeichnis der zuständigen Stelle einzureichen; eine bloße Kenntnisgabe genügt nicht."
+  },
+  {
+    id: 821,
+    hf: 4,
+    category: "Abschluss",
+    type: "single",
+    targetCount: 1,
+    situation: "Ihre Auszubildende Sabrina h Verkäuferin erfolgreich bestanden. Sie unbefristet weiterbeschäftigt. Sabrina fl Ausbilderin bzw. zuständigen Ausbilder, Zeugnis erhalten kann.",
+    question: "Hat Sabrina Anspruch auf ein qualifiziertes Zeugnis? [Test-App]",
+    options: [
+      "Ausbildungszeugnisse sind immer einfache Zeugnisse. Daher hat Sabrina keinen Anspruch auf ein qualifiziertes Zeugnis.",
+      "Da Sabrina unbefristet übernommen wird, hat sie Anspruch auf ein qualifiziertes Zeugnis.",
+      "Sabrina hat erst dann einen Anspruch auf ein qualifiziertes Zeugnis, wenn sie das Unternehmen verlässt.",
+      "Sabrina hat auf eigenes Verlangen hin Anspruch auf ein qualifiziertes Zeugnis.",
+      "Sabrina hat generell keinen Anspruch, da sie die Urkunde der zuständigen Stelle, das Abschlusszeugnis der Berufsschule und das Zeugnis über die Berufsausbildung bereits erhalten hat."
+    ],
+    correctIndices: [
+      3
+    ],
+    explanation: "Nach § 109 GewO hat die Arbeitnehmerin nur auf ihr Verlangen Anspruch auf ein qualifiziertes (arbeitsbeurteilendes) Zeugnis; ein einfaches Zeugnis ist stets zu erteilen. Weder die unbefristete Übernahme noch das Ausscheiden begründen einen automatischen Anspruch."
+  },
+  {
+    id: 822,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind Ausbilderin in e Auszubildenden. Bisher gab es kei Auszubildende. Dies wollen Sie än Team zusammengestellt. Sie überl Bewertungssystem Sie einsetzen ungebundene Bewertung. Im Tearr Fachkräften erarbeiten Sie die Vor- Systems.",
+    question: "Welchen Nachteil hat die gebundene Beurteilung? [Test-App]",
+    options: [
+      "Gebundene Beurteilungen fördern die Verwendung vorgegebener Formulierungen, sodass individuelle Besonderheiten der Auszubildenden kaum berücksichtigt werden.",
+      "Die Vergleichbarkeit mehrerer Auszubildender ist mit einem gebundenen System erschwert.",
+      "Die jeweiligen Beurteiler kommen aufgrund ihrer unterschiedlichen Erfahrungen zu falschen Bewertungen.",
+      "Gebundene Beurteilungen erfordern vom Beurteiler deutlich mehr Zeitaufwand als freie Beurteilungen."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Gebundene Beurteilungsverfahren arbeiten mit vorgegebenen Kriterien und Antwortvorgaben, wodurch individuelle Wertungen und Besonderheiten der Auszubildenden nur eingeschränkt erfasst werden – das ist ihr zentraler Nachteil. Die Vergleichbarkeit mehrerer Beurteilter ist dagegen gerade ein Vorteil des gebundenen Systems."
+  },
+  {
+    id: 823,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bekommen heute von der Berufsschule die Mitteilunc dass Ihre Auszubildende Mandy seit der Abschlussprüfung Teil 1 drei Wochen unentschuldigt dem Unterricht ferngeblieben ist. Nachdem dieses Fehlverhalten trotz Abmahnung zum wiederholter Male erfolgt ist, denken Sie daran, das Berufsausbildungsverhältnis von Mandy zu kündigen.",
+    question: "Welche Aussagen sind richtig? [Test-App]",
+    options: [
+      "Sie können sofort fristlos mit Angabe des Kündigungsgrundes kündigen.",
+      "Sie können mit einer Kündigungsfrist von vier Wochen kündigen.",
+      "Das unentschuldigte Fernbleiben vom Berufsschulunterricht über drei Wochen stellt einen wichtigen Grund für die Kündigung dar.",
+      "Sie müssen zunächst eine Abmahnung aussprechen; erst danach ist die Kündigung wirksam."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Nach der Probezeit kann das Berufsausbildungsverhältnis nur aus wichtigem Grund, schriftlich und unter Angabe der Kündigungsgründe ohne Frist gekündigt werden (§ 22 BBiG). Unentschuldigtes Fernbleiben vom Berufsschulunterricht über einen längeren Zeitraum ist ein anerkannter wichtiger Grund, einer Abmahnung bedarf es bei einem solchen Verstoß nicht. Die Vier-Wochen-Frist gilt nur für Kündigungen des Auszubildenden (Aufgabe der Ausbildung, § 22 Abs. 2 Nr. 1 BBiG)."
+  },
+  {
+    id: 824,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind als Ausbilder verantwortlich. Diese müssen je zweiten Teil der gestreckten Abs",
+    question: "Welche Punkte müssen Sie beachten? [Test-App]",
+    options: [
+      "Sie überprüfen, ob die Auszubildenden die Ausbildungsnachweise geführt haben; diese werden von Ihnen kontrolliert und unterzeichnet.",
+      "Sie müssen den von der zuständigen Stelle festgelegten Termin für die Anmeldung einhalten.",
+      "Sie müssen nichts beachten, da die Fristen der gestreckten Prüfung automatisch gelten.",
+      "Sie können nur die Auszubildenden zur Prüfung anmelden, die den ersten Teil der gestreckten Abschlussprüfung bestanden haben.",
+      "Sie fordern die Auszubildenden auf, sich selbst vor Ablauf der Anmeldefrist bei der zuständigen Stelle zur Prüfung anzumelden."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Zur Anmeldung des zweiten Prüfungsteils muss der Ausbildende die von der zuständigen Stelle festgelegten Termine und Fristen einhalten (§ 43 BBiG); vorher sind die Ausbildungsnachweise zu kontrollieren und abzuzeichnen (§ 13 BBiG). Voraussetzung für Teil 2 ist die Ablegung, nicht das Bestehen von Teil 1, und die Anmeldung erfolgt über den Ausbildungsbetrieb."
+  },
+  {
+    id: 825,
+    hf: 1,
+    category: "Planung",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind Ausbilder in e Unternehmen. Ein Auszubildend Möglichkeit gehört, Teile der Alh Er fordert einen Auslandseinsat erklären ihm, dass er keinen Ans hat.",
+    question: "Welche Aussage trifft zu? [Test-App]",
+    options: [
+      "Im Rahmen seiner Pflichten gestattet der Ausbildende Ausbildungsmaßnahmen außerhalb der Ausbildungsstätte; einen Anspruch auf einen Auslandsaufenthalt hat der Auszubildende jedoch nicht.",
+      "In der Ausbildungsordnung ist ein Auslandsaufenthalt für Auszubildende zwingend vorgeschrieben.",
+      "Der Ausbildende muss den Auslandsaufenthalt genehmigen, sobald der Auszubildende ihn fordert.",
+      "Das Berufsbildungsgesetz gibt dazu nichts vor; Auslandsaufenthalte während der Ausbildung sind daher unzulässig."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Der Auszubildende hat keinen einklagbaren Anspruch auf einen Auslandsaufenthalt; ob Teile der Ausbildung außerhalb der Ausbildungsstätte bzw. im Ausland durchgeführt werden, entscheidet der Ausbildende im Rahmen seiner Pflichten (§ 14 BBiG). Vorgeschrieben sind Auslandsaufenthalte weder in den Ausbildungsordnungen noch im BBiG; unzulässig sind sie gleichwohl nicht."
+  },
+  {
+    id: 826,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind Ausbildungs- und Bezirksleite Lebensmitteleinzelhändlers mit Filialbetrieb. Bei einer der Filialen spricht Sie die neue Ausbilderin hat den Eindruck, dass die beiden Auszubildende zu wenig Eigenmotivation zeigen. Frau Lange kar verstehen, schließlich hätten sich beide diesen B Immer wieder muss sie die beiden mehrmals auf Tätigkeiten zu erledigen. Frau Lange ist eine verantwortungsvolle Mitarbeiterin und möchte sil \"Motivation\" intensiver beschäftigen. Als erstes n Ihnen wissen, wie sie unmittelbar sinnvollerweise Mahla und Tom diese Aufgaben erledigen.",
+    question: "Welche Vorschläge sollten Sie Frau Lange in diesem Fall machen? [Test-App]",
+    options: [
+      "Frau Lange zeigt Mahla und Tom anhand des betrieblichen Ausbildungsplans, dass auch diese ungeliebten Tätigkeiten zu ihrer Ausbildung gehören und die Aufgabenstellung nicht nach Interessenlage erfolgen kann.",
+      "Frau Lange sollte Mahla und Tom immer wieder deutlich machen, dass es in jedem Beruf ungeliebte Tätigkeiten gibt, die aber trotzdem erledigt werden müssen. Weitere Weigerungen oder Verzögerungen könnten eine Abmahnung bedeuten.",
+      "Frau Lange zeigt Mahla und Tom den Nutzen und die Sinnzusammenhänge dieser Aufgaben und wählt zusätzlich abwechslungsreiche, praxisbezogene Aufgaben aus.",
+      "Frau Lange überträgt Mahla und Tom in der nächsten Zeit überwiegend die von den beiden ungeliebten Tätigkeiten, um sie zu disziplinieren. Erst wenn sie diese eine Zeit lang ohne Widerstand erledigt haben, gibt es neue interessantere Aufgaben.",
+      "Frau Lange führt mit Mahla und Tom ein Gespräch, in dem sie gemeinsam mit ihnen Ideen zur Lösung dieses Problems erarbeitet und Ziele vereinbart."
+    ],
+    correctIndices: [
+      2,
+      4
+    ],
+    explanation: "Zur Förderung der Lernmotivation sind Nutzen und Sinn der Aufgaben aufzuzeigen und abwechslungsreiche, praxisbezogene Aufgaben auszuwählen. Ein gemeinsames Gespräch mit erarbeiteten Lösungsideen und Zielvereinbarungen aktiviert die Auszubildenden; Disziplinierung, Abmahnungsdrohungen oder bloßes Verweisen auf den Ausbildungsplan wirken demotivierend."
+  },
+  {
+    id: 827,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind mit den Leisti Karina grundsätzlich zufrieden. dass das Selbstbewusstsein vor ist. Sie spricht negativ von sich bezeichnet sich als dumm und b",
+    question: "Wie können Sie das Selbstbewusstsein von Karina im betrieblichen Alltag stärken? [Test-App]",
+    options: [
+      "Sie ermutigen Karina, positiv über sich zu denken, und halten sie an, sich nicht selbst herabzuwürdigen.",
+      "Sie achten darauf, Karina für konkrete Leistungen und Erfolge anzuerkennen und ihr Erfolgserlebnisse zu ermöglichen.",
+      "Sie konfrontieren Karina unverzüglich mit ihrer negativen Grundeinstellung und machen ihr die Folgen für ihre berufliche Zukunft deutlich.",
+      "Sie teilen Karina mit, dass derartige Äußerungen in einem Betrieb unangebracht sind und künftig unterlassen werden müssen."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Selbstvertrauen wird durch ermutigende Zuwendung, positive Rückmeldung und erfahrbare Erfolgserlebnisse im Arbeitsalltag aufgebaut. Konfrontation, Ermahnungen oder Verbote schwächen das ohnehin geringe Selbstwertgefühl zusätzlich."
+  },
+  {
+    id: 828,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie treffen Ihren Ausbilderkollegen Herrn M und enttäuscht im Vorbereitungsraum an. Er möchte er vor wenigen Augenblicken seine Ausbildungseinhe Auszubildenden abgebrochen hat und Ursachen dafü er das massive Desinteresse der Auszubildenden an behandelten Thema nicht überwinden konnte. Um SCI aufzuspüren, fragen Sie Herrn Müller: „Wie reagierten passiver Widerstand in der Gruppe gegen Sie regte?\"",
+    question: "Welche seiner Reaktionen erkennen Sie als richtig an? Herr Müller antwortet: [Test-App]",
+    options: [
+      "„Ich appellierte an die Disziplin und Gehorsamspflicht der Auszubildenden.“",
+      "„Ich brach das Lehrgespräch einfach ab, kündigte Konsequenzen an und verließ den Raum.“",
+      "„Ich registrierte den Widerstand und verfolgte die gesetzten Lernziele zunächst konsequent weiter.“",
+      "„Ich nahm die Situation ernst, blieb sachlich und versuchte, die Beweggründe des Widerstandes herauszufinden.“",
+      "„Ich appellierte an die Einsicht der Auszubildenden und verlangte den notwendigen Respekt mir gegenüber.“"
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Pädagogisch richtig ist der sachliche, gelassene Umgang: Widerstand registrieren, das Lernziel weiterverfolgen, die Situation ernst nehmen und die Beweggründe klären (ursachenorientierte Störungsbearbeitung). Appelle an Gehorsam oder Respekt, angedrohte Konsequenzen oder der Abbruch des Lehrgesprächs eskalieren den Konflikt."
+  },
+  {
+    id: 829,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie bereiten für Ihre Auszul zum Thema „Hygiene\" vor und analys Lernziele im Ausbildungsrahmenplan Groblernziele Schwierigkeitsstufen al Ausbildungseinheiten den Taxonomie stellen Sie für Ihre Unterlagen eine Lk",
+    question: "Welche Aussage zu den Taxonomiestufen ist richtig? [Test-App]",
+    options: [
+      "„Bewerten“ verlangt von den Auszubildenden, Gelerntes in einer neuen Situation anzuwenden.",
+      "„Wissen“ verlangt von den Auszubildenden, wiederzugeben, was sie vorher gelernt haben.",
+      "„Anwenden“ verlangt von den Auszubildenden, einen Begriff, eine Formel oder einen Sachverhalt zu erklären.",
+      "„Verstehen“ verlangt von den Auszubildenden, eine Lösung in Hinsicht auf deren Nutzen zu beurteilen."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "In der Lernzieltaxonomie bedeutet „Wissen“ das Wiedergeben erlernter Inhalte, „Verstehen“ das Erklären, „Anwenden“ das Übertragen auf neue Situationen und „Bewerten“ das Beurteilen nach Kriterien. Nur die Zuordnung der Wiedergabe zur Stufe „Wissen“ ist korrekt."
+  },
+  {
+    id: 830,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bereiten die Übernahme der Auszubildenc demnächst die Abschlussprüfung ablegen werden, vor. Möglichkeit zwei Auszubildende befristet und zwei Aus unbefristet zu übernehmen. Keiner der Auszubildenden Jugend- und Auszubildendenvertretung (JAV). Ihr Unter 75 Mitarbeitende. Es existiert ein Betriebsrat und eine J",
+    question: "Welche Rechte hat die Arbeitnehmervertretung? [Test-App]",
+    options: [
+      "Beim Betriebsrat ist vor der Einstellung die Zustimmung einzuholen.",
+      "Der Betriebsrat darf die Zustimmung verweigern, muss aber die Gründe mitteilen.",
+      "Sie müssen die JAV von der geplanten Übernahme unterrichten.",
+      "Der Betriebsrat darf bestimmen, welche der Auszubildenden befristet und welche unbefristet übernommen werden."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Einstellungen – auch die Übernahme von Auszubildenden – sind personelle Einzelmaßnahmen nach § 99 BetrVG: Der Arbeitgeber muss die Zustimmung des Betriebsrats einholen, dieser kann sie nur aus den gesetzlich benannten Gründen und unter Angabe der Gründe verweigern. Wer übernommen wird, entscheidet allein der Arbeitgeber."
+  },
+  {
+    id: 831,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Ausz Probezeit. Seine b Paul hat bei den rr erhalten - nicht jec erhält er nur ein „z",
+    question: "Welche Aussagen treffen auf Pauls Selbstständigkeit zu? [Test-App]",
+    options: [
+      "Pauls Selbstständigkeit liegt im durchschnittlichen Leistungsbereich.",
+      "Paul kann ohne Unterstützung keine Aufgabe lösen.",
+      "Paul arbeitet allein und ohne Anleitung.",
+      "Paul muss seine Selbstständigkeit noch ausbauen."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Pauls Beurteilungsbild (überwiegend gut bis zufriedenstellend) spricht für eine durchschnittliche Selbstständigkeit mit Entwicklungsbedarf. Die Extremaussagen – völlige Unselbstständigkeit bzw. vollkommen eigenständiges Arbeiten ohne jede Anleitung – widersprechen dem Beurteilungsergebnis."
+  },
+  {
+    id: 832,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie veranstalten regelmäßi ausbildenden Fachkräfte. Beim näch: Begriff „berufliche Handlungsfähigke",
+    question: "Wie erklären Sie Ihren ausbild Begriff? Die berufliche Handlungsfäh [Test-App]",
+    options: [
+      "umfasst die für die Ausübung einer qualifizierten beruflichen Tätigkeit erforderlichen Fertigkeiten, Kenntnisse und Fähigkeiten.",
+      "hat der Auszubildende erreicht, der seine Abschlussprüfung mindestens mit der Note „gut“ bestanden hat.",
+      "bedeutet das selbstständige Planen, Durchführen und Kontrollieren beruflicher Aufgaben.",
+      "ist in eine berufsfeldbreite allgemeine Grundbildung und eine darauf aufbauende Zusatzqualifikation gegliedert.",
+      "beschreibt die Reproduktion und Reorganisation von gelernten beruflichen Tätigkeiten in den Arbeitsalltag."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Berufliche Handlungsfähigkeit umfasst nach § 1 BBiG die für eine qualifizierte Berufstätigkeit erforderlichen Fertigkeiten, Kenntnisse und Fähigkeiten. Sie zeigt sich im selbstständigen Planen, Durchführen und Kontrollieren beruflicher Aufgaben (vollständige Handlung); Noten oder Gedächtnisleistungen definieren sie nicht."
+  },
+  {
+    id: 833,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Zur Ergänzung Ihres Auswahlve Personalfragebogen erstellen. In Ihrem Ur Betriebsrat, keine Jugend- und Auszubilde Personalfragebogen soll zukünftig von alll ausgefüllt werden.",
+    question: "Welches Recht hat der Betriebsrat? [Test-App]",
+    options: [
+      "Die Entscheidung, ob ein solcher Fragebogen eingesetzt werden soll, obliegt dem Betriebsrat.",
+      "Der Inhalt des Personalfragebogens bedarf der Zustimmung des Betriebsrates.",
+      "Können sich Ausbildender und Betriebsrat nicht einigen, dann kann der Betriebsrat eine Einigungsstelle beauftragen.",
+      "Der Ausbildende darf sich frei entscheiden, ob er einen Personalfragebogen einführt."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Fragebögen für persönliche Angaben unterliegen der Mitbestimmung des Betriebsrats: Der Inhalt bedarf seiner Zustimmung, bei Nichteinigung entscheidet die Einigungsstelle (§ 94 BetrVG). Ob überhaupt ein Fragebogen eingeführt wird, entscheidet der Arbeitgeber; ein freies Ermessen ohne Beteiligung besteht beim Inhalt nicht."
+  },
+  {
+    id: 834,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie bereiten für Ihre Auszubildenden Aus zum Thema „Hygiene\" vor und analysieren dafür dic Lernziele im Ausbildungsrahmenplan. Dabei fällt Ih Groblernziele Schwierigkeitsstufen aufweisen. Um Ausbildungseinheiten den Taxonomien entspreche stellen Sie für Ihre Unterlagen eine Liste zusammer",
+    question: "Welche Aussage zu Taxonomiestufen ist korrekt? [Test-App]",
+    options: [
+      "„Bewerten“ verlangt von den Auszubildenden, etwas Gelerntes in einer neuen Situation anzuwenden.",
+      "„Verstehen“ verlangt von den Auszubildenden, eine Lösung in Hinsicht auf deren Nutzen für die Zielsetzung zu beurteilen.",
+      "„Anwenden“ verlangt von den Auszubildenden, einen Begriff, eine Formel, einen Sachverhalt oder ein Gesetz zu erklären.",
+      "„Wissen“ verlangt von den Auszubildenden, dass sie wiedergeben, was sie vorher gelernt haben."
+    ],
+    correctIndices: [
+      3
+    ],
+    explanation: "Nach der Lernzieltaxonomie (z. B. nach Bloom) bedeutet die Stufe Wissen das reine Erinnern und Wiedergeben zuvor gelernter Inhalte. Verstehen verlangt das Erklären von Begriffen und Sachverhalten, Anwenden den Transfer des Gelernten auf neue Situationen und Bewerten die Nutzenbeurteilung. Die drei falschen Optionen ordnen die Stufen vertauscht zu."
+  },
+  {
+    id: 835,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre Ausn Jugend- und Auszut Sie zu. Sie begrüßen über Grundsätzliche in ihrem Unternehm Mitarbeitende.",
+    question: "Welche Aussagen sind richtig? [Test-App]",
+    options: [
+      "Die Wahlen zur JAV finden alle zwei Jahre statt.",
+      "Die JAV darf unabhängig von der Anzahl der vertretenen Personen während der Arbeitszeit Sprechstunden einrichten.",
+      "Die JAV entsendet den Vorsitzenden in die Geschäftsführung des Unternehmens.",
+      "Sie sind als Ausbilder verpflichtet, die Wahlen zur JAV zu organisieren.",
+      "Der Betriebsrat setzt einen Wahlvorstand für die Wahl ein."
+    ],
+    correctIndices: [
+      0,
+      4
+    ],
+    explanation: "Der Betriebsrat bestellt den Wahlvorstand für die JAV-Wahl (§ 63 BetrVG i. V. m. § 8 BetrVG); die Amtszeit der JAV beträgt zwei Jahre, sodass Wahlen im Zweijahresrhythmus stattfinden (§ 65 BetrVG). Sprechstunden während der Arbeitszeit bedürfen jedoch der Zustimmung des Arbeitgebers (§ 67 Abs. 2 BetrVG). Die JAV hat keinen Einfluss auf die Geschäftsführung, und die Wahlorganisation ist Aufgabe des Wahlvorstands, nicht des Ausbilders."
+  },
+  {
+    id: 836,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als Ausbilderin gehört es zu Ihr Unternehmen, die geeigneten Lernorte für auszuwählen. Bei der Auswahl müssen Sil Ausstattung, personellen Voraussetzunge Vorgaben berücksichtigen.",
+    question: "Welche Arbeitsplätze sind insbesondere für Auszubildende nicht als Lernort geeignet? [Test-App]",
+    options: [
+      "Arbeitsplätze, die im Ausbildungsrahmenplan als Lernbereiche aufgeführt sind.",
+      "Arbeitsplätze, an denen die Tätigkeiten die Kräfte der Auszubildenden übersteigen oder ausbildungsfremde Arbeiten verrichtet werden.",
+      "Auszubildende dürfen keine Beratung und Vertragsabschlüsse durchführen.",
+      "Arbeitsplätze, die überwiegend von Kundengesprächen geprägt sind.",
+      "Arbeitsplätze, an denen Akkordarbeit oder Fließarbeit geleistet werden muss oder Pausenregelungen nicht eingehalten werden können."
+    ],
+    correctIndices: [
+      1,
+      4
+    ],
+    explanation: "Nicht als Lernort geeignet sind Arbeitsplätze, an denen die Tätigkeiten die Kräfte der Auszubildenden übersteigen oder ausbildungsfremde Arbeiten verrichtet werden (§ 14 Abs. 2 BBiG, §§ 22 f. JArbSchG), sowie Arbeitsplätze mit Akkord- oder Fließarbeit bzw. nicht umsetzbaren Pausenregelungen (§ 26 JArbSchG Akkordverbot, § 19 JArbSchG Pausen). Im Ausbildungsrahmenplan verankerte Lernbereiche und kundenorientierte Plätze sind geeignete Lernorte; Beratung und Vertragsabschlüsse unter Anleitung sowie Selbstständigkeit und Eigenverantwortung sind legitime Ausbildungsziele (§ 14 Abs. 1 BBiG)."
+  },
+  {
+    id: 837,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bekommen heute vo dass Ihre Auszubildende Mandy se drei Wochen unentschuldigt dem Nachdem dieses Fehlverhalten tro Male erfolgt ist, denken Sie daran, von Mandy zu kündigen.",
+    question: "Welche Aussagen sind richtig? [Test-App]",
+    options: [
+      "Sie können das Ausbildungsverhältnis ordentlich unter Einhaltung einer Kündigungsfrist kündigen.",
+      "Sie können sofort fristlos mit Angabe des Kündigungsgrundes kündigen.",
+      "Spätestens zwei Wochen nach Kenntnis des wichtigen Grundes muss die Kündigung ausgesprochen werden.",
+      "Sie dürfen rückwirkend zum Termin des Berufsschulunterrichts kündigen.",
+      "Während der gesamten Ausbildung gelten die gleichen Bedingungen zur Kündigung."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Unentschuldigtes Fernbleiben trotz Abmahnung ist ein wichtiger Grund i. S. d. § 22 Abs. 2 Nr. 1 BBiG und rechtfertigt eine fristlose Kündigung unter Angabe der Kündigungsgründe. Die Kündigung muss unverzüglich, spätestens zwei Wochen nach Kenntnis des wichtigen Grundes erklärt werden (§ 22 Abs. 3 BBiG). Eine ordentliche Kündigung mit Frist durch den Betrieb ist nach der Probezeit ausgeschlossen (§ 22 Abs. 2 BBiG); rückwirkende Kündigungen gibt es nicht."
+  },
+  {
+    id: 838,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Aus dass in der Lernzi Schwierigkeitsgra Ausbildungseinhe",
+    question: "Welches Lernziel hat die Taxonomiestufe (1) „Wissen“? [Test-App]",
+    options: [
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden bearbeiten eine Reklamation.",
+      "Die Auszubildenden benennen die Funktionen der Kasse.",
+      "Die Auszubildenden kontrollieren eingehende Waren."
+    ],
+    correctIndices: [
+      2
+    ],
+    explanation: "Die Taxonomiestufe Wissen (Stufe 1) verlangt das Erinnern und Wiedergeben von Fakten und Zusammenhängen. Das Benennen der Kassenfunktionen ist eine solche Reproduktionsleistung, während Wareneingabe, Reklamationsbearbeitung und Warenkontrolle Anwendungs- bzw. Transferleistungen höherer Stufen darstellen."
+  },
+  {
+    id: 839,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre Auszubildenden kommen mit der Ford Jugend- und Auszubildendenvertretung (JAV) wählen Sie zu. Sie begrüßen diese Idee und informieren die A über Grundsätzliches zur Wahl einer JAV. Es existiert in ihrem Unternehmen. Das Unternehmen hat insgese Mitarbeitende.",
+    question: "Welche Aussagen sind richtig? [Test-App]",
+    options: [
+      "Der Betriebsrat setzt einen Wahlvorstand für die Wahl ein.",
+      "Die Wahlen zur JAV finden alle zwei Jahre statt.",
+      "Die JAV darf unabhängig von der Anzahl der vertretenen Personen während der Arbeitszeit Sprechstunden einrichten.",
+      "Die JAV entsendet den Vorsitzenden in die Geschäftsführung des Unternehmens.",
+      "Sie sind als Ausbilder verpflichtet, die Wahlen zur JAV zu organisieren."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Der Betriebsrat bestellt den Wahlvorstand für die JAV-Wahl (§ 63 BetrVG i. V. m. § 8 BetrVG); die Amtszeit der JAV beträgt zwei Jahre, sodass Wahlen im Zweijahresrhythmus stattfinden (§ 65 BetrVG). Sprechstunden während der Arbeitszeit bedürfen jedoch der Zustimmung des Arbeitgebers (§ 67 Abs. 2 BetrVG). Die JAV hat keinen Einfluss auf die Geschäftsführung, und die Wahlorganisation ist Aufgabe des Wahlvorstands, nicht des Ausbilders."
+  },
+  {
+    id: 840,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bilden als neue Au Einzelhandelsunternehmen aus. des Unternehmens zur Lernproz",
+    question: "Welche der Antworten beschreiben eine gelingende Lernprozessbegleitung? [Test-App]",
+    options: [
+      "Sie organisieren tägliche Ausbildungsgespräche im Rahmen einer ausbilderzentrierten Ausbildung.",
+      "Sie besprechen mit jedem Auszubildenden regelmäßig seinen Lernbedarf.",
+      "Sie sorgen für regelmäßige Reflexion der Lernergebnisse.",
+      "Sie verzichten nach absolvierten Ausbildungseinheiten auf Feedback.",
+      "Sie überlassen den Auszubildenden die Auswahl der Lernziele."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Gelingende Lernprozessbegleitung bedeutet, den individuellen Lernbedarf regelmäßig zu besprechen und Lernergebnisse gemeinsam zu reflektieren, damit Auszubildende ihre Lernentwicklung mitsteuern können. Tägliche ausbilderzentrierte Ausbildungsgespräche, der Verzicht auf Feedback und die freie Lernzielauswahl durch Auszubildende widersprechen diesem Prinzip; die Lernziele ergeben sich verbindlich aus dem Ausbildungsrahmenplan (§ 14 Abs. 1 BBiG)."
+  },
+  {
+    id: 841,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie besprechen mit Ihrer ausbildenden Probleme im Umgang mit der noch in der Probez Auszubildenden Tina: Sie kann sich nicht konzen sie schwierig sich neue Informationen zu merker",
+    question: "Wie sollte die zuständige ausbildende Fachkraft mit Tinas Verhalten umgehen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft überträgt Tina Aufgaben, die diese aufgrund ihrer Vorkenntnisse lösen kann. So ermöglicht sie ihr Erfolgserlebnisse.",
+      "Die ausbildende Fachkraft ermittelt Tinas Lernstand und passt ihre Ausbildungsmethoden entsprechend an.",
+      "Die ausbildende Fachkraft überträgt Tina nur Routineaufgaben. So fördert sie ihre Konzentrationsfähigkeit.",
+      "Die ausbildende Fachkraft droht Tina mit der Kündigung zum Ende der Probezeit. So motiviert sie Tina, sich mehr anzustrengen."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Sinnvoll ist es, Tina Aufgaben auf ihrem Kenntnisstand zu übertragen, damit sie Erfolgserlebnisse hat, sowie ihren Lernstand zu ermitteln und die Ausbildungsmethoden anzupassen (innere Differenzierung). Reine Routineaufgaben bieten keine Lernfortschritte, und Kündigungsdrohungen demotivieren und widersprechen dem Förderauftrag des Ausbilders (§ 14 Abs. 1 BBiG)."
+  },
+  {
+    id: 842,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind al Auszubildende in kal monatlich treffen Sie besprechen. In den 11 Fachkräfte bei Ihnen ständig unterbreche' Bemerkungen maclm",
+    question: "Was vermitteln Sie zum Thema wertschätzende Kommunikation? [Test-App]",
+    options: [
+      "In wertschätzender Kommunikation wird Kritik an der Sache und nicht an der Person festgemacht.",
+      "Zu wertschätzender Kommunikation gehört, die Meinungen und Perspektiven des Gesprächspartners respektvoll zu beachten.",
+      "Wertschätzende Kommunikation bedeutet, dem Gesprächspartner uneingeschränkt zuzustimmen, um Konflikte zu vermeiden.",
+      "Wertschätzende Kommunikation erlaubt es, den Gesprächspartner zu unterbrechen, wenn man selbst Besseres weiß."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Wertschätzende Kommunikation macht Kritik an der Sache und nicht an der Person fest und erkennt die Perspektiven des Gesprächspartners respektvoll an. Uneingeschränktes Zustimmen zur Konfliktvermeidung und das Unterbrechen des Gegenübers sind keine Merkmale wertschätzender Kommunikation."
+  },
+  {
+    id: 843,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Im Rahmen eines Erfahrungsaustausche Ausbildern und Ausbilderinnen werden Sie darauf a Sie in Ihrem Unternehmen bereits die neuen Standardberufsbildpositionen umsetzen.",
+    question: "Welche Bedeutung haben Standardberufsbildpositionen für die Ausbildung? [Test-App]",
+    options: [
+      "Mithilfe der Standardberufsbildpositionen können die ausbildenden Betriebe die zu vermittelnden Inhalte auf eine überbetriebliche Ebene heben.",
+      "Standardberufsbildpositionen sind bildungspolitische Steuerungsinstrumente, die in den Ausbildungsordnungen im Ausbildungsrahmenplan geregelt sind.",
+      "Die Vermittlung von Standardberufsbildpositionen ist für alle ausbildenden Betriebe integrativ im Zusammenhang mit den fachspezifischen Ausbildungsinhalten zu vermitteln.",
+      "Standardberufsbildpositionen sind nicht Gegenstand der Ausbildungsprüfungen.",
+      "Standardberufsbildpositionen legen die Grundlage für anerkannte Ausbildungsberufe und sind in den ersten sechs Monaten der Ausbildung im Betrieb zu vermitteln."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Standardberufsbildpositionen sind bundeseinheitliche, berufsbildübergreifende Qualifikationsinhalte, die als bildungspolitisches Steuerungsinstrument in den Ausbildungsordnungen und Ausbildungsrahmenplänen geregelt sind (§ 5 Abs. 1, § 25 Abs. 2 BBiG). Ihre Vermittlung erfolgt integrativ im Zusammenhang mit den fachspezifischen Ausbildungsinhalten. Sie sind prüfungsrelevant und nicht auf die ersten sechs Monate der Ausbildung beschränkt."
+  },
+  {
+    id: 844,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als Ausbilderin g Unternehmen, die geeignet auszuwählen. Bei der Ausw Ausstattung, personellen Vorgaben berücksichtigen.",
+    question: "Welche Arbeitsplätze sind insbesondere für Auszubildende nicht als Lernort geeignet? [Test-App]",
+    options: [
+      "Arbeitsplätze, die im Ausbildungsrahmenplan als Lernbereiche aufgeführt sind.",
+      "Arbeitsplätze, an denen die Tätigkeiten die Kräfte der Auszubildenden übersteigen oder ausbildungsfremde Arbeiten verrichtet werden.",
+      "Auszubildende dürfen keine Beratung und Vertragsabschlüsse durchführen.",
+      "Arbeitsplätze, die überwiegend von Kundengesprächen geprägt sind.",
+      "Arbeitsplätze, an denen Akkordarbeit oder Fließarbeit geleistet werden muss oder Pausenregelungen nicht eingehalten werden können."
+    ],
+    correctIndices: [
+      1,
+      4
+    ],
+    explanation: "Nicht als Lernort geeignet sind Arbeitsplätze, an denen die Tätigkeiten die Kräfte der Auszubildenden übersteigen oder ausbildungsfremde Arbeiten verrichtet werden (§ 14 Abs. 2 BBiG, §§ 22 f. JArbSchG), sowie Arbeitsplätze mit Akkord- oder Fließarbeit bzw. nicht umsetzbaren Pausenregelungen (§ 26 JArbSchG Akkordverbot, § 19 JArbSchG Pausen). Im Ausbildungsrahmenplan verankerte Lernbereiche und kundenorientierte Plätze sind geeignete Lernorte; Beratung und Vertragsabschlüsse unter Anleitung sowie Selbstständigkeit und Eigenverantwortung sind legitime Ausbildungsziele (§ 14 Abs. 1 BBiG)."
+  },
+  {
+    id: 845,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Zur Ergän Personalfragebogen Betriebsrat, keine Ju Personalfragebogen ausgefüllt werden.",
+    question: "Welche Rechte hat der Betriebsrat? [Test-App]",
+    options: [
+      "Die Entscheidung, ob ein Personalfragebogen verwendet werden soll, obliegt dem Betriebsrat.",
+      "Der Ausbildende darf den Personalfragebogen nur mit Zustimmung des Betriebsrats verwenden.",
+      "Der Inhalt des Personalfragebogens kann allein vom Betriebsrat festgelegt werden.",
+      "Können sich Ausbildender und Betriebsrat nicht einigen, entscheidet die Einigungsstelle über die Verwendung des Fragebogens."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Nach § 94 BetrVG hat der Arbeitgeber Fragebogen, die von Arbeitnehmern oder Bewerbern auszufüllen sind, vor ihrer Verwendung dem Betriebsrat zur Zustimmung vorzulegen; der Personalfragebogen darf also nur mit Zustimmung des Betriebsrats verwendet werden. Ob ein Fragebogen eingeführt wird, entscheidet der Arbeitgeber, und den Inhalt legt der Betriebsrat nicht allein fest. Bei Nichteinigung entscheidet die Einigungsstelle."
+  },
+  {
+    id: 846,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Um dem drohenden Fachk Unternehmen vorzubeugen, denken S Möglichkeiten der Bewerberakquise betriebliche Einstiegsqualifizierung (I jugendliche Praktikantin ausgesucht. Tarifvertrag.",
+    question: "Welche Regelungen gelten für die betriebliche Einstiegsqualifizierung? [Test-App]",
+    options: [
+      "Ihre Praktikantin hat nach dem Praktikum einen Anspruch auf Übernahme in ein reguläres Ausbildungsverhältnis.",
+      "Der Praktikumsvertrag wird zwischen ihr und der zuständigen Agentur für Arbeit geschlossen.",
+      "Die Praktikantin erhält als Praktikantin eine Mindestausbildungsvergütung nach dem BBiG.",
+      "Die Arbeitsagentur beteiligt sich an den Sozialversicherungsbeiträgen.",
+      "Ihre Praktikantin muss vor Antritt der Einstiegsqualifizierung von einem Arzt untersucht worden sein und Ihnen die Bescheinigung der Erstuntersuchung nach dem JArbSchG vorlegen."
+    ],
+    correctIndices: [
+      3,
+      4
+    ],
+    explanation: "Bei der Einstiegsqualifizierung (§ 54a SGB III) besteht kein Anspruch der Praktikantin auf Übernahme in ein Ausbildungsverhältnis, und der Vertrag wird zwischen Betrieb und Praktikantin geschlossen. Die Agentur für Arbeit zahlt einen Zuschuss zur Vergütung und beteiligt sich an den Sozialversicherungsbeiträgen. Als Jugendliche muss die Praktikantin vor Antritt die ärztliche Erstuntersuchung nachweisen (§ 32 Abs. 1 JArbSchG); die Mindestausbildungsvergütung nach § 17 BBiG gilt für Praktikanten nicht."
+  },
+  {
+    id: 847,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als langjähriger Ausbilder im Hotel „Kaiserl Sie eine Kollegin als Ausbilderin gewinnen. Sie beschl interessant diese Aufgabe ist, nicht zuletzt auch dadu Ausbilder Kontakt zu unterschiedlichen Personen unc hat.",
+    question: "Welche Aufgaben haben die an der Ausbildung beteiligten Personen und Institutionen? [Test-App]",
+    options: [
+      "Die Jugend- und Auszubildendenvertretung bestellt Ausbilder.",
+      "Die zuständige Stelle berät Unternehmen in Ausbildungsthemen.",
+      "Die ausbildende Fachkraft ist derjenige, die verantwortlich für die gesamte Ausbildung ist und die Berufs- und arbeitspädagogischen Qualifikationen nachweisen muss.",
+      "Die örtliche Agentur für Arbeit wirkt bei Fragen der Berufsbildung im Betrieb mit.",
+      "Die Berufsschule ist der Partner im Dualen System und deckt die Inhalte des Rahmenlehrplans ab."
+    ],
+    correctIndices: [
+      1,
+      4
+    ],
+    explanation: "Die zuständige Stelle (z. B. IHK) berät und unterstützt Betriebe in Ausbildungsfragen (§ 76 BBiG); die Berufsschule vermittelt als Partner im Dualen System die Inhalte des Rahmenlehrplans. Für die gesamte Ausbildung verantwortlich ist der Ausbilder mit nachgewiesener Ausbildereignung (§§ 28-30 BBiG), nicht die ausbildende Fachkraft. Die JAV bestellt keine Ausbilder; die Agentur für Arbeit vermittelt und berät, wirkt aber nicht im Betrieb mit."
+  },
+  {
+    id: 848,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie Sinc Lebensmitteleinu einer der Filialen s hat den Eindruck, zu wenig Eigenmc verstehen, schließ Immer wieder mu Tätigkeiten zu erle verantwortungsvc \"Motivation\" inten Ihnen wissen, wie Mahla und Tom di",
+    question: "Welche Vorgehensweisen sind in diesem Fall machbar? [Test-App]",
+    options: [
+      "Frau Lange erarbeitet gemeinsam mit den Auszubildenden Lösungen für das Motivationsproblem.",
+      "Frau Lange zeigt den Auszubildenden Sinnzusammenhänge ihrer Aufgaben auf und lässt sie zusätzlich abwechslungsreiche Aufgaben ausführen.",
+      "Frau Lange überträgt den Auszubildenden überwiegend ungeliebte Tätigkeiten, um sie zu disziplinieren.",
+      "Frau Lange sichert den Auszubildenden interessantere Aufgaben erst zu, wenn sie ungeliebte Tätigkeiten ohne Widerstand erledigt haben."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Nachhaltige Motivation entsteht, wenn Sinnzusammenhänge aufgezeigt, Aufgaben abwechslungsreich gestaltet und Probleme gemeinsam mit den Auszubildenden erarbeitet werden. Disziplinierung durch ungeliebte Tätigkeiten oder das Zurückhalten interessanter Aufgaben als Druckmittel demotiviert und widerspricht dem Förderauftrag (§ 14 Abs. 1 BBiG)."
+  },
+  {
+    id: 849,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubildender die Ausbildung verkürzen und ablegen kann.",
+    question: "Unter welchen Bedingungen kann Jakob vorzeitig zur Abschlussprüfung zugelassen werden? [Test-App]",
+    options: [
+      "Eine Verkürzung der Ausbildungszeit ist nicht mehr möglich.",
+      "Er hätte den Vertragsabschluss mit dem Ausbildenden bereits auf eine verkürzte Ausbildungszeit stellen müssen.",
+      "Der Ausbildungsbetrieb und die zuständige Stelle bescheinigen Jakob mindestens gleichwertige Leistungen und befürworten die vorzeitige Zulassung.",
+      "Jakob kann auf eigenen Wunsch vorzeitig zur Abschlussprüfung zugelassen werden. Der Ausbildende darf diesem Wunsch nicht widersprechen.",
+      "Jakob und der Ausbildende müssen einen gemeinsamen Antrag auf Verkürzung stellen, den die Berufsschule genehmigen muss."
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Nach § 45 Abs. 1 BBiG können Auszubildende auf eigenen Antrag vorzeitig zur Abschlussprüfung zugelassen werden, wenn ihre bisherigen Leistungen in einer Zwischenprüfung oder auf sonstige Weise festgestellt wurden und dies die vorzeitige Zulassung rechtfertigen; die durchschnittlichen Leistungen müssen mindestens den für das Bestehen der Prüfung geforderten Leistungen entsprechen. Die Entscheidung trifft die zuständige Stelle, ein Vetorecht des Ausbildenden ist nicht vorgesehen. Eine Verkürzung ist auch nach Vertragsabschluss möglich, und die Berufsschule genehmigt keine Verkürzungsanträge."
+  },
+  {
+    id: 850,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Im Rahmen eines Erfahrungsau Ausbildern und Ausbilderinnen werden Sie Sie in Ihrem Unternehmen bereits die neuc Standardberufsbildpositionen umsetzen.",
+    question: "Welche Bedeutung haben Standardberufsbildpositionen für die Ausbildung? [Test-App]",
+    options: [
+      "Mithilfe der Standardberufsbildpositionen können die ausbildenden Betriebe die zu vermittelnden Inhalte auf eine überbetriebliche Ebene heben.",
+      "Standardberufsbildpositionen sind bildungspolitische Steuerungsinstrumente, die in den Ausbildungsordnungen im Ausbildungsrahmenplan geregelt sind.",
+      "Die Vermittlung von Standardberufsbildpositionen ist für alle ausbildenden Betriebe integrativ im Zusammenhang mit den fachspezifischen Ausbildungsinhalten zu vermitteln.",
+      "Standardberufsbildpositionen sind nicht Gegenstand der Ausbildungsprüfungen.",
+      "Standardberufsbildpositionen legen die Grundlage für anerkannte Ausbildungsberufe und sind in den ersten sechs Monaten der Ausbildung im Betrieb zu vermitteln."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Standardberufsbildpositionen sind bundeseinheitliche, berufsbildübergreifende Qualifikationsinhalte, die als bildungspolitisches Steuerungsinstrument in den Ausbildungsordnungen und Ausbildungsrahmenplänen geregelt sind (§ 5 Abs. 1, § 25 Abs. 2 BBiG). Ihre Vermittlung erfolgt integrativ im Zusammenhang mit den fachspezifischen Ausbildungsinhalten. Sie sind prüfungsrelevant und nicht auf die ersten sechs Monate der Ausbildung beschränkt."
+  },
+  {
+    id: 851,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bereiten die Übernahme der Aus demnächst die Abschlussprüfung ablegen wer Möglichkeit zwei Auszubildende befristet und unbefristet zu übernehmen. Keiner der Auszub Jugend- und Auszubildendenvertretung (JAV). 75 Mitarbeitende. Es existiert ein Betriebsrat u",
+    question: "Welche Rechte hat die Arbeitnehmervertretung in diesem Fall? [Test-App]",
+    options: [
+      "Der Betriebsrat darf die Zustimmung zur Einstellung verweigern, muss aber die Gründe mitteilen.",
+      "Sie müssen die JAV von der geplanten Übernahme unterrichten.",
+      "Beim Betriebsrat ist vor der Einstellung die Zustimmung einzuholen.",
+      "Der Betriebsrat darf bestimmen, welche der Auszubildenden befristet und welche unbefristet übernommen werden."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Personelle Einzelmaßnahmen wie Einstellungen und Eingruppierungen erfordern die Zustimmung des Betriebsrats (§ 99 BetrVG); dieser kann die Zustimmung unter Angabe von Gründen verweigern (§ 100 BetrVG). Die JAV ist bei Einstellungen lediglich zu unterrichten und anzuhören (§ 70 BetrVG); über Befristung oder Unbefristetheit entscheidet der Arbeitgeber, nicht der Betriebsrat."
+  },
+  {
+    id: 852,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie treffen Ihren Ausbilderkollegen Herrn Müller aufgerec und enttäuscht im Vorbereitungsraum an. Er möchte Ihren Rat, weil er vor wenigen Augenblicken seine Ausbildungseinheit bei den Auszubildenden abgebrochen hat und Ursachen dafür sucht, warur er das massive Desinteresse der Auszubildenden an dem behandelten Thema nicht überwinden konnte. Um Schwachpunkte aufzuspüren, fragen Sie Herrn Müller: „Wie reagierten Sie, als sich passiver Widerstand in der Gruppe gegen Sie regte?\"",
+    question: "Welche seiner Reaktionen erkennen Sie als richtig an? Herr Müller antwortet: [Test-App]",
+    options: [
+      "„Ich nahm die Situation ernst, blieb sachlich und versuchte, die Beweggründe des Widerstandes herauszufinden.“",
+      "„Ich registrierte den Widerstand und verfolgte die gesetzten Lernziele zunächst konsequent weiter.“",
+      "„Ich appellierte an die Disziplin und Gehorsamspflicht der Auszubildenden.“",
+      "„Ich appellierte an die Einsicht der Auszubildenden und verlangte den notwendigen Respekt mir gegenüber.“",
+      "„Ich brach das Lehrgespräch einfach ab, kündigte Konsequenzen an und verließ den Raum.“"
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Pädagogisch richtig ist es, Widerstand ernst zu nehmen, sachlich zu bleiben und die Beweggründe herauszufinden sowie Einsicht statt Gehorsam einzufordern; Disziplinappelle und der Abbruch des Lehrgesprächs mit angedrohten Konsequenzen eskalieren die Situation nur. Das konsequente Weiterverfolgen der Lernziele ignoriert den Gruppenwiderstand und bietet keine Ursachenbearbeitung."
+  },
+  {
+    id: 853,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Im Rahme Ausbildern und Aust Sie in Ihrem Unterne Standardberufsbildp",
+    question: "Welche Bedeutung haben Standardberufsbildpositionen für die Ausbildung? [Test-App]",
+    options: [
+      "Mithilfe der Standardberufsbildpositionen können die ausbildenden Betriebe die zu vermittelnden Inhalte auf eine überbetriebliche Ebene heben.",
+      "Standardberufsbildpositionen sind bildungspolitische Steuerungsinstrumente, die in den Ausbildungsordnungen im Ausbildungsrahmenplan geregelt sind.",
+      "Die Vermittlung von Standardberufsbildpositionen ist für alle ausbildenden Betriebe integrativ im Zusammenhang mit den fachspezifischen Ausbildungsinhalten zu vermitteln.",
+      "Standardberufsbildpositionen sind nicht Gegenstand der Ausbildungsprüfungen.",
+      "Standardberufsbildpositionen legen die Grundlage für anerkannte Ausbildungsberufe und sind in den ersten sechs Monaten der Ausbildung im Betrieb zu vermitteln."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Standardberufsbildpositionen sind bundeseinheitliche, berufsbildübergreifende Qualifikationsinhalte, die als bildungspolitisches Steuerungsinstrument in den Ausbildungsordnungen und Ausbildungsrahmenplänen geregelt sind (§ 5 Abs. 1, § 25 Abs. 2 BBiG). Ihre Vermittlung erfolgt integrativ im Zusammenhang mit den fachspezifischen Ausbildungsinhalten. Sie sind prüfungsrelevant und nicht auf die ersten sechs Monate der Ausbildung beschränkt."
+  },
+  {
+    id: 854,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre Auszubildenden kommen mit Jugend- und Auszubildendenvertretung (JAN' Sie zu. Sie begrüßen diese Idee und informie über Grundsätzliches zur Wahl einer JAV. Es in ihrem Unternehmen. Das Unternehmen ha Mitarbeitende.",
+    question: "Welche Aussagen sind richtig? [Test-App]",
+    options: [
+      "Die Wahlen zur JAV finden alle zwei Jahre statt.",
+      "Sie sind als Ausbilder verpflichtet, die Wahlen zur JAV zu organisieren.",
+      "Die JAV darf unabhängig von der Anzahl der vertretenen Personen während der Arbeitszeit Sprechstunden einrichten.",
+      "Die JAV entsendet den Vorsitzenden in die Geschäftsführung des Unternehmens.",
+      "Der Betriebsrat setzt einen Wahlvorstand für die Wahl ein."
+    ],
+    correctIndices: [
+      0,
+      4
+    ],
+    explanation: "Der Betriebsrat bestellt den Wahlvorstand für die JAV-Wahl (§ 63 BetrVG i. V. m. § 8 BetrVG); die Amtszeit der JAV beträgt zwei Jahre, sodass Wahlen im Zweijahresrhythmus stattfinden (§ 65 BetrVG). Sprechstunden während der Arbeitszeit bedürfen jedoch der Zustimmung des Arbeitgebers (§ 67 Abs. 2 BetrVG). Die JAV hat keinen Einfluss auf die Geschäftsführung, und die Wahlorganisation ist Aufgabe des Wahlvorstands, nicht des Ausbilders."
+  },
+  {
+    id: 855,
+    hf: 4,
+    category: "Abschluss",
+    type: "single",
+    targetCount: 1,
+    situation: "Ihre Auszubildende Sabrina hat die Abschlussp Verkäuferin erfolgreich bestanden. Sie wird im Unternehn unbefristet weiterbeschäftigt. Sabrina fragt Sie als zustär Ausbilderin bzw. zuständigen Ausbilder, ob sie ein qualifiz Zeugnis erhalten kann.",
+    question: "Hat Sabrina Anspruch auf ein qualifiziertes Zeugnis? [Test-App]",
+    options: [
+      "Sabrina hat erst dann einen Anspruch auf ein qualifiziertes Zeugnis, wenn sie das Unternehmen verlässt.",
+      "Sabrina hat generell keinen Anspruch auf ein Zeugnis, da sie die Urkunde der zuständigen Stelle und das Abschlusszeugnis der Berufsschule hat, um den Abschluss ihrer Berufsausbildung nachzuweisen.",
+      "Ausbildungszeugnisse sind immer einfache Zeugnisse. Daher hat Sabrina keinen Anspruch auf ein qualifiziertes Zeugnis.",
+      "Sabrina hat auf eigenes Verlangen hin einen Anspruch auf ein qualifiziertes Zeugnis.",
+      "Da Sabrina unbefristet übernommen wird, hat sie keinen Anspruch auf ein qualifiziertes Zeugnis."
+    ],
+    correctIndices: [
+      3
+    ],
+    explanation: "Nach § 16 Abs. 2 und Abs. 3 BBiG erhält die Auszubildende bei Beendigung des Berufsausbildungsverhältnisses ein Zeugnis; auf ihr Verlangen hat der Ausbildende auch ein qualifiziertes Zeugnis über Leistungen und Verhalten auszustellen. Das Beendigungszeugnis steht ihr unabhängig davon zu, ob sie im Betrieb weiterbeschäftigt wird, da das Ausbildungsverhältnis mit Bestehen der Abschlussprüfung endet (§ 21 Abs. 1 BBiG)."
+  },
+  {
+    id: 856,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie müssen für Ihre Auszul Ausbildungszeugnis schreiben. Xeniæ der Abschlussprüfung verlassen, wei Neben der Formulierungen über Verh sich Gedanken über eine angemesse",
+    question: "Welche der Schlussformeln entsprechen eher einer vorwiegend positiven Bewertung? [Test-App]",
+    options: [
+      "Wir danken Xenia für ihren Einsatz und wünschen ihr beruflich und persönlich viel Erfolg.",
+      "Wir danken Xenia für ihre Mitarbeit.",
+      "Für ihren weiteren Berufs- und Lebensweg wünschen wir ihr alles Gute und viel Erfolg.",
+      "Wir wünschen Xenia, dass sie auf ihrem weiteren Berufsweg Erfolg haben möge.",
+      "Wir wünschen Xenia für den weiteren Lebensweg alles Gute und bedauern ihre Entscheidung, unser Unternehmen zu verlassen.",
+      "Wir bedauern sehr, Xenia zu verlieren, und wünschen ihr für ihre berufliche und persönliche Zukunft viel Erfolg."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Zeugnissprache kodiert die Bewertung: Formulierungen mit echtem Dank für den Einsatz und ausdrücklichen Erfolgswünschen für Berufs- und Lebensweg signalisieren eine gute Beurteilung. Ein schlichter Dank für die Mitarbeit gilt als unterdurchschnittlich; ausgedrücktes Bedauern über das Verlieren der Auszubildenden deutet eher auf eine mittelmäßige Bewertung hin."
+  },
+  {
+    id: 857,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind rr Karina grundsätzlich dass das Selbstbew ist. Sie spricht negat bezeichnet sich als (",
+    question: "Wie können Sie das Selbstbewusstsein von Karina im Betrieb stärken? [Test-App]",
+    options: [
+      "Sie prüfen, ob Karina künftig anders angesprochen werden möchte.",
+      "Sie sehen Karinas Angriffe nicht als Angriff auf sich selbst an.",
+      "Sie ermutigen Karina, sich nicht selbst herabzusetzen.",
+      "Sie sprechen Karina konstruktiv und wertschätzend an."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Bei selbstunsicheren Auszubildenden ist es wichtig, Angriffe nicht persönlich zu nehmen und das Selbstwertgefühl durch Ermutigung zu stärken. Hilfreich sind zudem wertschätzende Gespräche, die Stärken aufzeigen. Die Frage, ob die Auszubildende künftig anders angesprochen werden möchte, ändert nichts an der mangelnden Eigenwahrnehmung."
+  },
+  {
+    id: 858,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie besprechen mit Ihrer ausl Probleme im Umgang mit der noch in d Auszubildenden Tina: Sie kann sich nicl sie schwierig sich neue Informationen",
+    question: "Wie sollte die zuständige ausbildende Fachkraft mit Tinas Verhalten umgehen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft überträgt Tina Aufgaben, die diese aufgrund ihrer Vorkenntnisse lösen kann. So ermöglicht sie ihr Erfolgserlebnisse.",
+      "Die ausbildende Fachkraft ermittelt Tinas Lernstand und passt ihre Ausbildungsmethoden entsprechend an.",
+      "Die ausbildende Fachkraft überträgt Tina nur Routineaufgaben. So fördert sie ihre Konzentrationsfähigkeit.",
+      "Die ausbildende Fachkraft droht Tina mit der Kündigung zum Ende der Probezeit. So motiviert sie Tina, sich mehr anzustrengen."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Sinnvoll ist es, Tina Aufgaben auf ihrem Kenntnisstand zu übertragen, damit sie Erfolgserlebnisse hat, sowie ihren Lernstand zu ermitteln und die Ausbildungsmethoden anzupassen (innere Differenzierung). Reine Routineaufgaben bieten keine Lernfortschritte, und Kündigungsdrohungen demotivieren und widersprechen dem Förderauftrag des Ausbilders (§ 14 Abs. 1 BBiG)."
+  },
+  {
+    id: 859,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als Ausbil Unternehmen, die ge auszuwählen. Bei de Ausstattung, person Vorgaben berücksicl",
+    question: "Welche Arbeitsplätze sind insbesondere für Auszubildende nicht als Lernort geeignet? [Test-App]",
+    options: [
+      "Arbeitsplätze, die im Ausbildungsrahmenplan als Lernbereiche aufgeführt sind.",
+      "Arbeitsplätze, an denen die Tätigkeiten die Kräfte der Auszubildenden übersteigen oder ausbildungsfremde Arbeiten verrichtet werden.",
+      "Auszubildende dürfen keine Beratung und Vertragsabschlüsse durchführen.",
+      "Arbeitsplätze, die überwiegend von Kundengesprächen geprägt sind.",
+      "Arbeitsplätze, an denen Akkordarbeit oder Fließarbeit geleistet werden muss oder Pausenregelungen nicht eingehalten werden können."
+    ],
+    correctIndices: [
+      1,
+      4
+    ],
+    explanation: "Nicht als Lernort geeignet sind Arbeitsplätze, an denen die Tätigkeiten die Kräfte der Auszubildenden übersteigen oder ausbildungsfremde Arbeiten verrichtet werden (§ 14 Abs. 2 BBiG, §§ 22 f. JArbSchG), sowie Arbeitsplätze mit Akkord- oder Fließarbeit bzw. nicht umsetzbaren Pausenregelungen (§ 26 JArbSchG Akkordverbot, § 19 JArbSchG Pausen). Im Ausbildungsrahmenplan verankerte Lernbereiche und kundenorientierte Plätze sind geeignete Lernorte; Beratung und Vertragsabschlüsse unter Anleitung sowie Selbstständigkeit und Eigenverantwortung sind legitime Ausbildungsziele (§ 14 Abs. 1 BBiG)."
+  },
+  {
+    id: 860,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Die neue Ausbilderin Telse Andresen will Auszubildenden zukünftig regelmäßig und systema",
+    question: "Welche Verhaltensweisen sind zielführend bei der Beurteilung? [Test-App]",
+    options: [
+      "Die Ausbilderin setzt sich nicht selbst als Maßstab bei der Bewertung und Beurteilung an.",
+      "Die Ausbilderin bewertet und beurteilt die Auszubildenden nachsichtig und wohlwollend.",
+      "Die Ausbilderin sieht das Gesamtbild der Auszubildenden und nicht nur eine positive oder negative Eigenschaft.",
+      "Bei der Bewertung berücksichtigt die Ausbilderin insbesondere die Ergebnisse der kürzlich durchgeführten Arbeiten.",
+      "Die Ausbilderin orientiert sich vor allem an dem ersten Eindruck, den die Auszubildenden beim Kennenlernen gemacht haben."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Faire Beurteilungen setzen objektive, am Anforderungsprofil orientierte Maßstäbe voraus und betrachten die Auszubildenden in ihrem Gesamtbild, nicht isolierte Einzelerscheinungen. Nachsicht und Wohlwollen verfälschen ebenso wie die Orientierung an aktuellen Arbeiten oder am ersten Eindruck; beurteilt wird die gesamte Leistungsentwicklung über einen längeren Zeitraum."
+  },
+  {
+    id: 861,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzelhandesgeschäft wiss dass in der Lernzieltaxonomie Lernziele nach dem Schwierigkeitsgrad geordnet werden. Sie planen gerade die n Ausbildungseinheit.",
+    question: "Welches Lernziel hat die Taxonomiestufe (1) „Wissen“? [Test-App]",
+    options: [
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden bearbeiten eine Reklamation.",
+      "Die Auszubildenden benennen die Funktionen der Kasse.",
+      "Die Auszubildenden kontrollieren eingehende Waren."
+    ],
+    correctIndices: [
+      2
+    ],
+    explanation: "Die Taxonomiestufe Wissen (Stufe 1) verlangt das Erinnern und Wiedergeben von Fakten und Zusammenhängen. Das Benennen der Kassenfunktionen ist eine solche Reproduktionsleistung, während Wareneingabe, Reklamationsbearbeitung und Warenkontrolle Anwendungs- bzw. Transferleistungen höherer Stufen darstellen."
+  },
+  {
+    id: 862,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind Ausbilderin in einer Bar Auszubildenden. Bisher gab es kein Beurt Auszubildende. Dies wollen Sie ändern un Team zusammengestellt. Sie überlegen ru Bewertungssystem Sie einsetzen sollen, c ungebundene Bewertung. Im Team mit de Fachkräften erarbeiten Sie die Vor- und NZ Systems.",
+    question: "Welchen Nachteil hat die gebunder [Test-App]",
+    options: [
+      "Die gebundene Beurteilung schränkt den Beurteiler in seiner Bewertung aufgrund der Vorgaben ein.",
+      "Die Vergleichbarkeit mehrerer Auszubildender wird durch ein gebundenes System erschwert.",
+      "Gebundene Beurteilungen fördern durch die vorgegebenen Formulierungen die Subjektivität des Beurteilers."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Bei der gebundenen Beurteilung bewertet der Beurteiler anhand standardisierter Vorgaben (z. B. Bewertungsbögen mit Rating-Skalen). Das schränkt seinen Beurteilungsspielraum ein – genau das ist der zentrale Nachteil dieses Verfahrens. Vergleichbarkeit und Objektivität steigen dadurch hingegen, während Subjektivität reduziert wird; die übrigen genannten Nachteile betreffen die ungebundene (freie) Beurteilung."
+  },
+  {
+    id: 863,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubildender Paul Probezeit. Seine beiden ausbildenc Paul hat bei den meisten Beurteilu erhalten - nicht jedoch bei dem Kril erhält er nur ein „zufriedenstellend",
+    question: "Welche Aussagen treffen at [Test-App]",
+    options: [
+      "Paul kann ohne Unterstützung Aufgaben lösen.",
+      "Paul arbeitet allein und ohne Anleitung durch die ausbildende Fachkraft.",
+      "Paul muss seine Selbstständigkeit deutlich verbessern.",
+      "Pauls Selbstständigkeit liegt im überdurchschnittlichen Leistungsbereich."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Paul erreicht bei den meisten Beurteilungskriterien die Note „gut“: Er arbeitet demnach selbstständig, kann Aufgaben ohne Unterstützung lösen, und seine Selbstständigkeit ist überdurchschnittlich. Nur die Kritikfähigkeit ist mit „zufriedenstellend“ im durchschnittlichen Bereich. Aus einer guten Selbstständigkeit folgt weder, dass Paul völlig ohne Anleitung auskommt, noch dass er sie verbessern muss."
+  },
+  {
+    id: 864,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bekorr dass Ihre Auszubildc drei Wochen unents Nachdem dieses Fel Male erfolgt ist, denl von Mandy zu kündi",
+    question: "Welche Aussi [Test-App]",
+    options: [
+      "Während der gesamten Probezeit gelten die besonderen Bedingungen zur Kündigung nach § 20 BBiG.",
+      "Sie können mit einer Frist von zwei Wochen kündigen.",
+      "Sie können sofort, ohne Einhaltung einer Frist und ohne Angabe eines Kündigungsgrundes kündigen.",
+      "Spätestens zwei Wochen nach Kenntnis des wichtigen Grundes muss die Kündigung ausgesprochen werden."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "In der Probezeit kann das Ausbildungsverhältnis von beiden Seiten jederzeit ohne Einhaltung einer Frist und ohne Begründung gekündigt werden (§ 20 BBiG) – das unentschuldigte Fernbleiben ist dafür kein Hindernis. Die Regeln des § 22 BBiG (fristlose Kündigung aus wichtigem Grund mit Zwei-Wochen-Ausschlussfrist, vgl. § 626 BGB) gelten erst nach Ablauf der Probezeit. Eine Zwei-Wochen-Frist ist in der Probezeit daher nicht einzuhalten."
+  },
+  {
+    id: 865,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie erstellen gerade den Ausbildungsvertra neuen Auszubildenden. Sie machen sich grundsätzlic über die Probezeit.",
+    question: "Welche Besonderheiten sind in der Probezeit [Test-App]",
+    options: [
+      "Eine kürzere Probezeit als die nach BBiG maximal zulässigen vier Monate führt automatisch zu einer Verkürzung der Ausbildung.",
+      "Ein Praktikum zur Eignungsfeststellung muss auf die Probezeit angerechnet werden.",
+      "Die Probezeit bezieht sich generell auf den jeweiligen Betrieb und die Berufsausbildung.",
+      "Vorhergehende Ausbildungen und Tätigkeiten führen nicht automatisch zu einer Verkürzung der Probezeit.",
+      "Wenn ein bisheriger Arbeitnehmer in demselben Betrieb eine Ausbildung beginnt, darf keine Probezeit mehr vereinbart werden.",
+      "Hat ein Auszubildender den Ausbildungsbetrieb gewechselt und möchte die Ausbildung in Ihrem Betrieb fortsetzen, muss trotzdem eine Probezeit vereinbart werden."
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Die Probezeit muss mindestens einen und darf höchstens vier Monate betragen (§ 20 Abs. 1 BBiG) und bezieht sich auf den jeweiligen Betrieb und die konkrete Berufsausbildung. Vorherige Ausbildungen oder Tätigkeiten verkürzen die Probezeit nicht automatisch – darüber muss individuell entschieden werden. Ein vor Ausbildungsbeginn absolviertes Praktikum wird auf die Probezeit nicht angerechnet (§ 20 Abs. 3 BBiG); bei Betriebswechsel kann eine neue Probezeit vereinbart werden, ein Muss besteht nicht."
+  },
+  {
+    id: 866,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind Ausbilderin in e Auszubildenden. Bisher gab es keil Auszubildende. Dies wollen Sie än Team zusammengestellt. Sie überl Bewertungssystem Sie einsetzen ungebundene Bewertung. Im Tearr Fachkräften erarbeiten Sie die Vor- Systems.",
+    question: "Welchen Nachteil hat die ge [Test-App]",
+    options: [
+      "Die jeweiligen Beurteiler kommen aufgrund unterschiedlicher Erfahrungen in Formulierungen zu falschen Bewertungen.",
+      "Gebundene Beurteilungen fördern durch die vorgegebenen Formulierungen die Subjektivität des Beurteilers.",
+      "Die Vergleichbarkeit mehrerer Auszubildender wird durch ein gebundenes System erschwert.",
+      "Die gebundene Beurteilung schränkt den Beurteiler in seiner Bewertung aufgrund der Vorgaben ein."
+    ],
+    correctIndices: [
+      3
+    ],
+    explanation: "Standardisierte Vorgaben (gebundene Beurteilung) begrenzen den Spielraum des Beurteilers – das ist ihr Nachteil. Vergleichbarkeit und Objektivität werden dadurch verbessert, die Subjektivität verringert. Falsche Bewertungen durch individuelle Formulierungsunterschiede sind ein Nachteil der ungebundenen (freien) Beurteilung."
+  },
+  {
+    id: 867,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubildender Ja die Ausbildung verkürzen und dil ablegen kann.",
+    question: "Unter welchen Bedingung Abschlussprüfung bei Jakob mt [Test-App]",
+    options: [
+      "Jakob und der Ausbildende müssen gemeinsam einen Antrag auf Verkürzung stellen, den die zuständige Stelle genehmigen muss.",
+      "Eine Verkürzung der Ausbildungszeit ist zu diesem Zeitpunkt nicht mehr möglich.",
+      "Er hätte den Antrag bereits bei Vertragsabschluss stellen müssen.",
+      "Jakob kann auf eigenen Wunsch die vorzeitige Zulassung zur Abschlussprüfung beantragen.",
+      "Jakobs Leistungen müssen so gut sein, dass er das Ausbildungsziel in der verkürzten Zeit erreicht."
+    ],
+    correctIndices: [
+      3,
+      4
+    ],
+    explanation: "Die vorzeitige Zulassung zur Abschlussprüfung setzt einen Antrag des Auszubildenden oder des Ausbildenden bei der zuständigen Stelle voraus (§ 45 Abs. 1 BBiG) – Jakob kann also selbst beantragen. Voraussetzung ist, dass seine Leistungen so gut sind, dass er das Ausbildungsziel in der kürzeren Zeit erreicht (§ 45 Abs. 1 BBiG). Ein gemeinsamer Antrag ist dagegen für die Verkürzung der Ausbildungszeit nach § 8 Abs. 1 BBiG erforderlich; eine Antragsfrist bei Vertragsabschluss existiert nicht."
+  },
+  {
+    id: 868,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind mit den Leistungen Ihrer neue Karina grundsätzlich zufrieden. Sie haben allerdil dass das Selbstbewusstsein von Karina nicht be: ist. Sie spricht negativ von sich und ihren Arbeits bezeichnet sich als dumm und blöd.",
+    question: "Wie können Sie das Selbstbewusstwein ut von Karina im betrieblichen Alltag stärken? [Test-App]",
+    options: [
+      "Sie sprechen Karina sofort auf Fehler an, damit sie konstruktive und sachliche Kritik kennenlernt.",
+      "Sie sehen Karinas negative Äußerungen als persönlichen Angriff auf sich an, da Sie Karina eingestellt haben.",
+      "Sie prüfen, ob Karinas Selbsteinschätzung auf mangelnder Information Ihrerseits beruht, und achten darauf, sich zukünftig anders zu verhalten.",
+      "Sie ermutigen Karina, positiv von sich zu sprechen und sich nicht selbst herabzuwürdigen."
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Selbstbewusstsein wird durch positive Verstärkung aufgebaut: Karina ermutigen, positiv von sich zu sprechen, und selbst reflektieren, ob mangelnde Information zur negativen Selbsteinschätzung beiträgt. Sofortige Fehleransprache oder ein persönliches Kränktsein fördern das Selbstbewusstsein nicht. Wertschätzende Kommunikation (Rosenberg) unterstützt die Persönlichkeitsentwicklung des Auszubildenden."
+  },
+  {
+    id: 869,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als langjähriger Ausbilder im Hotel NKaiserhofß möchten Sie eine Kollegin als Ausbilderin gewinnen. Sie beschreiben ihr, wie interessant diese Aufgabe ist nicht zuletzt auch dadurch, weil der Ausbilder Kontakt zu unterschiedlichen Personen und Institutionen",
+    question: "Welche Aufgaben haben die an der Ausbildung beteiligten Personen und Institutionen? [Test-App]",
+    options: [
+      "Die Berufsschule ist der Partner im Dualen System und deckt die Inhalte des Rahmenlehrplans ab.",
+      "Die ausbildende Fachkraft ist derjenige, der verantwortlich für die gesamte Ausbildung ist und die berufs- und arbeitspädagogischen Qualifikationen nachweisen muss.",
+      "Die örtliche Agentur für Arbeit wirkt bei Fragen der Berufsbildung im Betrieb mit.",
+      "Die Jugend- und Auszubildendenvertretung bestellt den Ausbilder.",
+      "Die zuständige Stelle berät Unternehmen in Ausbildungs- und Weiterbildungsthemen."
+    ],
+    correctIndices: [
+      0,
+      4
+    ],
+    explanation: "Im Dualen System vermittelt die Berufsschule die Inhalte des Rahmenlehrplans (KMK), während die zuständige Stelle (z. B. IHK) Betriebe in Ausbildungs- und Weiterbildungsfragen berät und die Ausbildung überwacht (§§ 41, 71-76 BBiG). Die ausbildende Fachkraft führt die Ausbildung unter Verantwortung des Ausbildenden durch und muss die Ausbildereignung (AEVO) nachweisen (§ 28 BBiG). Die JAV bestellt keinen Ausbilder, und die Agentur für Arbeit vermittelt und berät, wirkt aber nicht im Betrieb mit."
+  },
+  {
+    id: 870,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Zur Ergänzu Personalfragebogen e Betriebsrat, keine Juge Personalfragebogen ausgefüllt werden.",
+    question: "Welches Recht [Test-App]",
+    options: [
+      "Die Entscheidung, ob ein Personalfragebogen eingesetzt wird, obliegt dem Betriebsrat.",
+      "Der Inhalt des Personalfragebogens bedarf der Zustimmung des Betriebsrats.",
+      "Da keine Jugend- und Auszubildendenvertretung existiert, nimmt der Betriebsrat die Befugnisse der JAV für die Auszubildenden wahr.",
+      "Der Ausbildende darf die Auszubildenden verpflichten, jeden Personalfragebogen uneingeschränkt auszufüllen."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Personalfragebögen bedürfen der Zustimmung des Betriebsrats (§ 94 BetrVG): Über den Einsatz entscheidet der Arbeitgeber, der Inhalt unterliegt der Mitbestimmung. Existiert keine JAV, nimmt der Betriebsrat deren Befugnisse für Jugendliche und Auszubildende wahr (§ 79 BetrVG). Eine unbeschränkte Ausfüllpflicht besteht für Auszubildende nicht."
+  },
+  {
+    id: 871,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "In letzter Zeil hören Sie verstärkt Klagen über das Verh alten Ihres Auszubildenden Paul (2, hr). Er reagiert oft unfreundlich und vergreift sich gegenüber Mitarbeitern im Ton,",
+    question: "Wie sollten Sie darauf reagieren? [Test-App]",
+    options: [
+      "Sie machen Paul in einem Gespräch unter vier Augen darauf aufmerksam, dass sein Verhalten nicht tolerierbar ist.",
+      "Sie versuchen in einem Gespräch, die Gründe für sein Verhalten zu erfahren.",
+      "Sie fragen die anderen Auszubildenden, ob sie sich den Grund seines Verhaltens erklären können.",
+      "Sie drohen Paul, sein Verhalten der Geschäftsführung zu melden.",
+      "Sie stellen ihn in der nächsten Ausbildungsrunde zur Rede und geben ihm die Möglichkeit, sich zu rechtfertigen."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Fehlverhalten wird im Vier-Augen-Gespräch angesprochen; parallel klärt der Ausbilder die Ursachen (erzieherischer Grundsatz: erst verstehen, dann korrigieren). Bloßstellung in der Ausbildungsrunde, Drohungen mit der Geschäftsführung oder das Befragen anderer Auszubildender verletzen den respektvollen Umgang und sind pädagogisch unzweckmäßig."
+  },
+  {
+    id: 872,
+    hf: 4,
+    category: "Abschluss",
+    type: "single",
+    targetCount: 1,
+    situation: "Ihre Auszubildende Sabrina hat die Abschli Verkäuferin erfolgreich bestanden. Sie wird im Untern unbefristet weiterbeschäftigt. Sabrina fragt Sie als zu Ausbilderin bzw. zuständigen Ausbilder, ob sie ein qu; Zeugnis erhalten kann.",
+    question: "Hat Sabrina Anspruch auf ein qualifiziertes Zel [Test-App]",
+    options: [
+      "Sabrina hat auf eigenes Verlangen hin einen Anspruch auf ein qualifiziertes Zeugnis.",
+      "Sabrina hat erst dann einen Anspruch auf ein qualifiziertes Zeugnis, wenn sie das Unternehmen verlässt.",
+      "Sabrina hat generell keinen Anspruch auf ein Zeugnis, wenn sie die Urkunde der zuständigen Stelle und das Abschlusszeugnis der Berufsschule hat, um den Abschluss ihrer Berufsausbildung nachzuweisen.",
+      "Ausbildungszeugnisse sind immer einfache Zeugnisse. Daher hat Sabrina keinen Anspruch auf ein qualifiziertes Zeugnis.",
+      "Da Sabrina unbefristet übernommen wird, hat sie keinen Anspruch auf ein qualifiziertes Zeugnis."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Nach § 37 Abs. 2 BBiG ist dem Auszubildenden auf sein Verlangen ein qualifiziertes Zeugnis über Verhalten und Leistung auszustellen – unabhängig davon, ob er im Betrieb bleibt oder übernommen wird (vgl. § 109 GewO). Weder die Urkunde der zuständigen Stelle noch das Berufsschulzeugnis ersetzen den Anspruch. Ausbildungszeugnisse sind nicht per se nur einfach."
+  },
+  {
+    id: 873,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie bereiten für Ihre Auszubilde zum Thema „Hygiene\" vor und analysierer Lernziele im Ausbildungsrahmenplan. Dat Groblernziele Schwierigkeitsstufen aufwe Ausbildungseinheiten den Taxonomien en stellen Sie für Ihre Unterlagen eine Liste Zl",
+    question: "Welche Aussage zu Taxonomien is Taxonomiestufe [Test-App]",
+    options: [
+      "„Anwenden“ verlangt von den Auszubildenden, einen Begriff, eine Formel, einen Sachverhalt oder eine Vorgehensweise zu erklären.",
+      "„Wissen“ verlangt von den Auszubildenden, wiederzugeben, was sie vorher gelernt haben.",
+      "„Bewerten“ verlangt von den Auszubildenden, das Gelernte in einer neuen Situation anzuwenden.",
+      "„Verstehen“ verlangt von den Auszubildenden, eine Lösung in Hinsicht auf deren Nutzen zu beurteilen."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "Nach der Lernzieltaxonomie (Bloom) bedeutet „Wissen“ das reproduzierende Wiedergeben des zuvor Gelernten – das ist die zutreffende Aussage. „Anwenden“ verlangt den Transfer des Gelernten auf neue Aufgaben, nicht das Erklären von Begriffen. „Bewerten“ meint das Beurteilen nach Kriterien und „Verstehen“ das Erfassen von Zusammenhängen – die übrigen Optionen vertauschen die Stufen."
+  },
+  {
+    id: 874,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "In letzter Zeit hören Sie verstärkt Klagen üt Verhalten Ihres Auszubildenden Paul (2. Ausbildungs reagiert oft unfreundlich und vergreift sich gegenübe im Ton.",
+    question: "Wie sollten Sie darauf reagieren? [Test-App]",
+    options: [
+      "Sie machen Paul in einem Gespräch unter vier Augen darauf aufmerksam, dass sein Verhalten nicht tolerierbar ist.",
+      "Sie stellen ihn in der nächsten Ausbildungsrunde zur Rede und geben ihm die Möglichkeit, sich zu rechtfertigen.",
+      "Sie drohen Paul, sein Verhalten der Geschäftsführung zu melden.",
+      "Sie fragen die anderen Auszubildenden, ob sie sich den Grund seines Verhaltens erklären können.",
+      "Sie versuchen in einem Gespräch, die Gründe für sein Verhalten zu erfahren."
+    ],
+    correctIndices: [
+      0,
+      4
+    ],
+    explanation: "Fehlverhalten wird zeitnah in einem Vier-Augen-Gespräch angesprochen; zugleich sucht der Ausbilder die Ursachen (erzieherischer Grundsatz: erst verstehen, dann korrigieren). Bloßstellung vor der Ausbildungsrunde, Drohungen mit der Geschäftsführung oder Befragung anderer Auszubildender verletzen den respektvollen Umgang und sind unzweckmäßig."
+  },
+  {
+    id: 875,
+    hf: 4,
+    category: "Abschluss",
+    type: "single",
+    targetCount: 1,
+    situation: "Ihre Auszubildende Sabrina hat die Abschlus Verkäuferin erfolgreich bestanden. Sie wird im Unternel unbefristet weiterbeschäftigt. Sabrina fragt Sie als zust Ausbilderin bzw. zuständigen Ausbilder, ob sie ein quali Zeugnis erhalten kann.",
+    question: "Hat Sabrina Anspruch auf ein qualifiziertes Zeug [Test-App]",
+    options: [
+      "Ausbildungszeugnisse sind immer einfache Zeugnisse. Daher hat Sabrina keinen Anspruch auf ein qualifiziertes Zeugnis.",
+      "Sabrina hat auf eigenes Verlangen hin einen Anspruch auf ein qualifiziertes Zeugnis.",
+      "Sabrina hat generell keinen Anspruch auf ein Zeugnis, wenn sie die Urkunde der zuständigen Stelle und das Abschlusszeugnis der Berufsschule hat, um den Abschluss ihrer Berufsausbildung nachzuweisen.",
+      "Da Sabrina unbefristet übernommen wird, hat sie keinen Anspruch auf ein qualifiziertes Zeugnis.",
+      "Sabrina hat erst dann einen Anspruch auf ein qualifiziertes Zeugnis, wenn sie das Unternehmen verlässt."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "§ 37 Abs. 2 BBiG: Auf Verlangen des Auszubildenden ist ein qualifiziertes Zeugnis über Verhalten und Leistung auszustellen – auch bei unbefristeter Weiterbeschäftigung (vgl. § 109 GewO). Der Anspruch besteht während des gesamten Bestehens des Verhältnisses, nicht erst beim Ausscheiden. Ausbildungszeugnisse sind nicht generell nur einfache Zeugnisse."
+  },
+  {
+    id: 876,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie müssen für Ihre Auszubil Ausbildungszeugnis schreiben. Xenia der Abschlussprüfung verlassen, weil s Neben der Formulierungen über Verhall sich Gedanken über eine angemessene",
+    question: "Welche der Schlussformeln ents Bewertung? [Test-App]",
+    options: [
+      "Wir danken Xenia für ihren Einsatz und wünschen ihr persönlich viel Erfolg.",
+      "Wir danken Xenia für ihre Mitarbeit.",
+      "Für ihren Berufs- und Lebensweg wünschen wir ihr viel Erfolg.",
+      "Wir bedauern sehr, Xenia zu verlieren. Wir wünschen ihr für ihre berufliche und persönliche Zukunft viel Erfolg.",
+      "Wir wünschen Xenia für den weiteren Weg alles Gute und bedauern ihre Entscheidung, das Unternehmen zu verlassen.",
+      "Wir wünschen Xenia, dass sie auf ihrem Berufsweg Erfolg haben möge."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "In der Zeugnissprache drücken Dank für den Einsatz plus persönlicher Erfolgswunsch sowie die Formel „Berufs- und Lebensweg“ eine gute Beurteilung aus. Das Bedauern des Ausscheidens kombiniert mit Wünschen für die berufliche und persönliche Zukunft kodiert dagegen „sehr gut“ und liegt über der gefragten Stufe; knapper Dank ohne Wunsch entspricht „befriedigend“, der Konjunktiv („dass sie Erfolg haben möge“) und das Bedauern ihrer Entscheidung werten ab."
+  },
+  {
+    id: 877,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzelhand dass in der Lernzieltaxonomie Lernziele nacl Schwierigkeitsgrad geordnet werden. Sie pla Ausbildungseinheit.",
+    question: "Welches Lernziel hat die TaxonomieS [Test-App]",
+    options: [
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden bearbeiten eine Reklamation.",
+      "Die Auszubildenden benennen die Funktionen des Warenwirtschaftssystems.",
+      "Die Auszubildenden kontrollieren eingehende Ware."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "Das Bearbeiten einer Reklamation erfordert Analysieren, Abwägen und eigenständiges Handeln und liegt damit auf der höchsten Taxonomiestufe (Bewerten/Problemlösen nach Bloom). Das Benennen der Funktionen ist der Stufe „Wissen“ zugeordnet, das Eingeben neuer Waren und das Kontrollieren eingehender Ware der Stufe „Anwenden“."
+  },
+  {
+    id: 878,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie veranstalten regell ausbildenden Fachkräfte. Beim Begriff „berufliche Handlungsfät",
+    question: "Wie erklären Sie Ihren alk Begriff? Die berufliche Handlung [Test-App]",
+    options: [
+      "beschreibt die Reproduktion bereits gelernter beruflicher Tätigkeiten.",
+      "umfasst die für die Ausübung einer beruflichen Tätigkeit erforderlichen Fertigkeiten, Kenntnisse und personalen Kompetenzen.",
+      "bedeutet das selbstständige Planen, Durchführen und Kontrollieren beruflicher Aufgaben.",
+      "hat der Auszubildende erst erreicht, wenn er die Abschlussprüfung bestanden hat.",
+      "ist in eine berufsfeldbreite allgemeine Bildung und eine darauf aufbauende Zusatzqualifikation gegliedert."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Berufliche Handlungsfähigkeit umfasst die für die Berufsausübung erforderlichen Fertigkeiten, Kenntnisse und personalen Kompetenzen (Fach-, Methoden-, Sozial- und Humankompetenz) und befähigt zum selbstständigen Planen, Durchführen und Kontrollieren beruflicher Aufgaben. Sie ist mehr als die Reproduktion gelernter Tätigkeiten und nicht identisch mit dem Bestehen der Abschlussprüfung."
+  },
+  {
+    id: 879,
+    hf: 1,
+    category: "Planung",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind Ausbilder in einem internati Unternehmen. Ein Auszubildender im 2. Ausbil Möglichkeit gehört, Teile der Ausbildung im Au Er fordert einen Auslandseinsatz in Frankreich erklären ihm, dass er keinen Anspruch auf dies hat.",
+    question: "Welche Aussage beinhaltet die richtige [Test-App]",
+    options: [
+      "Teile der Ausbildung im Ausland müssen vor Beginn der Ausbildung von der zuständigen Stelle genehmigt werden.",
+      "Ausbildungsmaßnahmen außerhalb der Ausbildungsstätte gestatten Auslandseinsätze bis zu einem ganzen Ausbildungsjahr.",
+      "In der Ausbildungsordnung seines Berufes müssten Auslandsaufenthalte vorgeschrieben sein.",
+      "Das Berufsbildungsgesetz gibt keinen Rechtsanspruch auf einen Auslandseinsatz vor."
+    ],
+    correctIndices: [
+      3
+    ],
+    explanation: "Nach § 2 Abs. 3 BBiG können Teile der Berufsausbildung im Ausland durchgeführt werden, wenn sie dem Ausbildungsziel dienen; die Dauer ist begrenzt. Ein Rechtsanspruch des Auszubildenden auf einen Auslandseinsatz besteht nicht – er setzt eine freiwillige Vereinbarung voraus. Weder die Ausbildungsordnung noch Pflichten aus dem BBiG begründen einen solchen Anspruch."
+  },
+  {
+    id: 880,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind als Ausbilder verant\\ Auszubildende in kaufmännischen Ausl monatlich treffen Sie sich mit allen, um besprechen. In den letzten Wochen hat Fachkräfte bei Ihnen beschwert, dass e ständig unterbrechen, wenn sie etwas Bemerkungen machen.",
+    question: "Was vermitteln Sie Ihren Auszub zum Thema wertschätzende Kommunil [Test-App]",
+    options: [
+      "In wertschätzender Kommunikation sollte Kritik im besten Fall an der Person und nicht an ihrem Verhalten festgemacht werden.",
+      "Wertschätzende Kommunikation beinhaltet, dem Gesprächspartner nicht zuzuhören, ihm ins Wort zu fallen und ihn zu unterbrechen.",
+      "Zu wertschätzender Kommunikation gehört es, die Gefühle und Perspektiven des Gegenübers nachzuvollziehen.",
+      "Wertschätzende Kommunikation ist durch einen respektvollen Umgang miteinander gekennzeichnet."
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Wertschätzende Kommunikation (Rosenberg) zeichnet sich durch aktives Zuhören, Perspektiv- und Gefühlsübernahme sowie respektvollen Umgang aus. Kritik wird dabei am Verhalten bzw. an der Sache geäußert – nie an der Person. Nicht-Zuhören und Unterbrechen sind mit Wertschätzung unvereinbar."
+  },
+  {
+    id: 881,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre Auszubildenden kommen mit der Forderungj eine Jugend, und Auszubildendenvertretung (JAV) wählen zu wollen, auf Sie zu, Sie begrüßen diese Idee und informieren die Auszubildenden Über Grundsätzliches zur Wahl einer JAV Es existiert ein Betriebsrat in ihrem Unternehmen. Das Unternehmen hat insgesamt 40 Mitarbeitende,",
+    question: "Welche Aussagen sind richtig? [Test-App]",
+    options: [
+      "Sie sind als Ausbilder verpflichtet, die Wahlen zur JAV zu organisieren.",
+      "Die JAV darf unabhängig von der Anzahl der vertretenen Personen während der Arbeitszeit Sprechstunden einrichten.",
+      "Die JAV entsendet den Vorsitzenden in die Geschäftsführung des Unternehmens.",
+      "Die Wahlen zur JAV finden alle zwei Jahre statt.",
+      "Der Betriebsrat setzt einen Wahlvorstand für die JAV-Wahl ein."
+    ],
+    correctIndices: [
+      3,
+      4
+    ],
+    explanation: "Die JAV wird alle zwei Jahre gewählt (§ 64 BetrVG); den Wahlvorstand für die JAV-Wahl bestellt der Betriebsrat (§ 61 BetrVG). Sprechstunden während der Arbeitszeit richten sich nach § 65 BetrVG und sind nicht unabhängig von der Anzahl der vertretenen Jugendlichen zulässig. Die JAV entsendet niemanden in die Geschäftsführung, und die Organisation der Wahl ist nicht Aufgabe des Ausbilders."
+  },
+  {
+    id: 882,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie besprechen mit Ihrer ausbilde Probleme im Umgang mit der noch in der Pr Auszubildenden Tina: Sie kann sich nicht ko sie schwierig sich neue Informationen zu mc",
+    question: "Wie sollte die zuständige ausbildenck Verhalten umgehen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft überträgt Tina Aufgaben, die sie aufgrund ihrer Vorkenntnisse lösen kann, und ermöglicht ihr so Erfolgserlebnisse.",
+      "Die ausbildende Fachkraft überträgt Tina nur Routineaufgaben, um ihre Konzentrationsfähigkeit zu fördern.",
+      "Die ausbildende Fachkraft droht Tina mit der Kündigung zum Ende der Probezeit, um sie zur Anstrengung zu motivieren.",
+      "Die ausbildende Fachkraft ermittelt Tinas Lernstand und passt ihre Ausbildungsmethoden entsprechend an."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Erfolgserlebnisse durch passende, mit den Vorkenntnissen lösbare Aufgaben fördern Motivation und Konzentration. Zusätzlich sollte die ausbildende Fachkraft den Lernstand ermitteln und die Ausbildungsmethoden individuell anpassen. Drohungen wirken demotivierend, und reine Routineaufgaben bilden nicht weiter."
+  },
+  {
+    id: 883,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie müssen Ausbildungszeugnis der Abschlussprüfung Neben der Formulierur sich Gedanken über eil",
+    question: "Welche der Sch Bewertung? [Test-App]",
+    options: [
+      "Wir wünschen Xenia alles Gute und bedauern ihre Entscheidung, das Unternehmen zu verlassen.",
+      "Wir wünschen Xenia, dass sie auf ihrem Berufsweg Erfolg haben möge.",
+      "Wir danken Xenia für ihren Einsatz und wünschen ihr persönlich viel Erfolg.",
+      "Für ihren Berufs- und Lebensweg wünschen wir Xenia viel Erfolg.",
+      "Wir bedauern sehr, Xenia zu verlieren. Wir wünschen ihr für ihre berufliche und persönliche Zukunft viel Erfolg.",
+      "Wir danken Xenia für ihre Mitarbeit."
+    ],
+    correctIndices: [
+      2,
+      3
+    ],
+    explanation: "Dank für den Einsatz mit persönlichem Erfolgswunsch sowie die Formel „Berufs- und Lebensweg“ codieren in der Zeugnissprache eine gute Beurteilung. Das Bedauern des Ausscheidens mit Wünschen für die berufliche und persönliche Zukunft entspricht „sehr gut“, der knappe Dank ohne Wunsch „befriedigend“, der Konjunktiv und das Bedauern ihrer Entscheidung werten ab."
+  },
+  {
+    id: 884,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bereiten die Ubernahme der Auszubildenden, die demnächst die Abschlussprüfung ablegen werden, vor. Sie haben die Möglichkeit zwei Auszubildende befristet und zwei Auszubildende unbefristet zu übernehmen, Keiner der Auszubildenden ist in der Jugend- und Auszubildendenvertretung (JAV). Ihr Unternehmen hat 75 Mitarbeitende. Es existiert ein Betriebsrat und eine JAV.",
+    question: "Welche Rechte hat die Arbeitnehmervertretung? [Test-App]",
+    options: [
+      "Sie müssen die JAV von der geplanten Übernahme unterrichten.",
+      "Der Betriebsrat darf die Zustimmung verweigern, muss aber die Gründe mitteilen.",
+      "Beim Betriebsrat ist vor der Einstellung die Zustimmung einzuholen.",
+      "Der Betriebsrat darf bestimmen, welche der Auszubildenden befristet und welche unbefristet übernommen werden."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Die Übernahme der Auszubildenden ist eine personelle Einzelmaßnahme: Der Betriebsrat ist vor der Einstellung im Zustimmungsverfahren zu beteiligen (§ 99 BetrVG), und die JAV ist zu unterrichten und anzuhören (§ 70 BetrVG). Der Betriebsrat kann die Zustimmung nur unter den engen Voraussetzungen des § 99 Abs. 2 BetrVG verweigern. Über Auswahl und Befristung der Übernahme entscheidet allein der Arbeitgeber."
+  },
+  {
+    id: 885,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind Ausbilderin in einer Bank mit acl Auszubildenden. Bisher gab es kein Beurteilungssy Auszubildende. Dies wollen Sie ändern und haben Team zusammengestellt. Sie überlegen nun, welch Bewertungssystem Sie einsetzen sollen, die gebun ungebundene Bewertung. Im Team mit den ausbild Fachkräften erarbeiten Sie die Vor- und Nachteile d Systems.",
+    question: "Welchen Nachteil hat die gebundene Bewert [Test-App]",
+    options: [
+      "Die gebundene Beurteilung schränkt den Beurteiler in seiner Bewertung aufgrund der Vorgaben ein.",
+      "Gebundene Beurteilungen fördern durch die vorgegebenen Formulierungen die Subjektivität des Beurteilers.",
+      "Die Vergleichbarkeit mehrerer Auszubildender wird durch ein gebundenes System erschwert.",
+      "Die jeweiligen Beurteiler kommen aufgrund unterschiedlicher Erfahrungen in Formulierungen zu falschen Bewertungen."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Gebundene Beurteilungsverfahren (standardisierte Bögen, Rating-Skalen) erhöhen Objektivität und Vergleichbarkeit, begrenzen aber den Beurteilungsspielraum des Beurteilers – das ist ihr Nachteil. Falsche Bewertungen durch unterschiedliche Formulierungen der Beurteiler sind dagegen ein Nachteil der ungebundenen (freien) Beurteilung."
+  },
+  {
+    id: 886,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie veransta ausbildenden Fachkrä Begriff „berufliche Har",
+    question: "Wie erklären Sie Begriff? Die berufliche [Test-App]",
+    options: [
+      "umfasst die für die Ausübung einer beruflichen Tätigkeit erforderlichen Fertigkeiten, Kenntnisse und personalen Kompetenzen.",
+      "beschreibt die Reproduktion bereits gelernter beruflicher Tätigkeiten.",
+      "ist in eine berufsfeldbreite allgemeine Bildung und eine darauf aufbauende Zusatzqualifikation gegliedert.",
+      "bedeutet das selbstständige Planen, Durchführen und Kontrollieren beruflicher Aufgaben.",
+      "hat der Auszubildende erst erreicht, wenn er die Abschlussprüfung bestanden hat."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Berufliche Handlungsfähigkeit umfasst die erforderlichen Fertigkeiten, Kenntnisse und personalen Kompetenzen und ermöglicht das selbstständige Planen, Durchführen und Kontrollieren beruflicher Aufgaben. Sie geht über die Reproduktion gelernter Tätigkeiten hinaus und fällt nicht mit dem Bestehen der Abschlussprüfung zusammen."
+  },
+  {
+    id: 887,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzelha dass in der Lernzieltaxonomie Lernziele n Schwierigkeitsgrad geordnet werden. Sie Ausbildungseinheit.",
+    question: "Welches Lernziel hat die Taxonomi [Test-App]",
+    options: [
+      "Die Auszubildenden bearbeiten eine Reklamation.",
+      "Die Auszubildenden kontrollieren eingehende Ware.",
+      "Die Auszubildenden benennen die Funktionen des Warenwirtschaftssystems.",
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Das Bearbeiten einer Reklamation verlangt Analysieren, Bewerten und eigenständiges Problemlösen und entspricht damit der höchsten Taxonomiestufe. Kontrollieren eingehender Ware und das Eingeben neuer Waren sind der Stufe „Anwenden“ zugeordnet, das Benennen der Funktionen der Stufe „Wissen“."
+  },
+  {
+    id: 888,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie besprechen mit Ihrer ausbil( Probleme im Umgang mit der noch in der Auszubildenden Tina: Sie kann sich nicht sie schwierig sich neue Informationen zu",
+    question: "Wie sollte die zuständige ausbilder Verhalten umgehen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft überträgt Tina Aufgaben, die sie aufgrund ihrer Vorkenntnisse lösen kann, und ermöglicht ihr so Erfolgserlebnisse.",
+      "Die ausbildende Fachkraft überträgt Tina nur Routineaufgaben, um ihre Konzentrationsfähigkeit zu fördern.",
+      "Die ausbildende Fachkraft droht Tina mit der Kündigung zum Ende der Probezeit, um sie zur Anstrengung zu motivieren.",
+      "Die ausbildende Fachkraft ermittelt Tinas Lernstand und passt ihre Ausbildungsmethoden entsprechend an."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Passende Aufgaben, die Tina mit ihren Vorkenntnissen lösen kann, schaffen Erfolgserlebnisse und stärken Motivation und Konzentration. Zusätzlich sollte die Fachkraft den individuellen Lernstand ermitteln und die Ausbildungsmethoden anpassen. Drohungen und reine Routineaufgaben demotivieren und fördern die Lernbereitschaft nicht."
+  },
+  {
+    id: 889,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "In letzter Ze Verhalten Ihres Auszul reagiert oft unfreundlic im Ton.",
+    question: "Wie sollten Sie [Test-App]",
+    options: [
+      "Sie machen Paul in einem Gespräch unter vier Augen darauf aufmerksam, dass sein Verhalten nicht tolerierbar ist.",
+      "Sie versuchen in einem Gespräch, die Gründe für sein Verhalten zu erfahren.",
+      "Sie drohen Paul, sein Verhalten der Geschäftsführung zu melden.",
+      "Sie fragen die anderen Auszubildenden, ob sie sich den Grund seines Verhaltens erklären können.",
+      "Sie stellen ihn in der nächsten Ausbildungsrunde zur Rede und geben ihm die Möglichkeit, sich zu rechtfertigen."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Unangemessenes Verhalten wird im persönlichen Vier-Augen-Gespräch angesprochen, und der Ausbilder klärt die Hintergründe (erst verstehen, dann korrigieren). Bloßstellung in der Ausbildungsrunde, Drohungen mit der Geschäftsführung oder Befragung anderer Auszubildender sind mit einem respektvollen, wertschätzenden Umgang unvereinbar."
+  },
+  {
+    id: 890,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzelhandesge dass in der Lernzieltaxonomie Lernziele nach der Schwierigkeitsgrad geordnet werden. Sie planen Ausbildungseinheit.",
+    question: "Welches Lernziel hat die Taxonomiestufe [Test-App]",
+    options: [
+      "Die Auszubildenden benennen die Funktionen des Warenwirtschaftssystems.",
+      "Die Auszubildenden kontrollieren eingehende Ware.",
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden bearbeiten eine Reklamation."
+    ],
+    correctIndices: [
+      3
+    ],
+    explanation: "Das Bearbeiten einer Reklamation erfordert Analysieren, Abwägen und eigenständiges Handeln und liegt auf der höchsten Taxonomiestufe (Bewerten/Problemlösen). Benennen entspricht der Stufe „Wissen“, Kontrollieren und Eingeben der Stufe „Anwenden“."
+  },
+  {
+    id: 891,
+    hf: 1,
+    category: "Planung",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind Ausbilder in einem international tätic Unternehmen. Ein Auszubildender im 2. Ausbildungsjah Möglichkeit gehört, Teile der Ausbildung im Ausland zu Er fordert einen Auslandseinsatz in Frankreich bei Ihner erklären ihm, dass er keinen Anspruch auf diesen Ausla hat.",
+    question: "Welche Aussage beinhaltet die richtige Begründl [Test-App]",
+    options: [
+      "Ausbildungsmaßnahmen außerhalb der Ausbildungsstätte gestatten Auslandseinsätze im dritten Ausbildungsjahr.",
+      "Ausbildung im Ausland muss vor Beginn der Ausbildung von der zuständigen Stelle genehmigt werden.",
+      "Das Berufsbildungsgesetz gibt keinen Rechtsanspruch vor.",
+      "Im Rahmen seiner Pflichten gemäß BBiG kann lediglich der Ausbildende Auslandseinsätze anweisen.",
+      "In der Ausbildungsordnung seines Berufes muss ein Auslandsaufenthalt vorgeschrieben sein."
+    ],
+    correctIndices: [
+      2
+    ],
+    explanation: "Nach § 2 Abs. 3 BBiG kann ein Teil der Berufsausbildung im Ausland durchgeführt werden (bis zu einem Achtel der Dauer; darüber hinaus nur mit Zustimmung der zuständigen Stelle). Das BBiG eröffnet damit eine Möglichkeit, aber keinen einklagbaren Anspruch des Auszubildenden; die Entscheidung liegt beim Ausbildenden. Ein vorgeschriebener Auslandsaufenthalt in der Ausbildungsordnung ist nicht erforderlich, eine altersbezogene Beschränkung auf das dritte Ausbildungsjahr existiert nicht."
+  },
+  {
+    id: 892,
+    hf: 4,
+    category: "Abschluss",
+    type: "single",
+    targetCount: 1,
+    situation: "Ihre Auszubildende Sabrina Verkäuferin erfolgreich bestanden. Sie unbefristet weiterbeschäftigt. Sabrina f Ausbilderin bzw. zuständigen Ausbilder Zeugnis erhalten kann.",
+    question: "Hat Sabrina Anspruch auf ein qu [Test-App]",
+    options: [
+      "Sabrina hat auf eigenes Verlangen hin Anspruch auf ein qualifiziertes Zeugnis.",
+      "Sabrina hat generell keinen Anspruch, da sie mit der Urkunde der zuständigen Stelle und dem Abschlusszeugnis der Berufsschule bereits Nachweise über den Abschluss ihrer Berufsausbildung nach BBiG besitzt.",
+      "Sabrina hat erst dann einen Anspruch auf ein qualifiziertes Zeugnis, wenn sie das Unternehmen verlässt.",
+      "Da Sabrina unbefristet übernommen wurde, hat sie Anspruch auf ein qualifiziertes Zeugnis.",
+      "Ausbildungszeugnisse sind immer einfache Zeugnisse. Daher hat Sabrina keinen Anspruch auf ein qualifiziertes Zeugnis."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Nach § 16 Abs. 1 BBiG erhält der Auszubildende bei Beendigung des Berufsausbildungsverhältnisses ein einfaches Zeugnis; auf Verlangen ist es nach § 16 Abs. 2 BBiG um Angaben über Verhalten und Leistung zu erweitern (qualifiziertes Zeugnis). Das Ausbildungsverhältnis endet mit Bestehen der Abschlussprüfung (§ 21 BBiG), auch wenn das Arbeitsverhältnis durch Übernahme fortgeführt wird. Die qualifizierte Form gibt es also nur auf Verlangen, nicht automatisch durch die Übernahme."
+  },
+  {
+    id: 893,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie bereiten für Ihre Auszubildend zum Thema „Hygiene\" vor und analysieren d Lernziele im Ausbildungsrahmenplan. Dabei Groblernziele Schwierigkeitsstufen aufweise Ausbildungseinheiten den Taxonomien stellen Sie für Ihre Unterlagen eine Liste",
+    question: "Welche Aussage zu Taxonomien ist k Taxonomiestufe . [Test-App]",
+    options: [
+      "„Anwenden“ verlangt von den Auszubildenden, einen Begriff, eine Formel, einen Sachverhalt oder einen Vorgang zu erklären.",
+      "„Bewerten“ verlangt von den Auszubildenden, Gelerntes in einer neuen Situation anzuwenden.",
+      "„Verstehen“ verlangt von den Auszubildenden, eine Lösung in Hinsicht auf deren Nutzen für die Problemlösung zu beurteilen.",
+      "„Wissen“ verlangt von den Auszubildenden, wiederzugeben, was sie vorher gelernt haben."
+    ],
+    correctIndices: [
+      3
+    ],
+    explanation: "In der Lernzieltaxonomie ist „Wissen“ die unterste Stufe (Reproduktion): Gelerntes wird einfach wiedergegeben. Das Erklären gehört zur Stufe „Verstehen“, die Nutzung in neuen Situationen zur Stufe „Anwenden“ und das Beurteilen nach Nutzenkriterien zur Stufe „Bewerten“ – die übrigen Aussagen vertauschen die Stufen."
+  },
+  {
+    id: 894,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind Ausbilderin in einer E Auszubildenden. Bisher gab es kein Bet Auszubildende. Dies wollen Sie ändern Team zusammengestellt. Sie überlegen Bewertungssystem Sie einsetzen soller ungebundene Bewertung. Im Team mit Fachkräften erarbeiten Sie die Vor- und Systems.",
+    question: "Welchen Nachteil hat die gebunc [Test-App]",
+    options: [
+      "Die Vergleichbarkeit mehrerer Auszubildender wird durch ein gebundenes System erschwert.",
+      "Die gebundene Beurteilung schränkt den Beurteiler in seiner Bewertung aufgrund der Vorgaben ein.",
+      "Gebundene Beurteilungen fördern durch die vorgegebenen Formulierungen die Subjektivität des Beurteilers.",
+      "Die jeweiligen Beurteiler kommen aufgrund unterschiedlicher Erfahrungen bei der Ausfüllung der Formulare zu falschen Bewertungen."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "Bei der gebundenen Beurteilung wählt der Beurteiler aus vorgegebenen Formulierungen bzw. Antwortkategorien aus. Das erhöht Objektivität und Vergleichbarkeit, schränkt aber die Differenzierungsmöglichkeiten und die Freiheit des Beurteilers ein – genau das ist der Nachteil. Gebundene Verfahren reduzieren die Subjektivität eher, und falsche Bewertungen durch unterschiedliche Erfahrungen sind kein typischer Nachteil dieser Form."
+  },
+  {
+    id: 895,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als langjähriger Ausbilder im Hotel „Kaiserhof\" mö Sie eine Kollegin als Ausbilderin gewinnen. Sie beschreiben il interessant diese Aufgabe ist, nicht zuletzt auch dadurch, we Ausbilder Kontakt zu unterschiedlichen Personen und Institul hat.",
+    question: "Welche Aufgaben haben die an der Ausbildung beteilic Personen und Institutionen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft ist derjenige, die verantwortlich für die gesamte Ausbildung ist und die Berufs- und arbeitspädagogischen Qualifikationen nachweisen muss.",
+      "Die Jugend- und Auszubildendenvertretung bestellt den Ausbilder.",
+      "Die Berufsschule ist der Partner im Dualen System und deckt die Inhalte des Rahmenlehrplanes ab.",
+      "Die örtliche Agentur für Arbeit wirkt bei Fragen der Berufsbildung im Betrieb mit.",
+      "Die zuständige Stelle berät Unternehmen in Ausbildungsthemen."
+    ],
+    correctIndices: [
+      2,
+      4
+    ],
+    explanation: "Die Berufsschule ist der Lernort des dualen Systems und vermittelt die Inhalte des Rahmenlehrplans (§ 2 Abs. 2 BBiG; Schulrecht der Länder). Die zuständige Stelle (IHK/HWK) berät Betriebe in allen Fragen der Berufsbildung (§ 76 Abs. 1 Nr. 2 BBiG). Die JAV vertritt lediglich Interessen (§§ 60 ff. BetrVG) und bestellt keinen Ausbilder; für die Gesamtverantwortung und die persönliche Eignung ist der Ausbildende zuständig (§§ 28, 29 BBiG), weshalb die erste Aussage die Rolle der ausbildenden Fachkraft verfälscht."
+  },
+  {
+    id: 896,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind als Ausbilder für fünf A verantwortlich. Diese müssen jetzt im letz zweiten Teil der gestreckten Abschlusspr(",
+    question: "Welche Punkte müssen Sie für die beachten? [Test-App]",
+    options: [
+      "Sie müssen den von der zuständigen Stelle vorgegebenen Termin für die Anmeldung einhalten.",
+      "Sie überprüfen, ob die Auszubildenden ihre Ausbildungsnachweise geführt haben und ob Sie diese kontrolliert und unterzeichnet haben.",
+      "Sie müssen nichts beachten, die Anmeldung zur gestreckten Prüfung gilt auch für Teil 2.",
+      "Sie fordern die Auszubildenden auf, sich selbst fristgerecht innerhalb der Anmeldefrist bei der zuständigen Stelle anzumelden.",
+      "Sie können nur die Auszubildenden anmelden, die den ersten Teil der gestreckten Abschlussprüfung bestanden haben."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Nach § 43 Abs. 1 BBiG meldet der Ausbildende die Auszubildenden fristgerecht zur Abschlussprüfung an; auch für Teil 2 der gestreckten Prüfung gelten eigene Anmeldefristen der zuständigen Stelle. Zulassungsvoraussetzung ist u. a., dass die Ausbildungsnachweise ordnungsgemäß geführt und vom Ausbildenden kontrolliert und abgezeichnet wurden (§ 13 Satz 2 Nr. 7, § 43 Abs. 1 Nr. 4 BBiG). Azubis melden sich nicht selbst an, und das Bestehen von Teil 1 ist keine Bedingung für die Anmeldung zu Teil 2."
+  },
+  {
+    id: 897,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Um dem drohenden Fac Unternehmen vorzubeugen, denke Möglichkeiten der Bewerberakquis betriebliche Einstiegsqualifizierunc jugendliche Praktikantin ausgesuc Tarifvertrag.",
+    question: "Welche Regelungen gelten i [Test-App]",
+    options: [
+      "Der Praktikumsvertrag wird zwischen dem Betrieb und der zuständigen Agentur für Arbeit geschlossen.",
+      "Ihre Praktikantin muss vor Antritt von einem Arzt untersucht worden sein und die Bescheinigung der Erstuntersuchung nach dem JArbSchG bei Ihnen vorlegen.",
+      "Die Praktikantin erhält als Praktikantin die Mindestausbildungsvergütung nach dem BBiG.",
+      "Die Arbeitsagentur beteiligt sich an den Sozialversicherungsbeiträgen.",
+      "Ihre Praktikantin hat nach dem Praktikum einen Anspruch auf Übernahme in ein reguläres Ausbildungsverhältnis."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Die Einstiegsqualifizierung ist ein betriebliches Langzeitpraktikum zur Heranführung an eine Berufsausbildung (§ 54a SGB III); der Vertrag wird zwischen Betrieb und Teilnehmer geschlossen, und die Agentur für Arbeit übernimmt/beteiligt sich an den Sozialversicherungsbeiträgen. Ist die Praktikantin unter 18, darf sie nur mit ärztlicher Erstuntersuchung beschäftigt werden (§ 32 JArbSchG). Einen Übernahmeanspruch gibt es nicht – eine erfolgreiche EQ kann die spätere Ausbildung um bis zu sechs Monate verkürzen; die BBiG-Mindestvergütung gilt nicht."
+  },
+  {
+    id: 898,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzelhandesgeschäft wisser dass in der Lernzieltaxonomie Lernziele nach dem Schwierigkeitsgrad geordnet werden. Sie planen gerade die nä Ausbildungseinheit.",
+    question: "Welches Lernziel hat die Taxonomiestufe (1) \"Wissen\"? [Test-App]",
+    options: [
+      "Die Auszubildenden benennen die Funktionen der Kasse.",
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden bearbeiten eine Reklamation.",
+      "Die Auszubildenden kontrollieren eingehende Waren."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Die Taxonomiestufe „Wissen“ (Reproduktionsebene) verlangt das reine Wiedergeben bzw. Benennen erlernter Inhalte – hier das Benennen der Kassenfunktionen. Wareneingabe ins Warenwirtschaftssystem, Warenkontrolle und Reklamationsbearbeitung erfordern dagegen Anwendung bzw. Transfer und liegen auf höheren Stufen."
+  },
+  {
+    id: 899,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Die neue Ausbilderin Telse Auszubildenden zukünftig regelmäßi",
+    question: "Welche Verhaltensweisen Sinc der Beurteilung? [Test-App]",
+    options: [
+      "Die Ausbilderin orientiert sich vor allem am ersten Eindruck, den die Auszubildenden bei ihr gemacht haben.",
+      "Bei der Bewertung berücksichtigt die Ausbilderin insbesondere die Ergebnisse der kürzlich erbrachten Arbeiten.",
+      "Die Ausbilderin setzt nicht sich selbst als Maßstab für die Bewertung und Beurteilung an.",
+      "Die Ausbilderin bewertet und beurteilt nachsichtig und wohlwollend.",
+      "Die Ausbilderin sieht das Gesamtbild und nicht nur eine positive oder negative Eigenschaft."
+    ],
+    correctIndices: [
+      2,
+      4
+    ],
+    explanation: "Typische Beurteilungsfehler sind der Erste-Eindruck-Fehler, der Aktualitätsfehler (nur die letzten Leistungen) und der Mildefehler; alle verzerren die Urteilsbildung. Korrekt ist, sich nicht am eigenen Verhalten als Maßstab zu orientieren (Ich-Bezogenheitsfehler) und das Gesamtbild aller beobachtbaren Leistungen und Verhaltensweisen zu bewerten."
+  },
+  {
+    id: 900,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind Ausbildungs- und Bezir Lebensmitteleinzelhändlers mit Filialbetric einer der Filialen spricht Sie die neue Aust hat den Eindruck, dass die beiden Auszub zu wenig Eigenmotivation zeigen. Frau Lal verstehen, schließlich hätten sich beide di Immer wieder muss sie die beiden mehrm Tätigkeiten zu erledigen. Frau Lange ist eil verantwortungsvolle Mitarbeiterin und mö \"Motivation\" intensiver beschäftigen. Als Ihnen wissen, wie sie unmittelbar Mahla und Tom diese Aufgaben erledigen",
+    question: "Welche Vorschläge sollten Sie Frau in diesem Fall machen? [Test-App]",
+    options: [
+      "Frau Lange sollte Mahla und Tom immer wieder deutlich machen, dass es in jedem Beruf ungeliebte Tätigkeiten gibt, die aber trotzdem erledigt werden müssen. Weigerungen oder Verzögerungen könnten eine Abmahnung bedeuten.",
+      "Frau Lange überträgt Mahla und Tom zukünftig überwiegend die von den beiden ungeliebten Tätigkeiten, um sie zu disziplinieren.",
+      "Erst wenn sie die ungeliebten Tätigkeiten ohne Widerstand erledigt haben, gibt es wieder interessantere Aufgaben.",
+      "Frau Lange führt mit Mahla und Tom ein Gespräch, in dem sie gemeinsam mit ihnen Ideen zur Lösung des Problems erarbeitet und Ziele vereinbart.",
+      "Frau Lange zeigt Mahla und Tom anhand des betrieblichen Ausbildungsplans, dass auch ungeliebte Tätigkeiten zu ihrer Ausbildung gehören und die Aufgabenstellung nicht nach Interesse erfolgen kann.",
+      "Frau Lange zeigt Mahla und Tom den Nutzen und die Sinnzusammenhänge dieser Aufgaben auf und gibt ihnen zusätzlich abwechslungsreiche, praxisbezogene Aufgaben."
+    ],
+    correctIndices: [
+      3,
+      5
+    ],
+    explanation: "Motivation wird durch Beteiligung und Sinnvermittlung gefördert: Im Gespräch Ursachen klären, gemeinsam Lösungsideen erarbeiten und Ziele vereinbaren; ergänzend den Nutzen der Aufgaben aufzeigen und abwechslungsreiche, praxisbezogene Aufgaben stellen (vgl. § 14 Abs. 1 BBiG – umfassende, zielgerichtete Förderung). Disziplinieren mit ungeliebten Tätigkeiten, das Verweigern interessanter Aufgaben bis zum Gehorsam oder Drohungen mit Abmahnungen wirken demotivierend und pädagogisch kontraproduktiv."
+  },
+  {
+    id: 901,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihre Auszubildenden kor Jugend- und Auszubildendenvertr€ Sie zu. Sie begrüßen diese Idee un über Grundsätzliches zur Wahl eiru in ihrem Unternehmen. Das Untern Mitarbeitende.",
+    question: "Welche Aussagen sind richt [Test-App]",
+    options: [
+      "Die JAV darf unabhängig von der Personenzahl des Betriebs während der Arbeitszeit Sitzungen abhalten.",
+      "Die Wahlen zur JAV finden alle zwei Jahre statt.",
+      "Die JAV entsendet ihren Vorsitzenden in die Sitzungen des Betriebsrats.",
+      "Der Betriebsrat setzt einen Wahlvorstand für die JAV-Wahl ein.",
+      "Sie sind als Ausbilder verpflichtet, die Wahl der JAV zu organisieren."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Nach § 62 Abs. 1 BetrVG wird die JAV alle zwei Jahre in der Zeit vom 1. März bis 31. Mai gewählt; den Wahlvorstand bestellt der Betriebsrat (§ 62 Abs. 2 BetrVG). Eine JAV besteht erst ab in der Regel fünf Arbeitnehmern, von denen drei wahlberechtigt sind (§ 60 BetrVG). Ein JAV-Vertreter nimmt nur an Betriebsratssitzungen teil, die Auszubildende betreffen (§ 68 Abs. 2 BetrVG), und die Organisation der Wahl ist nicht Aufgabe des Ausbilders."
+  },
+  {
+    id: 902,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzelhandesgeschi dass in der Lernzieltaxonomie Lernziele nach dem Schwierigkeitsgrad geordnet werden. Sie planen gera Ausbildungseinheit.",
+    question: "Welches Lernziel hat die Taxonomiestufe (1) [Test-App]",
+    options: [
+      "Die Auszubildenden benennen die Funktionen der Kasse.",
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden bearbeiten eine Reklamation.",
+      "Die Auszubildenden kontrollieren eingehende Waren."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Die Taxonomiestufe „Wissen“ (Reproduktionsebene) verlangt das reine Wiedergeben bzw. Benennen erlernter Inhalte – hier das Benennen der Kassenfunktionen. Wareneingabe ins Warenwirtschaftssystem, Warenkontrolle und Reklamationsbearbeitung erfordern dagegen Anwendung bzw. Transfer und liegen auf höheren Stufen."
+  },
+  {
+    id: 903,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als langjähriger Ausbilder im Hotel „Kaiserhof\" möcht Sie eine Kollegin als Ausbilderin gewinnen. Sie beschreiben ihr, v interessant diese Aufgabe ist, nicht zuletzt auch dadurch, weil dc Ausbilder Kontakt zu unterschiedlichen Personen und Institution hat.",
+    question: "Welche Aufgaben haben die an der Ausbildung beteiligter Personen und Institutionen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft ist derjenige, die verantwortlich für die gesamte Ausbildung ist und die Berufs- und arbeitspädagogischen Qualifikationen nachweisen muss.",
+      "Die Berufsschule ist der Partner im Dualen System und deckt die Inhalte des Rahmenlehrplanes ab.",
+      "Die örtliche Agentur für Arbeit wirkt bei Fragen der Berufsbildung im Betrieb mit.",
+      "Die zuständige Stelle berät Unternehmen in Ausbildungsthemen.",
+      "Die Jugend- und Auszubildendenvertretung bestellt den Ausbilder."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Die Berufsschule ist der Lernort des dualen Systems und vermittelt die Inhalte des Rahmenlehrplans (§ 2 Abs. 2 BBiG; Schulrecht der Länder). Die zuständige Stelle (IHK/HWK) berät Betriebe in allen Fragen der Berufsbildung (§ 76 Abs. 1 Nr. 2 BBiG). Die JAV vertritt lediglich Interessen (§§ 60 ff. BetrVG) und bestellt keinen Ausbilder; für die Gesamtverantwortung und die persönliche Eignung ist der Ausbildende zuständig (§§ 28, 29 BBiG), weshalb die erste Aussage die Rolle der ausbildenden Fachkraft verfälscht."
+  },
+  {
+    id: 904,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszul die Ausbildung verki ablegen kann.",
+    question: "Unter welche Abschlussprüfung b [Test-App]",
+    options: [
+      "Die Verkürzung der Ausbildungszeit wird von Ausbildendem und Auszubildendem gemeinsam vereinbart.",
+      "Die zuständige Stelle muss der Verkürzung zustimmen; die Änderung wird in das Verzeichnis der Berufsausbildungsverträge eingetragen.",
+      "Die Berufsschule muss die Verkürzung der Ausbildungszeit bescheinigen und befürworten.",
+      "Eine Verkürzung der Ausbildungszeit ist nach Vertragsabschluss nicht mehr möglich."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Nach § 8 Abs. 1 BBiG kann die Ausbildungszeit verkürzt werden, wenn das Ausbildungsziel in der kürzeren Zeit erreicht werden kann; die Vereinbarung treffen Ausbildender und Auszubildender gemeinsam (§ 5 Abs. 1 BBiG Vertragsinhalt). Änderungen des Berufsausbildungsvertrags sind der zuständigen Stelle zur Eintragung in das Verzeichnis der Berufsausbildungsverträge vorzulegen (§ 34 Abs. 2 BBiG). Die Berufsschule ist daran nicht beteiligt, und auch nach Vertragsabschluss bleibt eine Verkürzung möglich."
+  },
+  {
+    id: 905,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als Ausbilderin gehört es zu Ihren Unternehmen, die geeigneten Lernorte für di auszuwählen. Bei der Auswahl müssen Sie c Ausstattung, personellen Voraussetzungen Vorgaben berücksichtigen.",
+    question: "Welche Arbeitsplätze sind insbesond Auszubildenden nicht als Lernort geeignet? [Test-App]",
+    options: [
+      "Arbeitsplätze, die Selbstständigkeit und Eigenverantwortung der Auszubildenden entwickeln, da diese Anforderungen den pädagogischen Prinzipien einer ordnungsgemäßen Ausbildung widersprechen.",
+      "Arbeitsplätze, die überwiegend von Kundenkontakt geprägt sind, da Auszubildende keine Beratung und Vertragsabschlüsse tätigen dürfen.",
+      "Arbeitsplätze, die im Ausbildungsrahmenplan als Lernbereiche aufgeführt sind.",
+      "Arbeitsplätze, an denen die Tätigkeiten die Kräfte der Auszubildenden übersteigen oder ausbildungsfremde Arbeiten verrichtet werden.",
+      "Arbeitsplätze, an denen Akkordarbeit oder Prämienarbeit geleistet werden müssen oder Pausenregelungen nicht eingehalten werden können."
+    ],
+    correctIndices: [
+      3,
+      4
+    ],
+    explanation: "Ungeeignete Lernorte sind Plätze mit ausbildungsfremden oder die Kräfte übersteigenden Tätigkeiten (§ 14 Abs. 2 BBiG: es dürfen nur Verrichtungen übertragen werden, die dem Ausbildungszweck dienen) sowie Akkord- und Prämienarbeit, die Jugendlichen nach § 26 JArbSchG verboten ist; Pausen sind zwingend einzuhalten (§§ 11, 19 JArbSchG). Selbstständigkeit und Kundenkontakt sind erwünschte Lernfelder, und im Ausbildungsrahmenplan verankerte Lernbereiche sind per Definition geeignete Lernorte."
+  },
+  {
+    id: 906,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie haben eine besonders leistungssta und wollen ihr ermöglichen, eine kodifizierte erwerben.",
+    question: "Was müssen Sie bezüglich der bestehend Berufsausbildungsverträge dabei beachten? [Test-App]",
+    options: [
+      "Sie werden dem Auszubildenden eine schriftliche Aufstellung der geplanten Zusatzqualifikationen mit Inhaltsbeschreibung und Dauer zur Kenntnis geben.",
+      "Sie werden die Zusatzqualifikationen als Änderung des Berufsausbildungsvertrags vereinbaren.",
+      "Sie werden eine schriftliche Ergänzung zum Berufsausbildungsvertrag ausstellen, die von Ihnen und der Geschäftsführung unterschrieben wird.",
+      "Sie werden die Vereinbarungen der Änderungen zusammen mit der neuen sachlichen und zeitlichen Gliederung der zuständigen Stelle (IHK) zur Eintragung ins Verzeichnis der Berufsausbildungsverträge einreichen."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Die berufsbezogene Zusatzqualifikation muss vertraglich geregelt werden: Nach § 5 Abs. 2a BBiG sind bei Vereinbarung einer Zusatzqualifikation deren Bezeichnung, Inhalt, zeitliche Gliederung und Prüfung zusätzlich festzulegen – sie wird als Änderung/Ergänzung des Berufsausbildungsvertrags vereinbart. Änderungen sind der zuständigen Stelle zur Eintragung in das Verzeichnis der Berufsausbildungsverträge vorzulegen (§ 34 Abs. 2 BBiG). Bloße Information genügt nicht; unterschreiben müssen die Vertragsparteien (Ausbildender, Auszubildender, ggf. gesetzliche Vertreter), nicht pauschal die Geschäftsführung."
+  },
+  {
+    id: 907,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie besprechen mit Ihrer ausbildet Probleme im Umgang mit der noch in der Prc Auszubildenden Tina: Sie kann sich nicht kot sie schwierig sich neue Informationen zu me",
+    question: "Wie sollte die zuständige ausbildende Verhalten umgehen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft ermittelt Tinas Lernstand und passt ihre Ausbildungsmethoden entsprechend an.",
+      "Die ausbildende Fachkraft droht Tina mit der Kündigung zum Ende der Probezeit. So motiviert sie Tina, sich mehr anzustrengen.",
+      "Die ausbildende Fachkraft überträgt Tina nur noch Routineaufgaben. So fördert sie ihre Konzentrationsfähigkeit.",
+      "Die ausbildende Fachkraft überträgt Tina Aufgaben, die diese aufgrund ihrer Vorkenntnisse lösen kann. So ermöglicht sie ihr Erfolgserlebnisse."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Individuelle Förderung (§ 14 Abs. 1 Nr. 1 BBiG) verlangt, den Lernstand zu ermitteln und die Ausbildungsmethoden daran anzupassen. Aufgaben auf passendem Anforderungsniveau erzeugen Erfolgserlebnisse und bauen Konzentration und Motivation auf. Drohungen erzeugen Angst und Druck, reine Routineaufgaben führen zu Unterforderung – beides verschärft das Problem."
+  },
+  {
+    id: 908,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bilden als neue Ausbilderin Einzelhandelsunternehmen aus. Sie wolle des Unternehmens zur Lernprozessbeglei•",
+    question: "Welche der Antworten beschreiben der Lernprozessbegleitung? [Test-App]",
+    options: [
+      "Sie überlassen den Auszubildenden vollständig die Auswahl der Lernziele.",
+      "Sie besprechen mit jedem Auszubildenden regelmäßig seinen Lernbedarf.",
+      "Sie verzichten nach absolvierten Lernaufgaben auf ein Feedback.",
+      "Sie sorgen für regelmäßige Reflexion der Lernergebnisse.",
+      "Sie organisieren tägliche Ausbildungseinheiten nach ausbilderzentrierten Ausbildungsmethoden."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Lernprozessbegleitung bedeutet, den Lernenden beim Lernen aktiv zu unterstützen: den individuellen Lernbedarf besprechen, regelmäßig Feedback geben und die Lernergebnisse gemeinsam reflektieren. Das alleinige Überlassen der Lernzielwahl, das Streichen von Feedback oder rein ausbilderzentrierter Unterricht widersprechen diesem handlungsorientierten Anspruch."
+  },
+  {
+    id: 909,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzell dass in der Lernzieltaxonomie Lernziele Schwierigkeitsgrad geordnet werden. Si Ausbildungseinheit.",
+    question: "Welches Lernziel hat die Taxono [Test-App]",
+    options: [
+      "Die Auszubildenden kontrollieren eingehende Waren.",
+      "Die Auszubildenden benennen die Funktionen der Kasse.",
+      "Die Auszubildenden geben neue Waren in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden bearbeiten eine Reklamation."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "Die Taxonomiestufe „Wissen“ (Reproduktionsebene) verlangt das reine Wiedergeben bzw. Benennen erlernter Inhalte – hier das Benennen der Kassenfunktionen. Wareneingabe ins Warenwirtschaftssystem, Warenkontrolle und Reklamationsbearbeitung erfordern dagegen Anwendung bzw. Transfer und liegen auf höheren Stufen."
+  },
+  {
+    id: 910,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bereiten die Übern demnächst die Abschlussprüfur Möglichkeit zwei Auszubildende unbefristet zu übernehmen. Keir Jugend- und Auszubildendenver 75 Mitarbeitende. Es existiert eir",
+    question: "Welche Rechte hat die Ar [Test-App]",
+    options: [
+      "Der Betriebsrat darf bestimmen, dass die Auszubildenden nur befristet und nicht unbefristet übernommen werden.",
+      "Der Betriebsrat darf die Zustimmung zur Übernahme verweigern, muss dies aber unter Angabe von Gründen tun.",
+      "Sie müssen die JAV von der geplanten Übernahme unterrichten.",
+      "Beim Betriebsrat ist vor der Einstellung (Übernahme) die Zustimmung einzuholen."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Die unbefristete Übernahme nach der Ausbildung ist eine Einstellung i. S. d. § 99 Abs. 1 BetrVG: Der Arbeitgeber muss den Betriebsrat vorher unterrichten, und die Einstellung soll nur mit dessen Zustimmung erfolgen. Der Betriebsrat kann die Zustimmung nur aus den Gründen des § 99 Abs. 2 BetrVG und schriftlich unter Angabe von Gründen verweigern (§ 99 Abs. 3 BetrVG). Über die Vertragsform entscheidet der Arbeitgeber; eine JAV existiert im Betrieb nicht."
+  },
+  {
+    id: 911,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind mit den Leistungen Ihrer ne Karina grundsätzlich zufrieden. Sie haben aller dass das Selbstbewusstsein von Karina nicht ist. Sie spricht negativ von sich und ihren Arbe bezeichnet sich als dumm und blöd.",
+    question: "Wie können Sie das Selbstbewusstwein von Karina im betrieblichen Alltag stärken? [Test-App]",
+    options: [
+      "Sie prüfen, ob Karinas negative Selbsteinschätzung auf ungünstige oder fehlerhafte Informationen Ihrerseits zurückzuführen ist, und achten darauf, zukünftig anders zu verhalten.",
+      "Sie sprechen Karina sofort auf Fehler an, damit sie konstruktive und sachliche Kritik kennenlernt.",
+      "Sie sehen Karinas negative Äußerungen als persönlichen Angriff auf sich an, da Sie Karina eingestellt haben.",
+      "Sie ermutigen Karina, positiv von sich zu sprechen und sich nicht selbst herabzuwürdigen."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Zur charakterlichen Förderung und Stärkung des Selbstvertrauens (§ 14 Abs. 1 Nr. 2 BBiG) gehören ermutigende Kommunikation und die Unterstützung eines selbstwertdienlichen Umgangs mit Fehlern. Zugleich sollte der Ausbilder reflektieren, ob eigenes Verhalten – etwa überwiegend Kritik – die negative Selbsteinschätzung begünstigt hat. Kränkung oder sofortige Fehlerkonfrontation schwächen das Selbstbewusstsein weiter."
+  },
+  {
+    id: 912,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind Ausbildungs- ur Lebensmitteleinzelhändlers mit Fil einer der Filialen spricht Sie die ne hat den Eindruck, dass die beiden , zu wenig Eigenmotivation zeigen. verstehen, schließlich hätten sich t Immer wieder muss sie die beiden Tätigkeiten zu erledigen. Frau Lang verantwortungsvolle Mitarbeiterin \"Motivation\" intensiver beschäftige Ihnen wissen, wie sie unmittelbar Mahla und Tom diese Aufgaben er",
+    question: "Welche Vorschläge sollten in diesem Fall machen? [Test-App]",
+    options: [
+      "Frau Lange überträgt Mahla und Tom zukünftig überwiegend die von den beiden ungeliebten Tätigkeiten, um sie zu disziplinieren.",
+      "Erst wenn sie die ungeliebten Tätigkeiten ohne Widerstand erledigt haben, gibt es wieder interessantere Aufgaben.",
+      "Frau Lange führt mit Mahla und Tom ein Gespräch, in dem sie gemeinsam mit ihnen Ideen zur Lösung des Problems erarbeitet und Ziele vereinbart.",
+      "Frau Lange sollte Mahla und Tom immer wieder deutlich machen, dass es in jedem Beruf ungeliebte Tätigkeiten gibt, die aber trotzdem erledigt werden müssen. Weigerungen oder Verzögerungen könnten eine Abmahnung bedeuten.",
+      "Frau Lange zeigt Mahla und Tom anhand des betrieblichen Ausbildungsplans, dass auch ungeliebte Tätigkeiten zu ihrer Ausbildung gehören und die Aufgabenstellung nicht nach Interesse erfolgen kann.",
+      "Frau Lange zeigt Mahla und Tom den Nutzen und die Sinnzusammenhänge dieser Aufgaben auf und gibt ihnen zusätzlich abwechslungsreiche, praxisbezogene Aufgaben."
+    ],
+    correctIndices: [
+      2,
+      5
+    ],
+    explanation: "Motivation wird durch Beteiligung und Sinnvermittlung gefördert: Im Gespräch Ursachen klären, gemeinsam Lösungsideen erarbeiten und Ziele vereinbaren; ergänzend den Nutzen der Aufgaben aufzeigen und abwechslungsreiche, praxisbezogene Aufgaben stellen (vgl. § 14 Abs. 1 BBiG – umfassende, zielgerichtete Förderung). Disziplinieren mit ungeliebten Tätigkeiten, das Verweigern interessanter Aufgaben bis zum Gehorsam oder Drohungen mit Abmahnungen wirken demotivierend und pädagogisch kontraproduktiv."
+  },
+  {
+    id: 913,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie sind A Auszubildenden. Bis Auszubildende. Dies Team zusammenge Bewertungssystem ungebundene Bewer Fachkräften erarbeit Systems.",
+    question: "Welchen Nac [Test-App]",
+    options: [
+      "Die Vergleichbarkeit mehrerer Auszubildender wird durch ein gebundenes System erschwert.",
+      "Die gebundene Beurteilung schränkt den Beurteiler in seiner Bewertung aufgrund der Vorgaben ein.",
+      "Gebundene Beurteilungen fördern durch die vorgegebenen Formulierungen die Subjektivität des Beurteilers.",
+      "Die jeweiligen Beurteiler kommen aufgrund unterschiedlicher Erfahrungen bei der Ausfüllung der Formulare zu falschen Bewertungen."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "Bei der gebundenen Beurteilung wählt der Beurteiler aus vorgegebenen Formulierungen bzw. Antwortkategorien aus. Das erhöht Objektivität und Vergleichbarkeit, schränkt aber die Differenzierungsmöglichkeiten und die Freiheit des Beurteilers ein – genau das ist der Nachteil. Gebundene Verfahren reduzieren die Subjektivität eher, und falsche Bewertungen durch unterschiedliche Erfahrungen sind kein typischer Nachteil dieser Form."
+  },
+  {
+    id: 914,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie müssen für Ausbildungszeugnis schreil der Abschlussprüfung verle Neben der Formulierungen sich Gedanken über eine ar",
+    question: "Welche der Schlussf Bewertung? [Test-App]",
+    options: [
+      "Wir danken Xenia für ihre Mitarbeit und wünschen ihr für ihren weiteren Berufs- und Lebensweg viel Erfolg.",
+      "Wir wünschen Xenia für die Zukunft alles Gute und bedauern ihre Entscheidung, das Unternehmen zu verlassen.",
+      "Wir hoffen, dass Xenia auf ihrem Berufsweg Erfolg haben wird.",
+      "Wir bedauern sehr, Xenia zu verlieren, und wünschen ihr für ihre berufliche und persönliche Entwicklung viel Erfolg."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Eine zulässige Schlussformel im Ausbildungszeugnis kombiniert Dank für die Mitarbeit – ggf. Bedauern über das Ausscheiden – mit guten Wünschen für die Zukunft; das Zeugnis muss wohlwollend und wahr sein (§ 16 BBiG). Das Bewerten der Entscheidung des Auszubildenden oder bloße Hoffnungsformulierungen statt klarer wohlwollender Wünsche gehören nicht in eine professionelle Schlussformel."
+  },
+  {
+    id: 915,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "In letzter Zeit hören Sie versü Verhalten Ihres Auszubildenden Paul (2 reagiert oft unfreundlich und vergreift s im Ton.",
+    question: "Wie sollten Sie darauf reagieren? [Test-App]",
+    options: [
+      "Sie versuchen in einem persönlichen Gespräch, die Ursachen für sein Verhalten zu erfahren.",
+      "Sie machen Paul in einem Gespräch unter vier Augen darauf aufmerksam, dass sein Verhalten unangemessen ist.",
+      "Sie drohen Paul, sein Verhalten der Geschäftsführung zu melden.",
+      "Sie stellen ihn in der nächsten Ausbildungsgruppe vor versammelter Runde Rede und geben ihm die Möglichkeit, sich zu rechtfertigen.",
+      "Sie fragen die anderen Auszubildenden, ob sie den Grund seines Verhaltens erklären können."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Auffälliges Verhalten klärt ein Ausbilder im persönlichen Vier-Augen-Gespräch: Ursachen erfragen und sachlich auf das unangemessene Verhalten hinweisen – respektvolle, konstruktive Kommunikation ist Grundprinzip der Führung von Auszubildenden (§ 14 BBiG). Bloßstellung vor der Gruppe, Drohungen oder das Befragen Dritter verletzen Persönlichkeitsrechte und eskalieren den Konflikt."
+  },
+  {
+    id: 916,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "single",
+    targetCount: 1,
+    situation: "Bisher haben die Ausz Ausbildungsnachweise auf Papi Auszubildende eingestellt. Die n Ausbildungsnachweise digital fl",
+    question: "Was regelt das Gesetz zu Ausbildungsnachweis? [Test-App]",
+    options: [
+      "Der Ausbildende darf diese Form zu Beginn der Ausbildung einseitig vereinbaren; ein Wechsel innerhalb der Ausbildung ist nicht möglich.",
+      "Die Auszubildenden dürfen verlangen, dass die Ausbildungsnachweise in dieser zeit- und ortsunabhängigen Form während der gesamten Ausbildungszeit geführt werden.",
+      "Der Ausbildende darf verlangen, dass die Ausbildungsnachweise ausschließlich elektronisch geführt werden.",
+      "Bei der Anmeldung zur Abschlussprüfung müssen die ausgedruckten Ausbildungsberichte eingereicht werden."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "Nach § 13 BBiG haben Auszubildende einen Anspruch darauf, den Ausbildungsnachweis in elektronischer Form zu führen, sofern dem keine betrieblichen Gründe entgegenstehen – das Recht zur digitalen Führung liegt beim Auszubildenden, nicht beim Ausbildenden. Ein Wechsel der Form ist nicht ausgeschlossen, und ausgedruckte Berichte sind zur Anmeldung nicht generell vorgeschrieben; geführt und zur Einsicht vorgelegt werden muss der Nachweis während der gesamten Ausbildungszeit (§ 13 BBiG, § 43 Abs. 1 Nr. 4 BBiG)."
+  },
+  {
+    id: 917,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie treffen Ihren AusbilderI und enttäuscht im Vorbereitungsraur er vor wenigen Augenblicken seine A Auszubildenden abgebrochen hat un er das massive Desinteresse der Aus behandelten Thema nicht überwinde aufzuspüren, fragen Sie Herrn Müller passiver Widerstand in der Gruppe",
+    question: "Welche seiner Reaktionen erkc Müller antwortet: [Test-App]",
+    options: [
+      "„Ich brach das Lehrgespräch einfach ab, kündigte Konsequenzen an und verließ den Raum.“",
+      "„Ich registrierte den Widerstand und verfolgte die gesetzten Lernziele zunächst konsequent weiter.“",
+      "„Ich nahm die Situation ernst, blieb ruhig und versuchte, die Beweggründe des Widerstands herauszufinden.“",
+      "„Ich appellierte an die Disziplin und die Höflichkeit der Auszubildenden.“",
+      "„Ich appellierte an die Einsicht der Auszubildenden und verlangte den notwendigen Respekt.“"
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Bei passivem Widerstand ist professionelle Gelassenheit gefragt: die Situation ernst nehmen, ruhig bleiben, die Ursachen ergründen (z. B. Über-/Unterforderung oder fehlender Praxisbezug) und den Lernprozess nicht abreißen lassen. Abbruch mit Drohungen, Disziplinappelle oder eingeforderte Respektbekundungen eskalieren die Situation und lösen die Ursachen nicht."
+  },
+  {
+    id: 918,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "single",
+    targetCount: 1,
+    situation: "Bisher haben die Auszubilc Ausbildungsnachweise auf Papier ge Auszubildende eingestellt. Die neuen Ausbildungsnachweise digital führen",
+    question: "Was regelt das Gesetz zum elc Ausbildungsnachweis? [Test-App]",
+    options: [
+      "Der Ausbildende darf diese Form zu Beginn der Ausbildung einseitig vereinbaren; ein Wechsel innerhalb der Ausbildung ist nicht möglich.",
+      "Die Auszubildenden dürfen verlangen, dass die Ausbildungsnachweise in dieser zeit- und ortsunabhängigen Form während der gesamten Ausbildungszeit geführt werden.",
+      "Der Ausbildende darf verlangen, dass die Ausbildungsnachweise ausschließlich elektronisch geführt werden.",
+      "Bei der Anmeldung zur Abschlussprüfung müssen die ausgedruckten Ausbildungsberichte eingereicht werden."
+    ],
+    correctIndices: [
+      1
+    ],
+    explanation: "Nach § 13 BBiG haben Auszubildende einen Anspruch darauf, den Ausbildungsnachweis in elektronischer Form zu führen, sofern dem keine betrieblichen Gründe entgegenstehen – das Recht zur digitalen Führung liegt beim Auszubildenden, nicht beim Ausbildenden. Ein Wechsel der Form ist nicht ausgeschlossen, und ausgedruckte Berichte sind zur Anmeldung nicht generell vorgeschrieben; geführt und zur Einsicht vorgelegt werden muss der Nachweis während der gesamten Ausbildungszeit (§ 13 BBiG, § 43 Abs. 1 Nr. 4 BBiG)."
+  },
+  {
+    id: 919,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Zur Personalfragebog Betriebsrat, keine Personalfragebog ausgefüllt werden",
+    question: "Welches Rf [Test-App]",
+    options: [
+      "Der Inhalt des Personalfragebogens für Auszubildende bedarf der Zustimmung des Betriebsrats.",
+      "Die Entscheidung, welcher Auszubildende eingestellt werden soll, trifft der Betriebsrat.",
+      "Der Ausbildende darf den Personalfragebogen auch ohne Zustimmung des Betriebsrats einsetzen.",
+      "Können sich Ausbildender und Betriebsrat über den Inhalt des Fragebogens nicht einigen, entscheidet die Einigungsstelle."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Nach § 94 Abs. 1 BetrVG darf der Arbeitgeber Fragebögen (Personalfragebögen) nur einsetzen, wenn der Betriebsrat zugestimmt hat. Kommt keine Einigung zustande, entscheidet die Einigungsstelle; ihr Spruch ersetzt die Einigung (§ 94 Abs. 2 BetrVG). Die eigentliche Einstellungsentscheidung trifft weiterhin der Arbeitgeber (Auswahlrichtlinien und Mitbestimmung regeln nur die Rahmenbedingungen, §§ 95, 99 BetrVG)."
+  },
+  {
+    id: 920,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bilden als Einzelhandelsunternehm des Unternehmens zur L",
+    question: "Welche der Antworten beschreiben die Lernprozessbegleitung? [Test-App]",
+    options: [
+      "Sie sorgen für regelmäßige Reflexion der Lernergebnisse.",
+      "Sie organisieren täglich ausbilderzentrierte Ausbildungssituationen.",
+      "Sie besprechen mit jedem Auszubildenden seinen Lernbedarf.",
+      "Sie überlassen den Auszubildenden die Auswahl der Lernziele.",
+      "Sie verzichten nach absolvierten Ausbildungseinheiten auf Feedback."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Lernprozessbegleitung heißt, regelmäßig Lernergebnisse zu reflektieren und individuell den Lernbedarf zu besprechen. Tägliche ausbilderzentrierte Situationen, das Überlassen der Lernzielauswahl und der Verzicht auf Feedback widersprechen dem selbstständigkeitsorientierten Ausbildungsauftrag (§ 14 BBiG)."
+  },
+  {
+    id: 921,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Ihr Auszubil( die Ausbildung verkürz ablegen kann.",
+    question: "Unter welchen Voraussetzungen kann die Abschlussprüfung vorzeitig abgelegt werden? [Test-App]",
+    options: [
+      "Eine Verkürzung der Ausbildungszeit ist nicht mehr möglich.",
+      "Er hätte die Verkürzung bereits bei Vertragsabschluss beantragen müssen.",
+      "Jakob muss aufgrund seiner Leistungen das Ausbildungsziel in der verkürzten Zeit erreichen.",
+      "Jakob kann auf eigenen Wunsch vorzeitig zur Abschlussprüfung zugelassen werden.",
+      "Der Ausbildende darf diesem Wunsch nicht widersprechen.",
+      "Jakob und der Ausbildende stellen gemeinsam einen Antrag auf Verkürzung, den die zuständige Stelle genehmigen muss."
+    ],
+    correctIndices: [
+      2,
+      5
+    ],
+    explanation: "Nach § 8 Abs. 1 BBiG kann die Ausbildungszeit auf gemeinsamen Antrag von Auszubildendem und Ausbildendem verkürzt werden, wenn die Leistungen das Ausbildungsziel in der kürzeren Zeit rechtfertigen; die zuständige Stelle entscheidet und lässt vorzeitig zur Abschlussprüfung zu (§ 45 BBiG). Eine Verkürzung ist auch nach Vertragsabschluss möglich, ein einseitiger Wunsch Jakobs genügt nicht."
+  },
+  {
+    id: 922,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Zur Ergänzung Personalfragebogen erst Betriebsrat, keine Jugenc Personalfragebogen soll ausgefüllt werden.",
+    question: "Welches Recht hat der Betriebsrat? [Test-App]",
+    options: [
+      "Der Ausbildende darf sich frei entscheiden, ob er einen Personalfragebogen einführt.",
+      "Der Inhalt des Personalfragebogens bedarf der Zustimmung des Betriebsrates.",
+      "Die Entscheidung, ob ein solcher Personalfragebogen eingeführt werden soll, obliegt dem Betriebsrat.",
+      "Können sich Ausbildender und Betriebsrat nicht einigen, dann kann der Betriebsrat eine Einigungsstelle beauftragen."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Personalfragebögen unterliegen der Mitbestimmung: Nach § 94 BetrVG dürfen Fragebögen nur mit Zustimmung des Betriebsrats verwendet werden, insbesondere auch ihr Inhalt. Kommt keine Einigung zustande, kann der Betriebsrat die Einigungsstelle anrufen. Weder eine freie Einführungsentscheidung des Ausbildenden noch ein alleiniges Einführungsrecht des Betriebsrats besteht."
+  },
+  {
+    id: 923,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind als Ausbild verantwortlich. Diese müssen zweiten Teil der gestreckten",
+    question: "Welche Punkte müssen Sie bei der Anmeldung beachten? [Test-App]",
+    options: [
+      "Sie fordern die Auszubildenden auf, sich selbst innerhalb der Anmeldefrist bei der zuständigen Stelle anzumelden.",
+      "Sie überprüfen, ob die Auszubildenden die Ausbildungsnachweise geführt, kontrolliert und unterzeichnet haben.",
+      "Sie müssen den von der zuständigen Stelle festgelegten Termin für die Anmeldung einhalten.",
+      "Sie können nur die Auszubildenden anmelden, die den ersten Teil der gestreckten Abschlussprüfung bestanden haben.",
+      "Sie müssen nichts beachten, für die Anmeldung zur gestreckten Prüfung gilt auch die bisherige Regelung."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Der Ausbildungsbetrieb meldet die Auszubildenden fristgerecht zum zweiten Teil der gestreckten Abschlussprüfung bei der zuständigen Stelle an (§ 45 BBiG); der festgelegte Anmeldetermin ist einzuhalten. Vorab ist zu überprüfen, ob die Ausbildungsnachweise ordnungsgemäß geführt, kontrolliert und unterzeichnet sind (§ 13 BBiG). Das Bestehen von Teil 1 ist keine Voraussetzung für die Anmeldung zu Teil 2."
+  },
+  {
+    id: 924,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind Ausbildungs- und Bezirksleiterin eines großl Lebensmitteleinzelhändlers mit Filialbetrieb. Bei einem Besuch einer der Filialen spricht Sie die neue Ausbilderin Mona Lange an. Sie hat den Eindruck, dass die beiden Auszubildenden Mahla und Tom zu wenig Eigenmotivation zeigen. Frau Lange möchte wissen, wie sie unmittelbar sinnvollerweise handeln sollte.",
+    question: "Welche Vorschläge sollten Sie Frau Lange sinnvollerweise in diesem Fall machen? [Test-App]",
+    options: [
+      "Frau Lange überträgt Mahla und Tom in der nächsten Zeit überwiegend die ungeliebten Tätigkeiten, um sie zu disziplinieren. Erst wenn sie diese eine Zeit lang ohne Widerstand erledigt haben, gibt es neue interessantere Aufgaben.",
+      "Frau Lange führt mit Mahla und Tom ein Gespräch, in dem sie gemeinsam mit ihnen Ideen zur Lösung dieses Problems erarbeitet und Ziele vereinbart.",
+      "Frau Lange zeigt Mahla und Tom den Nutzen und die Sinnzusammenhänge dieser Aufgaben und wählt zusätzlich abwechslungsreiche, praxisbezogene Aufgaben aus.",
+      "Frau Lange zeigt Mahla und Tom anhand des betrieblichen Ausbildungsplans, dass auch diese ungeliebten Tätigkeiten zu ihrer Ausbildung gehören und die Aufgabenstellung nicht nach Interessenlage erfolgen kann.",
+      "Frau Lange sollte Mahla und Tom immer wieder deutlich machen, dass es in jedem Beruf ungeliebte Tätigkeiten gibt, die aber trotzdem erledigt werden müssen. Weitere Weigerungen oder Verzögerungen könnten eine Abmahnung bedeuten."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Sinnvoll sind ein klärendes Gespräch mit gemeinsamer Ideensuche und Zielvereinbarung sowie das Aufzeigen von Nutzen und Sinnzusammenhängen ergänzt um abwechslungsreiche, praxisbezogene Aufgaben (Aufbau intrinsischer Motivation). Disziplinieren, Drohen mit Abmahnung oder bloßes Verweisen auf Pflichterfüllung wirken demotivierend und lösen das Motivationsproblem nicht."
+  },
+  {
+    id: 925,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie bereiten die Übernahme der Auszubildenden vor, die demnächst die Abschlussprüfung ablegen. Sie haben die Möglichkeit, zwei Auszubildende befristet und unbefristet zu übernehmen. Keiner der Auszubildenden gehört der Jugend- und Auszubildendenvertretung (JAV) an. Der Betrieb hat 75 Mitarbeitende. Es existiert ein Betriebsrat.",
+    question: "Welche Rechte hat die Arbeitnehmervertretung (Betriebsrat)? [Test-App]",
+    options: [
+      "Der Betriebsrat darf bestimmen, welche der Auszubildenden befristet und welche unbefristet übernommen werden.",
+      "Beim Betriebsrat ist vor der Einstellung die Zustimmung einzuholen.",
+      "Sie müssen die JAV von der geplanten Übernahme unterrichten.",
+      "Der Betriebsrat darf die Zustimmung verweigern, muss aber die Gründe mitteilen."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Die Übernahme der Auszubildenden ist eine personelle Einzelmaßnahme, für die nach § 99 BetrVG die Zustimmung des Betriebsrats einzuholen ist. Eine Zustimmungsverweigerung ist nur unter den gesetzlichen Gründen des § 99 Abs. 2 BetrVG schriftlich und mit Begründung möglich. Der Betriebsrat entscheidet nicht selbst über die Übernahme; eine JAV existiert im Betrieb nicht."
+  },
+  {
+    id: 926,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie besprechen mit Ihrer ausbildenden Fachkraft Probleme im Umgang mit der noch in der Probezeit befindlichen Auszubildenden Tina: Sie kann sich nicht konzentrieren und fällt sich schwer, sich neue Informationen zu merken.",
+    question: "Wie sollte die zuständige ausbildende Fachkraft mit Tinas Verhalten umgehen? [Test-App]",
+    options: [
+      "Die ausbildende Fachkraft ermittelt Tinas Lernstil und passt ihre Ausbildungsmethoden entsprechend an.",
+      "Die ausbildende Fachkraft droht Tina mit der Kündigung zum Ende der Probezeit. So motiviert sie Tina, sich mehr anzustrengen.",
+      "Die ausbildende Fachkraft überträgt Tina Aufgaben, die diese aufgrund ihrer Vorkenntnisse lösen kann. So ermöglicht sie ihr Erfolgserlebnisse.",
+      "Die ausbildende Fachkraft überträgt Tina nur noch Routineaufgaben. So fördert sie ihre Konzentrationsfähigkeit."
+    ],
+    correctIndices: [
+      0,
+      2
+    ],
+    explanation: "Sinnvoll ist, Tinas Lernstil zu ermitteln und die Methoden anzupassen sowie ihr Aufgaben zu übertragen, die sie mit ihren Vorkenntnissen lösen kann, damit Erfolgserlebnisse entstehen (kleine Schritte, Erfolgsorientierung). Kündigungsdrohungen oder nur noch Routineaufgaben demotivieren und verschärfen Konzentrationsschwächen eher."
+  },
+  {
+    id: 927,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "single",
+    targetCount: 1,
+    situation: "Bisher Ausbildungsnachv Auszubildende eir Ausbildungsnachv",
+    question: "Was regelt das Gesetz zum elektronischen Ausbildungsnachweis? [Test-App]",
+    options: [
+      "Er muss bei den neuen Auszubildenden vereinbaren, dass die Ausbildungsnachweise elektronisch geführt werden.",
+      "Er darf verlangen, dass die Ausbildungsnachweise in dieser zeit- und ortsunabhängigen Form auch außerhalb der Ausbildungszeit geführt werden.",
+      "Er darf diese Form zu Beginn einer Ausbildung vereinbaren, ein Wechsel innerhalb der Ausbildungszeit ist nicht möglich.",
+      "Er muss bei der Anmeldung zur Abschlussprüfung die Ausbildungsberichte ausgedruckt und unterschrieben einreichen."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Der Ausbildungsnachweis kann auch elektronisch geführt werden; die elektronische Form wird mit den Auszubildenden vereinbart (§ 13 BBiG i. V. m. der Verordnung über den elektronischen Ausbildungsnachweis). Ausdrucke zur Prüfungsanmeldung sind nicht erforderlich, die Führung darf nicht in die Freizeit verlagert werden, und ein einvernehmlicher Wechsel der Form bleibt möglich."
+  },
+  {
+    id: 928,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie sind als Au Akquise von Ausbildungs Erwerbs von Zusatzquali Ausbildung in Ihrem Unte gestalten. Zunächst prüft",
+    question: "Welche Aussagen zu Zusatzqualifikationen sind richtig? [Test-App]",
+    options: [
+      "Zusatzqualifikationen, die in der Ausbildungsordnung aufgenommen sind, werden gesondert bescheinigt. Das Ergebnis der Abschlussprüfung bleibt unberührt.",
+      "Die Zusatzqualifikationen werden entsprechend dem jeweiligen Ausbildungsrahmenplan während der Ausbildung vermittelt.",
+      "Zusatzqualifikationen dürfen in ihrem Stundenumfang die gesamte wöchentliche Ausbildungszeit übersteigen.",
+      "Zusatzqualifikationen, die nicht im Ausbildungsrahmenplan enthalten sind, können individuell auf die Abschlussprüfung angerechnet werden.",
+      "Zusatzqualifikationen finden außerhalb der Berufsausbildung statt und sind der beruflichen Fortbildung vorbehalten."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Integrierte Zusatzqualifikationen sind in der Ausbildungsordnung vorgesehen; ihre Absolvierung wird gesondert bescheinigt und lässt das Ergebnis der Abschlussprüfung unberührt (§ 5 Abs. 2 Nr. 3 i. V. m. § 37 Abs. 3 BBiG). Sie werden während der regulären Berufsausbildung entsprechend dem Ausbildungsrahmenplan vermittelt und nicht als separates Angebot außerhalb der Ausbildung."
+  },
+  {
+    id: 929,
+    hf: 2,
+    category: "Einstellung",
+    type: "multi",
+    targetCount: 2,
+    situation: "Zur Ergänzung Ih Personalfragebogen erstell Betriebsrat, keine Jugend- Personalfragebogen soll zu ausgefüllt werden.",
+    question: "Welches Recht hat der Betriebsrat? [Test-App]",
+    options: [
+      "Der Ausbildende darf sich frei entscheiden, ob er einen Personalfragebogen einführt.",
+      "Können sich Ausbildender und Betriebsrat nicht einigen, dann kann der Betriebsrat eine Einigungsstelle beauftragen.",
+      "Die Entscheidung, ob ein solcher Personalfragebogen eingeführt werden soll, obliegt dem Betriebsrat.",
+      "Der Inhalt des Personalfragebogens bedarf der Zustimmung des Betriebsrates."
+    ],
+    correctIndices: [
+      1,
+      3
+    ],
+    explanation: "Nach § 94 BetrVG dürfen Personalfragebögen nur mit Zustimmung des Betriebsrats verwendet werden, insbesondere auch ihr Inhalt. Bei Nichteinigung kann der Betriebsrat die Einigungsstelle anrufen. Eine freie Einführungsentscheidung des Ausbildenden besteht ebenso wenig wie ein alleiniges Einführungsrecht des Betriebsrats."
+  },
+  {
+    id: 930,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie veranstalten regelmäßig Workshops mit Ihren ausbildenden Fachkräften. Beim nächsten Termin soll der Begriff berufliche Handlungsfähigkeit diskutiert werden.",
+    question: "Wie erklären Sie Ihren ausbildenden Fachkräften den Begriff? Die berufliche Handlungsfähigkeit ... [Test-App]",
+    options: [
+      "umfasst die für die Ausübung einer qualifizierten beruflichen Tätigkeit erforderlichen beruflichen Fertigkeiten, Kenntnisse und Fähigkeiten.",
+      "bedeutet das selbstständige Planen, Durchführen und Kontrollieren beruflicher Aufgaben.",
+      "hat der Auszubildende erreicht, der seine Abschlussprüfung mindestens mit der Note gut bestanden hat.",
+      "beschreibt die Reproduktion und Reorganisation der gelernten beruflichen Tätigkeiten in den Arbeitsprozessen.",
+      "ist in eine berufsfeldbreite allgemeine Grundbildung und eine darauf aufbauende Zusatzqualifikation gegliedert."
+    ],
+    correctIndices: [
+      0,
+      1
+    ],
+    explanation: "Die berufliche Handlungsfähigkeit umfasst die für eine qualifizierte Berufstätigkeit erforderlichen Fertigkeiten, Kenntnisse und Fähigkeiten (Fach-, Methoden-, Sozial- und Personalkompetenz, vgl. § 1 Abs. 3 BBiG). Typisches Merkmal ist das selbstständige Planen, Durchführen und Kontrollieren beruflicher Aufgaben. Noten-, Reproduktions- oder Gliederungsaussagen beschreiben sie nicht."
+  },
+  {
+    id: 931,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie erstellen gerade den Ausbildungsvertrag für neue Auszubildende. Sie machen sich Gedanken über die Probezeit.",
+    question: "Welche Besonderheiten sind bei der Probezeit zu beachten? [Test-App]",
+    options: [
+      "Die Probezeit bezieht sich generell auf den Betrieb und die Berufsausbildung.",
+      "Bereits absolvierte Ausbildungen und Tätigkeiten führen zu einer Verkürzung der Probezeit.",
+      "Eine kürzere Probezeit als die vorgeschriebenen Monate führt automatisch zu einer Verkürzung der Ausbildung.",
+      "Ein Praktikum zur Eignungsfeststellung kann nicht auf die Probezeit angerechnet werden.",
+      "Wenn ein bisheriger Arbeitnehmer im selben Betrieb eine Ausbildung beginnt, darf keine Probezeit vereinbart werden.",
+      "Hat ein Auszubildender den Ausbildungsbetrieb gewechselt und möchte die Ausbildung fortsetzen, muss trotzdem eine Probezeit vereinbart werden."
+    ],
+    correctIndices: [
+      3,
+      5
+    ],
+    explanation: "Das Ausbildungsverhältnis beginnt mit einer Probezeit von mindestens einem und höchstens vier Monaten (§ 20 BBiG). Ein Praktikum wird nicht auf die Probezeit angerechnet, frühere Ausbildungen oder Tätigkeiten verkürzen sie nicht automatisch. Wer den Ausbildungsbetrieb wechselt und die Ausbildung fortsetzt, schließt einen neuen Ausbildungsvertrag mit neuer Probezeit."
+  },
+  {
+    id: 932,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als langjähriger Ausbilder gewinnen Sie eine Kollegin als Ausbilderin. Sie erklärt, wie interessant diese Aufgabe ist, da man als Ausbilder Kontakt zu unterschiedlichen Personen und Institutionen hat.",
+    question: "Welche Aufgaben haben die an der Ausbildung beteiligten Personen und Institutionen? [Test-App]",
+    options: [
+      "Die Jugend- und Auszubildendenvertretung kontrolliert den Ausbilder.",
+      "Die zuständige Stelle berät Unternehmen zu Ausbildungsthemen.",
+      "Die Berufsschule ist der Partner im dualen System und deckt die Inhalte des Rahmenlehrplans ab.",
+      "Die örtliche Agentur für Arbeit wirkt an der Berufsbildung im Betrieb mit.",
+      "Die ausbildende Fachkraft ist derjenige, der für die gesamte Ausbildung verantwortlich ist und über die erforderlichen arbeitspädagogischen Qualifikationen verfügt."
+    ],
+    correctIndices: [
+      1,
+      2
+    ],
+    explanation: "Die zuständige Stelle (z. B. IHK) berät und betreut Betriebe zu Ausbildungsfragen (§ 76 BBiG); die Berufsschule ist Partner im dualen System und vermittelt die Inhalte des KMK-Rahmenlehrplans. Die Agentur für Arbeit vermittelt Ausbildungsplätze und berät, wirkt aber nicht an der betrieblichen Vermittlung mit. Die Gesamtverantwortung trägt der Ausbildende (§ 14 BBiG), die ausbildende Fachkraft ist mit der Durchführung betraut."
+  },
+  {
+    id: 933,
+    hf: 1,
+    category: "Recht",
+    type: "multi",
+    targetCount: 2,
+    situation: "Um dem drohenden Fachkräftemangel im Unternehmen vorzubeugen, prüfen Sie Möglichkeiten der Bewerberauswahl. Sie nehmen eine betriebliche jugendliche Praktikantin auf. Es gilt kein Tarifvertrag.",
+    question: "Welche Regelungen gelten für das Praktikum? [Test-App]",
+    options: [
+      "Ihre Praktikantin muss vor Anbeginn von einem Arzt untersucht worden sein; die Bescheinigung der Erstuntersuchung nach dem JArbSchG muss bei Ihnen vorliegen.",
+      "Ihre Praktikantin hat nach dem Praktikum einen Anspruch auf Übernahme in ein reguläres Ausbildungsverhältnis.",
+      "Die Agentur für Arbeit beteiligt sich an den Sozialversicherungsbeiträgen.",
+      "Die Praktikantin erhält als Praktikantin keine Mindestausbildungsvergütung.",
+      "Der Praktikumsvertrag wird der zuständigen Agentur für Arbeit zur Genehmigung vorgelegt."
+    ],
+    correctIndices: [
+      0,
+      3
+    ],
+    explanation: "Jugendliche dürfen erst beschäftigt werden, wenn dem Arbeitgeber die Bescheinigung einer ärztlichen Untersuchung nicht älter als 14 Monate vorliegt (§ 32 JArbSchG) – das gilt auch für jugendliche Praktikantinnen. Die Mindestausbildungsvergütung (§ 17 BBiG) gilt nur für Auszubildende, nicht für Praktikantinnen. Einen Übernahmeanspruch oder eine Beteiligung der Agentur für Arbeit an den Beiträgen gibt es nicht."
+  },
+  {
+    id: 934,
+    hf: 3,
+    category: "Pädagogik",
+    type: "single",
+    targetCount: 1,
+    situation: "Als Ausbilder in einem Einzelhandelsunternehmen haben Sie eine nach dem Schwierigkeitsgrad geordnete Ausbildungseinheit zur Inventur erstellt.",
+    question: "Welches Lernziel hat die höchste Taxonomiestufe? [Test-App]",
+    options: [
+      "Die Auszubildenden geben nach der Inventur die Daten in das Warenwirtschaftssystem ein.",
+      "Die Auszubildenden benennen die einzelnen Arbeitsschritte der Inventur.",
+      "Die Auszubildenden bearbeiten selbstständig die Inventurunterlagen.",
+      "Die Auszubildenden kontrollieren das Ergebnis der Inventurbuchung auf Richtigkeit."
+    ],
+    correctIndices: [
+      3
+    ],
+    explanation: "In der Lernzieltaxonomie (nach Bloom) stellt das Kontrollieren bzw. Überprüfen von Arbeitsergebnissen die höchste kognitive Anforderungsstufe (Bewerten) dar. Das Eingeben von Daten in das Warenwirtschaftssystem entspricht der Stufe Anwenden, das Benennen von Arbeitsschritten der Stufe Wissen."
+  },
+  {
+    id: 935,
+    hf: 3,
+    category: "Pädagogik",
+    type: "multi",
+    targetCount: 2,
+    situation: "Als Ausbilder sollen Sie Ausbildungsplätze auswählen, die für die Ausbildung geeignet sind. Bei der Auswahl sind Ausstattung, personelle Besetzung und Vorgaben zu berücksichtigen.",
+    question: "Welche Arbeitsplätze eignen sich für Auszubildende nicht? [Test-App]",
+    options: [
+      "Arbeitsplätze, die überwiegend durch Routinearbeiten geprägt sind.",
+      "Arbeitsplätze, an denen Auszubildende keine Beratung und Verkaufsgespräche führen.",
+      "Arbeitsplätze, die im Lernbereich der Ausbildungsordnung aufgeführte Tätigkeiten umfassen.",
+      "Arbeitsplätze, die Selbstständigkeit und Eigenverantwortung verlangen, da diese Anforderungen den Prinzipien einer ordnungsgemäßen Ausbildung widersprechen.",
+      "Arbeitsplätze, an denen Akkordarbeit geleistet werden muss, weil Leistungsvorgaben eingehalten werden können.",
+      "Arbeitsplätze, an denen ausbildende Kräfte die Auszubildenden nicht mit ausbildungsfremden Tätigkeiten betrauen."
+    ],
+    correctIndices: [
+      0,
+      4
+    ],
+    explanation: "Auszubildende dürfen nur Verrichtungen übernehmen, die dem Ausbildungszweck dienen (§ 14 Abs. 2 BBiG); daher sind reine Routinearbeitsplätze ungeeignet. Arbeitsplätze mit Akkordcharakter widersprechen dem Ausbildungszweck (vgl. auch § 23 JArbSchG für Jugendliche). Selbstständigkeit und Eigenverantwortung sind dagegen ausdrückliche Ziele der Berufsausbildung (§ 1 BBiG)."
+  },
+  {
+    id: 936,
+    hf: 4,
+    category: "Abschluss",
+    type: "multi",
+    targetCount: 2,
+    situation: "Sie müssen Ausbildungszeugnisse für Auszubildende erstellen, die die Abschlussprüfung bestanden haben. Neben der Formulierung der Leistungen machen Sie sich Gedanken über die Schlussformulierung.",
+    question: "Welche Schlussformulierungen sind für das Ausbildungszeugnis geeignet? [Test-App]",
+    options: [
+      "Wir danken Xenia für ihre Leistungen und wünschen ihr für ihren Berufs- und Lebensweg viel Erfolg.",
+      "Wir wünschen Xenia alles Gute und bedauern ihre Entscheidung, das Unternehmen zu verlassen.",
+      "Wir danken Xenia und wünschen ihr persönlich viel Erfolg.",
+      "Wir bedauern sehr, dass Xenia das Unternehmen verlässt, und wünschen ihr für ihre berufliche Zukunft viel Erfolg.",
+      "Wir wünschen Xenia für ihren weiteren Berufsweg Erfolg."
+    ],
+    correctIndices: [
+      0,
+      4
+    ],
+    explanation: "Geeignete Schlussformulierungen im Ausbildungszeugnis (§ 16 BBiG) danken für die erbrachten Leistungen und wünschen Erfolg für den weiteren Berufs- und Lebensweg. Formulierungen mit persönlich viel Erfolg sind unsachlich, und Bedauernsformeln über das Verlassen des Unternehmens gehören nicht in ein Ausbildungszeugnis."
+  },
+  {
+    id: 937,
+    hf: 1,
+    category: "Recht",
+    type: "single",
+    targetCount: 1,
+    situation: "Sie erstellen zum Thema Hygiene Lernziele im Ausbildungsplan. Aus den Groblernzielen schlüsseln Sie für die Ausbildungseinheit Feinlernziele für Ihre Auszubildenden auf.",
+    question: "Welche Aussagen ordnen die Taxonomiestufen richtig ein? [Test-App]",
+    options: [
+      "Wissen verlangt, Gelerntes unverändert wiederzugeben.",
+      "Bewerten verlangt, Gelerntes in eine Rangordnung zu bringen.",
+      "Verstehen verlangt, eine Lösung hinsichtlich ihrer Angemessenheit zu beurteilen.",
+      "Anwenden verlangt, einen Begriff, eine Formel oder ein Verfahren zu erklären."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Auf der Stufe Wissen wird Gelerntes unverändert wiedergegeben (reines Reproduzieren). Bewerten bedeutet, Aussagen nach Kriterien zu prüfen und zu bewerten, nicht bloß in eine Rangordnung zu bringen; das Beurteilen der Angemessenheit einer Lösung ist eine Bewertungsleistung und das Erklären eines Begriffs eine Verständnisleistung."
+  },
+  {
+    id: 938,
+    hf: 3,
+    category: "Durchfuehrung",
+    type: "single",
+    targetCount: 1,
+    situation: "Bisher haben die Auszubildenden die Ausbildungsnachweise auf Papier geführt. Jetzt wurden neue Auszubildende eingestellt. Die neuen Auszubildenden sollen die Ausbildungsnachweise digital führen.",
+    question: "Was regelt das Gesetz zum elektronischen Ausbildungsnachweis? [Test-App]",
+    options: [
+      "Er muss bei den neuen Auszubildenden vereinbaren, dass die Ausbildungsnachweise elektronisch geführt werden.",
+      "Er darf verlangen, dass die Ausbildungsnachweise in dieser zeit- und ortsunabhängigen Form auch außerhalb der Ausbildungszeit geführt werden.",
+      "Er darf diese Form zu Beginn einer Ausbildung vereinbaren, ein Wechsel innerhalb der Ausbildungszeit ist nicht möglich.",
+      "Er muss bei der Anmeldung zur Abschlussprüfung die Ausbildungsberichte ausgedruckt und unterschrieben einreichen."
+    ],
+    correctIndices: [
+      0
+    ],
+    explanation: "Der Ausbildungsnachweis kann auch elektronisch geführt werden; die elektronische Form wird mit den Auszubildenden im Ausbildungsvertrag vereinbart (§ 13 BBiG i. V. m. § 36 Abs. 2 BBiG). Ausdrucke zur Prüfungsanmeldung sind nicht erforderlich, die Führung darf nicht in die Freizeit verlagert werden, und ein einvernehmlicher Wechsel der Form bleibt möglich."
   }, 1000);
 }
 
