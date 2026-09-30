@@ -28913,1313 +28913,8 @@ const AEVO_QUESTIONS = [
       1
     ],
     "explanation": "A richtig: Gem. § 15 BBiG i.V.m. § 9 JArbSchG/§ 15 BBiG sind Azubis im Blockunterricht für die gesamte Dauer freizustellen; maximal 2 Stunden zusätzliche betriebliche Tätigkeit ist nicht vorgesehen – A beschreibt geltendes Recht laut Aufgabenstellung. B richtig: Freistellung am Tag vor der schriftlichen Abschlussprüfung gilt für beide Gruppen."
-  }
-];
-  </script>
-
-  <!-- ========================================== -->
-  <!-- AEVO APP LOGIC & ENGINE                    -->
-  <!-- ========================================== -->
-  <script>
-// AEVO Application Logic: Learning Compendium, Question Trainer & 80-Question Exam Simulator
-
-// Global State
-const STATE = {
-  mode: 'learn', // 'learn' | 'practice' | 'exam' | 'results'
-
-  // Exam State (Strict 80 Questions, 180 min)
-  currentQuestionIndex: 0,
-  answers: {}, // { [questionId]: [selectedIndices] }
-  flagged: new Set(),
-  timeRemaining: 180 * 60,
-  timerActive: false,
-  timerInterval: null,
-  examSubmitted: false,
-  examResults: null,
-  reviewFilter: 'all',
-  activeHfFilter: 'all',
-  examQuestionIds: null,
-
-  // Practice Trainer State (All 110 questions, instant feedback, filters)
-  practiceIndex: 0,
-  practiceAnswers: {}, // { [questionId]: [selectedIndices] }
-  practiceChecked: {}, // { [questionId]: boolean }
-  practiceFlags: new Set(),
-  practiceHfFilter: 'all',
-  practiceCategoryFilter: 'all',
-  practiceStatusFilter: 'all',
-  practiceSearch: '',
-
-  // Learning Compendium State
-  learnActiveHf: 'all',
-  learnSearchQuery: '',
-  learnExpandedTopics: new Set()
-};
-
-const STORAGE_KEY_EXAM = 'aevo_exam_state_v2';
-const STORAGE_KEY_PRACTICE = 'aevo_practice_state_v2';
-
-// Initialization on DOM Ready
-document.addEventListener('DOMContentLoaded', () => {
-  loadStorage();
-  syncMobileTabs(STATE.mode);
-  renderLearningArea();
-  initPracticeView();
-  initExamGrid();
-  renderCurrentQuestion();
-  updateProgressUI();
-  updateTimerDisplay();
-
-  // If exam was already submitted, render results if user switches to results
-  if (STATE.examSubmitted && STATE.examResults) {
-    if (STATE.mode === 'results') {
-      showResultsView();
-    }
-  }
-
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (STATE.mode === 'exam' && !STATE.examSubmitted) {
-      if (e.key === 'ArrowRight') navigateQuestion(1);
-      else if (e.key === 'ArrowLeft') navigateQuestion(-1);
-    } else if (STATE.mode === 'practice') {
-      if (e.key === 'ArrowRight') navigatePractice(1);
-      else if (e.key === 'ArrowLeft') navigatePractice(-1);
-    }
-  });
-});
-
-// ==========================================
-// STORAGE PERSISTENCE
-// ==========================================
-function saveStorage() {
-  try {
-    const examData = {
-      currentQuestionIndex: STATE.currentQuestionIndex,
-      answers: STATE.answers,
-      flagged: Array.from(STATE.flagged),
-      timeRemaining: STATE.timeRemaining,
-      examSubmitted: STATE.examSubmitted,
-      examResults: STATE.examResults,
-      mode: STATE.mode,
-      examQuestionIds: STATE.examQuestionIds || null
-    };
-    localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(examData));
-
-    const practiceData = {
-      practiceIndex: STATE.practiceIndex,
-      practiceAnswers: STATE.practiceAnswers,
-      practiceChecked: STATE.practiceChecked,
-      practiceFlags: Array.from(STATE.practiceFlags),
-      practiceHfFilter: STATE.practiceHfFilter,
-      practiceCategoryFilter: STATE.practiceCategoryFilter,
-      practiceStatusFilter: STATE.practiceStatusFilter
-    };
-    localStorage.setItem(STORAGE_KEY_PRACTICE, JSON.stringify(practiceData));
-  } catch (err) {
-    console.warn('Storage save failed', err);
-  }
-}
-
-function loadStorage() {
-  try {
-    const savedExam = localStorage.getItem(STORAGE_KEY_EXAM);
-    if (savedExam) {
-      const data = JSON.parse(savedExam);
-      if (data.answers) STATE.answers = data.answers;
-      if (data.flagged) STATE.flagged = new Set(data.flagged);
-      if (typeof data.currentQuestionIndex === 'number') STATE.currentQuestionIndex = data.currentQuestionIndex;
-      if (typeof data.timeRemaining === 'number') STATE.timeRemaining = data.timeRemaining;
-      if (data.examSubmitted) STATE.examSubmitted = data.examSubmitted;
-      if (data.examResults) STATE.examResults = data.examResults;
-      if (data.mode) STATE.mode = data.mode;
-      if (Array.isArray(data.examQuestionIds) && data.examQuestionIds.length === 80) {
-        STATE.examQuestionIds = data.examQuestionIds;
-      }
-    }
-
-    const savedPractice = localStorage.getItem(STORAGE_KEY_PRACTICE);
-    if (savedPractice) {
-      const pData = JSON.parse(savedPractice);
-      if (pData.practiceAnswers) STATE.practiceAnswers = pData.practiceAnswers;
-      if (pData.practiceChecked) STATE.practiceChecked = pData.practiceChecked;
-      if (pData.practiceFlags) STATE.practiceFlags = new Set(pData.practiceFlags);
-      if (pData.practiceHfFilter) STATE.practiceHfFilter = pData.practiceHfFilter;
-      if (pData.practiceCategoryFilter) STATE.practiceCategoryFilter = pData.practiceCategoryFilter;
-      if (pData.practiceStatusFilter) STATE.practiceStatusFilter = pData.practiceStatusFilter;
-      if (typeof pData.practiceIndex === 'number') STATE.practiceIndex = pData.practiceIndex;
-    }
-  } catch (err) {
-    console.warn('Storage load failed', err);
-  }
-}
-
-// ==========================================
-
-// Theme (light/dark) toggle
-function applyTheme(t) {
-  document.documentElement.setAttribute('data-theme', t);
-  try { localStorage.setItem('aevo-theme', t); } catch (e) {}
-  var m = document.querySelector('meta[name="theme-color"]');
-  if (m) m.setAttribute('content', t === 'dark' ? '#0c0c0e' : '#f1f1f3');
-  var b = document.getElementById('theme-toggle-btn');
-  if (b) b.innerHTML = t === 'dark' ? '<svg class="icn" aria-hidden="true"><use href="#i-sun"/></svg>' : '<svg class="icn" aria-hidden="true"><use href="#i-moon"/></svg>';
-}
-function toggleTheme() {
-  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-}
-document.addEventListener('DOMContentLoaded', function () {
-  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
-});
-
-// Mobile bottom tab sync
-function syncMobileTabs(mode) {
-  document.querySelectorAll('#mobile-tabbar .tab-btn').forEach(function(b) {
-    var active = b.getAttribute('data-tab') === mode;
-    b.classList.toggle('text-[var(--c-accent)]', active);
-    b.classList.toggle('text-[var(--c-muted)]', !active);
-  });
-}
-// ==========================================
-// MODE NAVIGATION
-// ==========================================
-function switchMode(newMode, save = true) {
-  STATE.mode = newMode;
-  const viewLearn = document.getElementById('view-learn');
-  const viewPractice = document.getElementById('view-practice');
-  const viewExam = document.getElementById('view-exam');
-  const viewResults = document.getElementById('view-results');
-  const viewGuided = document.getElementById('view-guided');
-
-  const btnLearn = document.getElementById('nav-btn-learn');
-  const btnPractice = document.getElementById('nav-btn-practice');
-  const btnExam = document.getElementById('nav-btn-exam');
-  const btnGuided = document.getElementById('nav-btn-guided');
-
-  const timerBox = document.getElementById('exam-timer-box');
-  const submitBtn = document.getElementById('header-submit-btn');
-
-  viewLearn.classList.add('hidden');
-  viewPractice.classList.add('hidden');
-  viewExam.classList.add('hidden');
-  viewResults.classList.add('hidden');
-  viewGuided.classList.add('hidden');
-
-  const baseBtnCls = 'px-3 py-1.5 text-xs font-semibold rounded transition-all text-[var(--c-muted)] hover:text-[var(--c-ink)]';
-  const activeBtnCls = 'px-3 py-1.5 text-xs font-semibold rounded transition-all bg-[var(--c-card)] text-[var(--c-ink)] shadow-sm';
-
-  btnLearn.className = baseBtnCls;
-  btnPractice.className = baseBtnCls;
-  btnExam.className = baseBtnCls;
-  btnGuided.className = baseBtnCls;
-
-  if (newMode === 'learn') {
-    viewLearn.classList.remove('hidden');
-    btnLearn.className = activeBtnCls;
-    timerBox.classList.add('opacity-40');
-    submitBtn.classList.add('hidden');
-  } else if (newMode === 'practice') {
-    viewPractice.classList.remove('hidden');
-    btnPractice.className = activeBtnCls;
-    timerBox.classList.add('opacity-40');
-    submitBtn.classList.add('hidden');
-    renderPracticeQuestion();
-    renderPracticePalette();
-    updatePracticeStats();
-  } else if (newMode === 'exam') {
-    if (STATE.examSubmitted) {
-      showResultsView();
-      return;
-    }
-    viewExam.classList.remove('hidden');
-    btnExam.className = activeBtnCls;
-    timerBox.classList.remove('opacity-40');
-    submitBtn.classList.remove('hidden');
-    if (!STATE.timerActive && STATE.timeRemaining > 0 && !STATE.examSubmitted) {
-      startTimer();
-    }
-    renderCurrentQuestion();
-    updateProgressUI();
-  } else if (newMode === 'results') {
-    viewResults.classList.remove('hidden');
-    timerBox.classList.add('opacity-40');
-    submitBtn.classList.add('hidden');
-  } else if (newMode === 'guided') {
-    viewGuided.classList.remove('hidden');
-    btnGuided.className = activeBtnCls;
-    timerBox.classList.add('opacity-40');
-    submitBtn.classList.add('hidden');
-    renderGuidedOverview();
-  }
-
-  if (save) saveStorage();
-  syncMobileTabs(newMode);
-}
-
-// ==========================================
-// 1. LERNBEREICH (KOMPENDIUM) RENDERING
-// ==========================================
-function renderLearningArea() {
-  const container = document.getElementById('learning-modules-list');
-  if (!container) return;
-
-  const activeHf = STATE.learnActiveHf;
-  const query = STATE.learnSearchQuery.trim().toLowerCase();
-
-  let totalTopicsCount = 0;
-  let html = '';
-
-  AEVO_MODULES.forEach(module => {
-    // Filter by Handlungsfeld
-    if (activeHf !== 'all') {
-      if (activeHf === '5' && module.hf !== 5) return;
-      if (activeHf !== '5' && String(module.hf) !== activeHf) return;
-    }
-
-    // Filter topics by search query
-    const filteredTopics = module.topics.filter(topic => {
-      if (!query) return true;
-      const haystack = (topic.title + ' ' + topic.paragraphs + ' ' + topic.summary + ' ' + topic.keyPoints.join(' ')).toLowerCase();
-      return haystack.includes(query);
-    });
-
-    if (filteredTopics.length === 0) return;
-    totalTopicsCount += filteredTopics.length;
-
-    html += `
-      <section class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm overflow-hidden mb-6">
-        <!-- Module Header -->
-        <div class="px-6 py-5 bg-[var(--c-sunken)] border-b border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] tracking-wider">
-                ${module.hf === 5 ? 'Praxisprüfung' : (module.hf === 6 ? 'Prüfungs-Check' : 'Handlungsfeld ' + module.hf)}
-              </span>
-              <span class="text-xs text-[var(--c-muted)] font-mono">${filteredTopics.length} Themengebiete</span>
-            </div>
-            <h2 class="text-lg font-bold text-[var(--c-ink)]">${escapeHtml(module.title)}</h2>
-            <p class="text-xs text-[var(--c-muted)] mt-0.5">${escapeHtml(module.subtitle)}</p>
-          </div>
-          <button onclick="jumpToPracticeFromHf(${module.hf})" class="px-3 py-1.5 text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] hover:border-[var(--c-border)] rounded transition text-[var(--c-ink-soft)] shadow-sm flex items-center gap-1.5">
-            <span><svg class="icn" aria-hidden="true"><use href="#i-target"/></svg></span>
-            <span>Fragen zu HF ${module.hf === 5 ? 'Praxis' : (module.hf === 6 ? 'Prüfungs-Check' : module.hf)} üben</span>
-          </button>
-        </div>
-
-        <!-- Topics Accordion List -->
-        <div class="divide-y divide-[var(--c-border)]">
-    `;
-
-    filteredTopics.forEach(topic => {
-      const isExpanded = STATE.learnExpandedTopics.has(topic.id) || query.length > 0;
-      html += `
-        <article class="p-5 transition hover:bg-[var(--c-card)]">
-          <div class="flex items-start justify-between gap-4 cursor-pointer" onclick="toggleTopicExpansion('${topic.id}')">
-            <div class="space-y-1.5 flex-1">
-              <div class="flex items-center gap-2 flex-wrap">
-                <span class="text-xs font-mono font-bold text-[var(--c-muted)] bg-[var(--c-inset)] px-2 py-0.5 rounded border border-[var(--c-border)]">
-                  ${escapeHtml(topic.paragraphs)}
-                </span>
-              </div>
-              <h3 class="text-base font-bold text-[var(--c-ink)] tracking-tight flex items-center gap-2">
-                <span>${escapeHtml(topic.title)}</span>
-                <span class="text-xs font-normal text-[var(--c-muted)] font-mono">${isExpanded ? '▲' : '▼'}</span>
-              </h3>
-            </div>
-            <button class="text-xs font-semibold text-[var(--c-muted)] hover:text-[var(--c-ink)] px-2 py-1 bg-[var(--c-inset)] rounded border border-[var(--c-border)]">
-              ${isExpanded ? 'Einklappen' : 'Details & Quiz'}
-            </button>
-          </div>
-
-          <!-- Expanded Body -->
-          <div id="topic-body-${topic.id}" class="${isExpanded ? 'block' : 'hidden'} mt-4 space-y-4 pt-3 border-t border-[var(--c-bg)]">
-            <p class="text-sm text-[var(--c-ink-soft)] leading-relaxed font-normal bg-[var(--c-sunken)] p-3.5 rounded border border-[var(--c-border)]">
-              ${escapeHtml(topic.summary)}
-            </p>
-
-            <!-- Key Points Bullet List -->
-            <div>
-              <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] mb-2 font-mono">Wesentliche Fachinhalte & Rechtsgrundsätze</h4>
-              <ul class="space-y-2 text-xs text-[var(--c-ink-soft)]">
-                ${topic.keyPoints.map(kp => `
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-[var(--c-muted)] font-bold mt-0.5">•</span>
-                    <div class="leading-relaxed flex-1">${kp}</div>
-                  </li>
-                `).join('')}
-              </ul>
-            </div>
-
-            <!-- Mini Knowledge Check / Quiz -->
-            ${topic.quiz ? `
-              <div class="mt-4 p-4 rounded-lg bg-[var(--c-inset)] border border-[var(--c-border)] space-y-3">
-                <div class="flex items-center justify-between gap-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-sm"><svg class="icn" aria-hidden="true"><use href="#i-bulb"/></svg></span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] font-mono">1-Klick-Wissenscheck</span>
-                  </div>
-                  <span class="text-[11px] text-[var(--c-muted)]">Sofortige Auswertung</span>
-                </div>
-                <p class="text-xs font-semibold text-[var(--c-ink)]">${escapeHtml(topic.quiz.q)}</p>
-                ${topic.quiz.correctArr ? `
-                  <p class="text-[11px] font-bold text-[var(--c-muted)] font-mono">Mehrfachantwort: Wählen Sie ${topic.quiz.correctArr.length} richtige Antworten (nacheinander anklicken)</p>
-                ` : ''}
-                <div class="space-y-1.5" id="quiz-opts-${topic.id}">
-                  ${topic.quiz.options.map((opt, idx) => `
-                    <button onclick="${topic.quiz.correctArr ? `checkTopicQuizPc('${topic.id}', ${idx})` : `checkTopicQuiz('${topic.id}', ${idx}, ${topic.quiz.correct})`}" class="w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] hover:bg-[var(--c-card)] border border-[var(--c-border)] transition flex items-start gap-2">
-                      <span class="font-mono font-bold text-[var(--c-muted)]">${String.fromCharCode(65 + idx)})</span>
-                      <span class="text-[var(--c-ink-soft)]">${escapeHtml(opt)}</span>
-                    </button>
-                  `).join('')}
-                </div>
-                <div id="quiz-fb-${topic.id}" class="hidden p-3 rounded text-xs leading-relaxed"></div>
-              </div>
-            ` : ''}
-          </div>
-        </article>
-      `;
-    });
-
-    html += `
-        </div>
-      </section>
-    `;
-  });
-
-  if (totalTopicsCount === 0) {
-    html = `
-      <div class="p-12 text-center bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg">
-        <p class="text-base font-bold text-[var(--c-ink-soft)]">Keine Themengebiete gefunden</p>
-        <p class="text-xs text-[var(--c-muted)] mt-1">Bitte passen Sie Ihren Suchbegriff oder den Filter an.</p>
-        <button onclick="resetLearnFilters()" class="mt-4 px-3 py-1.5 bg-[var(--c-accent)] text-[var(--c-on-accent)] text-xs font-semibold rounded">Filter zurücksetzen</button>
-      </div>
-    `;
-  }
-
-  container.innerHTML = html;
-
-  const countBadge = document.getElementById('learn-topics-count');
-  if (countBadge) countBadge.textContent = `${totalTopicsCount} Themen`;
-}
-
-function toggleTopicExpansion(topicId) {
-  if (STATE.learnExpandedTopics.has(topicId)) {
-    STATE.learnExpandedTopics.delete(topicId);
-  } else {
-    STATE.learnExpandedTopics.add(topicId);
-  }
-  const body = document.getElementById(`topic-body-${topicId}`);
-  if (body) {
-    if (STATE.learnExpandedTopics.has(topicId)) {
-      body.classList.remove('hidden');
-    } else {
-      body.classList.add('hidden');
-    }
-  }
-}
-
-function expandAllTopics() {
-  AEVO_MODULES.forEach(m => m.topics.forEach(t => STATE.learnExpandedTopics.add(t.id)));
-  renderLearningArea();
-}
-
-function collapseAllTopics() {
-  STATE.learnExpandedTopics.clear();
-  renderLearningArea();
-}
-
-function setLearnHfFilter(hf) {
-  STATE.learnActiveHf = hf;
-  const buttons = document.querySelectorAll('.learn-hf-btn');
-  buttons.forEach(btn => {
-    if (btn.dataset.hf === hf) {
-      btn.className = 'learn-hf-btn px-3 py-1.5 text-xs font-bold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] transition';
-    } else {
-      btn.className = 'learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition';
-    }
-  });
-  renderLearningArea();
-}
-
-function onLearnSearchInput(val) {
-  STATE.learnSearchQuery = val;
-  renderLearningArea();
-}
-
-function resetLearnFilters() {
-  STATE.learnSearchQuery = '';
-  STATE.learnActiveHf = 'all';
-  const input = document.getElementById('learn-search-input');
-  if (input) input.value = '';
-  setLearnHfFilter('all');
-}
-
-function checkTopicQuiz(topicId, selectedIdx, correctIdx) {
-  const container = document.getElementById(`quiz-opts-${topicId}`);
-  const fb = document.getElementById(`quiz-fb-${topicId}`);
-  if (!container || !fb) return;
-
-  // Find module & topic for explanation
-  let explText = '';
-  for (const m of AEVO_MODULES) {
-    for (const t of m.topics) {
-      if (t.id === topicId && t.quiz) {
-        explText = t.quiz.expl;
-        break;
-      }
-    }
-  }
-
-  const buttons = container.querySelectorAll('button');
-  buttons.forEach((btn, idx) => {
-    btn.disabled = true;
-    if (idx === correctIdx) {
-      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-emerald-50 border border-emerald-500 font-bold text-emerald-900 flex items-start gap-2';
-    } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
-      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-rose-50 border border-rose-500 text-rose-900 line-through flex items-start gap-2';
-    } else {
-      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] opacity-60 border border-[var(--c-border)] flex items-start gap-2';
-    }
-  });
-
-  fb.classList.remove('hidden');
-  if (selectedIdx === correctIdx) {
-    fb.className = 'p-3 rounded text-xs leading-relaxed bg-emerald-100 border border-emerald-400 text-emerald-950';
-    fb.innerHTML = `<strong>Richtig!</strong> ${escapeHtml(explText)}`;
-  } else {
-    fb.className = 'p-3 rounded text-xs leading-relaxed bg-rose-100 border border-rose-400 text-rose-950';
-    const _optTexts = [...container.querySelectorAll('button')].map(b => b.textContent.trim());
-    const _trapHtml = renderTrapAnalysisBlock({ options: _optTexts, correctIndices: [correctIdx] }, [selectedIdx]);
-    fb.innerHTML = `<strong>Leider nicht zutreffend.</strong> ${escapeHtml(explText)}` + _trapHtml;
-  }
-}
-
-function checkTopicQuizPc(topicId, selectedIdx) {
-  // Multi-Answer Quiz fuer Pruefungs-Check Themen: Klick = Auswahl, Auswertung bei Erreichen der Zielanzahl
-  let topic = null;
-  for (const m of AEVO_MODULES) { for (const t of m.topics) { if (t.id === topicId) { topic = t; break; } } if (topic) break; }
-  if (!topic || !topic.quiz || !topic.quiz.correctArr) return;
-  const key = 'pcq_' + topicId;
-  STATE[key] = STATE[key] || [];
-  if (STATE[key].includes(selectedIdx)) return;
-  STATE[key].push(selectedIdx);
-  const picked = STATE[key];
-  const need = topic.quiz.correctArr.length;
-  const container = document.getElementById(`quiz-opts-${topicId}`);
-  const fb = document.getElementById(`quiz-fb-${topicId}`);
-  if (!container || !fb) return;
-  const btns = container.querySelectorAll('button');
-  if (picked.length < need) {
-    btns.forEach((btn, idx) => {
-      if (picked.includes(idx)) {
-        btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-accent)] text-[var(--c-on-accent)] border border-[var(--c-border)] font-semibold flex items-start gap-2';
-        btn.disabled = true;
-      }
-    });
-    fb.classList.remove('hidden');
-    fb.className = 'p-2 rounded text-xs bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]';
-    fb.innerHTML = `<strong>Ausgewählt: ${picked.length} von ${need}</strong> – weitere Antwort(en) anklicken.`;
-    return;
-  }
-  // Auswertung
-  const correct = topic.quiz.correctArr;
-  const isRight = picked.length === correct.length && correct.every(c => picked.includes(c));
-  btns.forEach((btn, idx) => {
-    btn.disabled = true;
-    if (correct.includes(idx)) {
-      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-emerald-50 border border-emerald-500 font-bold text-emerald-900 flex items-start gap-2';
-    } else if (picked.includes(idx)) {
-      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-rose-50 border border-rose-500 text-rose-900 line-through flex items-start gap-2';
-    } else {
-      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] opacity-60 border border-[var(--c-border)] flex items-start gap-2';
-    }
-  });
-  fb.classList.remove('hidden');
-  fb.className = isRight
-    ? 'p-3 rounded text-xs leading-relaxed bg-emerald-100 border border-emerald-400 text-emerald-950'
-    : 'p-3 rounded text-xs leading-relaxed bg-rose-100 border border-rose-400 text-rose-950';
-  const _trapHtmlM = isRight ? '' : renderTrapAnalysisBlock({ options: topic.quiz.options, correctIndices: correct }, picked);
-  fb.innerHTML = `<strong>${isRight ? 'Richtig!' : 'Leider nicht vollständig zutreffend.'}</strong> Lösung: ${correct.map(i => String.fromCharCode(65 + i)).join(', ')}. ${escapeHtml(topic.quiz.expl || '')} <em class="not-italic font-semibold">Ausführliche Begründung: siehe Lernhinweise oben.</em>` + _trapHtmlM;
-}
-
-function jumpToPracticeFromHf(hf) {
-  STATE.practiceHfFilter = (hf === 6) ? 'pc' : String(hf);
-  STATE.practiceCategoryFilter = 'all';
-  STATE.practiceStatusFilter = 'all';
-  STATE.practiceSearch = '';
-  STATE.practiceIndex = 0;
-  
-  const hfSelect = document.getElementById('practice-hf-select');
-  if (hfSelect) hfSelect.value = String(hf);
-  
-  switchMode('practice');
-}
-
-// ==========================================
-// 2. FREIES ÜBEN (FRAGENTRAINER MIT ALLEN FRAGEN)
-// ==========================================
-function getFilteredPracticeQuestions() {
-  const hf = STATE.practiceHfFilter;
-  const cat = STATE.practiceCategoryFilter;
-  const stat = STATE.practiceStatusFilter;
-  const query = STATE.practiceSearch.trim().toLowerCase();
-
-  return AEVO_QUESTIONS.filter(q => {
-    // HF filter
-    if (hf === 'pc') { if (q.id < 416) return false; }
-    else if (hf === 'pc1') { if (q.id < 416 || q.id > 495) return false; }
-    else if (hf === 'ihk66') { if (q.id < 656 || q.id > 695) return false; }
-    else if (hf === 'ihkf') { if (q.id < 696 || q.id > 775) return false; }
-    else if (hf === 'ihk2') { if (q.id < 776 || q.id > 805) return false; }
-    else if (hf === 'ihk3') { if (q.id < 806) return false; }
-    else if (hf !== 'all' && String(q.hf) !== hf) return false;
-    
-    // Category filter
-    if (cat !== 'all' && q.category !== cat) return false;
-
-    // Search query
-    if (query) {
-      const text = (q.situation + ' ' + q.question + ' ' + q.options.join(' ')).toLowerCase();
-      if (!text.includes(query)) return false;
-    }
-
-    // Status filter
-    const ans = STATE.practiceAnswers[q.id];
-    const isChecked = STATE.practiceChecked[q.id];
-    const isFlagged = STATE.practiceFlags.has(q.id);
-
-    if (stat === 'flagged') return isFlagged;
-    if (stat === 'unanswered') return !ans || ans.length === 0;
-
-    if (stat === 'correct' || stat === 'wrong') {
-      if (!isChecked || !ans) return false;
-      const isCorrect = isAnswerFullyCorrect(q, ans);
-      return stat === 'correct' ? isCorrect : !isCorrect;
-    }
-
-    return true;
-  });
-}
-
-function initPracticeView() {
-  const hfSelect = document.getElementById('practice-hf-select');
-  const catSelect = document.getElementById('practice-cat-select');
-  const statSelect = document.getElementById('practice-stat-select');
-  const searchInput = document.getElementById('practice-search-input');
-
-  if (hfSelect) hfSelect.value = STATE.practiceHfFilter;
-  if (catSelect) catSelect.value = STATE.practiceCategoryFilter;
-  if (statSelect) statSelect.value = STATE.practiceStatusFilter;
-  if (searchInput) searchInput.value = STATE.practiceSearch;
-
-  renderPracticeQuestion();
-  renderPracticePalette();
-  updatePracticeStats();
-}
-
-function onPracticeFilterChange() {
-  const hfSelect = document.getElementById('practice-hf-select');
-  const catSelect = document.getElementById('practice-cat-select');
-  const statSelect = document.getElementById('practice-stat-select');
-  const searchInput = document.getElementById('practice-search-input');
-
-  if (hfSelect) STATE.practiceHfFilter = hfSelect.value;
-  if (catSelect) STATE.practiceCategoryFilter = catSelect.value;
-  if (statSelect) STATE.practiceStatusFilter = statSelect.value;
-  if (searchInput) STATE.practiceSearch = searchInput.value;
-
-  STATE.practiceIndex = 0;
-  renderPracticeQuestion();
-  renderPracticePalette();
-  updatePracticeStats();
-  saveStorage();
-}
-
-function renderPracticeQuestion() {
-  const filtered = getFilteredPracticeQuestions();
-  const container = document.getElementById('practice-card-container');
-  if (!container) return;
-
-  if (filtered.length === 0) {
-    container.innerHTML = `
-      <div class="p-12 text-center bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm">
-        <span class="text-3xl mb-2 block"><svg class="icn" aria-hidden="true"><use href="#i-search"/></svg></span>
-        <h3 class="text-base font-bold text-[var(--c-ink-soft)]">Keine Fragen im ausgewählten Filter</h3>
-        <p class="text-xs text-[var(--c-muted)] mt-1">Keine der ${AEVO_QUESTIONS.length} Fragen entspricht den aktuellen Filtereinstellungen.</p>
-        <button onclick="resetPracticeFilters()" class="mt-4 px-4 py-2 bg-[var(--c-accent)] text-[var(--c-on-accent)] text-xs font-bold rounded shadow-sm hover:bg-[var(--c-elevated)] transition">
-          Filter zurücksetzen (Alle ${AEVO_QUESTIONS.length} Fragen anzeigen)
-        </button>
-      </div>
-    `;
-    return;
-  }
-
-  // Bound index
-  if (STATE.practiceIndex >= filtered.length) {
-    STATE.practiceIndex = filtered.length - 1;
-  }
-  if (STATE.practiceIndex < 0) {
-    STATE.practiceIndex = 0;
-  }
-
-  const q = filtered[STATE.practiceIndex];
-  const userAns = STATE.practiceAnswers[q.id] || [];
-  const isChecked = !!STATE.practiceChecked[q.id];
-  const isFlagged = STATE.practiceFlags.has(q.id);
-
-  const isCorrect = isChecked ? isAnswerFullyCorrect(q, userAns) : false;
-
-  let html = `
-    <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm overflow-hidden">
-      <!-- Top Action Bar inside Card -->
-      <div class="px-6 py-4 bg-[var(--c-sunken)] border-b border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-2 flex-wrap">
-          <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">
-            Frage ${q.id} von ${AEVO_QUESTIONS.length}
-          </span>
-          <span class="px-2 py-0.5 text-[11px] font-semibold rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]">
-            Handlungsfeld ${q.hf}
-          </span>
-          <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]">
-            ${escapeHtml(q.category)}
-          </span>
-        </div>
-
-        <div class="flex items-center gap-2">
-          <!-- Flag Button -->
-          <button onclick="togglePracticeFlag(${q.id})" class="px-3 py-1 rounded text-xs font-semibold border transition flex items-center gap-1.5 ${isFlagged ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-[var(--c-card)] border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]'}">
-            <span>${isFlagged ? '⚑ Gemerkt' : '⚐ Frage merken'}</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Question Content -->
-      <div class="p-6 space-y-6">
-        <!-- Situation Box -->
-        <div class="p-4 rounded-md bg-[var(--c-inset)] border border-[var(--c-border)] space-y-1">
-          <div class="text-[10px] font-bold uppercase font-mono tracking-wider text-[var(--c-muted)]">Ausgangssituation</div>
-          <p class="text-sm font-normal text-[var(--c-ink)] leading-relaxed">${escapeHtml(q.situation)}</p>
-        </div>
-
-        <!-- Question Prompt & Target Count -->
-        <div class="space-y-2">
-          <div class="flex items-center justify-between gap-2 flex-wrap">
-            <h3 class="text-base font-bold text-[var(--c-ink)] tracking-tight">${escapeHtml(q.question)}</h3>
-            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded ${q.targetCount > 1 ? 'bg-[var(--c-accent)] text-[var(--c-on-accent)]' : 'bg-[var(--c-elevated)] text-[var(--c-ink)] border border-[var(--c-border)]'}">
-              Wählen Sie ${q.targetCount} Antwort${q.targetCount > 1 ? 'en' : ''}
-            </span>
-          </div>
-          <p class="text-xs text-[var(--c-muted)]">
-            ${isChecked ? 'Auswertung erfolgt. Siehe Farbkennzeichnung und juristische Begründung unten.' : `Ausgewählt: ${userAns.length} von ${q.targetCount}`}
-          </p>
-        </div>
-
-        <!-- Options List -->
-        <div class="space-y-2.5">
-          ${q.options.map((opt, idx) => {
-            const isSelected = userAns.includes(idx);
-            const isOptCorrect = q.correctIndices.includes(idx);
-
-            let optCls = 'border-[var(--c-border)] bg-[var(--c-card)] hover:bg-[var(--c-sunken)] text-[var(--c-ink)]';
-            let badge = '';
-
-            if (isChecked) {
-              if (isSelected && isOptCorrect) {
-                // Correctly chosen
-                optCls = 'border-emerald-600 bg-emerald-50 text-emerald-950 font-medium';
-                badge = '<span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">✓ Richtig gewählt</span>';
-              } else if (isSelected && !isOptCorrect) {
-                // Incorrectly chosen
-                optCls = 'border-rose-600 bg-rose-50 text-rose-950 font-medium';
-                badge = '<span class="text-xs font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded border border-rose-300">✗ Falsch gewählt</span>';
-              } else if (!isSelected && isOptCorrect) {
-                // Missed correct answer
-                optCls = 'border-emerald-500 border-dashed bg-emerald-50/50 text-emerald-900';
-                badge = '<span class="text-xs font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded border border-emerald-200">★ Richtige Lösung</span>';
-              } else {
-                optCls = 'border-[var(--c-border)] bg-[var(--c-sunken)] opacity-60 text-[var(--c-muted)]';
-              }
-            } else if (isSelected) {
-              optCls = 'border-[var(--c-ink)] bg-[var(--c-accent)] text-[var(--c-on-accent)]';
-            }
-
-            return `
-              <div onclick="${isChecked ? '' : `togglePracticeOption(${q.id}, ${idx})`}" class="p-4 rounded-md border transition flex items-start gap-3.5 cursor-pointer ${optCls}">
-                <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded ${q.type === 'single' ? 'rounded-full' : 'rounded'} border flex items-center justify-center text-xs font-bold ${isSelected ? (isChecked ? (isOptCorrect ? 'border-emerald-600 bg-emerald-600 text-[var(--c-on-accent)]' : 'border-rose-600 bg-rose-600 text-[var(--c-on-accent)]') : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-ink)]') : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-muted)]'}">
-                  ${isSelected ? '✓' : String.fromCharCode(65 + idx)}
-                </div>
-                <div class="flex-1 space-y-1">
-                  <div class="text-sm leading-relaxed">${escapeHtml(opt)}</div>
-                  ${badge}
-                </div>
-              </div>
-            `;
-          }).join('')}
-        </div>
-
-        <!-- Result / Feedback Banner (Shown after check) -->
-        ${isChecked ? `
-          <div class="p-5 rounded-lg border space-y-3 ${isCorrect ? 'bg-emerald-50 border-emerald-400' : 'bg-rose-50 border-rose-400'}">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">${isCorrect ? '<svg class="icn" aria-hidden="true"><use href="#i-check-c"/></svg>' : '<svg class="icn" aria-hidden="true"><use href="#i-alert"/></svg>'}</span>
-              <h4 class="text-sm font-bold ${isCorrect ? 'text-emerald-900' : 'text-rose-900'}">
-                ${isCorrect ? 'Vollständig richtig gelöst! (1 Punkt nach DIHK Alles-oder-Nichts)' : 'Nicht vollständig richtig (0 Punkte nach DIHK Alles-oder-Nichts)'}
-              </h4>
-            </div>
-            <div class="text-xs leading-relaxed text-[var(--c-ink-soft)] space-y-1 border-t ${isCorrect ? 'border-emerald-200' : 'border-rose-200'} pt-2.5">
-              <div class="font-bold font-mono uppercase tracking-wider text-[11px] text-[var(--c-muted)]">Juristische & Pädagogische Begründung:</div>
-              <p>${escapeHtml(q.explanation)}</p>
-            </div>
-          </div>
-        ` : ''}
-
-        ${isChecked && !isCorrect ? renderTrapAnalysisBlock(q, userAns) : ''}
-
-        <!-- Card Footer Actions -->
-        <div class="pt-4 border-t border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
-          <div class="flex items-center gap-2">
-            ${!isChecked ? `
-              <button onclick="checkPracticeAnswer(${q.id})" ${userAns.length === 0 ? 'disabled' : ''} class="px-5 py-2 rounded text-xs font-bold bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:bg-black disabled:opacity-40 disabled:cursor-not-allowed shadow-sm transition">
-                Antwort prüfen
-              </button>
-            ` : `
-              <button onclick="retryPracticeQuestion(${q.id})" class="px-4 py-2 rounded text-xs font-bold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-ink-soft)] hover:bg-[var(--c-card)] shadow-sm transition">
-                ↺ Erneut versuchen
-              </button>
-            `}
-          </div>
-
-          <!-- Question Navigation -->
-          <div class="flex items-center gap-2">
-            <button onclick="navigatePractice(-1)" ${STATE.practiceIndex === 0 ? 'disabled' : ''} class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] disabled:opacity-40 transition">
-              ← Vorherige
-            </button>
-            <span class="text-xs font-mono text-[var(--c-muted)] px-2">
-              ${STATE.practiceIndex + 1} / ${filtered.length}
-            </span>
-            <button onclick="navigatePractice(1)" ${STATE.practiceIndex === filtered.length - 1 ? 'disabled' : ''} class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] disabled:opacity-40 transition">
-              Nächste →
-            </button>
-            <button onclick="jumpToRandomPracticeQuestion()" class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-inset)] border border-[var(--c-border)] text-[var(--c-ink-soft)] hover:bg-[var(--c-elevated)] transition" title="Zufällige Frage">
-              <svg class="icn" aria-hidden="true"><use href="#i-shuffle"/></svg> Zufall
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-
-  container.innerHTML = html;
-  renderPracticePalette();
-  updatePracticeStats();
-}
-
-function togglePracticeOption(questionId, optionIndex) {
-  const q = AEVO_QUESTIONS.find(item => item.id === questionId);
-  if (!q) return;
-
-  let userAns = STATE.practiceAnswers[questionId] || [];
-
-  if (q.type === 'single') {
-    userAns = [optionIndex];
-  } else {
-    if (userAns.includes(optionIndex)) {
-      userAns = userAns.filter(i => i !== optionIndex);
-    } else {
-      if (userAns.length >= q.targetCount) {
-        userAns.shift();
-      }
-      userAns.push(optionIndex);
-    }
-  }
-
-  STATE.practiceAnswers[questionId] = userAns;
-  renderPracticeQuestion();
-  saveStorage();
-}
-
-function checkPracticeAnswer(questionId) {
-  STATE.practiceChecked[questionId] = true;
-  renderPracticeQuestion();
-  saveStorage();
-}
-
-function retryPracticeQuestion(questionId) {
-  delete STATE.practiceChecked[questionId];
-  delete STATE.practiceAnswers[questionId];
-  renderPracticeQuestion();
-  saveStorage();
-}
-
-function togglePracticeFlag(questionId) {
-  if (STATE.practiceFlags.has(questionId)) {
-    STATE.practiceFlags.delete(questionId);
-  } else {
-    STATE.practiceFlags.add(questionId);
-  }
-  renderPracticeQuestion();
-  saveStorage();
-}
-
-function navigatePractice(direction) {
-  const filtered = getFilteredPracticeQuestions();
-  const nextIdx = STATE.practiceIndex + direction;
-  if (nextIdx >= 0 && nextIdx < filtered.length) {
-    STATE.practiceIndex = nextIdx;
-    renderPracticeQuestion();
-    saveStorage();
-  }
-}
-
-function jumpToRandomPracticeQuestion() {
-  const filtered = getFilteredPracticeQuestions();
-  if (filtered.length <= 1) return;
-  let newIdx = Math.floor(Math.random() * filtered.length);
-  if (newIdx === STATE.practiceIndex) {
-    newIdx = (newIdx + 1) % filtered.length;
-  }
-  STATE.practiceIndex = newIdx;
-  renderPracticeQuestion();
-  saveStorage();
-}
-
-function renderPracticePalette() {
-  const container = document.getElementById('practice-palette-grid');
-  if (!container) return;
-
-  const filtered = getFilteredPracticeQuestions();
-  let html = '';
-
-  filtered.forEach((q, idx) => {
-    const isCurrent = idx === STATE.practiceIndex;
-    const isChecked = !!STATE.practiceChecked[q.id];
-    const userAns = STATE.practiceAnswers[q.id];
-    const isFlagged = STATE.practiceFlags.has(q.id);
-
-    let bgCls = 'bg-[var(--c-card)] text-[var(--c-ink-soft)] border-[var(--c-border)]';
-    if (isChecked && userAns && userAns.length > 0) {
-      const isCorrect = isAnswerFullyCorrect(q, userAns);
-      bgCls = isCorrect ? 'bg-emerald-600 text-[var(--c-on-accent)] border-emerald-700' : 'bg-rose-600 text-[var(--c-on-accent)] border-rose-700';
-    } else if (userAns && userAns.length > 0) {
-      bgCls = 'bg-[var(--c-elevated)] text-[var(--c-on-accent)] border-black';
-    }
-
-    const currentRing = isCurrent ? 'ring-2 ring-black ring-offset-2 font-black' : '';
-    const flagDot = isFlagged ? '<span class="absolute top-0 right-0.5 text-[9px] text-amber-400 font-bold">⚑</span>' : '';
-
-    html += `
-      <button onclick="selectPracticeQuestionByIndex(${idx})" class="relative w-8 h-8 rounded text-xs font-mono font-bold flex items-center justify-center border transition hover:opacity-80 ${bgCls} ${currentRing}">
-        ${q.id}
-        ${flagDot}
-      </button>
-    `;
-  });
-
-  container.innerHTML = html;
-}
-
-function selectPracticeQuestionByIndex(idx) {
-  STATE.practiceIndex = idx;
-  renderPracticeQuestion();
-  saveStorage();
-}
-
-function updatePracticeStats() {
-  let answeredCount = 0;
-  let correctCount = 0;
-  let checkedCount = 0;
-
-  AEVO_QUESTIONS.forEach(q => {
-    const isChecked = !!STATE.practiceChecked[q.id];
-    const ans = STATE.practiceAnswers[q.id];
-    if (ans && ans.length > 0) answeredCount++;
-    if (isChecked && ans && ans.length > 0) {
-      checkedCount++;
-      if (isAnswerFullyCorrect(q, ans)) {
-        correctCount++;
-      }
-    }
-  });
-
-  const accuracy = checkedCount > 0 ? Math.round((correctCount / checkedCount) * 100) : 0;
-
-  const elAnswered = document.getElementById('stat-practice-answered');
-  const elAccuracy = document.getElementById('stat-practice-accuracy');
-  const elCorrect = document.getElementById('stat-practice-correct');
-
-  if (elAnswered) elAnswered.textContent = `${answeredCount} / ${AEVO_QUESTIONS.length}`;
-  if (elAccuracy) elAccuracy.textContent = `${accuracy}%`;
-  if (elCorrect) elCorrect.textContent = `${correctCount} richtig`;
-}
-
-function resetPracticeFilters() {
-  STATE.practiceHfFilter = 'all';
-  STATE.practiceCategoryFilter = 'all';
-  STATE.practiceStatusFilter = 'all';
-  STATE.practiceSearch = '';
-  STATE.practiceIndex = 0;
-
-  const hfSelect = document.getElementById('practice-hf-select');
-  const catSelect = document.getElementById('practice-cat-select');
-  const statSelect = document.getElementById('practice-stat-select');
-  const searchInput = document.getElementById('practice-search-input');
-
-  if (hfSelect) hfSelect.value = 'all';
-  if (catSelect) catSelect.value = 'all';
-  if (statSelect) statSelect.value = 'all';
-  if (searchInput) searchInput.value = '';
-
-  renderPracticeQuestion();
-  renderPracticePalette();
-  updatePracticeStats();
-  saveStorage();
-}
-
-function resetPracticeProgress() {
-  if (confirm('Möchten Sie Ihren gesamten Trainer-Fortschritt zurücksetzen? Alle geübten Antworten und Markierungen werden gelöscht.')) {
-    STATE.practiceAnswers = {};
-    STATE.practiceChecked = {};
-    STATE.practiceFlags.clear();
-    STATE.practiceIndex = 0;
-    renderPracticeQuestion();
-    renderPracticePalette();
-    updatePracticeStats();
-    saveStorage();
-  }
-}
-
-// ==========================================
-// 3. PRÜFUNGSSIMULATOR (80 GEBUNDENE AUFGABEN)
-// ==========================================
-function getExamQuestions() {
-  if (STATE.examQuestionIds && Array.isArray(STATE.examQuestionIds) && STATE.examQuestionIds.length === 80) {
-    const list = STATE.examQuestionIds.map(id => AEVO_QUESTIONS.find(q => q.id === id)).filter(Boolean);
-    if (list.length === 80) return list;
-  }
-  return AEVO_QUESTIONS.slice(0, 80);
-}
-
-function sampleRandom(arr, count) {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy.slice(0, count);
-}
-
-function generateNewExamSetFromSelect() {
-  var sel = document.getElementById('exam-source-select');
-  generateNewExamSet(sel ? sel.value : 'basis');
-}
-
-function generateNewExamSet(source) {
-  source = source || 'basis';
-  const isStarted = STATE.timerActive || (STATE.answers && Object.keys(STATE.answers).length > 0);
-  if (isStarted) {
-    if (!confirm('Möchten Sie einen neuen 80-Aufgaben Prüfungssatz generieren? Ihre bisherigen Antworten und die Prüfungszeit werden zurückgesetzt.')) {
-      return;
-    }
-  }
-
-  // Quellen (ID-basiert): basis = DIHK-gewichtet aus Nicht-PC | all = 40/40 Mix | pc240 = Feldhaus 240 | pc1 = Original-Satz 1
-  const pcAll = AEVO_QUESTIONS.filter(q => q.id >= 416 && q.id <= 775);              // 240 Pruefungs-Check
-  const pcS1 = AEVO_QUESTIONS.filter(q => q.id >= 416 && q.id <= 495); // Original-Satz 1 (80)
-  const ihk66 = AEVO_QUESTIONS.filter(q => q.id >= 656 && q.id <= 695); // IHK Original-Satz 66 (40 MC)
-  const ihkf = AEVO_QUESTIONS.filter(q => q.id >= 696 && q.id <= 775); // IHK Original-Pruefung fotografiert (80)
-  const ihk2 = AEVO_QUESTIONS.filter(q => q.id >= 776 && q.id <= 805); // IHK Test-App transkribiert (30)
-  const ihk3 = AEVO_QUESTIONS.filter(q => q.id >= 806); // IHK Test-App komplett (133)
-  const basis = q => q.id < 416;                                       // 415 DIHK- & Lernmodul-Fragen
-  let selected;
-
-  if (source === 'pc1') {
-    selected = [...pcS1];
-  } else if (source === 'ihk66') {
-    selected = [...ihk66];
-  }
-   else if (source === 'ihkf') {
-    selected = [...ihkf];
-   } else if (source === 'ihk2') {
-    selected = [...ihk2];
-   } else if (source === 'ihk3') {
-    selected = [...ihk3];
-   } else if (source === 'pc240') {
-    selected = sampleRandom(pcAll, 80);
-  } else if (source === 'all') {
-    selected = [
-      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 1), 6),
-      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 2), 14),
-      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 3), 14),
-      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 4), 6),
-      ...sampleRandom(pcAll, 40)
-    ];
-  } else {
-    // DIHK Authentic Distribution: 12 HF1, 28 HF2, 28 HF3, 12 HF4 = 80 questions
-    selected = [
-      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 1), 12),
-      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 2), 28),
-      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 3), 28),
-      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 4), 12)
-    ];
-  }
-
-  STATE.examQuestionIds = selected.map(q => q.id);
-  STATE.currentQuestionIndex = 0;
-  STATE.answers = {};
-  STATE.flagged.clear();
-  STATE.timeRemaining = 180 * 60;
-  if (STATE.timerInterval) {
-    clearInterval(STATE.timerInterval);
-    STATE.timerInterval = null;
-  }
-  STATE.timerActive = false;
-  STATE.examSubmitted = false;
-  STATE.examResults = null;
-
-  initExamGrid();
-  renderCurrentQuestion();
-  updateProgressUI();
-  updateTimerDisplay();
-  saveStorage();
-}
-
-function resetToDefaultExamSet() {
-  if (!confirm('Möchten Sie zum offiziellen Standard-Prüfungssatz (Fragen 1 bis 80) zurückkehren?')) {
-    return;
-  }
-  STATE.examQuestionIds = null;
-  STATE.currentQuestionIndex = 0;
-  STATE.answers = {};
-  STATE.flagged.clear();
-  STATE.timeRemaining = 180 * 60;
-  if (STATE.timerInterval) {
-    clearInterval(STATE.timerInterval);
-    STATE.timerInterval = null;
-  }
-  STATE.timerActive = false;
-  STATE.examSubmitted = false;
-  STATE.examResults = null;
-
-  initExamGrid();
-  renderCurrentQuestion();
-  updateProgressUI();
-  updateTimerDisplay();
-  saveStorage();
-}
-
-function initExamGrid() {
-  const grid = document.getElementById('question-grid');
-  if (!grid) return;
-
-  const examQuestions = getExamQuestions();
-  let html = '';
-
-  examQuestions.forEach((q, idx) => {
-    const isCurrent = idx === STATE.currentQuestionIndex;
-    const isAnswered = STATE.answers[q.id] && STATE.answers[q.id].length > 0;
-    const isFlagged = STATE.flagged.has(q.id);
-
-    let cls = 'relative w-8 h-8 rounded text-xs font-mono font-bold flex items-center justify-center border transition ';
-
-    if (isAnswered) {
-      cls += 'bg-[var(--c-accent)] text-[var(--c-on-accent)] border-[var(--c-ink)] ';
-    } else {
-      cls += 'bg-[var(--c-card)] text-[var(--c-ink-soft)] border-[var(--c-border)] hover:bg-[var(--c-card)] ';
-    }
-
-    if (isCurrent) {
-      cls += 'ring-2 ring-black ring-offset-2 ';
-    }
-
-    const flagSpan = isFlagged ? '<span class="absolute top-0 right-0.5 text-[9px] text-rose-500 font-bold">⚑</span>' : '';
-
-    html += `
-      <button id="exam-tile-${idx}" onclick="jumpToExamQuestion(${idx})" class="${cls}">
-        ${idx + 1}
-        ${flagSpan}
-      </button>
-    `;
-  });
-
-  grid.innerHTML = html;
-}
-
-function renderCurrentQuestion() {
-  const examQuestions = getExamQuestions();
-  if (examQuestions.length === 0) return;
-
-  const q = examQuestions[STATE.currentQuestionIndex];
-  if (!q) return;
-
-  // Title / Indicators
-  const numEl = document.getElementById('exam-q-number');
-  const hfEl = document.getElementById('exam-q-hf');
-  const catEl = document.getElementById('exam-q-category');
-  const flagBtn = document.getElementById('exam-flag-btn');
-
-  if (numEl) numEl.textContent = `Aufgabe ${STATE.currentQuestionIndex + 1} von 80`;
-  if (hfEl) hfEl.textContent = `HF ${q.hf}`;
-  if (catEl) catEl.textContent = q.category;
-
-  const isFlagged = STATE.flagged.has(q.id);
-  if (flagBtn) {
-    flagBtn.className = `px-3 py-1.5 rounded text-xs font-semibold border transition flex items-center gap-1.5 ${isFlagged ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-[var(--c-card)] border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]'}`;
-    flagBtn.innerHTML = `<span>${isFlagged ? '⚑ Markiert' : '⚐ Für Prüfung merken'}</span>`;
-  }
-
-  // Situation
-  const sitEl = document.getElementById('exam-situation-text');
-  if (sitEl) sitEl.textContent = q.situation;
-
-  // Question & Target
-  const qEl = document.getElementById('exam-question-text');
-  const targetEl = document.getElementById('exam-target-count-badge');
-  if (qEl) qEl.textContent = q.question;
-  if (targetEl) {
-    targetEl.textContent = `Wählen Sie ${q.targetCount} Antwort${q.targetCount > 1 ? 'en' : ''}`;
-  }
-
-  // Options
-  const optionsContainer = document.getElementById('exam-options-container');
-  if (optionsContainer) {
-    const userAnswers = STATE.answers[q.id] || [];
-    let optHtml = '';
-
-    q.options.forEach((opt, idx) => {
-      const isSelected = userAnswers.includes(idx);
-      const selCls = isSelected ? 'border-[var(--c-ink)] bg-[var(--c-accent)] text-[var(--c-on-accent)]' : 'border-[var(--c-border)] bg-[var(--c-card)] hover:bg-[var(--c-sunken)] text-[var(--c-ink)]';
-
-      optHtml += `
-        <div onclick="toggleExamOption(${q.id}, ${idx})" class="p-4 rounded-md border transition flex items-start gap-3.5 cursor-pointer ${selCls}">
-          <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded ${q.type === 'single' ? 'rounded-full' : 'rounded'} border flex items-center justify-center text-xs font-bold ${isSelected ? 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-ink)]' : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-muted)]'}">
-            ${isSelected ? '✓' : String.fromCharCode(65 + idx)}
-          </div>
-          <div class="text-sm leading-relaxed">${escapeHtml(opt)}</div>
-        </div>
-      `;
-    });
-
-    optionsContainer.innerHTML = optHtml;
-  }
-
-  // Prev / Next button states
-  const prevBtn = document.getElementById('exam-prev-btn');
-  const nextBtn = document.getElementById('exam-next-btn');
-  if (prevBtn) prevBtn.disabled = STATE.currentQuestionIndex === 0;
-  if (nextBtn) nextBtn.disabled = STATE.currentQuestionIndex === examQuestions.length - 1;
-
-  initExamGrid();
-}
-
-function toggleExamOption(questionId, optionIndex) {
-  if (STATE.examSubmitted) return;
-
-  const q = AEVO_QUESTIONS.find(item => item.id === questionId);
-  if (!q) return;
-
-  let currentSelection = STATE.answers[questionId] || [];
-
-  if (q.type === 'single') {
-    currentSelection = [optionIndex];
-  } else {
-    if (currentSelection.includes(optionIndex)) {
-      currentSelection = currentSelection.filter(i => i !== optionIndex);
-    } else {
-      if (currentSelection.length >= q.targetCount) {
-        currentSelection.shift();
-      }
-      currentSelection.push(optionIndex);
-    }
-  }
-
-  STATE.answers[questionId] = currentSelection;
-  renderCurrentQuestion();
-  updateProgressUI();
-  saveStorage();
-}
-
-function toggleExamFlagCurrent() {
-  const examQuestions = getExamQuestions();
-  const q = examQuestions[STATE.currentQuestionIndex];
-  if (!q) return;
-
-  if (STATE.flagged.has(q.id)) {
-    STATE.flagged.delete(q.id);
-  } else {
-    STATE.flagged.add(q.id);
-  }
-
-  renderCurrentQuestion();
-  updateProgressUI();
-  saveStorage();
-}
-
-function navigateQuestion(direction) {
-  const examQuestions = getExamQuestions();
-  const next = STATE.currentQuestionIndex + direction;
-  if (next >= 0 && next < examQuestions.length) {
-    STATE.currentQuestionIndex = next;
-    renderCurrentQuestion();
-    saveStorage();
-  }
-}
-
-function jumpToExamQuestion(index) {
-  const examQuestions = getExamQuestions();
-  if (index >= 0 && index < examQuestions.length) {
-    STATE.currentQuestionIndex = index;
-    renderCurrentQuestion();
-    saveStorage();
-  }
-}
-
-function updateProgressUI() {
-  const examQuestions = getExamQuestions();
-  let answeredCount = 0;
-
-  examQuestions.forEach(q => {
-    if (STATE.answers[q.id] && STATE.answers[q.id].length > 0) {
-      answeredCount++;
-    }
-  });
-
-  const percent = Math.round((answeredCount / examQuestions.length) * 100);
-
-  const progBar = document.getElementById('exam-prog');
-  const chipAns = document.getElementById('chip-answered');
-  const chipFlag = document.getElementById('chip-flagged');
-
-  if (progBar) progBar.style.width = `${percent}%`;
-  if (chipAns) chipAns.textContent = answeredCount;
-  if (chipFlag) chipFlag.textContent = STATE.flagged.size;
-}
-
-// Timer
-function startTimer() {
-  if (STATE.timerActive || STATE.examSubmitted) return;
-  STATE.timerActive = true;
-  updateTimerDisplay();
-
-  const toggleBtn = document.getElementById('timer-toggle-btn');
-  if (toggleBtn) toggleBtn.innerHTML = '<svg class="icn" aria-hidden="true"><use href="#i-pause"/></svg>';
-
-  STATE.timerInterval = setInterval(() => {
-    if (STATE.timeRemaining > 0) {
-      STATE.timeRemaining--;
-      updateTimerDisplay();
-      if (STATE.timeRemaining % 15 === 0) saveStorage();
-
-      if (STATE.timeRemaining === 15 * 60) {
-        alert('Achtung: Es verbleiben noch 15 Minuten Prüfungszeit!');
-      }
-    } else {
-      clearInterval(STATE.timerInterval);
-      STATE.timerActive = false;
-      alert('Die Prüfungszeit von 180 Minuten ist abgelaufen! Ihre Prüfung wird nun automatisch abgegeben.');
-      submitExamFinal();
-    }
   },
-    {
+  {
     id: 776,
     hf: 3,
     category: "Methodik",
@@ -33539,6 +32234,1312 @@ function startTimer() {
       0
     ],
     explanation: "Der Ausbildungsnachweis kann auch elektronisch geführt werden; die elektronische Form wird mit den Auszubildenden im Ausbildungsvertrag vereinbart (§ 13 BBiG i. V. m. § 36 Abs. 2 BBiG). Ausdrucke zur Prüfungsanmeldung sind nicht erforderlich, die Führung darf nicht in die Freizeit verlagert werden, und ein einvernehmlicher Wechsel der Form bleibt möglich."
+  }
+
+];
+  </script>
+
+  <!-- ========================================== -->
+  <!-- AEVO APP LOGIC & ENGINE                    -->
+  <!-- ========================================== -->
+  <script>
+// AEVO Application Logic: Learning Compendium, Question Trainer & 80-Question Exam Simulator
+
+// Global State
+const STATE = {
+  mode: 'learn', // 'learn' | 'practice' | 'exam' | 'results'
+
+  // Exam State (Strict 80 Questions, 180 min)
+  currentQuestionIndex: 0,
+  answers: {}, // { [questionId]: [selectedIndices] }
+  flagged: new Set(),
+  timeRemaining: 180 * 60,
+  timerActive: false,
+  timerInterval: null,
+  examSubmitted: false,
+  examResults: null,
+  reviewFilter: 'all',
+  activeHfFilter: 'all',
+  examQuestionIds: null,
+
+  // Practice Trainer State (All 110 questions, instant feedback, filters)
+  practiceIndex: 0,
+  practiceAnswers: {}, // { [questionId]: [selectedIndices] }
+  practiceChecked: {}, // { [questionId]: boolean }
+  practiceFlags: new Set(),
+  practiceHfFilter: 'all',
+  practiceCategoryFilter: 'all',
+  practiceStatusFilter: 'all',
+  practiceSearch: '',
+
+  // Learning Compendium State
+  learnActiveHf: 'all',
+  learnSearchQuery: '',
+  learnExpandedTopics: new Set()
+};
+
+const STORAGE_KEY_EXAM = 'aevo_exam_state_v2';
+const STORAGE_KEY_PRACTICE = 'aevo_practice_state_v2';
+
+// Initialization on DOM Ready
+document.addEventListener('DOMContentLoaded', () => {
+  loadStorage();
+  syncMobileTabs(STATE.mode);
+  renderLearningArea();
+  initPracticeView();
+  initExamGrid();
+  renderCurrentQuestion();
+  updateProgressUI();
+  updateTimerDisplay();
+
+  // If exam was already submitted, render results if user switches to results
+  if (STATE.examSubmitted && STATE.examResults) {
+    if (STATE.mode === 'results') {
+      showResultsView();
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (STATE.mode === 'exam' && !STATE.examSubmitted) {
+      if (e.key === 'ArrowRight') navigateQuestion(1);
+      else if (e.key === 'ArrowLeft') navigateQuestion(-1);
+    } else if (STATE.mode === 'practice') {
+      if (e.key === 'ArrowRight') navigatePractice(1);
+      else if (e.key === 'ArrowLeft') navigatePractice(-1);
+    }
+  });
+});
+
+// ==========================================
+// STORAGE PERSISTENCE
+// ==========================================
+function saveStorage() {
+  try {
+    const examData = {
+      currentQuestionIndex: STATE.currentQuestionIndex,
+      answers: STATE.answers,
+      flagged: Array.from(STATE.flagged),
+      timeRemaining: STATE.timeRemaining,
+      examSubmitted: STATE.examSubmitted,
+      examResults: STATE.examResults,
+      mode: STATE.mode,
+      examQuestionIds: STATE.examQuestionIds || null
+    };
+    localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(examData));
+
+    const practiceData = {
+      practiceIndex: STATE.practiceIndex,
+      practiceAnswers: STATE.practiceAnswers,
+      practiceChecked: STATE.practiceChecked,
+      practiceFlags: Array.from(STATE.practiceFlags),
+      practiceHfFilter: STATE.practiceHfFilter,
+      practiceCategoryFilter: STATE.practiceCategoryFilter,
+      practiceStatusFilter: STATE.practiceStatusFilter
+    };
+    localStorage.setItem(STORAGE_KEY_PRACTICE, JSON.stringify(practiceData));
+  } catch (err) {
+    console.warn('Storage save failed', err);
+  }
+}
+
+function loadStorage() {
+  try {
+    const savedExam = localStorage.getItem(STORAGE_KEY_EXAM);
+    if (savedExam) {
+      const data = JSON.parse(savedExam);
+      if (data.answers) STATE.answers = data.answers;
+      if (data.flagged) STATE.flagged = new Set(data.flagged);
+      if (typeof data.currentQuestionIndex === 'number') STATE.currentQuestionIndex = data.currentQuestionIndex;
+      if (typeof data.timeRemaining === 'number') STATE.timeRemaining = data.timeRemaining;
+      if (data.examSubmitted) STATE.examSubmitted = data.examSubmitted;
+      if (data.examResults) STATE.examResults = data.examResults;
+      if (data.mode) STATE.mode = data.mode;
+      if (Array.isArray(data.examQuestionIds) && data.examQuestionIds.length === 80) {
+        STATE.examQuestionIds = data.examQuestionIds;
+      }
+    }
+
+    const savedPractice = localStorage.getItem(STORAGE_KEY_PRACTICE);
+    if (savedPractice) {
+      const pData = JSON.parse(savedPractice);
+      if (pData.practiceAnswers) STATE.practiceAnswers = pData.practiceAnswers;
+      if (pData.practiceChecked) STATE.practiceChecked = pData.practiceChecked;
+      if (pData.practiceFlags) STATE.practiceFlags = new Set(pData.practiceFlags);
+      if (pData.practiceHfFilter) STATE.practiceHfFilter = pData.practiceHfFilter;
+      if (pData.practiceCategoryFilter) STATE.practiceCategoryFilter = pData.practiceCategoryFilter;
+      if (pData.practiceStatusFilter) STATE.practiceStatusFilter = pData.practiceStatusFilter;
+      if (typeof pData.practiceIndex === 'number') STATE.practiceIndex = pData.practiceIndex;
+    }
+  } catch (err) {
+    console.warn('Storage load failed', err);
+  }
+}
+
+// ==========================================
+
+// Theme (light/dark) toggle
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  try { localStorage.setItem('aevo-theme', t); } catch (e) {}
+  var m = document.querySelector('meta[name="theme-color"]');
+  if (m) m.setAttribute('content', t === 'dark' ? '#0c0c0e' : '#f1f1f3');
+  var b = document.getElementById('theme-toggle-btn');
+  if (b) b.innerHTML = t === 'dark' ? '<svg class="icn" aria-hidden="true"><use href="#i-sun"/></svg>' : '<svg class="icn" aria-hidden="true"><use href="#i-moon"/></svg>';
+}
+function toggleTheme() {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+document.addEventListener('DOMContentLoaded', function () {
+  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+});
+
+// Mobile bottom tab sync
+function syncMobileTabs(mode) {
+  document.querySelectorAll('#mobile-tabbar .tab-btn').forEach(function(b) {
+    var active = b.getAttribute('data-tab') === mode;
+    b.classList.toggle('text-[var(--c-accent)]', active);
+    b.classList.toggle('text-[var(--c-muted)]', !active);
+  });
+}
+// ==========================================
+// MODE NAVIGATION
+// ==========================================
+function switchMode(newMode, save = true) {
+  STATE.mode = newMode;
+  const viewLearn = document.getElementById('view-learn');
+  const viewPractice = document.getElementById('view-practice');
+  const viewExam = document.getElementById('view-exam');
+  const viewResults = document.getElementById('view-results');
+  const viewGuided = document.getElementById('view-guided');
+
+  const btnLearn = document.getElementById('nav-btn-learn');
+  const btnPractice = document.getElementById('nav-btn-practice');
+  const btnExam = document.getElementById('nav-btn-exam');
+  const btnGuided = document.getElementById('nav-btn-guided');
+
+  const timerBox = document.getElementById('exam-timer-box');
+  const submitBtn = document.getElementById('header-submit-btn');
+
+  viewLearn.classList.add('hidden');
+  viewPractice.classList.add('hidden');
+  viewExam.classList.add('hidden');
+  viewResults.classList.add('hidden');
+  viewGuided.classList.add('hidden');
+
+  const baseBtnCls = 'px-3 py-1.5 text-xs font-semibold rounded transition-all text-[var(--c-muted)] hover:text-[var(--c-ink)]';
+  const activeBtnCls = 'px-3 py-1.5 text-xs font-semibold rounded transition-all bg-[var(--c-card)] text-[var(--c-ink)] shadow-sm';
+
+  btnLearn.className = baseBtnCls;
+  btnPractice.className = baseBtnCls;
+  btnExam.className = baseBtnCls;
+  btnGuided.className = baseBtnCls;
+
+  if (newMode === 'learn') {
+    viewLearn.classList.remove('hidden');
+    btnLearn.className = activeBtnCls;
+    timerBox.classList.add('opacity-40');
+    submitBtn.classList.add('hidden');
+  } else if (newMode === 'practice') {
+    viewPractice.classList.remove('hidden');
+    btnPractice.className = activeBtnCls;
+    timerBox.classList.add('opacity-40');
+    submitBtn.classList.add('hidden');
+    renderPracticeQuestion();
+    renderPracticePalette();
+    updatePracticeStats();
+  } else if (newMode === 'exam') {
+    if (STATE.examSubmitted) {
+      showResultsView();
+      return;
+    }
+    viewExam.classList.remove('hidden');
+    btnExam.className = activeBtnCls;
+    timerBox.classList.remove('opacity-40');
+    submitBtn.classList.remove('hidden');
+    if (!STATE.timerActive && STATE.timeRemaining > 0 && !STATE.examSubmitted) {
+      startTimer();
+    }
+    renderCurrentQuestion();
+    updateProgressUI();
+  } else if (newMode === 'results') {
+    viewResults.classList.remove('hidden');
+    timerBox.classList.add('opacity-40');
+    submitBtn.classList.add('hidden');
+  } else if (newMode === 'guided') {
+    viewGuided.classList.remove('hidden');
+    btnGuided.className = activeBtnCls;
+    timerBox.classList.add('opacity-40');
+    submitBtn.classList.add('hidden');
+    renderGuidedOverview();
+  }
+
+  if (save) saveStorage();
+  syncMobileTabs(newMode);
+}
+
+// ==========================================
+// 1. LERNBEREICH (KOMPENDIUM) RENDERING
+// ==========================================
+function renderLearningArea() {
+  const container = document.getElementById('learning-modules-list');
+  if (!container) return;
+
+  const activeHf = STATE.learnActiveHf;
+  const query = STATE.learnSearchQuery.trim().toLowerCase();
+
+  let totalTopicsCount = 0;
+  let html = '';
+
+  AEVO_MODULES.forEach(module => {
+    // Filter by Handlungsfeld
+    if (activeHf !== 'all') {
+      if (activeHf === '5' && module.hf !== 5) return;
+      if (activeHf !== '5' && String(module.hf) !== activeHf) return;
+    }
+
+    // Filter topics by search query
+    const filteredTopics = module.topics.filter(topic => {
+      if (!query) return true;
+      const haystack = (topic.title + ' ' + topic.paragraphs + ' ' + topic.summary + ' ' + topic.keyPoints.join(' ')).toLowerCase();
+      return haystack.includes(query);
+    });
+
+    if (filteredTopics.length === 0) return;
+    totalTopicsCount += filteredTopics.length;
+
+    html += `
+      <section class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm overflow-hidden mb-6">
+        <!-- Module Header -->
+        <div class="px-6 py-5 bg-[var(--c-sunken)] border-b border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] tracking-wider">
+                ${module.hf === 5 ? 'Praxisprüfung' : (module.hf === 6 ? 'Prüfungs-Check' : 'Handlungsfeld ' + module.hf)}
+              </span>
+              <span class="text-xs text-[var(--c-muted)] font-mono">${filteredTopics.length} Themengebiete</span>
+            </div>
+            <h2 class="text-lg font-bold text-[var(--c-ink)]">${escapeHtml(module.title)}</h2>
+            <p class="text-xs text-[var(--c-muted)] mt-0.5">${escapeHtml(module.subtitle)}</p>
+          </div>
+          <button onclick="jumpToPracticeFromHf(${module.hf})" class="px-3 py-1.5 text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] hover:border-[var(--c-border)] rounded transition text-[var(--c-ink-soft)] shadow-sm flex items-center gap-1.5">
+            <span><svg class="icn" aria-hidden="true"><use href="#i-target"/></svg></span>
+            <span>Fragen zu HF ${module.hf === 5 ? 'Praxis' : (module.hf === 6 ? 'Prüfungs-Check' : module.hf)} üben</span>
+          </button>
+        </div>
+
+        <!-- Topics Accordion List -->
+        <div class="divide-y divide-[var(--c-border)]">
+    `;
+
+    filteredTopics.forEach(topic => {
+      const isExpanded = STATE.learnExpandedTopics.has(topic.id) || query.length > 0;
+      html += `
+        <article class="p-5 transition hover:bg-[var(--c-card)]">
+          <div class="flex items-start justify-between gap-4 cursor-pointer" onclick="toggleTopicExpansion('${topic.id}')">
+            <div class="space-y-1.5 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-mono font-bold text-[var(--c-muted)] bg-[var(--c-inset)] px-2 py-0.5 rounded border border-[var(--c-border)]">
+                  ${escapeHtml(topic.paragraphs)}
+                </span>
+              </div>
+              <h3 class="text-base font-bold text-[var(--c-ink)] tracking-tight flex items-center gap-2">
+                <span>${escapeHtml(topic.title)}</span>
+                <span class="text-xs font-normal text-[var(--c-muted)] font-mono">${isExpanded ? '▲' : '▼'}</span>
+              </h3>
+            </div>
+            <button class="text-xs font-semibold text-[var(--c-muted)] hover:text-[var(--c-ink)] px-2 py-1 bg-[var(--c-inset)] rounded border border-[var(--c-border)]">
+              ${isExpanded ? 'Einklappen' : 'Details & Quiz'}
+            </button>
+          </div>
+
+          <!-- Expanded Body -->
+          <div id="topic-body-${topic.id}" class="${isExpanded ? 'block' : 'hidden'} mt-4 space-y-4 pt-3 border-t border-[var(--c-bg)]">
+            <p class="text-sm text-[var(--c-ink-soft)] leading-relaxed font-normal bg-[var(--c-sunken)] p-3.5 rounded border border-[var(--c-border)]">
+              ${escapeHtml(topic.summary)}
+            </p>
+
+            <!-- Key Points Bullet List -->
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] mb-2 font-mono">Wesentliche Fachinhalte & Rechtsgrundsätze</h4>
+              <ul class="space-y-2 text-xs text-[var(--c-ink-soft)]">
+                ${topic.keyPoints.map(kp => `
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-[var(--c-muted)] font-bold mt-0.5">•</span>
+                    <div class="leading-relaxed flex-1">${kp}</div>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+
+            <!-- Mini Knowledge Check / Quiz -->
+            ${topic.quiz ? `
+              <div class="mt-4 p-4 rounded-lg bg-[var(--c-inset)] border border-[var(--c-border)] space-y-3">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm"><svg class="icn" aria-hidden="true"><use href="#i-bulb"/></svg></span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[var(--c-muted)] font-mono">1-Klick-Wissenscheck</span>
+                  </div>
+                  <span class="text-[11px] text-[var(--c-muted)]">Sofortige Auswertung</span>
+                </div>
+                <p class="text-xs font-semibold text-[var(--c-ink)]">${escapeHtml(topic.quiz.q)}</p>
+                ${topic.quiz.correctArr ? `
+                  <p class="text-[11px] font-bold text-[var(--c-muted)] font-mono">Mehrfachantwort: Wählen Sie ${topic.quiz.correctArr.length} richtige Antworten (nacheinander anklicken)</p>
+                ` : ''}
+                <div class="space-y-1.5" id="quiz-opts-${topic.id}">
+                  ${topic.quiz.options.map((opt, idx) => `
+                    <button onclick="${topic.quiz.correctArr ? `checkTopicQuizPc('${topic.id}', ${idx})` : `checkTopicQuiz('${topic.id}', ${idx}, ${topic.quiz.correct})`}" class="w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] hover:bg-[var(--c-card)] border border-[var(--c-border)] transition flex items-start gap-2">
+                      <span class="font-mono font-bold text-[var(--c-muted)]">${String.fromCharCode(65 + idx)})</span>
+                      <span class="text-[var(--c-ink-soft)]">${escapeHtml(opt)}</span>
+                    </button>
+                  `).join('')}
+                </div>
+                <div id="quiz-fb-${topic.id}" class="hidden p-3 rounded text-xs leading-relaxed"></div>
+              </div>
+            ` : ''}
+          </div>
+        </article>
+      `;
+    });
+
+    html += `
+        </div>
+      </section>
+    `;
+  });
+
+  if (totalTopicsCount === 0) {
+    html = `
+      <div class="p-12 text-center bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg">
+        <p class="text-base font-bold text-[var(--c-ink-soft)]">Keine Themengebiete gefunden</p>
+        <p class="text-xs text-[var(--c-muted)] mt-1">Bitte passen Sie Ihren Suchbegriff oder den Filter an.</p>
+        <button onclick="resetLearnFilters()" class="mt-4 px-3 py-1.5 bg-[var(--c-accent)] text-[var(--c-on-accent)] text-xs font-semibold rounded">Filter zurücksetzen</button>
+      </div>
+    `;
+  }
+
+  container.innerHTML = html;
+
+  const countBadge = document.getElementById('learn-topics-count');
+  if (countBadge) countBadge.textContent = `${totalTopicsCount} Themen`;
+}
+
+function toggleTopicExpansion(topicId) {
+  if (STATE.learnExpandedTopics.has(topicId)) {
+    STATE.learnExpandedTopics.delete(topicId);
+  } else {
+    STATE.learnExpandedTopics.add(topicId);
+  }
+  const body = document.getElementById(`topic-body-${topicId}`);
+  if (body) {
+    if (STATE.learnExpandedTopics.has(topicId)) {
+      body.classList.remove('hidden');
+    } else {
+      body.classList.add('hidden');
+    }
+  }
+}
+
+function expandAllTopics() {
+  AEVO_MODULES.forEach(m => m.topics.forEach(t => STATE.learnExpandedTopics.add(t.id)));
+  renderLearningArea();
+}
+
+function collapseAllTopics() {
+  STATE.learnExpandedTopics.clear();
+  renderLearningArea();
+}
+
+function setLearnHfFilter(hf) {
+  STATE.learnActiveHf = hf;
+  const buttons = document.querySelectorAll('.learn-hf-btn');
+  buttons.forEach(btn => {
+    if (btn.dataset.hf === hf) {
+      btn.className = 'learn-hf-btn px-3 py-1.5 text-xs font-bold rounded bg-[var(--c-accent)] text-[var(--c-on-accent)] transition';
+    } else {
+      btn.className = 'learn-hf-btn px-3 py-1.5 text-xs font-medium rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] transition';
+    }
+  });
+  renderLearningArea();
+}
+
+function onLearnSearchInput(val) {
+  STATE.learnSearchQuery = val;
+  renderLearningArea();
+}
+
+function resetLearnFilters() {
+  STATE.learnSearchQuery = '';
+  STATE.learnActiveHf = 'all';
+  const input = document.getElementById('learn-search-input');
+  if (input) input.value = '';
+  setLearnHfFilter('all');
+}
+
+function checkTopicQuiz(topicId, selectedIdx, correctIdx) {
+  const container = document.getElementById(`quiz-opts-${topicId}`);
+  const fb = document.getElementById(`quiz-fb-${topicId}`);
+  if (!container || !fb) return;
+
+  // Find module & topic for explanation
+  let explText = '';
+  for (const m of AEVO_MODULES) {
+    for (const t of m.topics) {
+      if (t.id === topicId && t.quiz) {
+        explText = t.quiz.expl;
+        break;
+      }
+    }
+  }
+
+  const buttons = container.querySelectorAll('button');
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === correctIdx) {
+      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-emerald-50 border border-emerald-500 font-bold text-emerald-900 flex items-start gap-2';
+    } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
+      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-rose-50 border border-rose-500 text-rose-900 line-through flex items-start gap-2';
+    } else {
+      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] opacity-60 border border-[var(--c-border)] flex items-start gap-2';
+    }
+  });
+
+  fb.classList.remove('hidden');
+  if (selectedIdx === correctIdx) {
+    fb.className = 'p-3 rounded text-xs leading-relaxed bg-emerald-100 border border-emerald-400 text-emerald-950';
+    fb.innerHTML = `<strong>Richtig!</strong> ${escapeHtml(explText)}`;
+  } else {
+    fb.className = 'p-3 rounded text-xs leading-relaxed bg-rose-100 border border-rose-400 text-rose-950';
+    const _optTexts = [...container.querySelectorAll('button')].map(b => b.textContent.trim());
+    const _trapHtml = renderTrapAnalysisBlock({ options: _optTexts, correctIndices: [correctIdx] }, [selectedIdx]);
+    fb.innerHTML = `<strong>Leider nicht zutreffend.</strong> ${escapeHtml(explText)}` + _trapHtml;
+  }
+}
+
+function checkTopicQuizPc(topicId, selectedIdx) {
+  // Multi-Answer Quiz fuer Pruefungs-Check Themen: Klick = Auswahl, Auswertung bei Erreichen der Zielanzahl
+  let topic = null;
+  for (const m of AEVO_MODULES) { for (const t of m.topics) { if (t.id === topicId) { topic = t; break; } } if (topic) break; }
+  if (!topic || !topic.quiz || !topic.quiz.correctArr) return;
+  const key = 'pcq_' + topicId;
+  STATE[key] = STATE[key] || [];
+  if (STATE[key].includes(selectedIdx)) return;
+  STATE[key].push(selectedIdx);
+  const picked = STATE[key];
+  const need = topic.quiz.correctArr.length;
+  const container = document.getElementById(`quiz-opts-${topicId}`);
+  const fb = document.getElementById(`quiz-fb-${topicId}`);
+  if (!container || !fb) return;
+  const btns = container.querySelectorAll('button');
+  if (picked.length < need) {
+    btns.forEach((btn, idx) => {
+      if (picked.includes(idx)) {
+        btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-accent)] text-[var(--c-on-accent)] border border-[var(--c-border)] font-semibold flex items-start gap-2';
+        btn.disabled = true;
+      }
+    });
+    fb.classList.remove('hidden');
+    fb.className = 'p-2 rounded text-xs bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]';
+    fb.innerHTML = `<strong>Ausgewählt: ${picked.length} von ${need}</strong> – weitere Antwort(en) anklicken.`;
+    return;
+  }
+  // Auswertung
+  const correct = topic.quiz.correctArr;
+  const isRight = picked.length === correct.length && correct.every(c => picked.includes(c));
+  btns.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (correct.includes(idx)) {
+      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-emerald-50 border border-emerald-500 font-bold text-emerald-900 flex items-start gap-2';
+    } else if (picked.includes(idx)) {
+      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-rose-50 border border-rose-500 text-rose-900 line-through flex items-start gap-2';
+    } else {
+      btn.className = 'w-full text-left p-2.5 rounded text-xs bg-[var(--c-card)] opacity-60 border border-[var(--c-border)] flex items-start gap-2';
+    }
+  });
+  fb.classList.remove('hidden');
+  fb.className = isRight
+    ? 'p-3 rounded text-xs leading-relaxed bg-emerald-100 border border-emerald-400 text-emerald-950'
+    : 'p-3 rounded text-xs leading-relaxed bg-rose-100 border border-rose-400 text-rose-950';
+  const _trapHtmlM = isRight ? '' : renderTrapAnalysisBlock({ options: topic.quiz.options, correctIndices: correct }, picked);
+  fb.innerHTML = `<strong>${isRight ? 'Richtig!' : 'Leider nicht vollständig zutreffend.'}</strong> Lösung: ${correct.map(i => String.fromCharCode(65 + i)).join(', ')}. ${escapeHtml(topic.quiz.expl || '')} <em class="not-italic font-semibold">Ausführliche Begründung: siehe Lernhinweise oben.</em>` + _trapHtmlM;
+}
+
+function jumpToPracticeFromHf(hf) {
+  STATE.practiceHfFilter = (hf === 6) ? 'pc' : String(hf);
+  STATE.practiceCategoryFilter = 'all';
+  STATE.practiceStatusFilter = 'all';
+  STATE.practiceSearch = '';
+  STATE.practiceIndex = 0;
+  
+  const hfSelect = document.getElementById('practice-hf-select');
+  if (hfSelect) hfSelect.value = String(hf);
+  
+  switchMode('practice');
+}
+
+// ==========================================
+// 2. FREIES ÜBEN (FRAGENTRAINER MIT ALLEN FRAGEN)
+// ==========================================
+function getFilteredPracticeQuestions() {
+  const hf = STATE.practiceHfFilter;
+  const cat = STATE.practiceCategoryFilter;
+  const stat = STATE.practiceStatusFilter;
+  const query = STATE.practiceSearch.trim().toLowerCase();
+
+  return AEVO_QUESTIONS.filter(q => {
+    // HF filter
+    if (hf === 'pc') { if (q.id < 416) return false; }
+    else if (hf === 'pc1') { if (q.id < 416 || q.id > 495) return false; }
+    else if (hf === 'ihk66') { if (q.id < 656 || q.id > 695) return false; }
+    else if (hf === 'ihkf') { if (q.id < 696 || q.id > 775) return false; }
+    else if (hf === 'ihk2') { if (q.id < 776 || q.id > 805) return false; }
+    else if (hf === 'ihk3') { if (q.id < 806) return false; }
+    else if (hf !== 'all' && String(q.hf) !== hf) return false;
+    
+    // Category filter
+    if (cat !== 'all' && q.category !== cat) return false;
+
+    // Search query
+    if (query) {
+      const text = (q.situation + ' ' + q.question + ' ' + q.options.join(' ')).toLowerCase();
+      if (!text.includes(query)) return false;
+    }
+
+    // Status filter
+    const ans = STATE.practiceAnswers[q.id];
+    const isChecked = STATE.practiceChecked[q.id];
+    const isFlagged = STATE.practiceFlags.has(q.id);
+
+    if (stat === 'flagged') return isFlagged;
+    if (stat === 'unanswered') return !ans || ans.length === 0;
+
+    if (stat === 'correct' || stat === 'wrong') {
+      if (!isChecked || !ans) return false;
+      const isCorrect = isAnswerFullyCorrect(q, ans);
+      return stat === 'correct' ? isCorrect : !isCorrect;
+    }
+
+    return true;
+  });
+}
+
+function initPracticeView() {
+  const hfSelect = document.getElementById('practice-hf-select');
+  const catSelect = document.getElementById('practice-cat-select');
+  const statSelect = document.getElementById('practice-stat-select');
+  const searchInput = document.getElementById('practice-search-input');
+
+  if (hfSelect) hfSelect.value = STATE.practiceHfFilter;
+  if (catSelect) catSelect.value = STATE.practiceCategoryFilter;
+  if (statSelect) statSelect.value = STATE.practiceStatusFilter;
+  if (searchInput) searchInput.value = STATE.practiceSearch;
+
+  renderPracticeQuestion();
+  renderPracticePalette();
+  updatePracticeStats();
+}
+
+function onPracticeFilterChange() {
+  const hfSelect = document.getElementById('practice-hf-select');
+  const catSelect = document.getElementById('practice-cat-select');
+  const statSelect = document.getElementById('practice-stat-select');
+  const searchInput = document.getElementById('practice-search-input');
+
+  if (hfSelect) STATE.practiceHfFilter = hfSelect.value;
+  if (catSelect) STATE.practiceCategoryFilter = catSelect.value;
+  if (statSelect) STATE.practiceStatusFilter = statSelect.value;
+  if (searchInput) STATE.practiceSearch = searchInput.value;
+
+  STATE.practiceIndex = 0;
+  renderPracticeQuestion();
+  renderPracticePalette();
+  updatePracticeStats();
+  saveStorage();
+}
+
+function renderPracticeQuestion() {
+  const filtered = getFilteredPracticeQuestions();
+  const container = document.getElementById('practice-card-container');
+  if (!container) return;
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="p-12 text-center bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm">
+        <span class="text-3xl mb-2 block"><svg class="icn" aria-hidden="true"><use href="#i-search"/></svg></span>
+        <h3 class="text-base font-bold text-[var(--c-ink-soft)]">Keine Fragen im ausgewählten Filter</h3>
+        <p class="text-xs text-[var(--c-muted)] mt-1">Keine der ${AEVO_QUESTIONS.length} Fragen entspricht den aktuellen Filtereinstellungen.</p>
+        <button onclick="resetPracticeFilters()" class="mt-4 px-4 py-2 bg-[var(--c-accent)] text-[var(--c-on-accent)] text-xs font-bold rounded shadow-sm hover:bg-[var(--c-elevated)] transition">
+          Filter zurücksetzen (Alle ${AEVO_QUESTIONS.length} Fragen anzeigen)
+        </button>
+      </div>
+    `;
+    return;
+  }
+
+  // Bound index
+  if (STATE.practiceIndex >= filtered.length) {
+    STATE.practiceIndex = filtered.length - 1;
+  }
+  if (STATE.practiceIndex < 0) {
+    STATE.practiceIndex = 0;
+  }
+
+  const q = filtered[STATE.practiceIndex];
+  const userAns = STATE.practiceAnswers[q.id] || [];
+  const isChecked = !!STATE.practiceChecked[q.id];
+  const isFlagged = STATE.practiceFlags.has(q.id);
+
+  const isCorrect = isChecked ? isAnswerFullyCorrect(q, userAns) : false;
+
+  let html = `
+    <div class="bg-[var(--c-card)] border border-[var(--c-border)] rounded-lg shadow-sm overflow-hidden">
+      <!-- Top Action Bar inside Card -->
+      <div class="px-6 py-4 bg-[var(--c-sunken)] border-b border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">
+            Frage ${q.id} von ${AEVO_QUESTIONS.length}
+          </span>
+          <span class="px-2 py-0.5 text-[11px] font-semibold rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]">
+            Handlungsfeld ${q.hf}
+          </span>
+          <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]">
+            ${escapeHtml(q.category)}
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Flag Button -->
+          <button onclick="togglePracticeFlag(${q.id})" class="px-3 py-1 rounded text-xs font-semibold border transition flex items-center gap-1.5 ${isFlagged ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-[var(--c-card)] border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]'}">
+            <span>${isFlagged ? '⚑ Gemerkt' : '⚐ Frage merken'}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question Content -->
+      <div class="p-6 space-y-6">
+        <!-- Situation Box -->
+        <div class="p-4 rounded-md bg-[var(--c-inset)] border border-[var(--c-border)] space-y-1">
+          <div class="text-[10px] font-bold uppercase font-mono tracking-wider text-[var(--c-muted)]">Ausgangssituation</div>
+          <p class="text-sm font-normal text-[var(--c-ink)] leading-relaxed">${escapeHtml(q.situation)}</p>
+        </div>
+
+        <!-- Question Prompt & Target Count -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <h3 class="text-base font-bold text-[var(--c-ink)] tracking-tight">${escapeHtml(q.question)}</h3>
+            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded ${q.targetCount > 1 ? 'bg-[var(--c-accent)] text-[var(--c-on-accent)]' : 'bg-[var(--c-elevated)] text-[var(--c-ink)] border border-[var(--c-border)]'}">
+              Wählen Sie ${q.targetCount} Antwort${q.targetCount > 1 ? 'en' : ''}
+            </span>
+          </div>
+          <p class="text-xs text-[var(--c-muted)]">
+            ${isChecked ? 'Auswertung erfolgt. Siehe Farbkennzeichnung und juristische Begründung unten.' : `Ausgewählt: ${userAns.length} von ${q.targetCount}`}
+          </p>
+        </div>
+
+        <!-- Options List -->
+        <div class="space-y-2.5">
+          ${q.options.map((opt, idx) => {
+            const isSelected = userAns.includes(idx);
+            const isOptCorrect = q.correctIndices.includes(idx);
+
+            let optCls = 'border-[var(--c-border)] bg-[var(--c-card)] hover:bg-[var(--c-sunken)] text-[var(--c-ink)]';
+            let badge = '';
+
+            if (isChecked) {
+              if (isSelected && isOptCorrect) {
+                // Correctly chosen
+                optCls = 'border-emerald-600 bg-emerald-50 text-emerald-950 font-medium';
+                badge = '<span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">✓ Richtig gewählt</span>';
+              } else if (isSelected && !isOptCorrect) {
+                // Incorrectly chosen
+                optCls = 'border-rose-600 bg-rose-50 text-rose-950 font-medium';
+                badge = '<span class="text-xs font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded border border-rose-300">✗ Falsch gewählt</span>';
+              } else if (!isSelected && isOptCorrect) {
+                // Missed correct answer
+                optCls = 'border-emerald-500 border-dashed bg-emerald-50/50 text-emerald-900';
+                badge = '<span class="text-xs font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded border border-emerald-200">★ Richtige Lösung</span>';
+              } else {
+                optCls = 'border-[var(--c-border)] bg-[var(--c-sunken)] opacity-60 text-[var(--c-muted)]';
+              }
+            } else if (isSelected) {
+              optCls = 'border-[var(--c-ink)] bg-[var(--c-accent)] text-[var(--c-on-accent)]';
+            }
+
+            return `
+              <div onclick="${isChecked ? '' : `togglePracticeOption(${q.id}, ${idx})`}" class="p-4 rounded-md border transition flex items-start gap-3.5 cursor-pointer ${optCls}">
+                <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded ${q.type === 'single' ? 'rounded-full' : 'rounded'} border flex items-center justify-center text-xs font-bold ${isSelected ? (isChecked ? (isOptCorrect ? 'border-emerald-600 bg-emerald-600 text-[var(--c-on-accent)]' : 'border-rose-600 bg-rose-600 text-[var(--c-on-accent)]') : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-ink)]') : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-muted)]'}">
+                  ${isSelected ? '✓' : String.fromCharCode(65 + idx)}
+                </div>
+                <div class="flex-1 space-y-1">
+                  <div class="text-sm leading-relaxed">${escapeHtml(opt)}</div>
+                  ${badge}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Result / Feedback Banner (Shown after check) -->
+        ${isChecked ? `
+          <div class="p-5 rounded-lg border space-y-3 ${isCorrect ? 'bg-emerald-50 border-emerald-400' : 'bg-rose-50 border-rose-400'}">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">${isCorrect ? '<svg class="icn" aria-hidden="true"><use href="#i-check-c"/></svg>' : '<svg class="icn" aria-hidden="true"><use href="#i-alert"/></svg>'}</span>
+              <h4 class="text-sm font-bold ${isCorrect ? 'text-emerald-900' : 'text-rose-900'}">
+                ${isCorrect ? 'Vollständig richtig gelöst! (1 Punkt nach DIHK Alles-oder-Nichts)' : 'Nicht vollständig richtig (0 Punkte nach DIHK Alles-oder-Nichts)'}
+              </h4>
+            </div>
+            <div class="text-xs leading-relaxed text-[var(--c-ink-soft)] space-y-1 border-t ${isCorrect ? 'border-emerald-200' : 'border-rose-200'} pt-2.5">
+              <div class="font-bold font-mono uppercase tracking-wider text-[11px] text-[var(--c-muted)]">Juristische & Pädagogische Begründung:</div>
+              <p>${escapeHtml(q.explanation)}</p>
+            </div>
+          </div>
+        ` : ''}
+
+        ${isChecked && !isCorrect ? renderTrapAnalysisBlock(q, userAns) : ''}
+
+        <!-- Card Footer Actions -->
+        <div class="pt-4 border-t border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            ${!isChecked ? `
+              <button onclick="checkPracticeAnswer(${q.id})" ${userAns.length === 0 ? 'disabled' : ''} class="px-5 py-2 rounded text-xs font-bold bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:bg-black disabled:opacity-40 disabled:cursor-not-allowed shadow-sm transition">
+                Antwort prüfen
+              </button>
+            ` : `
+              <button onclick="retryPracticeQuestion(${q.id})" class="px-4 py-2 rounded text-xs font-bold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-ink-soft)] hover:bg-[var(--c-card)] shadow-sm transition">
+                ↺ Erneut versuchen
+              </button>
+            `}
+          </div>
+
+          <!-- Question Navigation -->
+          <div class="flex items-center gap-2">
+            <button onclick="navigatePractice(-1)" ${STATE.practiceIndex === 0 ? 'disabled' : ''} class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] disabled:opacity-40 transition">
+              ← Vorherige
+            </button>
+            <span class="text-xs font-mono text-[var(--c-muted)] px-2">
+              ${STATE.practiceIndex + 1} / ${filtered.length}
+            </span>
+            <button onclick="navigatePractice(1)" ${STATE.practiceIndex === filtered.length - 1 ? 'disabled' : ''} class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)] disabled:opacity-40 transition">
+              Nächste →
+            </button>
+            <button onclick="jumpToRandomPracticeQuestion()" class="px-3 py-2 rounded text-xs font-semibold bg-[var(--c-inset)] border border-[var(--c-border)] text-[var(--c-ink-soft)] hover:bg-[var(--c-elevated)] transition" title="Zufällige Frage">
+              <svg class="icn" aria-hidden="true"><use href="#i-shuffle"/></svg> Zufall
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+  renderPracticePalette();
+  updatePracticeStats();
+}
+
+function togglePracticeOption(questionId, optionIndex) {
+  const q = AEVO_QUESTIONS.find(item => item.id === questionId);
+  if (!q) return;
+
+  let userAns = STATE.practiceAnswers[questionId] || [];
+
+  if (q.type === 'single') {
+    userAns = [optionIndex];
+  } else {
+    if (userAns.includes(optionIndex)) {
+      userAns = userAns.filter(i => i !== optionIndex);
+    } else {
+      if (userAns.length >= q.targetCount) {
+        userAns.shift();
+      }
+      userAns.push(optionIndex);
+    }
+  }
+
+  STATE.practiceAnswers[questionId] = userAns;
+  renderPracticeQuestion();
+  saveStorage();
+}
+
+function checkPracticeAnswer(questionId) {
+  STATE.practiceChecked[questionId] = true;
+  renderPracticeQuestion();
+  saveStorage();
+}
+
+function retryPracticeQuestion(questionId) {
+  delete STATE.practiceChecked[questionId];
+  delete STATE.practiceAnswers[questionId];
+  renderPracticeQuestion();
+  saveStorage();
+}
+
+function togglePracticeFlag(questionId) {
+  if (STATE.practiceFlags.has(questionId)) {
+    STATE.practiceFlags.delete(questionId);
+  } else {
+    STATE.practiceFlags.add(questionId);
+  }
+  renderPracticeQuestion();
+  saveStorage();
+}
+
+function navigatePractice(direction) {
+  const filtered = getFilteredPracticeQuestions();
+  const nextIdx = STATE.practiceIndex + direction;
+  if (nextIdx >= 0 && nextIdx < filtered.length) {
+    STATE.practiceIndex = nextIdx;
+    renderPracticeQuestion();
+    saveStorage();
+  }
+}
+
+function jumpToRandomPracticeQuestion() {
+  const filtered = getFilteredPracticeQuestions();
+  if (filtered.length <= 1) return;
+  let newIdx = Math.floor(Math.random() * filtered.length);
+  if (newIdx === STATE.practiceIndex) {
+    newIdx = (newIdx + 1) % filtered.length;
+  }
+  STATE.practiceIndex = newIdx;
+  renderPracticeQuestion();
+  saveStorage();
+}
+
+function renderPracticePalette() {
+  const container = document.getElementById('practice-palette-grid');
+  if (!container) return;
+
+  const filtered = getFilteredPracticeQuestions();
+  let html = '';
+
+  filtered.forEach((q, idx) => {
+    const isCurrent = idx === STATE.practiceIndex;
+    const isChecked = !!STATE.practiceChecked[q.id];
+    const userAns = STATE.practiceAnswers[q.id];
+    const isFlagged = STATE.practiceFlags.has(q.id);
+
+    let bgCls = 'bg-[var(--c-card)] text-[var(--c-ink-soft)] border-[var(--c-border)]';
+    if (isChecked && userAns && userAns.length > 0) {
+      const isCorrect = isAnswerFullyCorrect(q, userAns);
+      bgCls = isCorrect ? 'bg-emerald-600 text-[var(--c-on-accent)] border-emerald-700' : 'bg-rose-600 text-[var(--c-on-accent)] border-rose-700';
+    } else if (userAns && userAns.length > 0) {
+      bgCls = 'bg-[var(--c-elevated)] text-[var(--c-on-accent)] border-black';
+    }
+
+    const currentRing = isCurrent ? 'ring-2 ring-black ring-offset-2 font-black' : '';
+    const flagDot = isFlagged ? '<span class="absolute top-0 right-0.5 text-[9px] text-amber-400 font-bold">⚑</span>' : '';
+
+    html += `
+      <button onclick="selectPracticeQuestionByIndex(${idx})" class="relative w-8 h-8 rounded text-xs font-mono font-bold flex items-center justify-center border transition hover:opacity-80 ${bgCls} ${currentRing}">
+        ${q.id}
+        ${flagDot}
+      </button>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+function selectPracticeQuestionByIndex(idx) {
+  STATE.practiceIndex = idx;
+  renderPracticeQuestion();
+  saveStorage();
+}
+
+function updatePracticeStats() {
+  let answeredCount = 0;
+  let correctCount = 0;
+  let checkedCount = 0;
+
+  AEVO_QUESTIONS.forEach(q => {
+    const isChecked = !!STATE.practiceChecked[q.id];
+    const ans = STATE.practiceAnswers[q.id];
+    if (ans && ans.length > 0) answeredCount++;
+    if (isChecked && ans && ans.length > 0) {
+      checkedCount++;
+      if (isAnswerFullyCorrect(q, ans)) {
+        correctCount++;
+      }
+    }
+  });
+
+  const accuracy = checkedCount > 0 ? Math.round((correctCount / checkedCount) * 100) : 0;
+
+  const elAnswered = document.getElementById('stat-practice-answered');
+  const elAccuracy = document.getElementById('stat-practice-accuracy');
+  const elCorrect = document.getElementById('stat-practice-correct');
+
+  if (elAnswered) elAnswered.textContent = `${answeredCount} / ${AEVO_QUESTIONS.length}`;
+  if (elAccuracy) elAccuracy.textContent = `${accuracy}%`;
+  if (elCorrect) elCorrect.textContent = `${correctCount} richtig`;
+}
+
+function resetPracticeFilters() {
+  STATE.practiceHfFilter = 'all';
+  STATE.practiceCategoryFilter = 'all';
+  STATE.practiceStatusFilter = 'all';
+  STATE.practiceSearch = '';
+  STATE.practiceIndex = 0;
+
+  const hfSelect = document.getElementById('practice-hf-select');
+  const catSelect = document.getElementById('practice-cat-select');
+  const statSelect = document.getElementById('practice-stat-select');
+  const searchInput = document.getElementById('practice-search-input');
+
+  if (hfSelect) hfSelect.value = 'all';
+  if (catSelect) catSelect.value = 'all';
+  if (statSelect) statSelect.value = 'all';
+  if (searchInput) searchInput.value = '';
+
+  renderPracticeQuestion();
+  renderPracticePalette();
+  updatePracticeStats();
+  saveStorage();
+}
+
+function resetPracticeProgress() {
+  if (confirm('Möchten Sie Ihren gesamten Trainer-Fortschritt zurücksetzen? Alle geübten Antworten und Markierungen werden gelöscht.')) {
+    STATE.practiceAnswers = {};
+    STATE.practiceChecked = {};
+    STATE.practiceFlags.clear();
+    STATE.practiceIndex = 0;
+    renderPracticeQuestion();
+    renderPracticePalette();
+    updatePracticeStats();
+    saveStorage();
+  }
+}
+
+// ==========================================
+// 3. PRÜFUNGSSIMULATOR (80 GEBUNDENE AUFGABEN)
+// ==========================================
+function getExamQuestions() {
+  if (STATE.examQuestionIds && Array.isArray(STATE.examQuestionIds) && STATE.examQuestionIds.length === 80) {
+    const list = STATE.examQuestionIds.map(id => AEVO_QUESTIONS.find(q => q.id === id)).filter(Boolean);
+    if (list.length === 80) return list;
+  }
+  return AEVO_QUESTIONS.slice(0, 80);
+}
+
+function sampleRandom(arr, count) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, count);
+}
+
+function generateNewExamSetFromSelect() {
+  var sel = document.getElementById('exam-source-select');
+  generateNewExamSet(sel ? sel.value : 'basis');
+}
+
+function generateNewExamSet(source) {
+  source = source || 'basis';
+  const isStarted = STATE.timerActive || (STATE.answers && Object.keys(STATE.answers).length > 0);
+  if (isStarted) {
+    if (!confirm('Möchten Sie einen neuen 80-Aufgaben Prüfungssatz generieren? Ihre bisherigen Antworten und die Prüfungszeit werden zurückgesetzt.')) {
+      return;
+    }
+  }
+
+  // Quellen (ID-basiert): basis = DIHK-gewichtet aus Nicht-PC | all = 40/40 Mix | pc240 = Feldhaus 240 | pc1 = Original-Satz 1
+  const pcAll = AEVO_QUESTIONS.filter(q => q.id >= 416 && q.id <= 775);              // 240 Pruefungs-Check
+  const pcS1 = AEVO_QUESTIONS.filter(q => q.id >= 416 && q.id <= 495); // Original-Satz 1 (80)
+  const ihk66 = AEVO_QUESTIONS.filter(q => q.id >= 656 && q.id <= 695); // IHK Original-Satz 66 (40 MC)
+  const ihkf = AEVO_QUESTIONS.filter(q => q.id >= 696 && q.id <= 775); // IHK Original-Pruefung fotografiert (80)
+  const ihk2 = AEVO_QUESTIONS.filter(q => q.id >= 776 && q.id <= 805); // IHK Test-App transkribiert (30)
+  const ihk3 = AEVO_QUESTIONS.filter(q => q.id >= 806); // IHK Test-App komplett (133)
+  const basis = q => q.id < 416;                                       // 415 DIHK- & Lernmodul-Fragen
+  let selected;
+
+  if (source === 'pc1') {
+    selected = [...pcS1];
+  } else if (source === 'ihk66') {
+    selected = [...ihk66];
+  }
+   else if (source === 'ihkf') {
+    selected = [...ihkf];
+   } else if (source === 'ihk2') {
+    selected = [...ihk2];
+   } else if (source === 'ihk3') {
+    selected = [...ihk3];
+   } else if (source === 'pc240') {
+    selected = sampleRandom(pcAll, 80);
+  } else if (source === 'all') {
+    selected = [
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 1), 6),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 2), 14),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 3), 14),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 4), 6),
+      ...sampleRandom(pcAll, 40)
+    ];
+  } else {
+    // DIHK Authentic Distribution: 12 HF1, 28 HF2, 28 HF3, 12 HF4 = 80 questions
+    selected = [
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 1), 12),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 2), 28),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 3), 28),
+      ...sampleRandom(AEVO_QUESTIONS.filter(q => basis(q) && q.hf === 4), 12)
+    ];
+  }
+
+  STATE.examQuestionIds = selected.map(q => q.id);
+  STATE.currentQuestionIndex = 0;
+  STATE.answers = {};
+  STATE.flagged.clear();
+  STATE.timeRemaining = 180 * 60;
+  if (STATE.timerInterval) {
+    clearInterval(STATE.timerInterval);
+    STATE.timerInterval = null;
+  }
+  STATE.timerActive = false;
+  STATE.examSubmitted = false;
+  STATE.examResults = null;
+
+  initExamGrid();
+  renderCurrentQuestion();
+  updateProgressUI();
+  updateTimerDisplay();
+  saveStorage();
+}
+
+function resetToDefaultExamSet() {
+  if (!confirm('Möchten Sie zum offiziellen Standard-Prüfungssatz (Fragen 1 bis 80) zurückkehren?')) {
+    return;
+  }
+  STATE.examQuestionIds = null;
+  STATE.currentQuestionIndex = 0;
+  STATE.answers = {};
+  STATE.flagged.clear();
+  STATE.timeRemaining = 180 * 60;
+  if (STATE.timerInterval) {
+    clearInterval(STATE.timerInterval);
+    STATE.timerInterval = null;
+  }
+  STATE.timerActive = false;
+  STATE.examSubmitted = false;
+  STATE.examResults = null;
+
+  initExamGrid();
+  renderCurrentQuestion();
+  updateProgressUI();
+  updateTimerDisplay();
+  saveStorage();
+}
+
+function initExamGrid() {
+  const grid = document.getElementById('question-grid');
+  if (!grid) return;
+
+  const examQuestions = getExamQuestions();
+  let html = '';
+
+  examQuestions.forEach((q, idx) => {
+    const isCurrent = idx === STATE.currentQuestionIndex;
+    const isAnswered = STATE.answers[q.id] && STATE.answers[q.id].length > 0;
+    const isFlagged = STATE.flagged.has(q.id);
+
+    let cls = 'relative w-8 h-8 rounded text-xs font-mono font-bold flex items-center justify-center border transition ';
+
+    if (isAnswered) {
+      cls += 'bg-[var(--c-accent)] text-[var(--c-on-accent)] border-[var(--c-ink)] ';
+    } else {
+      cls += 'bg-[var(--c-card)] text-[var(--c-ink-soft)] border-[var(--c-border)] hover:bg-[var(--c-card)] ';
+    }
+
+    if (isCurrent) {
+      cls += 'ring-2 ring-black ring-offset-2 ';
+    }
+
+    const flagSpan = isFlagged ? '<span class="absolute top-0 right-0.5 text-[9px] text-rose-500 font-bold">⚑</span>' : '';
+
+    html += `
+      <button id="exam-tile-${idx}" onclick="jumpToExamQuestion(${idx})" class="${cls}">
+        ${idx + 1}
+        ${flagSpan}
+      </button>
+    `;
+  });
+
+  grid.innerHTML = html;
+}
+
+function renderCurrentQuestion() {
+  const examQuestions = getExamQuestions();
+  if (examQuestions.length === 0) return;
+
+  const q = examQuestions[STATE.currentQuestionIndex];
+  if (!q) return;
+
+  // Title / Indicators
+  const numEl = document.getElementById('exam-q-number');
+  const hfEl = document.getElementById('exam-q-hf');
+  const catEl = document.getElementById('exam-q-category');
+  const flagBtn = document.getElementById('exam-flag-btn');
+
+  if (numEl) numEl.textContent = `Aufgabe ${STATE.currentQuestionIndex + 1} von 80`;
+  if (hfEl) hfEl.textContent = `HF ${q.hf}`;
+  if (catEl) catEl.textContent = q.category;
+
+  const isFlagged = STATE.flagged.has(q.id);
+  if (flagBtn) {
+    flagBtn.className = `px-3 py-1.5 rounded text-xs font-semibold border transition flex items-center gap-1.5 ${isFlagged ? 'bg-amber-100 border-amber-400 text-amber-900' : 'bg-[var(--c-card)] border-[var(--c-border)] text-[var(--c-muted)] hover:bg-[var(--c-card)]'}`;
+    flagBtn.innerHTML = `<span>${isFlagged ? '⚑ Markiert' : '⚐ Für Prüfung merken'}</span>`;
+  }
+
+  // Situation
+  const sitEl = document.getElementById('exam-situation-text');
+  if (sitEl) sitEl.textContent = q.situation;
+
+  // Question & Target
+  const qEl = document.getElementById('exam-question-text');
+  const targetEl = document.getElementById('exam-target-count-badge');
+  if (qEl) qEl.textContent = q.question;
+  if (targetEl) {
+    targetEl.textContent = `Wählen Sie ${q.targetCount} Antwort${q.targetCount > 1 ? 'en' : ''}`;
+  }
+
+  // Options
+  const optionsContainer = document.getElementById('exam-options-container');
+  if (optionsContainer) {
+    const userAnswers = STATE.answers[q.id] || [];
+    let optHtml = '';
+
+    q.options.forEach((opt, idx) => {
+      const isSelected = userAnswers.includes(idx);
+      const selCls = isSelected ? 'border-[var(--c-ink)] bg-[var(--c-accent)] text-[var(--c-on-accent)]' : 'border-[var(--c-border)] bg-[var(--c-card)] hover:bg-[var(--c-sunken)] text-[var(--c-ink)]';
+
+      optHtml += `
+        <div onclick="toggleExamOption(${q.id}, ${idx})" class="p-4 rounded-md border transition flex items-start gap-3.5 cursor-pointer ${selCls}">
+          <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded ${q.type === 'single' ? 'rounded-full' : 'rounded'} border flex items-center justify-center text-xs font-bold ${isSelected ? 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-ink)]' : 'border-[var(--c-border-hover)] bg-[var(--c-card)] text-[var(--c-muted)]'}">
+            ${isSelected ? '✓' : String.fromCharCode(65 + idx)}
+          </div>
+          <div class="text-sm leading-relaxed">${escapeHtml(opt)}</div>
+        </div>
+      `;
+    });
+
+    optionsContainer.innerHTML = optHtml;
+  }
+
+  // Prev / Next button states
+  const prevBtn = document.getElementById('exam-prev-btn');
+  const nextBtn = document.getElementById('exam-next-btn');
+  if (prevBtn) prevBtn.disabled = STATE.currentQuestionIndex === 0;
+  if (nextBtn) nextBtn.disabled = STATE.currentQuestionIndex === examQuestions.length - 1;
+
+  initExamGrid();
+}
+
+function toggleExamOption(questionId, optionIndex) {
+  if (STATE.examSubmitted) return;
+
+  const q = AEVO_QUESTIONS.find(item => item.id === questionId);
+  if (!q) return;
+
+  let currentSelection = STATE.answers[questionId] || [];
+
+  if (q.type === 'single') {
+    currentSelection = [optionIndex];
+  } else {
+    if (currentSelection.includes(optionIndex)) {
+      currentSelection = currentSelection.filter(i => i !== optionIndex);
+    } else {
+      if (currentSelection.length >= q.targetCount) {
+        currentSelection.shift();
+      }
+      currentSelection.push(optionIndex);
+    }
+  }
+
+  STATE.answers[questionId] = currentSelection;
+  renderCurrentQuestion();
+  updateProgressUI();
+  saveStorage();
+}
+
+function toggleExamFlagCurrent() {
+  const examQuestions = getExamQuestions();
+  const q = examQuestions[STATE.currentQuestionIndex];
+  if (!q) return;
+
+  if (STATE.flagged.has(q.id)) {
+    STATE.flagged.delete(q.id);
+  } else {
+    STATE.flagged.add(q.id);
+  }
+
+  renderCurrentQuestion();
+  updateProgressUI();
+  saveStorage();
+}
+
+function navigateQuestion(direction) {
+  const examQuestions = getExamQuestions();
+  const next = STATE.currentQuestionIndex + direction;
+  if (next >= 0 && next < examQuestions.length) {
+    STATE.currentQuestionIndex = next;
+    renderCurrentQuestion();
+    saveStorage();
+  }
+}
+
+function jumpToExamQuestion(index) {
+  const examQuestions = getExamQuestions();
+  if (index >= 0 && index < examQuestions.length) {
+    STATE.currentQuestionIndex = index;
+    renderCurrentQuestion();
+    saveStorage();
+  }
+}
+
+function updateProgressUI() {
+  const examQuestions = getExamQuestions();
+  let answeredCount = 0;
+
+  examQuestions.forEach(q => {
+    if (STATE.answers[q.id] && STATE.answers[q.id].length > 0) {
+      answeredCount++;
+    }
+  });
+
+  const percent = Math.round((answeredCount / examQuestions.length) * 100);
+
+  const progBar = document.getElementById('exam-prog');
+  const chipAns = document.getElementById('chip-answered');
+  const chipFlag = document.getElementById('chip-flagged');
+
+  if (progBar) progBar.style.width = `${percent}%`;
+  if (chipAns) chipAns.textContent = answeredCount;
+  if (chipFlag) chipFlag.textContent = STATE.flagged.size;
+}
+
+// Timer
+function startTimer() {
+  if (STATE.timerActive || STATE.examSubmitted) return;
+  STATE.timerActive = true;
+  updateTimerDisplay();
+
+  const toggleBtn = document.getElementById('timer-toggle-btn');
+  if (toggleBtn) toggleBtn.innerHTML = '<svg class="icn" aria-hidden="true"><use href="#i-pause"/></svg>';
+
+  STATE.timerInterval = setInterval(() => {
+    if (STATE.timeRemaining > 0) {
+      STATE.timeRemaining--;
+      updateTimerDisplay();
+      if (STATE.timeRemaining % 15 === 0) saveStorage();
+
+      if (STATE.timeRemaining === 15 * 60) {
+        alert('Achtung: Es verbleiben noch 15 Minuten Prüfungszeit!');
+      }
+    } else {
+      clearInterval(STATE.timerInterval);
+      STATE.timerActive = false;
+      alert('Die Prüfungszeit von 180 Minuten ist abgelaufen! Ihre Prüfung wird nun automatisch abgegeben.');
+      submitExamFinal();
+    }
   }, 1000);
 }
 
