@@ -29470,6 +29470,8 @@ function getFilteredPracticeQuestions() {
     else if (hf === 'pc1') { if (q.id < 416 || q.id > 495) return false; }
     else if (hf === 'ihk66') { if (q.id < 656 || q.id > 695) return false; }
     else if (hf === 'ihkf') { if (q.id < 696 || q.id > 775) return false; }
+    else if (hf === 'ihk2') { if (q.id < 776 || q.id > 805) return false; }
+    else if (hf === 'ihk3') { if (q.id < 806) return false; }
     else if (hf !== 'all' && String(q.hf) !== hf) return false;
     
     // Category filter
