@@ -427,7 +427,7 @@
           <div>
             <div class="flex items-center gap-2 mb-1">
               <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">Fragentrainer</span>
-              <span class="text-xs text-[var(--c-muted)] font-mono">655 DIHK-Aufgaben mit Sofort-Feedback</span>
+              <span class="text-xs text-[var(--c-muted)] font-mono">938 DIHK-Aufgaben mit Sofort-Feedback</span>
             </div>
             <h2 class="text-xl font-bold tracking-tight text-[var(--c-ink)]">Freies Üben &amp; <span class="serif">Vertiefen</span></h2>
             <p class="text-xs text-[var(--c-muted)] mt-0.5">Üben Sie alle prüfungsrelevanten Aufgaben ohne Zeitdruck mit sofortiger Auswertung und ausführlichen Rechtsbegründungen.</p>
@@ -437,7 +437,7 @@
           <div class="flex items-center gap-2 font-mono text-xs">
             <div class="bg-[var(--c-sunken)] border border-[var(--c-border)] px-3 py-1.5 rounded">
               <span class="text-[var(--c-muted)]">Bearbeitet:</span>
-              <strong id="stat-practice-answered" class="text-[var(--c-ink)] ml-1">0 / 655</strong>
+              <strong id="stat-practice-answered" class="text-[var(--c-ink)] ml-1">0 / 938</strong>
             </div>
             <div class="bg-[var(--c-sunken)] border border-[var(--c-border)] px-3 py-1.5 rounded">
               <span class="text-[var(--c-muted)]">Quote:</span>
@@ -461,7 +461,7 @@
               <option value="all">Alle Handlungsfelder (1-4)</option>
               <option value="pc">Prüfungs-Check Feldhaus (240)</option>
               <option value="pc1">Prüfungs-Check: Original-Satz 1 (80)</option>
-              <option value="ihk66">IHK Original-Satz 66 (50, echte Prüfung)</option>
+              <option value="ihk66">IHK Original-Satz 66 (40, echte Prüfung)</option>
               <option value="ihkf">IHK Original-Prüfung (fotografiert) (80, echte Prüfung)</option>
                <option value="ihk2">IHK Test-App transkribiert (30, echte Fragen)</option>
                <option value="ihk3">IHK Test-App komplett (133, echte Fragen)</option>
@@ -488,7 +488,7 @@
           <div>
             <label class="block text-[10px] font-bold uppercase font-mono text-[var(--c-muted)] mb-1">Bearbeitungsstatus</label>
             <select id="practice-stat-select" onchange="onPracticeFilterChange()" class="w-full text-xs p-2 rounded border border-[var(--c-border)] bg-[var(--c-sunken)] focus:bg-[var(--c-card)] focus:outline-none focus:border-[var(--c-border)]">
-              <option value="all">Alle Aufgaben (655)</option>
+              <option value="all">Alle Aufgaben</option>
               <option value="unanswered">Nur unbeantwortete</option>
               <option value="wrong">Nur falsch gelöste</option>
               <option value="correct">Nur richtig gelöste</option>
@@ -12538,7 +12538,7 @@ const AEVO_QUESTIONS = [
       0,
       3
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 1): A, D. A) Ausbildungsberufsbild D) Ausbildungsrahmenplan"
+    "explanation": "A, D. A) Ausbildungsberufsbild D) Ausbildungsrahmenplan"
   },
   {
     "id": 657,
@@ -12559,7 +12559,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       4
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 2): E. E) Berufsausbildung im dualen System"
+    "explanation": "E. E) Berufsausbildung im dualen System"
   },
   {
     "id": 658,
@@ -12579,7 +12579,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       2
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 3): C. C) Ausbildung von Fachkräften, die nach Ausbildungsabschluss in ein Arbeitsverhältnis übernommen werden. Hierbei würde dann eine umfangreiche betriebliche Einarbeitung entfallen, da sie während der Ausbildung schon betriebsspezifische Abläufe kennen gelernt haben."
+    "explanation": "C. C) Ausbildung von Fachkräften, die nach Ausbildungsabschluss in ein Arbeitsverhältnis übernommen werden. Hierbei würde dann eine umfangreiche betriebliche Einarbeitung entfallen, da sie während der Ausbildung schon betriebsspezifische Abläufe kennen gelernt haben."
   },
   {
     "id": 659,
@@ -12598,7 +12598,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       1
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 4): B. B) Ausbildungsbetrieb ist verpf lichtet, der Schule die Ziele seiner Ausbildung mitzuteilen."
+    "explanation": "B. B) Ausbildungsbetrieb ist verpf lichtet, der Schule die Ziele seiner Ausbildung mitzuteilen."
   },
   {
     "id": 660,
@@ -12616,7 +12616,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       2
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 5): C. C) Erstausbildung."
+    "explanation": "C. C) Erstausbildung."
   },
   {
     "id": 661,
@@ -12634,7 +12634,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       1
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 7): B. B) Ein in allen Ausbildungsabschnitten insgesamt um 6 Monate verkürzter betrieblicher Ausbildungsplan."
+    "explanation": "B. B) Ein in allen Ausbildungsabschnitten insgesamt um 6 Monate verkürzter betrieblicher Ausbildungsplan."
   },
   {
     "id": 662,
@@ -12663,7 +12663,7 @@ const AEVO_QUESTIONS = [
       6,
       8
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 8): A, C, E, F, G, I. A) Die Auszubildenden pünktlich zum vereinbarten Zeitpunkt persönlich empfangen und ihnen mit C) Die Auszubildenden von jüngeren Mitarbeitern in Empfang nehmen lassen, weil die Jugendlichen sich E) Die Arbeitsräume und die Nebenräume (Lagerraum, Aufenthaltsraum, sanitäre Anlagen, F) Garderobenraum) mit dem Auszubildenden gemeinsam begehen. G) Alle Mitarbeiter - auch die nur samstags beschäftigten, die Raumpflegerin und den zeitweilig I) Beim Rundgang ausführlich auf die Sicherheitsbestimmungen aufmerksam machen."
+    "explanation": "A, C, E, F, G, I. A) Die Auszubildenden pünktlich zum vereinbarten Zeitpunkt persönlich empfangen und ihnen mit C) Die Auszubildenden von jüngeren Mitarbeitern in Empfang nehmen lassen, weil die Jugendlichen sich E) Die Arbeitsräume und die Nebenräume (Lagerraum, Aufenthaltsraum, sanitäre Anlagen, F) Garderobenraum) mit dem Auszubildenden gemeinsam begehen. G) Alle Mitarbeiter - auch die nur samstags beschäftigten, die Raumpflegerin und den zeitweilig I) Beim Rundgang ausführlich auf die Sicherheitsbestimmungen aufmerksam machen."
   },
   {
     "id": 663,
@@ -12681,7 +12681,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       1
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 9): B. B) Sie müssen die geplanten Ausbildungszeiten so weit wie möglich einhalten."
+    "explanation": "B. B) Sie müssen die geplanten Ausbildungszeiten so weit wie möglich einhalten."
   },
   {
     "id": 664,
@@ -12705,7 +12705,7 @@ const AEVO_QUESTIONS = [
       2,
       6
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 10): A, C, G. A) Blockunterricht C) Urlaub des Auszubildenden G) Außerbetriebliche Ausbildung"
+    "explanation": "A, C, G. A) Blockunterricht C) Urlaub des Auszubildenden G) Außerbetriebliche Ausbildung"
   },
   {
     "id": 665,
@@ -12725,7 +12725,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       2
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 11): C. C) Sie müssen nichts tun, da ein Ausbildungsvertrag ein befristeter Vertrag ist. Sie sollten aber Sven"
+    "explanation": "C. C) Sie müssen nichts tun, da ein Ausbildungsvertrag ein befristeter Vertrag ist. Sie sollten aber Sven"
   },
   {
     "id": 666,
@@ -12751,7 +12751,7 @@ const AEVO_QUESTIONS = [
       5,
       6
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 12): A, C, F, G. A) Verpflichtung des Auszubildenden zur Weiterbeschäftigung nach der Ausbildung C) Vereinbarung von Vertragsstrafen F) Ausschluss oder die Beschränkung von Schadensersatzansprüchen G) Kostenübernahme von Ausbildungsmitteln"
+    "explanation": "A, C, F, G. A) Verpflichtung des Auszubildenden zur Weiterbeschäftigung nach der Ausbildung C) Vereinbarung von Vertragsstrafen F) Ausschluss oder die Beschränkung von Schadensersatzansprüchen G) Kostenübernahme von Ausbildungsmitteln"
   },
   {
     "id": 667,
@@ -12777,7 +12777,7 @@ const AEVO_QUESTIONS = [
       2,
       4
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 13): A, B, C, E. A) Georg muss den vorgeschriebenen schriftlichen Ausbildungsnachweis geführt haben. B) Seine Ausbildungsdauer laut Ausbildungsvertrag endet nicht nach dem 15. September. C) Georg muss an der Zwischenprüfung teilgenommen haben. E) Der Berufsausbildungsvertrag wurde in das Verzeichnis der Berufsausbildungsverhältnisse"
+    "explanation": "A, B, C, E. A) Georg muss den vorgeschriebenen schriftlichen Ausbildungsnachweis geführt haben. B) Seine Ausbildungsdauer laut Ausbildungsvertrag endet nicht nach dem 15. September. C) Georg muss an der Zwischenprüfung teilgenommen haben. E) Der Berufsausbildungsvertrag wurde in das Verzeichnis der Berufsausbildungsverhältnisse"
   },
   {
     "id": 668,
@@ -12798,7 +12798,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       4
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 14): E. E) Der Bildungsgang ist eine Ausbildung."
+    "explanation": "E. E) Der Bildungsgang ist eine Ausbildung."
   },
   {
     "id": 669,
@@ -12819,7 +12819,7 @@ const AEVO_QUESTIONS = [
       2,
       4
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 16): C, E. C) Die Ausbildung endet mit dem im Ausbildungsvertrag vereinbarten Termin. E) ihrem Beginn."
+    "explanation": "C, E. C) Die Ausbildung endet mit dem im Ausbildungsvertrag vereinbarten Termin. E) ihrem Beginn."
   },
   {
     "id": 670,
@@ -12841,7 +12841,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       3
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 18): D. D) Zweckerreichung"
+    "explanation": "D. D) Zweckerreichung"
   },
   {
     "id": 671,
@@ -12863,7 +12863,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       0
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 19): A. A) Vorlage sämtlicher Bewerberunterlagen, einschließlich der nicht in Frage kommenden Bewerber"
+    "explanation": "A. A) Vorlage sämtlicher Bewerberunterlagen, einschließlich der nicht in Frage kommenden Bewerber"
   },
   {
     "id": 672,
@@ -12884,7 +12884,7 @@ const AEVO_QUESTIONS = [
       2,
       4
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 20): C, E. C) Bei Ausbildungsplatzbewerbern sind die Eltern grundsätzlich anwesend. E) Bei Ausbildungsplatzbewerbern dauern die Bewerbungsgespräche erheblich länger, weil alle"
+    "explanation": "C, E. C) Bei Ausbildungsplatzbewerbern sind die Eltern grundsätzlich anwesend. E) Bei Ausbildungsplatzbewerbern dauern die Bewerbungsgespräche erheblich länger, weil alle"
   },
   {
     "id": 673,
@@ -12907,7 +12907,7 @@ const AEVO_QUESTIONS = [
       2,
       4
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 21): B, C, E. B) Franzi kann mit dem Ausbildenden eine einjährige Verkürzung der Ausbildung vereinbaren. C) Alberto kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren. E) Franzi kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren."
+    "explanation": "B, C, E. B) Franzi kann mit dem Ausbildenden eine einjährige Verkürzung der Ausbildung vereinbaren. C) Alberto kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren. E) Franzi kann mit dem Ausbildenden eine halbjährige Verkürzung der Ausbildung vereinbaren."
   },
   {
     "id": 674,
@@ -12927,7 +12927,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       1
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 22): B. B) genügt."
+    "explanation": "B. B) genügt."
   },
   {
     "id": 675,
@@ -12957,7 +12957,7 @@ const AEVO_QUESTIONS = [
       8,
       9
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 23): C, D, F, G, I, J. C) Erläuterung betrieblicher Zusammenhänge anhand eines Videos D) Lockere Gesprächsrunde zum Kennenlernen F) Vorstellung sozialer Einrichtungen des Unternehmens G) Informationen zur Arbeitssicherheit I) Erläuterung des betrieblichen Ausbildungsplanes J) Erläuterung zur Führung des Ausbildungsnachweisheftes"
+    "explanation": "C, D, F, G, I, J. C) Erläuterung betrieblicher Zusammenhänge anhand eines Videos D) Lockere Gesprächsrunde zum Kennenlernen F) Vorstellung sozialer Einrichtungen des Unternehmens G) Informationen zur Arbeitssicherheit I) Erläuterung des betrieblichen Ausbildungsplanes J) Erläuterung zur Führung des Ausbildungsnachweisheftes"
   },
   {
     "id": 676,
@@ -12989,7 +12989,7 @@ const AEVO_QUESTIONS = [
       8,
       11
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 24): A, C, E, H, I, L. A) Selbstständigkeit in der Arbeitsabwicklung/Arbeitsplanung C) Lern- und Transferfähigkeit E) Systematisches, analytisches Vorgehen H) Entscheidungsfähigkeit I) Erkennen der Grenzen des eigenen Könnens L) Eigeninitiative"
+    "explanation": "A, C, E, H, I, L. A) Selbstständigkeit in der Arbeitsabwicklung/Arbeitsplanung C) Lern- und Transferfähigkeit E) Systematisches, analytisches Vorgehen H) Entscheidungsfähigkeit I) Erkennen der Grenzen des eigenen Könnens L) Eigeninitiative"
   },
   {
     "id": 677,
@@ -13013,7 +13013,7 @@ const AEVO_QUESTIONS = [
       3,
       4
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 27): B, D, E. B) Sabine Klein, 40 Jahre alt, Mutter von drei Kindern, Industriekauffrau mit AEVO-Prüfung. D) Katharina Theis, 45 Jahre alt, Bilanzbuchhalterin. E) Otto Adam, 52 Jahre alt, Bürokaufmann, Führerscheinentzug nach Verkehrsverstoß."
+    "explanation": "B, D, E. B) Sabine Klein, 40 Jahre alt, Mutter von drei Kindern, Industriekauffrau mit AEVO-Prüfung. D) Katharina Theis, 45 Jahre alt, Bilanzbuchhalterin. E) Otto Adam, 52 Jahre alt, Bürokaufmann, Führerscheinentzug nach Verkehrsverstoß."
   },
   {
     "id": 678,
@@ -13045,7 +13045,7 @@ const AEVO_QUESTIONS = [
       9,
       10
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 29): A, C, G, H, J, K. A) Erarbeitende Unterweisungsform C) Diskussion G) Entwickelnde Unterweisungsform H) Brainstorming J) Besprechende Unterweisungsform K) Verarbeitende Unterweisungsform"
+    "explanation": "A, C, G, H, J, K. A) Erarbeitende Unterweisungsform C) Diskussion G) Entwickelnde Unterweisungsform H) Brainstorming J) Besprechende Unterweisungsform K) Verarbeitende Unterweisungsform"
   },
   {
     "id": 679,
@@ -13068,7 +13068,7 @@ const AEVO_QUESTIONS = [
       1,
       3
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 31): A, B, D. A) Fragend-entwickelnde Unterweisungsform B) Verarbeitende Unterweisungsform D) Erarbeitende Unterweisungsform"
+    "explanation": "A, B, D. A) Fragend-entwickelnde Unterweisungsform B) Verarbeitende Unterweisungsform D) Erarbeitende Unterweisungsform"
   },
   {
     "id": 680,
@@ -13090,7 +13090,7 @@ const AEVO_QUESTIONS = [
       3,
       5
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 32): D, F. D) Sie halten sich völlig aus dem Lernprozess heraus und beurteilen nur zum Schluss das Ergebnis. F) können."
+    "explanation": "D, F. D) Sie halten sich völlig aus dem Lernprozess heraus und beurteilen nur zum Schluss das Ergebnis. F) können."
   },
   {
     "id": 681,
@@ -13109,7 +13109,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       0
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 33): A. A) Der Intelligenz"
+    "explanation": "A. A) Der Intelligenz"
   },
   {
     "id": 682,
@@ -13129,7 +13129,7 @@ const AEVO_QUESTIONS = [
       1,
       2
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 34): B, C. B) Fachausdruck. C) Aufschreiben von sechs Fachausdrücken für die bei der Schuhherstellung verwendeten"
+    "explanation": "B, C. B) Fachausdruck. C) Aufschreiben von sechs Fachausdrücken für die bei der Schuhherstellung verwendeten"
   },
   {
     "id": 683,
@@ -13151,7 +13151,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       1
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 35): B. B) erfolgreich gelernt hat."
+    "explanation": "B. B) erfolgreich gelernt hat."
   },
   {
     "id": 684,
@@ -13172,7 +13172,7 @@ const AEVO_QUESTIONS = [
       1,
       4
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 36): B, E. B) Durch Vermittlung der Inhalte in einem anderen Unternehmen. E) Durch Vermittlung der Inhalte in einer Überbetrieblichen Ausbildungsstätte."
+    "explanation": "B, E. B) Durch Vermittlung der Inhalte in einem anderen Unternehmen. E) Durch Vermittlung der Inhalte in einer Überbetrieblichen Ausbildungsstätte."
   },
   {
     "id": 685,
@@ -13192,7 +13192,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       1
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 37): B. B) Der Ausbilder kann jedem Auszubildenden seinen Leistungsstand, gemessen am zu erreichenden"
+    "explanation": "B. B) Der Ausbilder kann jedem Auszubildenden seinen Leistungsstand, gemessen am zu erreichenden"
   },
   {
     "id": 686,
@@ -13214,7 +13214,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       2
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 39): C. C) abzuschreiben."
+    "explanation": "C. C) abzuschreiben."
   },
   {
     "id": 687,
@@ -13234,7 +13234,7 @@ const AEVO_QUESTIONS = [
       1,
       2
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 40): B, C. B) Mit einem Lehrgespräch kann man über gezielte Fragen und Denkanstöße Erkenntnisprozesse auf C) der Basis von Vorwissen in Gang setzen und schrittweise das Verstehen der Gesamtfunktion"
+    "explanation": "B, C. B) Mit einem Lehrgespräch kann man über gezielte Fragen und Denkanstöße Erkenntnisprozesse auf C) der Basis von Vorwissen in Gang setzen und schrittweise das Verstehen der Gesamtfunktion"
   },
   {
     "id": 688,
@@ -13254,7 +13254,7 @@ const AEVO_QUESTIONS = [
       0,
       3
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 42): A, D. A) Die Gruppe beeinflusst die Lernmotivation. D) Diese Gruppe mindert die Lernmotivation des ohnehin schwach interessierten Auszubildenden."
+    "explanation": "A, D. A) Die Gruppe beeinflusst die Lernmotivation. D) Diese Gruppe mindert die Lernmotivation des ohnehin schwach interessierten Auszubildenden."
   },
   {
     "id": 689,
@@ -13274,7 +13274,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       2
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 43): C. C) Das Gruppenmitglied erhält bei seinen Lernversuchen Ermutigungen, die die"
+    "explanation": "C. C) Das Gruppenmitglied erhält bei seinen Lernversuchen Ermutigungen, die die"
   },
   {
     "id": 690,
@@ -13296,7 +13296,7 @@ const AEVO_QUESTIONS = [
       1,
       3
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 44): B, D. B) In Gruppen entwickeln sich Rangordnungen, z. B. nach der Beliebtheit und Tüchtigkeit. D) Die Gruppen der Auszubildenden erwählen zumeist den Ausbilder zu ihrem Gruppenführer."
+    "explanation": "B, D. B) In Gruppen entwickeln sich Rangordnungen, z. B. nach der Beliebtheit und Tüchtigkeit. D) Die Gruppen der Auszubildenden erwählen zumeist den Ausbilder zu ihrem Gruppenführer."
   },
   {
     "id": 691,
@@ -13315,7 +13315,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       1
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 45): B. B) Die Team-/Partnerarbeit erleichtert das selbstständige Planen, weil sich die Partner gegenseitig"
+    "explanation": "B. B) Die Team-/Partnerarbeit erleichtert das selbstständige Planen, weil sich die Partner gegenseitig"
   },
   {
     "id": 692,
@@ -13334,7 +13334,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       2
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 46): C. C) Bis zu maximal 16 Gesprächsteilnehmer"
+    "explanation": "C. C) Bis zu maximal 16 Gesprächsteilnehmer"
   },
   {
     "id": 693,
@@ -13354,7 +13354,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       0
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 47): A. A) Die Verantwortung trägt die Solan GmbH."
+    "explanation": "A. A) Die Verantwortung trägt die Solan GmbH."
   },
   {
     "id": 694,
@@ -13377,7 +13377,7 @@ const AEVO_QUESTIONS = [
     "correctIndices": [
       1
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 48): B. B) Prüfungsausschusses."
+    "explanation": "B. B) Prüfungsausschusses."
   },
   {
     "id": 695,
@@ -13404,7 +13404,7 @@ const AEVO_QUESTIONS = [
       3,
       5
     ],
-    "explanation": "Offizielle IHK-Loesung (Satz 66, Aufgabe 49): A, B, D, F. A) Zuzulassen ist, wer die Ausbildungszeit zurückgelegt hat. B) Zuzulassen ist, wessen Berufsausbildungsverhältnis in das Verzeichnis der D) Zuzulassen ist, wer die entsprechenden Leistungen in der Berufsschule und im Betrieb erbracht hat. F) Zuzulassen ist, wer an der vorgeschriebenen Zwischenprüfung, bzw. Teil 1 der gestreckten"
+    "explanation": "A, B, D, F. A) Zuzulassen ist, wer die Ausbildungszeit zurückgelegt hat. B) Zuzulassen ist, wessen Berufsausbildungsverhältnis in das Verzeichnis der D) Zuzulassen ist, wer die entsprechenden Leistungen in der Berufsschule und im Betrieb erbracht hat. F) Zuzulassen ist, wer an der vorgeschriebenen Zwischenprüfung, bzw. Teil 1 der gestreckten"
   },
   {
     "id": 2,
@@ -32631,7 +32631,7 @@ function getFilteredPracticeQuestions() {
 
   return AEVO_QUESTIONS.filter(q => {
     // HF filter
-    if (hf === 'pc') { if (q.id < 416) return false; }
+    if (hf === 'pc') { if (q.id < 416 || q.id > 655) return false; }
     else if (hf === 'pc1') { if (q.id < 416 || q.id > 495) return false; }
     else if (hf === 'ihk66') { if (q.id < 656 || q.id > 695) return false; }
     else if (hf === 'ihkf') { if (q.id < 696 || q.id > 775) return false; }
@@ -32740,7 +32740,7 @@ function renderPracticeQuestion() {
       <div class="px-6 py-4 bg-[var(--c-sunken)] border-b border-[var(--c-border)] flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-2 flex-wrap">
           <span class="px-2 py-0.5 text-[11px] font-bold uppercase rounded bg-[var(--c-accent)] text-[var(--c-on-accent)]">
-            Frage ${q.id} von ${AEVO_QUESTIONS.length}
+            Frage ${STATE.practiceIndex + 1} von ${filtered.length}
           </span>
           <span class="px-2 py-0.5 text-[11px] font-semibold rounded bg-[var(--c-card)] border border-[var(--c-border)] text-[var(--c-muted)]">
             Handlungsfeld ${q.hf}
@@ -32990,11 +32990,12 @@ function selectPracticeQuestionByIndex(idx) {
 }
 
 function updatePracticeStats() {
+  const filteredStats = getFilteredPracticeQuestions();
   let answeredCount = 0;
   let correctCount = 0;
   let checkedCount = 0;
 
-  AEVO_QUESTIONS.forEach(q => {
+  filteredStats.forEach(q => {
     const isChecked = !!STATE.practiceChecked[q.id];
     const ans = STATE.practiceAnswers[q.id];
     if (ans && ans.length > 0) answeredCount++;
@@ -33012,7 +33013,7 @@ function updatePracticeStats() {
   const elAccuracy = document.getElementById('stat-practice-accuracy');
   const elCorrect = document.getElementById('stat-practice-correct');
 
-  if (elAnswered) elAnswered.textContent = `${answeredCount} / ${AEVO_QUESTIONS.length}`;
+  if (elAnswered) elAnswered.textContent = `${answeredCount} / ${filteredStats.length}`;
   if (elAccuracy) elAccuracy.textContent = `${accuracy}%`;
   if (elCorrect) elCorrect.textContent = `${correctCount} richtig`;
 }
