@@ -26,9 +26,12 @@ Deploy: Vercel (project: ausbilder) + GitHub goldbugM/ausbilder.
 - IDs 1-415: eigene DIHK-naeher Fragen (HF1-4)
 - IDs 416-495: Feldhaus Pruefungs-Check Original-Satz 1 (80)
 - IDs 496-655: Feldhaus Pruefungs-Check Saetze 2-3 (160)
-- IDs 656-695: IHK Musteraufgabensatz Satz 66 (49)
+- IDs 656-695: IHK Musteraufgabensatz Satz 66 (40)
 - IDs 696-775: fotografierte IHK Original-Pruefung (80, KI-verifiziert via Claude Opus + Gemini)
-- Filter/Quellen: 'pc', 'pc1', 'ihk66', 'ihkf' in practice + exam-source Dropdowns
+- IDs 776-805: IHK Test-App transkribiert (30)
+- IDs 806-938: IHK Test-App komplett (133)
+- Filter/Quellen: 'pc' (416-655, Obergrenze Pflicht), 'pc1', 'ihk66', 'ihkf', 'ihk2', 'ihk3' in practice + exam-source Dropdowns
+- Practice-Palette/Stats sind satzbezogen (2026-10-03): getFilteredPracticeQuestions() bestimmenden fuer Palette, Header-Badge und Stat-Anzeige — bei neuen Fragen-Buckets IMMER Obergrenze im Filter setzen, sonst rutschen spaetere IDs durch
 - OCR-Pipeline: MiniMax Vision braucht max_tokens>=12000 (reasoning frisst Tokens); foto-basierte Exam-Extraktion in /a0/usr/workdir/projects/2026-09-21_pruefung-zip/
 
 ## Icon-System (2026-09-21)
